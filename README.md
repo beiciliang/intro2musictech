@@ -4,11 +4,11 @@
 
 <img src="https://github.com/beiciliang/intro2musictech/blob/master/attachment/qrcode.jpg" width="200">
 
-**♬ 当公众号有新文章发布时，其ipynb格式将在这里同步更新 ♬**
+**♬ 以后有新的公众号文章发布，其ipynb格式会在GitHub这里同步更新 ♬**
 
-**♫ 方便读者在自己的电脑上一边阅读一边执行代码，无痛skr ♫**
+**♫ 方便读者在自己的电脑上一边阅读一边执行代码，快速入门，无痛skr ♫**
 
-以下内容适用于编程零基础的读者，如果你已经清楚如何`git clone`本项目，并能在一个基于python3的虚拟环境内安装`requirements.txt`后，成功加载并运行[00-Hello.ipynb](https://github.com/beiciliang/intro2musictech/blob/master/00-Hello.ipynb)中的代码，恭喜你，编程环境配置成功！
+以下内容适用于编程零基础的读者，如果你已经清楚如何`git clone`本项目，并能在一个基于Python 3.7的虚拟环境内安装[requirements.txt](https://github.com/beiciliang/intro2musictech/blob/master/requirements.txt)后，不报错地加载[00-Hello.ipynb](https://github.com/beiciliang/intro2musictech/blob/master/00-Hello.ipynb)并运行其中代码，恭喜你，编程环境配置成功！
 
 **以下内容涵盖:** 
 
