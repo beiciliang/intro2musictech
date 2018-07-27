@@ -175,7 +175,7 @@ Jupyter Notebook本身是一种网页端应用，能让用户将说明文本、�
 
 ✎ 点击页面右侧的`New`并选择`Python [conda env:py37]`可新建一个基于该虚拟环境的Notebook。
 
-✎ 现在我们回到之前的页面，进入`intro2musictech`文件夹后打开`00-Hellow.ipynb`，熟悉如何运行每个单元格中的Python代码。
+✎ 现在我们回到之前的页面，进入`intro2musictech`文件夹后打开`00-Hello.ipynb`。
 
 ✎ 读者也可直接浏览[00-Hello.ipynb](https://github.com/beiciliang/intro2musictech/blob/master/00-Hello.ipynb)的内容。
 
@@ -191,13 +191,13 @@ Jupyter Notebook本身是一种网页端应用，能让用户将说明文本、�
 
 ✎ 以后若需要再次激活某个虚拟环境但不巧忘了其名字，可通过`conda env list`指令来查询。
 
-✎ 如果就是对这个`py37`虚拟环境不爽，可以用`conda env remove -n py37`彻底删除。
+✎ 慎重！如果对这个`py37`虚拟环境不爽，可以用`conda env remove -n py37`彻底删除。
 
 ---
 
 ### 『后续工作』
 
-假设上述所有步骤都能成功执行，那么一旦有新文章时，读者可以在自己的电脑上获取更新后查看最新的Notebook：
+假设上述所有步骤都能成功执行，那么一旦有新文章时，读者可以在自己的电脑上获取更新后查看最新的Notebook，大致流程如下：
 ```
 $ cd intro2musictech
 $ git pull
