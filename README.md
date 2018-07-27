@@ -1,29 +1,31 @@
 # intro2musictech
 
 公众号“无痛入门音乐科技”开源代码，欢迎扫码关注！
+
 <img src="https://github.com/beiciliang/intro2musictech/blob/master/attachment/qrcode.jpg" width="200">
 
-**♬ 当公众号有新文章发布时，其Jupyter Notebook格式将在这里同步更新，方便读者在自己的电脑上一边阅读一边执行代码 ♬**
+**♬ 当公众号有新文章发布时，其ipynb格式将在这里同步更新 ♬**
+**♫ 方便读者在自己的电脑上一边阅读一边执行代码，无痛skr ♫**
 
 以下内容适用于编程零基础的读者，如果你已经清楚如何`git clone`本项目，并能在一个基于python3的虚拟环境内安装`requirements.txt`后，成功加载并运行[00-Hello.ipynb](https://github.com/beiciliang/intro2musictech/blob/master/00-Hello.ipynb)中的代码，恭喜你，编程环境配置成功！
 
 **以下内容涵盖:** 
 
-1. 命令行基础操作[#commandline]
+1. [命令行基础操作](https://github.com/beiciliang/intro2musictech#命令行)
 
-2. Git用法[#git]
+2. [Git用法](https://github.com/beiciliang/intro2musictech#git用法)
 
-3. Anaconda设置环境[#conda]
+3. [Anaconda设置环境](https://github.com/beiciliang/intro2musictech#anaconda设置环境)
 
-4. 用Jupyter Notebook运行Python代码[#jupyter] 
+4. [用Jupyter Notebook运行Python代码](https://github.com/beiciliang/intro2musictech#用jupyter-notebook运行python)
 
-5. 如何退出[#exit]
+5. [如何退出](https://github.com/beiciliang/intro2musictech#如何退出)
 
-6. 后续工作[#tbc]
+6. [后续工作](https://github.com/beiciliang/intro2musictech#后续工作)
 
 ---
 
-### <a name="commandline"></a>『命令行』
+###『命令行』
 
 在计算机还没有酷炫的交互界面甚至连鼠标都没有的年代，人们通过命令行来操作程序，如果你学会了在命令行下如何操作，表面上能看起来像个黑客，实际上能大大加快操作速度。
 
@@ -67,7 +69,7 @@ HOSTNAME:Downloads USER$ cd ..
 
 ---
 
-### <a name="git"></a>『Git用法』
+###『Git用法』
 
 Git即版本控制，是一种记录一个或若干文件内容变化，以便将来查阅特定版本修订情况的系统。程序员们用它才能最快发现到底是谁在什么时候删了一行不该删的代码。
 
@@ -93,7 +95,7 @@ HOSTNAME:~ USER$ git clone https://github.com/beiciliang/intro2musictech.git
 
 ---
 
-### <a name="conda"></a>『Anaconda设置环境』
+###『Anaconda设置环境』
 
 现在通过`ls`查看一下`intro2musictech`文件夹里都有哪些东东:
 
@@ -159,7 +161,7 @@ $ source activate py37
 
 ---
 
-### <a name="jupyter"></a>『用Jupyter Notebook运行Python』
+###『用Jupyter Notebook运行Python』
 
 Jupyter Notebook本身是一种网页端应用，能让用户将说明文本、数学方程、代码和可视化内容全部组合到一个易于共享的文档中。
 
@@ -178,7 +180,7 @@ Jupyter Notebook本身是一种网页端应用，能让用户将说明文本、�
 
 ---
 
-### <a name="exit"></a>『如何退出』
+###『如何退出』
 
 ✎ 关闭Notebook不仅仅要关闭浏览器页面，在其运行的命令行界面，要通过两次`CTRL+C`中止程序。
 
@@ -188,7 +190,7 @@ Jupyter Notebook本身是一种网页端应用，能让用户将说明文本、�
 
 ---
 
-### <a name="tbc"></a>『后续工作』
+###『后续工作』
 
 假设上述所有步骤都能成功执行，那么一旦有新文章时，读者可以在自己的电脑上获取更新后查看最新的Notebook：
 ```
