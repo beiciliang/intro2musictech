@@ -11,21 +11,21 @@
 
 **以下内容涵盖:** 
 
-1. [命令行基础操作](https://github.com/beiciliang/intro2musictech#命令行)
+1. [命令行基础操作](#命令行)
 
-2. [Git用法](https://github.com/beiciliang/intro2musictech#git用法)
+2. [Git用法](#git用法)
 
-3. [Anaconda设置环境](https://github.com/beiciliang/intro2musictech#anaconda设置环境)
+3. [Anaconda设置环境](#anaconda设置环境)
 
-4. [用Jupyter Notebook运行Python代码](https://github.com/beiciliang/intro2musictech#用jupyter-notebook运行python)
+4. [用Jupyter Notebook运行Python代码](#用jupyter-notebook运行python)
 
-5. [如何退出](https://github.com/beiciliang/intro2musictech#如何退出)
+5. [如何退出](#如何退出)
 
-6. [后续工作](https://github.com/beiciliang/intro2musictech#后续工作)
+6. [后续工作](#后续工作)
 
 ---
 
-###『命令行』
+### 『命令行』
 
 在计算机还没有酷炫的交互界面甚至连鼠标都没有的年代，人们通过命令行来操作程序，如果你学会了在命令行下如何操作，表面上能看起来像个黑客，实际上能大大加快操作速度。
 
@@ -69,7 +69,7 @@ HOSTNAME:Downloads USER$ cd ..
 
 ---
 
-###『Git用法』
+### 『Git用法』
 
 Git即版本控制，是一种记录一个或若干文件内容变化，以便将来查阅特定版本修订情况的系统。程序员们用它才能最快发现到底是谁在什么时候删了一行不该删的代码。
 
@@ -95,7 +95,7 @@ HOSTNAME:~ USER$ git clone https://github.com/beiciliang/intro2musictech.git
 
 ---
 
-###『Anaconda设置环境』
+### 『Anaconda设置环境』
 
 现在通过`ls`查看一下`intro2musictech`文件夹里都有哪些东东:
 
@@ -161,7 +161,7 @@ $ source activate py37
 
 ---
 
-###『用Jupyter Notebook运行Python』
+### 『用Jupyter Notebook运行Python』
 
 Jupyter Notebook本身是一种网页端应用，能让用户将说明文本、数学方程、代码和可视化内容全部组合到一个易于共享的文档中。
 
@@ -180,7 +180,7 @@ Jupyter Notebook本身是一种网页端应用，能让用户将说明文本、�
 
 ---
 
-###『如何退出』
+### 『如何退出』
 
 ✎ 关闭Notebook不仅仅要关闭浏览器页面，在其运行的命令行界面，要通过两次`CTRL+C`中止程序。
 
@@ -190,7 +190,7 @@ Jupyter Notebook本身是一种网页端应用，能让用户将说明文本、�
 
 ---
 
-###『后续工作』
+### 『后续工作』
 
 假设上述所有步骤都能成功执行，那么一旦有新文章时，读者可以在自己的电脑上获取更新后查看最新的Notebook：
 ```
