@@ -5,6 +5,7 @@
 <img src="https://github.com/beiciliang/intro2musictech/blob/master/attachment/qrcode.jpg" width="200">
 
 **♬ 当公众号有新文章发布时，其ipynb格式将在这里同步更新 ♬**
+
 **♫ 方便读者在自己的电脑上一边阅读一边执行代码，无痛skr ♫**
 
 以下内容适用于编程零基础的读者，如果你已经清楚如何`git clone`本项目，并能在一个基于python3的虚拟环境内安装`requirements.txt`后，成功加载并运行[00-Hello.ipynb](https://github.com/beiciliang/intro2musictech/blob/master/00-Hello.ipynb)中的代码，恭喜你，编程环境配置成功！
@@ -29,9 +30,9 @@
 
 在计算机还没有酷炫的交互界面甚至连鼠标都没有的年代，人们通过命令行来操作程序，如果你学会了在命令行下如何操作，表面上能看起来像个黑客，实际上能大大加快操作速度。
 
-假如你是MacOS或Linux用户，博主希望你懂得如何使用终端(Terminal)；假如你是Windows用户，则希望你懂得如何使用命令窗口(Command Prompt)或PowerShell。**以下内容将以在MacOS上操作为例！**
+假如你是MacOS或Linux用户，博主希望你懂得如何使用终端(Terminal)；假如你是Windows用户，则希望你懂得如何使用命令窗口(Command Prompt)或PowerShell。**以下内容以在MacOS上操作为例！**
 
-✎ 打开命令行界面后，你现在应该看到一个白色或黑色的窗口，正等待着你的命令：
+✎ 打开命令行界面后，应该会看到一个白色或黑色的窗口，正等待着你的命令：
 ```
 HOSTNAME:~ USER$ 
 ```
@@ -130,7 +131,7 @@ $ conda config --set show_channel_urls yes
 
 1. 先用`conda`安装个环境自动关联包：
 ```
-conda install nb_conda
+$ conda install nb_conda
 ```
 
 2. 建立一个名字为`py37`的环境，该环境下Python版本为3.7，并安装`ipykernel`这个库也就顺便将Jupyther Notebook安装到`py37`环境中：
@@ -151,13 +152,13 @@ $ source activate py37
 (py37)$ pip install numpy scipy matplotlib librosa scikit-learn
 ```
 
-**另**，这些库也可通过指令`pip install -r requirements.txt`来安装，注意除非你的当前路径与该txt文件相同，否则要在指令中声明txt所在的具体路径！
+**另**，这些库也可通过指令`pip install -r requirements.txt`来安装，注意除非当前路径与该txt文件相同，否则要在指令中声明txt所在的具体路径！
 
 对于第三方库的安装，用`pip`或`conda`其实没有大区别，但博主一般会参考这个库本身建议哪种方式最简单。
 
 5. 此时你可通过`conda list`指令来查看`py37`环境下具体成功安装上了哪些库。
 
-6. 若想退出虚拟环境，可直接输入`source deactivate`后回车，不过为了最后关于Notebook的环节，暂且先停留在这里！
+6. 若想退出虚拟环境，可直接输入`source deactivate`后回车，不过为了最后关于Notebook的环节，暂且先不要退出！
 
 ---
 
@@ -170,13 +171,15 @@ Jupyter Notebook本身是一种网页端应用，能让用户将说明文本、�
 (py37)$ jupyter notebook
 ```
 
-此时你的浏览器应该会直接弹出一个新页面，你也可以粘贴命令行返回URL链接，拷贝到浏览器中打开应用.
+此时你的浏览器应该会直接弹出一个新页面，你也可以粘贴命令行返回的URL链接，拷贝到浏览器中打开应用。
 
 ✎ 点击页面右侧的`New`并选择`Python [conda env:py37]`可新建一个基于该虚拟环境的Notebook。
 
 ✎ 现在我们回到之前的页面，进入`intro2musictech`文件夹后打开`00-Hellow.ipynb`，熟悉如何运行每个单元格中的Python代码。
 
 ✎ 读者也可直接浏览[00-Hello.ipynb](https://github.com/beiciliang/intro2musictech/blob/master/00-Hello.ipynb)的内容。
+
+✎ 其中简要介绍了Notebook在跑Python代码时的妙用。
 
 ---
 
@@ -187,6 +190,8 @@ Jupyter Notebook本身是一种网页端应用，能让用户将说明文本、�
 ✎ 通过`source deactivate`命令行退出当前虚拟环境。
 
 ✎ 以后若需要再次激活某个虚拟环境但不巧忘了其名字，可通过`conda env list`指令来查询。
+
+✎ 如果就是对这个`py37`虚拟环境不爽，可以用`conda env remove -n py37`彻底删除。
 
 ---
 
