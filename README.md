@@ -8,7 +8,7 @@
 
 **♫ 方便读者在自己的电脑上一边阅读一边执行代码，快速入门，无痛skr ♫**
 
-以下内容适用于编程零基础的读者，如果你已经清楚如何`git clone`本项目，并能在一个基于Python 3.7的虚拟环境内安装[requirements.txt](https://github.com/beiciliang/intro2musictech/blob/master/requirements.txt)后，不报错地加载[00-Hello.ipynb](https://github.com/beiciliang/intro2musictech/blob/master/00-Hello.ipynb)并运行其中代码，恭喜你，编程环境配置成功！
+以下内容适用于编程零基础的读者，如果你已经清楚如何`git clone`本项目，并能在一个基于Python 3的虚拟环境内安装Jupyter Notebook以及[requirements.txt](https://github.com/beiciliang/intro2musictech/blob/master/requirements.txt)中的第三方库之后，不报错地加载[00-Hello.ipynb](https://github.com/beiciliang/intro2musictech/blob/master/00-Hello.ipynb)并运行其中代码，恭喜你，编程环境配置成功！
 
 **以下内容涵盖:** 
 
@@ -129,9 +129,10 @@ $ conda config --set show_channel_urls yes
 
 ✎ 下面的命令行将一步步带领读者走向成功的一半！
 
-1. 先用`conda`安装个环境自动关联包：
+1. 先用`conda`在全局下安装些notebook的拓展包：
 ```
 $ conda install nb_conda
+$ conda install -c conda-forge jupyter_nbextensions_configurator
 ```
 
 2. 建立一个名字为`py37`的环境，该环境下Python版本为3.7，并安装`ipykernel`这个库也就顺便将Jupyther Notebook安装到`py37`环境中：
@@ -160,6 +161,18 @@ $ source activate py37
 
 6. 若想退出虚拟环境，可直接输入`source deactivate`后回车，不过为了最后关于Notebook的环节，暂且先不要退出！
 
+**对于完全不想安装anaconda，只想用`pip`掌控大权的读者**：
+
+创建虚拟环境的时候就需要用其他如[virtualenv](https://virtualenv.pypa.io/en/stable/)的辅助，在创建并激活进入到虚拟环境后：
+```
+(py37)$ pip install --upgrade pip
+(py37)$ pip install ipykernel
+(py37)$ ipython kernel install --user --name=py37
+(py37)$ pip install -r requirements.txt
+```
+
+在以上设置完成后才能确保`py37`中的Python 3内核将被Notebook正确调用。
+
 ---
 
 ### 『用Jupyter Notebook运行Python』
@@ -179,7 +192,7 @@ Jupyter Notebook本身是一种网页端应用，能让用户将说明文本、�
 
 ✎ 读者也可直接浏览[00-Hello.ipynb](https://github.com/beiciliang/intro2musictech/blob/master/00-Hello.ipynb)的内容。
 
-✎ 其中简要介绍了Notebook在跑Python代码时的妙用。
+✎ 其中简要介绍了Notebook在跑Python代码时的妙用，你会用它加载一段音频后听到猫叫，并画出波形！
 
 ---
 
