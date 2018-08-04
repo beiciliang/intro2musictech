@@ -8,9 +8,13 @@
 
 **♫ 方便读者在自己的电脑上一边阅读一边执行代码，快速入门，无痛skr ♫**
 
-以下内容适用于编程零基础的读者，如果你已经清楚如何`git clone`本项目，并能在一个基于Python 3的虚拟环境内安装Jupyter Notebook以及[requirements.txt](https://github.com/beiciliang/intro2musictech/blob/master/requirements.txt)中的第三方库之后，不报错地加载[00-Hello.ipynb](https://github.com/beiciliang/intro2musictech/blob/master/00-Hello.ipynb)并运行其中代码，恭喜你，编程环境配置成功！
+- 20180727 [「README」无痛入门音乐科技门槛须知](https://mp.weixin.qq.com/s/S8Q5iSUMgKZQ5g-17dF8UA)
+- 20180728 [「SETUP」从零设置编程环境](#从零设置编程环境)
+- 20180803 [「NIME-01」那些为身障人士设计的乐器](https://mp.weixin.qq.com/s/vUU30Ap5ot-Ygpy8eBeC4w)
 
-**以下内容涵盖:** 
+### 从零设置编程环境:
+
+以下内容适用于编程零基础的读者，如果你已经清楚如何`git clone`本项目，并能在一个基于Python 3的虚拟环境内安装Jupyter Notebook以及[requirements.txt](https://github.com/beiciliang/intro2musictech/blob/master/requirements.txt)中的第三方库之后，不报错地加载[00-Hello.ipynb](https://github.com/beiciliang/intro2musictech/blob/master/00-Hello.ipynb)并运行其中代码，恭喜你，编程环境配置成功！
 
 1. [命令行基础操作](#命令行)
 
