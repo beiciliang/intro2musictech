@@ -11,6 +11,7 @@
 - 20180727 [「README」无痛入门音乐科技门槛须知](https://mp.weixin.qq.com/s/S8Q5iSUMgKZQ5g-17dF8UA)
 - 20180728 [「SETUP」从零设置编程环境](#从零设置编程环境)
 - 20180803 [「NIME-01」那些为身障人士设计的乐器](https://mp.weixin.qq.com/s/vUU30Ap5ot-Ygpy8eBeC4w)
+- 20180805 [「MIR-01」要把音乐画出来，总共分几步？](https://mp.weixin.qq.com/s/pvpFoKKa0Ki_uZ3Y6rqaJw)
 
 ---
 
