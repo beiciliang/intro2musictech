@@ -8,10 +8,12 @@
 
 **♫ 方便读者在自己的电脑上一边阅读一边执行代码，快速入门，无痛skr ♫**
 
-- 20180727 [「README」无痛入门音乐科技门槛须知](https://mp.weixin.qq.com/s/S8Q5iSUMgKZQ5g-17dF8UA)
-- 20180728 [「SETUP」从零设置编程环境](#从零设置编程环境)
-- 20180803 [「NIME-01」那些为身障人士设计的乐器](https://mp.weixin.qq.com/s/vUU30Ap5ot-Ygpy8eBeC4w)
-- 20180805 [「MIR-01」要把音乐画出来，总共分几步？](https://mp.weixin.qq.com/s/pvpFoKKa0Ki_uZ3Y6rqaJw)
+更新日期 | 公众号文章链接 | GitHub代码链接               
+-------- | ---------------------------------- | ---------------------------------------------------------
+20180727 | [「README」无痛入门音乐科技门槛须知](https://mp.weixin.qq.com/s/S8Q5iSUMgKZQ5g-17dF8UA) | N/A
+20180728 | [「SETUP」从零设置编程环境](https://mp.weixin.qq.com/s/ngvmPl5S7QI-PqUUBtbQ3w) | 可直接浏览[下方内容](#从零设置编程环境)，附测试代码[00-Hello.ipynb](https://github.com/beiciliang/intro2musictech/blob/master/00-Hello.ipynb)
+20180803 | [「NIME-01」那些为身障人士设计的乐器](https://mp.weixin.qq.com/s/vUU30Ap5ot-Ygpy8eBeC4w) | N/A
+20180805 | [「MIR-01」要把音乐画出来，总共分几步？](https://mp.weixin.qq.com/s/pvpFoKKa0Ki_uZ3Y6rqaJw) | [MIR-01.ipynb](https://github.com/beiciliang/intro2musictech/blob/master/MIR-01.ipynb)
 
 ---
 
