@@ -1,6 +1,6 @@
 # intro2musictech
 
-公众号“无痛入门音乐科技”开源代码，欢迎扫码关注！
+公众号“无痛入门音乐科技”开源代码，欢迎微信扫码关注或直接搜索intro2musictech！
 
 <img src="https://github.com/beiciliang/intro2musictech/blob/master/attachment/qrcode.jpg" width="200">
 
