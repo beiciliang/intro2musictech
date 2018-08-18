@@ -15,6 +15,7 @@
 20180803 | [「NIME-01」那些为身障人士设计的乐器](https://mp.weixin.qq.com/s/vUU30Ap5ot-Ygpy8eBeC4w) | N/A
 20180805 | [「MIR-01」要把音乐画出来，总共分几步？](https://mp.weixin.qq.com/s/pvpFoKKa0Ki_uZ3Y6rqaJw) | [MIR-01.ipynb](https://github.com/beiciliang/intro2musictech/blob/master/MIR-01.ipynb)
 20180811 | [「NIME-02」日常物件在没有成精的前提下如何发声儿？](https://mp.weixin.qq.com/s/X05DgjhXO7oMf8Gej5P3Mw) | N/A，可参考[The Bela Blog](http://blog.bela.io/)
+20180818 | [「MIR-02_1」音频特征小全之概览](https://mp.weixin.qq.com/s/oFrW7hmZgmAuZGIVHjZTAQ) | [MIR-02_1.ipynb](https://github.com/beiciliang/intro2musictech/blob/master/MIR-02_1.ipynb)
 
 ---
 
