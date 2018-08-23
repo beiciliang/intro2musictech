@@ -120,6 +120,11 @@
 - Montreal, Canada
 - http://www.cirmmt.org
 
+✎ Metacreation Lab
+- Simon Fraser University
+- Surrey, Canada
+- http://metacreation.net
+
 ✎ Center for Computer Research in Music and Acoustics (CCRMA)
 - Stanford University
 - Standford, USA 
@@ -134,6 +139,7 @@
 - Columbia University
 - New York City, USA
 - https://labrosa.ee.columbia.edu
+- 备注：项目已停，网站可查看以往工作
 
 ✎ Georgia Tech Center for Music Technology (GTCMT)
 - Georgia Institute of Technology
@@ -154,6 +160,7 @@
 - Princeton University
 - Princeton, USA
 - http://soundlab.cs.princeton.edu
+- 备注：项目已停，网站可查看以往工作
 
 ✎ Music and Entertainment Technology Laboratory (MET-lab)
 - Drexel University 
@@ -185,6 +192,11 @@
 - Santa Barbara, USA
 - http://www.create.ucsb.edu
 
+✎ Computer Music
+- UCSD
+- San Diego, USA
+- http://musicweb.ucsd.edu/grad/grad-pages.php?i=202
+
 ---
 
 ### 『亚洲地区』
@@ -201,6 +213,12 @@
 - National Institute of Advanced Industrial Science and Technology (AIST)
 - Japan
 - https://staff.aist.go.jp/m.goto/MIG/index-j.html
+- 备注：只招收博士后
+
+✎ Speech and Audio Processing Laboratory
+- Kyoto University
+- Japan
+- http://sap.ist.i.kyoto-u.ac.jp/EN/
 
 ✎ Music and Audio Computing Lab
 - Korea Advanced Institute of Science and Technology
@@ -216,6 +234,14 @@
 - Agency for Science, Technology and Research (A*STAR)
 - Singapore
 - https://www.a-star.edu.sg/ihpc/Research/Social-Cognitive-Computing-SCC/Music-Cognition/Overview-and-Recent-Highlights
+
+✎ Dr. Gus Xia(夏光宇)带领的人工音乐智能相关研究
+- 上海纽约大学
+- http://www.cs.cmu.edu/~gxia/
+
+✎ 李伟教授带领的音频音乐信息处理相关研究
+- 复旦大学
+- http://homepage.fudan.edu.cn/weili/
 
 ---
 
