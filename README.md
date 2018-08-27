@@ -17,6 +17,8 @@
 20180811 | [「NIME-02」日常物件在没有成精的前提下如何发声儿？](https://mp.weixin.qq.com/s/X05DgjhXO7oMf8Gej5P3Mw) | N/A，可参考[The Bela Blog](http://blog.bela.io/)
 20180818 | [「MIR-02_1」音频特征小全之概览](https://mp.weixin.qq.com/s/oFrW7hmZgmAuZGIVHjZTAQ) | [MIR-02_1.ipynb](https://github.com/beiciliang/intro2musictech/blob/master/MIR-02_1.ipynb)
 20180822 | [「INFO」音乐科技相关科研组列表](https://mp.weixin.qq.com/s/2nDWikda9fh2x5o093F6HA) | 列表会在[这里](https://github.com/beiciliang/intro2musictech/blob/master/INFO-ResearchGroups.md)更新
+20180827 | [「NIME-03」为什么说钢琴是乐器之王？复杂！](https://mp.weixin.qq.com/s?__biz=MzU5MzY3NzI0OA==&mid=2247483718&idx=1&sn=fbf3f7c11e61096bafd72ea6ed0c0e8a&scene=19#wechat_redirect) | N/A，原知乎问题在[这里](
+https://www.zhihu.com/question/288614974)
 
 ---
 
