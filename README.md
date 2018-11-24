@@ -20,7 +20,7 @@
 20180827 | [「NIME-03」为什么说钢琴是乐器之王？复杂！](https://mp.weixin.qq.com/s?__biz=MzU5MzY3NzI0OA==&mid=2247483718&idx=1&sn=fbf3f7c11e61096bafd72ea6ed0c0e8a&scene=19#wechat_redirect) | N/A，原知乎问题在[这里](https://www.zhihu.com/question/288614974)
 20180913 | [「MIR-02_2」音频特征小全之时域特征](https://mp.weixin.qq.com/s/fwbxA0ZWJPuOKolouQea3Q) | [MIR-02_2.ipynb](https://github.com/beiciliang/intro2musictech/blob/master/MIR-02_2.ipynb)
 20181014 | [「MIR-02_3」音频特征小全之频域特征](https://mp.weixin.qq.com/s/TOAXROVlOVYDmVlmFIyBxQ) | [MIR-02_3.ipynb](https://github.com/beiciliang/intro2musictech/blob/master/MIR-02_3.ipynb)
-
+20181124 | [「MIR-02_4」音频特征小全之乐音特征](https://mp.weixin.qq.com/s/XqZvZ4-m3xd81udyUSg4wg) | [MIR-02_4.ipynb](https://github.com/beiciliang/intro2musictech/blob/master/MIR-02_4.ipynb)
 ---
 
 ### 从零设置编程环境:
