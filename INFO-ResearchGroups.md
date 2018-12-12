@@ -125,6 +125,11 @@
 - Surrey, Canada
 - http://metacreation.net
 
+✎ Music Intelligence and Sound Technology Interdisciplinary Collective (MISTIC)
+- University of Victoria
+- Victoria, Canada
+- http://mistic.finearts.uvic.ca
+
 ✎ Center for Computer Research in Music and Acoustics (CCRMA)
 - Stanford University
 - Standford, USA 
