@@ -21,6 +21,7 @@
 20180913 | [「MIR-02_2」音频特征小全之时域特征](https://mp.weixin.qq.com/s/fwbxA0ZWJPuOKolouQea3Q) | [MIR-02_2.ipynb](https://github.com/beiciliang/intro2musictech/blob/master/MIR-02_2.ipynb)
 20181014 | [「MIR-02_3」音频特征小全之频域特征](https://mp.weixin.qq.com/s/TOAXROVlOVYDmVlmFIyBxQ) | [MIR-02_3.ipynb](https://github.com/beiciliang/intro2musictech/blob/master/MIR-02_3.ipynb)
 20181124 | [「MIR-02_4」音频特征小全之乐音特征](https://mp.weixin.qq.com/s/XqZvZ4-m3xd81udyUSg4wg) | [MIR-02_4.ipynb](https://github.com/beiciliang/intro2musictech/blob/master/MIR-02_4.ipynb)
+20181130 | [「INFO」音乐科技相关会议期刊列表](https://mp.weixin.qq.com/s?__biz=MzU5MzY3NzI0OA==&mid=2247483761&idx=1&sn=52b81b9fca161df1afad2a8babad251a&scene=19#wechat_redirect) | N/A
 ---
 
 ### 从零设置编程环境:
