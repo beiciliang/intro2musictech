@@ -23,6 +23,7 @@
 20181124 | [「MIR-02_4」音频特征小全之乐音特征](https://mp.weixin.qq.com/s/XqZvZ4-m3xd81udyUSg4wg) | [MIR-02_4.ipynb](https://github.com/beiciliang/intro2musictech/blob/master/MIR-02_4.ipynb)
 20181130 | [「INFO」音乐科技相关会议期刊列表](https://mp.weixin.qq.com/s?__biz=MzU5MzY3NzI0OA==&mid=2247483761&idx=1&sn=52b81b9fca161df1afad2a8babad251a&scene=19#wechat_redirect) | N/A
 20181217 | [「INFO」2018年度那些亮眼的音乐科技成就](https://mp.weixin.qq.com/s/5FBzxHm1PcgBpHy6645JmA) | N/A
+20190218 | [「INFO」C4DM在ICASSP 2019的收录成果](https://mp.weixin.qq.com/s/RkcOyFf4eLIe512B37nmIw) | N/A
 20190819 | [「INFO」在C4DM读博是怎样一番体验？](https://mp.weixin.qq.com/s/N4p_jmsuY6RVuz1IjrSMeg) | N/A
 ---
 
