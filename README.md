@@ -25,6 +25,18 @@
 20181217 | [「INFO」2018年度那些亮眼的音乐科技成就](https://mp.weixin.qq.com/s/5FBzxHm1PcgBpHy6645JmA) | N/A
 20190218 | [「INFO」C4DM在ICASSP 2019的收录成果](https://mp.weixin.qq.com/s/RkcOyFf4eLIe512B37nmIw) | N/A
 20190819 | [「INFO」在C4DM读博是怎样一番体验？](https://mp.weixin.qq.com/s/N4p_jmsuY6RVuz1IjrSMeg) | N/A
+20191113 | [「MIR-02_4」音频特征小全之提取工具](http://mp.weixin.qq.com/s?__biz=MzU5MzY3NzI0OA==&mid=2247483792&idx=1&sn=38b07d6efff4523eecd78366f3e87962&chksm=fe0d9f3fc97a1629669c5875ea33a3b43878a2859e71a052c7c38b212127fea936e935e79c75#rd) | N/A
+20200112 | [「INFO」2019年度那些亮眼的音乐科技成就](http://mp.weixin.qq.com/s?__biz=MzU5MzY3NzI0OA==&mid=2247483802&idx=1&sn=9790d92e685baa74f28f3053c4ff15ef&chksm=fe0d9f35c97a1623fc305ce8c79b19e7451f5500d95b08c4fd5c27e47c8a256094c3e2022066#rd) | N/A
+20200307 | [「MIR-03」听歌识曲: 音乐宇宙里的占星师](http://mp.weixin.qq.com/s?__biz=MzU5MzY3NzI0OA==&mid=2247483818&idx=1&sn=db17b69603b98532f993f7f094248ce3&chksm=fe0d9f05c97a16139ee4114ed6890c8d99bd2c09210aa7ba0d085a2f44599e5cbd5a93375290#rd) | 可参考鲁霄在[知乎上的系列文章](https://zhuanlan.zhihu.com/p/75360272)
+20200314 | [「MIR-04」音乐推荐: 努力懂你的预言家](http://mp.weixin.qq.com/s?__biz=MzU5MzY3NzI0OA==&mid=2247483885&idx=1&sn=f9e4c9f71451575d1111e566943f4aff&chksm=fe0d9f42c97a16544b35edd490294e754e9e3cf48a13ca6585bcb7f58c02d0c1bf0222822793#rd) | N/A
+20200320 | [「MIR-05_0」震惊! AI发现这些歌竟然...](http://mp.weixin.qq.com/s?__biz=MzU5MzY3NzI0OA==&mid=2247483898&idx=1&sn=3a405119a32714442c8dcd9be830cdb9&chksm=fe0d9f55c97a1643a091acb7d6c25c14a8d19d107f9d430ffd9055a468f4d18c43666b2c260f#rd) | N/A
+20200430 | [「INFO」《音频音乐技术》正式出版](http://mp.weixin.qq.com/s?__biz=MzU5MzY3NzI0OA==&mid=2247483904&idx=1&sn=959fd70b768b9416a5065748ba6f5818&chksm=fe0d9cafc97a15b9c1123a30af34497d5e79e5b636a15a70ad169434ed5b0cf937f13ca87a7b#rd) | N/A
+20200516 | [「说得好听」EP7-音乐推荐算法的小秘密](http://mp.weixin.qq.com/s?__biz=MzU5MzY3NzI0OA==&mid=2247483914&idx=1&sn=1a474f9bdfb1c7981a461151737bb5e0&chksm=fe0d9ca5c97a15b36c77c5879d916cb7f2a56c62741c3490dd1c18c5f638231452e9929e398f#rd) | 小宇宙上的[播客链接](https://www.xiaoyuzhoufm.com/episode/5ebeec95418a84a0468f2ed5)
+20201008 | [「MIR-05_1」音乐流派自动识别的前世今生](http://mp.weixin.qq.com/s?__biz=MzU5MzY3NzI0OA==&mid=2247483923&idx=1&sn=2fe1ad96ba0b764888f28fdd88ce9e36&chksm=fe0d9cbcc97a15aa70632d73d3d7cafbc63d97027d8a9d1ecd7fee20212649d6b1fbde37c90f#rd) | N/A
+20210306 | [「INFO」2020年度那些亮眼的音乐科技成就](http://mp.weixin.qq.com/s?__biz=MzU5MzY3NzI0OA==&mid=2247483940&idx=1&sn=c6470c7b689da2882ee4fb6c43e1577c&chksm=fe0d9c8bc97a159d2c7734ab466b38d2d524f4e8e2ce87a2d54cf5303ae5c436eadbdd103b09#rd) | N/A
+20210604 | [「MIR-05_2」当音乐标签化身为音频Embedding时能解决什么？](http://mp.weixin.qq.com/s?__biz=MzU5MzY3NzI0OA==&mid=2247483954&idx=1&sn=7bdcc70838c0fc3d014cdedec91411b2&chksm=fe0d9c9dc97a158b31d11ec699d6e5ab53caf1897431cdf2f20f73ab67d885790b4a9361f055#rd) | arXiv上的[论文链接](https://arxiv.org/abs/2010.15389)
+20210806 | [「INFO」三分钟认识音乐科技](http://mp.weixin.qq.com/s?__biz=MzU5MzY3NzI0OA==&mid=2247483960&idx=1&sn=80ce28a10186dab81af2af239df76c8a&chksm=fe0d9c97c97a158114decdbdbe6cc6916c6c81f6fce9f9c52617fc6d0ea8738b9720efe8975a#rd) | 英文原版视频的[YouTube链接](https://www.youtube.com/watch?v=YgYV-7-ohxQ)
+20210904 | [「MIR-06」打破砂锅问到底，不同python库做音频预处理的区别在哪里？](http://mp.weixin.qq.com/s?__biz=MzU5MzY3NzI0OA==&mid=2247483966&idx=1&sn=f968b4f55595357afa8f6d483715262d&chksm=fe0d9c91c97a1587f42ce8e52d3cd4eec9ba49cad01680aead1b60d0918c134340ce75e3c469#rd) | TBC
 ---
 
 ### 从零设置编程环境:
