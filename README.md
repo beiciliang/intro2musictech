@@ -1,6 +1,6 @@
 # intro2musictech
 
-公众号“无痛入门音乐科技”开源代码，欢迎微信扫码关注或直接搜索intro2musictech！
+公众号“无痛入门音乐科技”开源代码和相关资料链接，欢迎微信扫码关注或直接搜索intro2musictech！
 
 <img src="https://github.com/beiciliang/intro2musictech/blob/master/attachment/qrcode.jpg" width="200">
 
@@ -37,6 +37,9 @@
 20210604 | [「MIR-05_2」当音乐标签化身为音频Embedding时能解决什么？](http://mp.weixin.qq.com/s?__biz=MzU5MzY3NzI0OA==&mid=2247483954&idx=1&sn=7bdcc70838c0fc3d014cdedec91411b2&chksm=fe0d9c9dc97a158b31d11ec699d6e5ab53caf1897431cdf2f20f73ab67d885790b4a9361f055#rd) | arXiv上的[论文链接](https://arxiv.org/abs/2010.15389)
 20210806 | [「INFO」三分钟认识音乐科技](http://mp.weixin.qq.com/s?__biz=MzU5MzY3NzI0OA==&mid=2247483960&idx=1&sn=80ce28a10186dab81af2af239df76c8a&chksm=fe0d9c97c97a158114decdbdbe6cc6916c6c81f6fce9f9c52617fc6d0ea8738b9720efe8975a#rd) | 英文原版视频的[YouTube链接](https://www.youtube.com/watch?v=YgYV-7-ohxQ)
 20210904 | [「MIR-06」打破砂锅问到底，不同python库做音频预处理的区别在哪里？](http://mp.weixin.qq.com/s?__biz=MzU5MzY3NzI0OA==&mid=2247483966&idx=1&sn=f968b4f55595357afa8f6d483715262d&chksm=fe0d9c91c97a1587f42ce8e52d3cd4eec9ba49cad01680aead1b60d0918c134340ce75e3c469#rd) | TBC
+20221017 | [「INFO」从数据角度聊聊音乐版权版税](https://mp.weixin.qq.com/s?__biz=MzU5MzY3NzI0OA==&mid=2247483988&idx=1&sn=d5b6dfa1ab0e460f9abad915838f6e59&chksm=fe0d9cfbc97a15edff8b2f5ac49ca678350bc3af18d6558c6508499703e384f82bca36253ca8&scene=178&cur_album_id=1342444458121576448#rd) | N/A
+20230326 | [「INFO」分享我的MIR研发技术栈](https://mp.weixin.qq.com/s?__biz=MzU5MzY3NzI0OA==&mid=2247483994&idx=1&sn=3dfeefafc11c264106f448379052b42d&chksm=fe0d9cf5c97a15e30a5338b9031ae1741ea45856d234dc02d13ecc7723b5682a747f9c00de31&scene=178&cur_album_id=1342444458121576448#rd) | [B站视频链接](https://www.bilibili.com/video/BV1MX4y1R7cu/?share_source=copy_web&vd_source=9a7c2143e3aca83788929d6099a36f8f)
+
 ---
 
 ### 从零设置编程环境:
