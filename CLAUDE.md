@@ -21,6 +21,7 @@ uv run jupyter notebook
 Validate setup by running all cells in `00-Hello.ipynb`.
 
 Verify a notebook executes cleanly:
+
 ```bash
 uv run jupyter nbconvert --to notebook --execute <notebook.ipynb>
 ```
@@ -38,7 +39,7 @@ uv run jupyter nbconvert --to notebook --execute <notebook.ipynb>
 - `MIR-01.ipynb` — music visualization basics
 - `MIR-02_*.ipynb` — audio feature extraction series (time-domain, frequency-domain, musical features)
 - `MIR-CC.py` — interactive Claude Code + MIR tutorial (marimo notebook, run with `uv run marimo edit MIR-CC.py`)
-- `docs/` — static HTML exports for GitHub Pages hosting (e.g. `docs/index.html` for MIR-CC)
+- `docs/` — GitHub Pages site; `docs/index.html` is the tutorial listing page, individual exports like `docs/MIR-CC.html` are linked from it
 - `attachment/` — audio samples (.wav, .mp3) and educational images used by notebooks
 - `INFO-ResearchGroups.md` — curated list of MIR research groups worldwide
 - `README.md` — detailed setup guide and index of articles with publication dates
@@ -57,6 +58,7 @@ uv run jupyter nbconvert --to notebook --execute <notebook.ipynb>
 1. Create a new `.ipynb` or `.py` (marimo) notebook with explanation and code cells
 2. Place any audio/image assets in `attachment/`
 3. Update the article table in `README.md` with the publication date and link
+4. If providing a static HTML export, place it in `docs/` and add a card entry in `docs/index.html`
 
 ### marimo Notebooks
 
