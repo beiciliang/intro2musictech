@@ -39,6 +39,7 @@ uv run jupyter nbconvert --to notebook --execute <notebook.ipynb>
 - `MIR-01.ipynb` — music visualization basics
 - `MIR-02_*.ipynb` — audio feature extraction series (time-domain, frequency-domain, musical features)
 - `MIR-CC.py` — interactive Claude Code + MIR tutorial (marimo notebook, run with `uv run marimo edit MIR-CC.py`)
+- `music-language-tutorial/` — Jupyter Book: Chinese translation of ISMIR 2024 "Bridging Music Audio and Natural Language" tutorial (source in `main`, rendered HTML on `gh-pages`)
 - `attachment/` — audio samples (.wav, .mp3) and educational images used by notebooks
 - `INFO-ResearchGroups.md` — curated list of MIR research groups worldwide
 - `README.md` — detailed setup guide and index of articles with publication dates
@@ -62,3 +63,36 @@ uv run jupyter nbconvert --to notebook --execute <notebook.ipynb>
 ### marimo Notebooks
 
 marimo notebooks are stored as `.py` files and run with `uv run marimo edit <file>.py`. They use reactive cells (`@app.cell` decorators) and support interactive widgets (`mo.ui.slider`, `mo.ui.dropdown`, etc.).
+
+### Jupyter Book (`music-language-tutorial/`)
+
+The `music-language-tutorial/` directory is a Jupyter Book v1 project (Sphinx-based, using `_config.yml` and `_toc.yml`). The project's `uv` environment installs Jupyter Book v2 (MyST-based), which is **not compatible** with the v1 config format.
+
+To rebuild the book:
+
+```bash
+# Create a temp venv with Jupyter Book v1
+python3 -m venv /tmp/jb-build
+/tmp/jb-build/bin/pip install "jupyter-book<2" sphinxcontrib-mermaid
+
+# Build
+/tmp/jb-build/bin/jupyter-book build music-language-tutorial/
+
+# Output is in music-language-tutorial/_build/html/
+```
+
+To deploy the built HTML to `gh-pages`:
+
+1. Copy `music-language-tutorial/_build/html/` contents to `music-language-tutorial/` on the `gh-pages` branch
+2. Ensure `.nojekyll` exists at the root of `gh-pages` (required for `_static/` directories)
+3. Add a card entry in `index.html` on `gh-pages`
+4. Commit and push
+
+## GitHub Pages
+
+The `gh-pages` branch serves the site at `https://beiciliang.github.io/intro2musictech/`. It contains:
+
+- `index.html` — landing page with tutorial cards
+- `MIR-CC.html` — static export of the marimo MIR tutorial
+- `music-language-tutorial/` — rendered Jupyter Book site
+- `.nojekyll` — disables Jekyll processing

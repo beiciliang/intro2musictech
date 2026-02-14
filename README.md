@@ -58,7 +58,7 @@ uv run marimo edit MIR-CC.py  # 启动 marimo 交互式笔记本
 | 2022.10.17 | [「INFO」从数据角度聊聊音乐版权版税](https://mp.weixin.qq.com/s?__biz=MzU5MzY3NzI0OA==&mid=2247483988&idx=1&sn=d5b6dfa1ab0e460f9abad915838f6e59&chksm=fe0d9cfbc97a15edff8b2f5ac49ca678350bc3af18d6558c6508499703e384f82bca36253ca8&scene=178&cur_album_id=1342444458121576448#rd) | — |
 | 2023.03.26 | [「INFO」分享我的MIR研发技术栈](https://mp.weixin.qq.com/s?__biz=MzU5MzY3NzI0OA==&mid=2247483994&idx=1&sn=3dfeefafc11c264106f448379052b42d&chksm=fe0d9cf5c97a15e30a5338b9031ae1741ea45856d234dc02d13ecc7723b5682a747f9c00de31&scene=178&cur_album_id=1342444458121576448#rd) | [B站视频](https://www.bilibili.com/video/BV1MX4y1R7cu/?share_source=copy_web&vd_source=9a7c2143e3aca83788929d6099a36f8f) |
 | 2026.02.14 | [「MIR-CC」2026年，用Claude Code就可以无痛入门音乐科技](https://mp.weixin.qq.com/s?__biz=MzU5MzY3NzI0OA==&mid=2247484015&idx=1&sn=ffb0e282814654db668b9aeaae7070e6&scene=19&poc_token=HOHwkGmjA6j2m1IrUPZG7-8YVeVabxBGl9z10Nyt) | [MIR-CC.py](MIR-CC.py) · [在线预览](https://beiciliang.github.io/intro2musictech/MIR-CC.html) |
-| 2026.02.14 | 「INFO」连接音乐音频与自然语言（2024 ISMIR Tutoril） | [英文原版](https://github.com/mulab-mir/music-language-tutorial) · [中文版](music-language-tutorial)由Claude翻译 |
+| 2026.02.14 | 「INFO」连接音乐音频与自然语言（2024 ISMIR Tutorial） | [英文原版](https://github.com/mulab-mir/music-language-tutorial) · [中文版](https://beiciliang.github.io/intro2musictech/music-language-tutorial/intro.html) |
 
 ---
 
