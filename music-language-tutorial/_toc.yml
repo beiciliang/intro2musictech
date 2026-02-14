@@ -1,0 +1,48 @@
+# Table of contents
+# Learn more at https://jupyterbook.org/customize/toc.html
+format: jb-book
+root: intro.md
+parts:
+  - caption: 第一章 引言
+    chapters:
+      - file: introduction/background.md
+      - file: introduction/overview.md
+      - file: introduction/advantange.ipynb
+  - caption: 第二章 语言模型概述
+    chapters:
+      - file: lm/intro.md
+      - file: lm/framework.md
+      - file: lm/advances.md
+      - file: lm/challenges.md
+  - caption: 第三章 音乐描述
+    chapters:
+      - file: description/intro.md
+      - file: description/tasks.md
+      - file: description/models.md
+      - file: description/datasets.ipynb
+      - file: description/evaluation.md
+      - file: description/code.ipynb
+  - caption: 第四章 文本到音乐检索
+    chapters:
+      - file: retrieval/intro.md
+      - file: retrieval/models.md
+      - file: retrieval/evaluate.md
+      - file: retrieval/code.ipynb
+      - file: retrieval/challenge.md
+      - file: retrieval/conversational_retrieval.md
+  - caption: 第五章 文本到音乐生成
+    chapters:
+      - file: generation/intro.md
+      - file: generation/evaluation.md
+      - file: generation/lmmodel.md
+      - file: generation/diffusionmodel.md
+      - file: generation/beyondtext.md
+      - file: generation/code.ipynb
+  - caption: 第六章 总结
+    chapters:
+      - file: conclusion/intro.md
+      - file: conclusion/beyondaudio.md
+      - file: conclusion/beyondtext.md
+  - caption: 参考文献
+    chapters:
+      - file: bibliography.md
