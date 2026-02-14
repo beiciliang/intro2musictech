@@ -6,6 +6,6 @@ torch
 PySoundFile
 soundfile
 transformers==4.45.2
-pandas==2.2.3
+pandas==2.3.3
 scikit-learn==1.5.2
 datasets
