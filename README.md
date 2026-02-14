@@ -2,7 +2,7 @@
 
 公众号“无痛入门音乐科技”开源代码和相关资料链接，欢迎微信扫码关注或直接搜索intro2musictech！
 
-<img src="https://github.com/beiciliang/intro2musictech/blob/master/attachment/qrcode.jpg" width="200">
+<img src="attachment/qrcode.jpg" width="200">
 
 **♬ 以后有新的公众号文章发布，其ipynb格式会在GitHub这里同步更新 ♬**
 
@@ -11,16 +11,16 @@
 更新日期 | 公众号文章链接 | GitHub代码链接               
 -------- | ---------------------------------------- | ---------------------------------------------------------
 20180727 | [「README」无痛入门音乐科技门槛须知](https://mp.weixin.qq.com/s/S8Q5iSUMgKZQ5g-17dF8UA) | N/A
-20180728 | [「SETUP」从零设置编程环境](https://mp.weixin.qq.com/s/ngvmPl5S7QI-PqUUBtbQ3w) | 可直接浏览[下方内容](#从零设置编程环境)，附测试代码[00-Hello.ipynb](https://github.com/beiciliang/intro2musictech/blob/master/00-Hello.ipynb)
+20180728 | [「SETUP」从零设置编程环境](https://mp.weixin.qq.com/s/ngvmPl5S7QI-PqUUBtbQ3w) | 可直接浏览[下方内容](#从零设置编程环境)，附测试代码[00-Hello.ipynb](00-Hello.ipynb)
 20180803 | [「NIME-01」那些为身障人士设计的乐器](https://mp.weixin.qq.com/s/vUU30Ap5ot-Ygpy8eBeC4w) | N/A
-20180805 | [「MIR-01」要把音乐画出来，总共分几步？](https://mp.weixin.qq.com/s/pvpFoKKa0Ki_uZ3Y6rqaJw) | [MIR-01.ipynb](https://github.com/beiciliang/intro2musictech/blob/master/MIR-01.ipynb)
+20180805 | [「MIR-01」要把音乐画出来，总共分几步？](https://mp.weixin.qq.com/s/pvpFoKKa0Ki_uZ3Y6rqaJw) | [MIR-01.ipynb](MIR-01.ipynb)
 20180811 | [「NIME-02」日常物件在没有成精的前提下如何发声儿？](https://mp.weixin.qq.com/s/X05DgjhXO7oMf8Gej5P3Mw) | N/A，可参考[The Bela Blog](http://blog.bela.io/)
-20180818 | [「MIR-02_1」音频特征小全之概览](https://mp.weixin.qq.com/s/oFrW7hmZgmAuZGIVHjZTAQ) | [MIR-02_1.ipynb](https://github.com/beiciliang/intro2musictech/blob/master/MIR-02_1.ipynb)
-20180822 | [「INFO」音乐科技相关科研组列表](https://mp.weixin.qq.com/s/2nDWikda9fh2x5o093F6HA) | 列表会在[这里](https://github.com/beiciliang/intro2musictech/blob/master/INFO-ResearchGroups.md)更新
+20180818 | [「MIR-02_1」音频特征小全之概览](https://mp.weixin.qq.com/s/oFrW7hmZgmAuZGIVHjZTAQ) | [MIR-02_1.ipynb](MIR-02_1.ipynb)
+20180822 | [「INFO」音乐科技相关科研组列表](https://mp.weixin.qq.com/s/2nDWikda9fh2x5o093F6HA) | 列表会在[这里](INFO-ResearchGroups.md)更新
 20180827 | [「NIME-03」为什么说钢琴是乐器之王？复杂！](https://mp.weixin.qq.com/s?__biz=MzU5MzY3NzI0OA==&mid=2247483718&idx=1&sn=fbf3f7c11e61096bafd72ea6ed0c0e8a&scene=19#wechat_redirect) | N/A，原知乎问题在[这里](https://www.zhihu.com/question/288614974)
-20180913 | [「MIR-02_2」音频特征小全之时域特征](https://mp.weixin.qq.com/s/fwbxA0ZWJPuOKolouQea3Q) | [MIR-02_2.ipynb](https://github.com/beiciliang/intro2musictech/blob/master/MIR-02_2.ipynb)
-20181014 | [「MIR-02_3」音频特征小全之频域特征](https://mp.weixin.qq.com/s/TOAXROVlOVYDmVlmFIyBxQ) | [MIR-02_3.ipynb](https://github.com/beiciliang/intro2musictech/blob/master/MIR-02_3.ipynb)
-20181124 | [「MIR-02_4」音频特征小全之乐音特征](https://mp.weixin.qq.com/s/XqZvZ4-m3xd81udyUSg4wg) | [MIR-02_4.ipynb](https://github.com/beiciliang/intro2musictech/blob/master/MIR-02_4.ipynb)
+20180913 | [「MIR-02_2」音频特征小全之时域特征](https://mp.weixin.qq.com/s/fwbxA0ZWJPuOKolouQea3Q) | [MIR-02_2.ipynb](MIR-02_2.ipynb)
+20181014 | [「MIR-02_3」音频特征小全之频域特征](https://mp.weixin.qq.com/s/TOAXROVlOVYDmVlmFIyBxQ) | [MIR-02_3.ipynb](MIR-02_3.ipynb)
+20181124 | [「MIR-02_4」音频特征小全之乐音特征](https://mp.weixin.qq.com/s/XqZvZ4-m3xd81udyUSg4wg) | [MIR-02_4.ipynb](MIR-02_4.ipynb)
 20181130 | [「INFO」音乐科技相关会议期刊列表](https://mp.weixin.qq.com/s?__biz=MzU5MzY3NzI0OA==&mid=2247483761&idx=1&sn=52b81b9fca161df1afad2a8babad251a&scene=19#wechat_redirect) | N/A
 20181217 | [「INFO」2018年度那些亮眼的音乐科技成就](https://mp.weixin.qq.com/s/5FBzxHm1PcgBpHy6645JmA) | N/A
 20190218 | [「INFO」C4DM在ICASSP 2019的收录成果](https://mp.weixin.qq.com/s/RkcOyFf4eLIe512B37nmIw) | N/A
@@ -44,13 +44,13 @@
 
 ### 从零设置编程环境:
 
-以下内容适用于编程零基础的读者，如果你已经清楚如何`git clone`本项目，并能在一个基于Python 3的虚拟环境内安装Jupyter Notebook以及[requirements.txt](https://github.com/beiciliang/intro2musictech/blob/master/requirements.txt)中的第三方库之后，不报错地加载[00-Hello.ipynb](https://github.com/beiciliang/intro2musictech/blob/master/00-Hello.ipynb)并运行其中代码，恭喜你，编程环境配置成功！
+以下内容适用于编程零基础的读者，如果你已经清楚如何`git clone`本项目，并能用[uv](https://docs.astral.sh/uv/)安装[pyproject.toml](pyproject.toml)中的依赖之后，不报错地加载[00-Hello.ipynb](00-Hello.ipynb)并运行其中代码，恭喜你，编程环境配置成功！
 
 1. [命令行基础操作](#命令行)
 
 2. [Git用法](#git用法)
 
-3. [Anaconda设置环境](#anaconda设置环境)
+3. [用uv设置环境](#用uv设置环境)
 
 4. [用Jupyter Notebook运行Python代码](#用jupyter-notebook运行python)
 
@@ -71,7 +71,7 @@
 HOSTNAME:~ USER$ 
 ```
 
-其中`HOSTNAME`的部分指主机名，冒号后的`~`表示当前路径在根目录下，`USER`是用户名，最后`$`提示终端在等待你输入命令。本文将主要用到`ls` `cd` `pwd` `git` `conda` `pip` 这些命令。
+其中`HOSTNAME`的部分指主机名，冒号后的`~`表示当前路径在根目录下，`USER`是用户名，最后`$`提示终端在等待你输入命令。本文将主要用到`ls` `cd` `pwd` `git` `uv` 这些命令。
 
 ✎ 首先`ls`表示列出当前路径下的所有文件：
 ```
@@ -126,11 +126,11 @@ HOSTNAME:~ USER$ git clone https://github.com/beiciliang/intro2musictech.git
 
 ☞ 如果实在觉得各种git指令太晦涩，可通过GitHub Desktop软件进行版本控制。
 
-☞ 如果想更深入了解git和GitHub，英文好的读者可直接参考官方帮助文档，中文资料可参考[这里](https://github.com/xirong/my-git/blob/master/how-to-use-github.md)
+☞ 如果想更深入了解git和GitHub，英文好的读者可直接参考官方帮助文档，中文资料可参考[这里](https://github.com/xirong/my-git/blob/main/how-to-use-github.md)
 
 ---
 
-### 『Anaconda设置环境』
+### 『用uv设置环境』
 
 现在通过`ls`查看一下`intro2musictech`文件夹里都有哪些东东:
 
@@ -138,74 +138,41 @@ HOSTNAME:~ USER$ git clone https://github.com/beiciliang/intro2musictech.git
 HOSTNAME:~ USER$ ls intro2musictech
 ```
 
-其中`attachment`文件夹里包含一些音乐素材和图片，以`.ipynb`为后缀的文件都是Jupyter Notebook，重点是`requirements.txt`中所有的Python库，成功安装这些才能确保今后所有`.ipynb`中的Python代码能跑起来。
+其中`attachment`文件夹里包含一些音乐素材和图片，以`.ipynb`为后缀的文件都是Jupyter Notebook，重点是`pyproject.toml`中声明的Python库，成功安装这些才能确保今后所有`.ipynb`中的Python代码能跑起来。
 
 不过首先需要解决的大事儿是，如何安装Python？
 
-我们可借助Anaconda，即一个预装了很多我们用的到或用不到的第三方库的Python。
+我们借助[uv](https://docs.astral.sh/uv/)，它是一个非常快的Python包管理器，能帮你自动安装Python并管理依赖。
 
-✎ 首先去官网根据自己系统的型号，下载**Anaconda3**并安装，但是国内的同学也许会发现官网下载太慢，这种情况可从国内清华大学开源软件镜像站进行下载并配置镜像:
-
-☞ [官方下载链接](https://www.anaconda.com/download/)
-
-☞ [清华大学镜像站](https://mirrors.tuna.tsinghua.edu.cn/anaconda/archive/)
-
-✎ 安装过程中，建议勾选把Anaconda加入环境变量，并设置Anaconda所带的Python 3.6为系统默认的Python版本，不过这些步骤不做问题也不大，反正之后我们要建立一个新的Python 3.7虚拟环境！
-
-**另**，建议国内读者通过镜像成功安装Anaconda之后，修改其包管理镜像为国内源，即运行下方两个命令行：
-
+✎ 首先安装uv，在终端中运行：
 ```
-$ conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/
-$ conda config --set show_channel_urls yes
+$ curl -LsSf https://astral.sh/uv/install.sh | sh
 ```
 
-✎ 安装Anaconda后，用它建立虚拟环境可以指定要安装在环境中的Python版本和第三方库，避免在自己的电脑上瞎安装/起冲突/费时间，这对需要同时用Python版本2和3的程序员非常有必要！
-
-✎ 下面的命令行将一步步带领读者走向成功的一半！
-
-1. 先用`conda`在全局下安装些notebook的拓展包：
+Windows用户可在PowerShell中运行：
 ```
-$ conda install nb_conda
-$ conda install -c conda-forge jupyter_nbextensions_configurator
+powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | iex"
 ```
 
-2. 建立一个名字为`py37`的环境，该环境下Python版本为3.7，并安装`ipykernel`这个库也就顺便将Jupyther Notebook安装到`py37`环境中：
+✎ 安装好uv后，进入项目目录，一条命令即可安装Python和所有依赖：
 ```
-$ conda create -n py37 python=3.7 ipykernel
-```
-
-3. 激活`py37`环境：
-```
-$ source activate py37
+$ cd intro2musictech
+$ uv sync
 ```
 
-激活后可见命令行开头有括号提示你已经在括号内显示的虚拟环境中。
+`uv sync`会自动下载合适版本的Python，创建虚拟环境，并安装`pyproject.toml`中声明的所有库。无需手动创建虚拟环境！
 
-4. 在该虚拟环境下用`pip`安装其他第三方库（先升级下`pip`）：
+✎ 另外，librosa加载mp3格式的音频文件需要系统安装`ffmpeg`。MacOS用户可通过[Homebrew](https://brew.sh/)安装：
 ```
-(py37)$ pip install --upgrade pip
-(py37)$ pip install numpy scipy matplotlib librosa scikit-learn
-```
-
-**另**，这些库也可通过指令`pip install -r requirements.txt`来安装，注意除非当前路径与该txt文件相同，否则要在指令中声明txt所在的具体路径！
-
-对于第三方库的安装，用`pip`或`conda`其实没有大区别，但博主一般会参考这个库本身建议哪种方式最简单。
-
-5. 此时你可通过`conda list`指令来查看`py37`环境下具体成功安装上了哪些库。
-
-6. 若想退出虚拟环境，可直接输入`source deactivate`后回车，不过为了最后关于Notebook的环节，暂且先不要退出！
-
-**对于完全不想安装anaconda，只想用`pip`掌控大权的读者**：
-
-创建虚拟环境的时候就需要用其他如[virtualenv](https://virtualenv.pypa.io/en/stable/)的辅助，在创建并激活进入到虚拟环境后：
-```
-(py37)$ pip install --upgrade pip
-(py37)$ pip install ipykernel
-(py37)$ ipython kernel install --user --name=py37
-(py37)$ pip install -r requirements.txt
+$ brew install ffmpeg
 ```
 
-在以上设置完成后才能确保`py37`中的Python 3内核将被Notebook正确调用。
+Linux用户可通过包管理器安装，例如Ubuntu：
+```
+$ sudo apt install ffmpeg
+```
+
+Windows用户可从[ffmpeg官网](https://ffmpeg.org/download.html)下载并添加到系统路径。
 
 ---
 
@@ -213,18 +180,18 @@ $ source activate py37
 
 Jupyter Notebook本身是一种网页端应用，能让用户将说明文本、数学方程、代码和可视化内容全部组合到一个易于共享的文档中。
 
-✎ 现在我们在`py37`虚拟环境下直接用命令行打开该应用：
+✎ 在项目目录下用命令行打开该应用：
 ```
-(py37)$ jupyter notebook
+$ uv run jupyter notebook
 ```
 
 此时你的浏览器应该会直接弹出一个新页面，你也可以粘贴命令行返回的URL链接，拷贝到浏览器中打开应用。
 
-✎ 点击页面右侧的`New`并选择`Python [conda env:py37]`可新建一个基于该虚拟环境的Notebook。
+✎ 点击页面右侧的`New`并选择`Python 3`可新建一个Notebook。
 
 ✎ 现在我们回到之前的页面，进入`intro2musictech`文件夹后打开`00-Hello.ipynb`。
 
-✎ 读者也可直接浏览[00-Hello.ipynb](https://github.com/beiciliang/intro2musictech/blob/master/00-Hello.ipynb)的内容。
+✎ 读者也可直接浏览[00-Hello.ipynb](00-Hello.ipynb)的内容。
 
 ✎ 其中简要介绍了Notebook在跑Python代码时的妙用，你会用它加载一段音频后听到猫叫，并画出波形！
 
@@ -234,12 +201,6 @@ Jupyter Notebook本身是一种网页端应用，能让用户将说明文本、�
 
 ✎ 关闭Notebook不仅仅要关闭浏览器页面，在其运行的命令行界面，要通过两次`CTRL+C`中止程序。
 
-✎ 通过`source deactivate`命令行退出当前虚拟环境。
-
-✎ 以后若需要再次激活某个虚拟环境但不巧忘了其名字，可通过`conda env list`指令来查询。
-
-✎ 慎重！如果对这个`py37`虚拟环境不爽，可以用`conda env remove -n py37`彻底删除。
-
 ---
 
 ### 『后续工作』
@@ -248,7 +209,7 @@ Jupyter Notebook本身是一种网页端应用，能让用户将说明文本、�
 ```
 $ cd intro2musictech
 $ git pull
-$ source activate py37
-(py37)$ jupyter notebook
+$ uv sync
+$ uv run jupyter notebook
 ```
 
