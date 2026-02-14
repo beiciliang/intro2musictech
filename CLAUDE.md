@@ -37,6 +37,7 @@ uv run jupyter nbconvert --to notebook --execute <notebook.ipynb>
 - `00-Hello.ipynb` — setup validation and Jupyter intro
 - `MIR-01.ipynb` — music visualization basics
 - `MIR-02_*.ipynb` — audio feature extraction series (time-domain, frequency-domain, musical features)
+- `MIR-CC.py` — interactive Claude Code + MIR tutorial (marimo notebook, run with `uv run marimo edit MIR-CC.py`)
 - `attachment/` — audio samples (.wav, .mp3) and educational images used by notebooks
 - `INFO-ResearchGroups.md` — curated list of MIR research groups worldwide
 - `README.md` — detailed setup guide and index of articles with publication dates
@@ -52,6 +53,10 @@ uv run jupyter nbconvert --to notebook --execute <notebook.ipynb>
 
 ## Adding a New Tutorial
 
-1. Create a new `.ipynb` with Markdown explanation cells and code cells
+1. Create a new `.ipynb` or `.py` (marimo) notebook with explanation and code cells
 2. Place any audio/image assets in `attachment/`
 3. Update the article table in `README.md` with the publication date and link
+
+### marimo Notebooks
+
+marimo notebooks are stored as `.py` files and run with `uv run marimo edit <file>.py`. They use reactive cells (`@app.cell` decorators) and support interactive widgets (`mo.ui.slider`, `mo.ui.dropdown`, etc.).
