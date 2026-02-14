@@ -1,0 +1,619 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>连接音乐音频与自然语言 &#8212; 连接音乐音频与自然语言</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=9c3e77be" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=1ae7504c"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'intro';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="背景" href="introduction/background.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="#">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/logo.png" class="logo__image only-light" alt="连接音乐音频与自然语言 - Home"/>
+    <script>document.write(`<img src="_static/logo.png" class="logo__image only-dark" alt="连接音乐音频与自然语言 - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1 current active">
+                <a class="reference internal" href="#">
+                    连接音乐音频与自然语言
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">第一章 引言</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="introduction/background.html">背景</a></li>
+<li class="toctree-l1"><a class="reference internal" href="introduction/overview.html">教程概览</a></li>
+<li class="toctree-l1"><a class="reference internal" href="introduction/advantange.html">为什么选择自然语言？</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">第二章 语言模型概述</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="lm/intro.html">简介</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lm/framework.html">框架</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lm/advances.html">研究进展</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lm/challenges.html">挑战</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">第三章 音乐描述</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="description/intro.html">概述</a></li>
+<li class="toctree-l1"><a class="reference internal" href="description/tasks.html">任务</a></li>
+<li class="toctree-l1"><a class="reference internal" href="description/models.html">模型</a></li>
+<li class="toctree-l1"><a class="reference internal" href="description/datasets.html">数据集</a></li>
+<li class="toctree-l1"><a class="reference internal" href="description/evaluation.html">评估</a></li>
+<li class="toctree-l1"><a class="reference internal" href="description/code.html">代码实践</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">第四章 文本到音乐检索</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="retrieval/intro.html">简介</a></li>
+<li class="toctree-l1"><a class="reference internal" href="retrieval/models.html">模型</a></li>
+<li class="toctree-l1"><a class="reference internal" href="retrieval/evaluate.html">评估</a></li>
+<li class="toctree-l1"><a class="reference internal" href="retrieval/code.html">代码实践</a></li>
+<li class="toctree-l1"><a class="reference internal" href="retrieval/challenge.html">挑战</a></li>
+<li class="toctree-l1"><a class="reference internal" href="retrieval/conversational_retrieval.html">对话式检索</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">第五章 文本到音乐生成</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="generation/intro.html">简介</a></li>
+<li class="toctree-l1"><a class="reference internal" href="generation/evaluation.html">评估</a></li>
+<li class="toctree-l1"><a class="reference internal" href="generation/lmmodel.html">MusicGEN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="generation/diffusionmodel.html">基于 Diffusion Model 的文本到音乐生成</a></li>
+<li class="toctree-l1"><a class="reference internal" href="generation/code.html">代码教程</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">第六章 总结</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="conclusion/intro.html">总结</a></li>
+<li class="toctree-l1"><a class="reference internal" href="conclusion/beyondaudio.html">超越音频模态</a></li>
+<li class="toctree-l1"><a class="reference internal" href="conclusion/beyondtext.html">超越基于文本的交互</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">参考文献</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="bibliography.html">Bibliography</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/beiciliang/intro2musictech" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/beiciliang/intro2musictech/issues/new?title=Issue%20on%20page%20%2Fintro.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/intro.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>连接音乐音频与自然语言</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">动机与目标</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">快速开始</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">关于作者</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="id1">
+<h1>连接音乐音频与自然语言<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>此中文版由 <a class="reference external" href="https://docs.anthropic.com/en/docs/claude-code">Claude Code</a> 翻译，存储于 <a class="reference external" href="https://github.com/beiciliang/intro2musictech">intro2musictech</a> 仓库。英文原版请参见 <a class="reference external" href="https://github.com/mulab-mir/music-language-tutorial">mulab-mir/music-language-tutorial</a>。</p>
+</div>
+<p>欢迎来到”<strong>连接音乐音频与自然语言</strong>”教程的在线补充材料。本教程于2024年11月10日至14日在美国旧金山举行的<a class="reference external" href="https://ismir2024.ismir.net/">第25届国际音乐信息检索学会（ISMIR）会议</a>上呈现。本电子书包含教程中展示的所有内容，包括代码示例、参考文献以及深入探讨相关主题的补充材料。</p>
+<section id="id2">
+<h2>动机与目标<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
+<p>语言是人与人之间以及人与机器之间高效沟通的接口。随着近年来基于深度学习的预训练语言模型的快速发展，对音乐的理解、搜索和创作已经能够以多样性和精确性满足用户偏好。本教程的动机源于机器学习技术的快速进步，特别是在语言模型领域及其在音乐信息检索（MIR）领域不断增长的应用。语言模型理解和生成类人文本的卓越能力，为音乐描述、检索和生成开辟了创新方法论，预示着我们通过技术与音乐互动方式的新时代。</p>
+<figure class="align-default" id="overview">
+<img alt="_images/front.png" src="_images/front.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 1 </span><span class="caption-text">音乐与语言连接框架概览。在本教程中，我们重点讲解描述、检索和生成三个方面。但不包括转录部分的讨论。</span><a class="headerlink" href="#overview" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>我们坚信MIR社区将从本教程中获得实质性的收益。我们的讨论不仅将强调为什么将音乐与语言模型相结合的多模态方法标志着与传统任务特定模型的重大突破，还将详细梳理该领域的最新进展、未解决的挑战以及潜在的未来发展方向。同时，我们旨在建立坚实的基础，通过提供相关数据集、评估方法和编码最佳实践的全面资源，鼓励新兴研究者参与音乐-语言研究领域，从而营造一个包容且创新的研究环境。</p>
+</section>
+<section id="id3">
+<h2>快速开始<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
+<p>本电子书由一系列Jupyter笔记本组成，可以在本页面上静态浏览。如需自行运行笔记本，您需要克隆Git仓库：</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/mulab-mir/music-language-tutorial/<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">cd</span><span class="w"> </span>music-language-tutorial
+</pre></div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>create<span class="w"> </span>--name<span class="w"> </span>p310<span class="w"> </span><span class="nv">python</span><span class="o">==</span><span class="m">3</span>.10<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>conda<span class="w"> </span>activate<span class="w"> </span>python
+</pre></div>
+</div>
+<p>接下来，安装依赖项：</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>requirements.txt
+</pre></div>
+</div>
+<p>最后，启动Jupyter笔记本服务器：</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>jupyter<span class="w"> </span>notebook
+</pre></div>
+</div>
+</section>
+<section id="id4">
+<h2>关于作者<a class="headerlink" href="#id4" title="Link to this heading">#</a></h2>
+<p><img alt="doh" src="_images/doh150x150.png" /></p>
+<p><a class="reference external" href="https://seungheondoh.github.io/"><em>SeungHeon Doh</em></a> 是韩国科学技术院（KAIST）音乐与音频计算实验室的博士研究生，师从Juhan Nam教授。他的研究方向聚焦于对话式音乐描述、检索和生成。SeungHeon在ISMIR、ICASSP和IEEE TASLP等会议和期刊上发表了与音乐和语言模型相关的论文。他致力于使机器能够在对话中理解多种模态，从而通过对话促进音乐的理解和发现。SeungHeon曾在Chartmetric、NaverCorp和字节跳动实习，将其专业知识应用于实际场景。</p>
+<p><img alt="macon" src="_images/manco150x150.png" /></p>
+<p><a class="reference external" href="https://ilariamanco.com/"><em>Ilaria Manco</em></a> 是伦敦玛丽女王大学人工智能与音乐博士培训中心的博士生，导师为Emmanouil Benetos、George Fazekas和Elio Quinton（UMG）。她的研究方向是面向音乐信息检索的多模态深度学习，重点关注音频-语言模型在音乐理解中的应用。她的研究成果已在ISMIR和ICASSP上发表，包括首个音乐字幕生成模型以及连接音乐与语言的表示学习方法。此前，她曾在Google DeepMind、Adobe和索尼担任研究实习生，并获得帝国理工学院物理学硕士学位。</p>
+<p><img alt="zack" src="_images/zack150x150.png" /></p>
+<p><a class="reference external" href="https://zacharynovack.github.io/"><em>Zachary Novack</em></a> 是加州大学圣地亚哥分校的博士生，导师为Julian McAuley和Taylor Berg-Kirkpatrick。他的研究主要针对高效且可控的音乐和音频生成。具体而言，Zachary致力于构建允许灵活的音乐相关控制的生成式音乐模型，同时加速这些模型以便在实际生产流程中使用。Zachary曾在Stability AI和Adobe Research实习，参与了DITTO-(1/2)和Presto!等项目。在学术之外，Zachary热衷于音乐教育，在南加州地区教授打击乐。</p>
+<p><img alt="kim" src="_images/kim150x150.png" /></p>
+<p><a class="reference external" href="https://jongwook.kim/"><em>Jong Wook Kim</em></a> 是OpenAI的技术人员，参与过Jukebox、CLIP、Whisper和GPT-4等多模态深度学习模型的研发。他在ICML、CVPR、ICASSP、IEEE SPM和ISMIR上发表过论文，并在NeurIPS 2021会议上共同主持了自监督学习教程。他在纽约大学获得音乐技术博士学位，博士论文聚焦于自动音乐转录，并拥有密歇根大学安娜堡分校计算机科学与工程硕士学位。他在攻读博士期间曾在Pandora和Spotify实习，此前在NCSOFT和Kakao担任软件工程师。</p>
+<p><img alt="ke" src="_images/ke150x150.png" /></p>
+<p><a class="reference external" href="https://www.knutchen.com/"><em>Ke Chen</em></a> 是加州大学圣地亚哥分校计算机科学与工程系的博士研究生。他的研究兴趣横跨音乐和音频表示学习，特别关注其在音乐生成式AI、音源分离、多模态学习和音乐信息检索等下游应用。他曾在苹果、三菱、腾讯、字节跳动和Adobe实习，进一步探索研究方向。在攻读博士学位期间，Ke Chen在人工智能、信号处理和音乐领域的顶级会议上发表了20余篇论文，如AAAI、ICASSP和ISMIR。在学术之外，他热衷于各种音乐活动，包括钢琴演奏、声乐和音乐创作。</p>
+</section>
+<div class="toctree-wrapper compound">
+</div>
+<div class="toctree-wrapper compound">
+</div>
+<div class="toctree-wrapper compound">
+</div>
+<div class="toctree-wrapper compound">
+</div>
+<div class="toctree-wrapper compound">
+</div>
+<div class="toctree-wrapper compound">
+</div>
+<div class="toctree-wrapper compound">
+</div>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="right-next"
+       href="introduction/background.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">背景</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">动机与目标</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">快速开始</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">关于作者</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Seung Heon Doh, Ilaria Manco, Zachary Novack, Jong Wook Kim, Ke Chen
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

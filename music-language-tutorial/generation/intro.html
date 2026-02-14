@@ -1,0 +1,584 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>简介 &#8212; 连接音乐音频与自然语言</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=9c3e77be" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=1ae7504c"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'generation/intro';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="评估" href="evaluation.html" />
+    <link rel="prev" title="对话式检索" href="../retrieval/conversational_retrieval.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="连接音乐音频与自然语言 - Home"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="连接音乐音频与自然语言 - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    连接音乐音频与自然语言
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">第一章 引言</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../introduction/background.html">背景</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../introduction/overview.html">教程概览</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../introduction/advantange.html">为什么选择自然语言？</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">第二章 语言模型概述</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../lm/intro.html">简介</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lm/framework.html">框架</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lm/advances.html">研究进展</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lm/challenges.html">挑战</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">第三章 音乐描述</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../description/intro.html">概述</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../description/tasks.html">任务</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../description/models.html">模型</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../description/datasets.html">数据集</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../description/evaluation.html">评估</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../description/code.html">代码实践</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">第四章 文本到音乐检索</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../retrieval/intro.html">简介</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../retrieval/models.html">模型</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../retrieval/evaluate.html">评估</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../retrieval/code.html">代码实践</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../retrieval/challenge.html">挑战</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../retrieval/conversational_retrieval.html">对话式检索</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">第五章 文本到音乐生成</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">简介</a></li>
+<li class="toctree-l1"><a class="reference internal" href="evaluation.html">评估</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lmmodel.html">MusicGEN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="diffusionmodel.html">基于 Diffusion Model 的文本到音乐生成</a></li>
+<li class="toctree-l1"><a class="reference internal" href="code.html">代码教程</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">第六章 总结</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../conclusion/intro.html">总结</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../conclusion/beyondaudio.html">超越音频模态</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../conclusion/beyondtext.html">超越基于文本的交互</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">参考文献</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../bibliography.html">Bibliography</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/beiciliang/intro2musictech" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/beiciliang/intro2musictech/issues/new?title=Issue%20on%20page%20%2Fgeneration/intro.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/generation/intro.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>简介</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">历史</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id36">问题定义</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="id1">
+<h1>简介<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
+<section id="id2">
+<h2>历史<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
+<p>音乐生成的历史可以追溯到20世纪70年代 <span id="id3">[<a class="reference internal" href="../bibliography.html#id9" title="Lejaren Arthur Hiller and Leonard M. Isaacson. Experimental Music; Composition with an Electronic Computer. Greenwood Publishing Group Inc., 1979.">HI79</a>]</span>，最初以算法作曲（algorithmic composition）的形式出现。到了20世纪90年代，研究人员开始将神经网络应用于符号音乐生成 <span id="id4">[<a class="reference internal" href="../bibliography.html#id271" title="Peter M. Todd and Gareth Loy. A connectionist approach to algorithmic composition. Computer Music Journal, 13:173-194, 1989.">TL89</a>]</span>。与此同时，实时交互艺术创作也开始融入音乐伴奏，将生成式音乐与动态艺术表达相结合 <span id="id5">[<a class="reference internal" href="../bibliography.html#id272">RWD97</a>]</span>。</p>
+<p><img alt="music_generation_timeline" src="../_images/timeline.PNG" /></p>
+<p>如上方时间线所示，自2015年以来，深度学习模型在符号音乐和音频域音乐生成领域的探索迅速增长。
+Google的研究人员将循环神经网络（RNN）应用于旋律生成，将旋律音符编码为音高和时值的离散状态，从而实现预测建模 <span id="id6">[<a class="reference internal" href="../bibliography.html#id273" title="Ian Simon and Sageev Oore. Performance rnn: generating music with expressive timing and dynamics. 2017.">SO17</a>]</span>。
+MidiNet <span id="id7">[<a class="reference internal" href="../bibliography.html#id274" title="Li-Chia Yang, Szu-Yu Chou, and Yi-Hsuan Yang. Midinet: A convolutional generative adversarial network for symbolic-domain music generation. In Proceedings of the 18th International Society for Music Information Retrieval Conference, ISMIR, 324–331. 2017.">YCY17</a>]</span> 和 Performance RNN 进一步提升了生成模型的表现力，增强了生成音乐中的演奏技法和表现性。
+Sony CSL 的 DeepBach <span id="id8">[<a class="reference internal" href="../bibliography.html#id275" title="Gaëtan Hadjeres, François Pachet, and Frank Nielsen. Deepbach: a steerable model for bach chorales generation. In Proceedings of the 34th International Conference on Machine Learning, ICML, volume 70 of Proceedings of Machine Learning Research, 1362–1371. PMLR, 2017.">HPN17</a>]</span> 实现了特定作曲家风格的迁移，能够生成巴赫风格的合唱曲。
+深度生成模型的突破很快催生了三个重要的符号音乐生成模型，分别是 MuseGAN <span id="id9">[<a class="reference internal" href="../bibliography.html#id276" title="Hao-Wen Dong, Wen-Yi Hsiao, Li-Chia Yang, and Yi-Hsuan Yang. Musegan: multi-track sequential generative adversarial networks for symbolic music generation and accompaniment. In Proceedings of the Thirty-Second AAAI Conference on Artificial Intelligence, 34–41. AAAI Press, 2018.">DHYY18</a>]</span>、Music Transformer <span id="id10">[<a class="reference internal" href="../bibliography.html#id277" title="Cheng-Zhi Anna Huang, Ashish Vaswani, Jakob Uszkoreit, Ian Simon, Curtis Hawthorne, Noam Shazeer, Andrew M. Dai, Matthew D. Hoffman, Monica Dinculescu, and Douglas Eck. Music transformer: generating music with long-term structure. In International Conference on Learning Representations, ICLR. OpenReview.net, 2019.">HVU+19</a>]</span> 和 MusicVAE <span id="id11">[<a class="reference internal" href="../bibliography.html#id278" title="Adam Roberts, Jesse H. Engel, Colin Raffel, Curtis Hawthorne, and Douglas Eck. A hierarchical latent vector model for learning long-term structure in music. In Proceedings of the 35th International Conference on Machine Learning, ICML, volume 80 of Proceedings of Machine Learning Research, 4361–4370. PMLR, 2018.">RER+18</a>]</span>，它们几乎在2018年至2020年间同时出现。
+这些架构为后续专注于更高质量、更高效率和更强可控性的模型奠定了基础，如 REMI <span id="id12">[<a class="reference internal" href="../bibliography.html#id279" title="Yu-Siang Huang and Yi-Hsuan Yang. Pop music transformer: beat-based modeling and generation of expressive pop piano compositions. In The 28th ACM International Conference on Multimedia, 1180–1188. ACM, 2020.">HY20</a>]</span>、SketchNet <span id="id13">[<a class="reference internal" href="../bibliography.html#id280" title="Ke Chen, Cheng-i Wang, Taylor Berg-Kirkpatrick, and Shlomo Dubnov. Music sketchnet: controllable music generation via factorized representations of pitch and rhythm. In Proceedings of the 21th International Society for Music Information Retrieval Conference, ISMIR, 77–84. 2020.">CWBergKirkpatrickD20</a>]</span>、PianotreeVAE <span id="id14">[<a class="reference internal" href="../bibliography.html#id281" title="Ziyu Wang, Yiyi Zhang, Yixiao Zhang, Junyan Jiang, Ruihan Yang, Gus Xia, and Junbo Zhao. PIANOTREE VAE: structured representation learning for polyphonic music. In Proceedings of the 21th International Society for Music Information Retrieval Conference, ISMIR, 368–375. 2020.">WZZ+20</a>]</span>、Multitrack Music Transformer <span id="id15">[<a class="reference internal" href="../bibliography.html#id282" title="Hao-Wen Dong, Ke Chen, Shlomo Dubnov, Julian J. McAuley, and Taylor Berg-Kirkpatrick. Multitrack music transformer. In IEEE International Conference on Acoustics, Speech and Signal Processing ICASSP, 1–5. IEEE, 2023.">DCD+23</a>]</span> 等。</p>
+<p>近年来，diffusion model（扩散模型）<span id="id16">[<a class="reference internal" href="../bibliography.html#id175" title="Jonathan Ho, Ajay Jain, and Pieter Abbeel. Denoising diffusion probabilistic models. Neural Information Processing Systems (NeurIPS), 2020.">HJA20</a>]</span> 和 masked generative model（掩码生成模型）<span id="id17">[<a class="reference internal" href="../bibliography.html#id283" title="Huiwen Chang, Han Zhang, Lu Jiang, Ce Liu, and William T. Freeman. Maskgit: masked generative image transformer. In IEEE/CVF Conference on Computer Vision and Pattern Recognition, CVPR, 11305–11315. IEEE, 2022. URL: https://doi.org/10.1109/CVPR52688.2022.01103.">CZJ+22</a>]</span> 的发展为符号音乐生成引入了新的范式。Polyfussion <span id="id18">[<a class="reference internal" href="../bibliography.html#id284" title="Lejun Min, Junyan Jiang, Gus Xia, and Jingwei Zhao. Polyffusion: A diffusion model for polyphonic score generation with internal and external controls. In Proceedings of the 24th International Society for Music Information Retrieval Conference, ISMIR, 231–238. 2023.">MJXZ23</a>]</span> 等模型拓展了这一领域的可能性，并激发了更多创新。此外，Anticipatory Music Transformer <span id="id19">[<a class="reference internal" href="../bibliography.html#id285" title="John Thickstun, David Leo Wright Hall, Chris Donahue, and Percy Liang. Anticipatory music transformer. Trans. Mach. Learn. Res., 2024. URL: https://openreview.net/forum?id=EBNJ33Fcrl.">THDL24</a>]</span> 利用语言模型架构，在广泛的符号音乐生成任务中取得了令人瞩目的表现。</p>
+<p>与符号音乐领域相比，音频域的音乐生成——即直接生成音乐信号——最初由于数据限制、模型架构约束和计算瓶颈，在生成质量方面面临诸多挑战。
+早期的音频生成研究主要集中在语音领域，代表性模型包括 WaveNet <span id="id20">[<a class="reference internal" href="../bibliography.html#id286" title="Aäron van den Oord, Sander Dieleman, Heiga Zen, Karen Simonyan, Oriol Vinyals, Alex Graves, Nal Kalchbrenner, Andrew W. Senior, and Koray Kavukcuoglu. Wavenet: A generative model for raw audio. In Speech Synthesis Workshop, SSW, 125. ISCA, 2016.">vdODZ+16</a>]</span> 和 SampleRNN <span id="id21">[<a class="reference internal" href="../bibliography.html#id287" title="Soroush Mehri, Kundan Kumar, Ishaan Gulrajani, Rithesh Kumar, Shubham Jain, Jose Sotelo, Aaron C. Courville, and Yoshua Bengio. Samplernn: an unconditional end-to-end neural audio generation model. In International Conference on Learning Representations, ICLR. OpenReview.net, 2017.">MKG+17</a>]</span>。Google Magenta 开发的 Nsynth <span id="id22">[<a class="reference internal" href="../bibliography.html#id288" title="Jesse H. Engel, Cinjon Resnick, Adam Roberts, Sander Dieleman, Mohammad Norouzi, Douglas Eck, and Karen Simonyan. Neural audio synthesis of musical notes with wavenet autoencoders. In Proceedings of the 34th International Conference on Machine Learning, ICML, volume 70 of Proceedings of Machine Learning Research, 1068–1077. PMLR, 2017.">ERR+17b</a>]</span> 是首个合成音乐信号的项目，后来演变为 DDSP <span id="id23">[<a class="reference internal" href="../bibliography.html#id104" title="Jesse Engel, Lamtharn Hantrakul, Chenjie Gu, and Adam Roberts. DDSP: differentiable digital signal processing. In International Conference on Learning Representations (ICLR). 2020.">EHGR20</a>]</span>。OpenAI 推出了 JukeBox <span id="id24">[<a class="reference internal" href="../bibliography.html#id289" title="Prafulla Dhariwal, Heewoo Jun, Christine Payne, Jong Wook Kim, Alec Radford, and Ilya Sutskever. Jukebox: A generative model for music. CoRR, 2020.">DJP+20b</a>]</span>，无需依赖符号音符的合成工具，直接从模型生成音乐。SaShiMi <span id="id25">[<a class="reference internal" href="../bibliography.html#id290" title="Karan Goel, Albert Gu, Chris Donahue, and Christopher Ré. It's raw! audio generation with state-space models. In International Conference on Machine Learning, ICML, volume 162 of Proceedings of Machine Learning Research, 7616–7633. PMLR, 2022.">GGDRe22</a>]</span> 将结构化状态空间模型（S4）应用于音乐生成。</p>
+<p>最近，latent diffusion model（潜在扩散模型）已被应用于音频生成，AudioLDM <span id="id26">[<a class="reference internal" href="../bibliography.html#id291" title="Haohe Liu, Zehua Chen, Yi Yuan, Xinhao Mei, Xubo Liu, Danilo P. Mandic, Wenwu Wang, and Mark D. Plumbley. Audioldm: text-to-audio generation with latent diffusion models. In International Conference on Machine Learning, ICML, volume 202 of Proceedings of Machine Learning Research, 21450–21474. PMLR, 2023.">LCY+23b</a>]</span>、MusicLDM <span id="id27">[<a class="reference internal" href="../introduction/overview.html#id108" title="Ke Chen, Yusong Wu, Haohe Liu, Marianna Nezhurina, Taylor Berg-Kirkpatrick, and Shlomo Dubnov. MusicLDM: enhancing novelty in text-to-music generation using beat-synchronous mixup strategies. In IEEE International Conference on Audio, Speech and Signal Processing (ICASSP). 2024.">CWL+24</a>]</span>、Riffusion <span id="id28">[<a class="reference internal" href="../bibliography.html#id292" title="Riffusion. https://www.riffusion.com.">rif</a>]</span> 和 StableAudio <span id="id29">[<a class="reference internal" href="../bibliography.html#id154" title="Zach Evans, CJ Carr, Josiah Taylor, Scott H. Hawley, and Jordi Pons. Fast timing-conditioned latent audio diffusion. International Conference on Machine Learning (ICML), 2024.">ECT+24</a>]</span> 等模型处于领先地位。语言模型架构也在推动该领域的进步，AudioGen <span id="id30">[<a class="reference internal" href="../bibliography.html#id295" title="Felix Kreuk, Gabriel Synnaeve, Adam Polyak, Uriel Singer, Alexandre Défossez, Jade Copet, Devi Parikh, Yaniv Taigman, and Yossi Adi. Audiogen: textually guided audio generation. In The Eleventh International Conference on Learning Representations, ICLR. OpenReview.net, 2023.">KSP+23</a>]</span>、MusicLM <span id="id31">[<a class="reference internal" href="../introduction/overview.html#id332" title="Andrea Agostinelli, Timo I Denk, Zalán Borsos, Jesse Engel, Mauro Verzetti, Antoine Caillon, Qingqing Huang, Aren Jansen, Adam Roberts, Marco Tagliasacchi, and others. Musiclm: generating music from text. arXiv preprint arXiv:2301.11325, 2023.">ADB+23</a>]</span>、VampNet <span id="id32">[<a class="reference internal" href="../bibliography.html#id118" title="Hugo Flores Garcia, Prem Seetharaman, Rithesh Kumar, and Bryan Pardo. VampNet: music generation via masked acoustic token modeling. In International Society for Music Information Retrieval (ISMIR). 2023.">GSKP23</a>]</span> 和 MusicGen <span id="id33">[<a class="reference internal" href="../introduction/overview.html#id48" title="Jade Copet, Felix Kreuk, Itai Gat, Tal Remez, David Kant, Gabriel Synnaeve, Yossi Adi, and Alexandre Défossez. Simple and controllable music generation. Advances in Neural Information Processing Systems, 2024.">CKG+24</a>]</span> 等模型不断涌现。文本到音乐生成（text-to-music generation）已成为热门话题，特别是在生成式和多模态学习任务中，Suno <span id="id34">[<a class="reference internal" href="../bibliography.html#id294" title="Riffusion. https://suno.com.">sun</a>]</span> 和 Udio <span id="id35">[<a class="reference internal" href="../bibliography.html#id293" title="Udio. https://www.udio.com.">udi</a>]</span> 等初创公司也在推动这一领域的发展。</p>
+<p>在本教程中，我们重点关注音频域的音乐生成任务，特别是文本到音乐生成。这种方法与传统的基于信号的音乐理解和音乐检索任务紧密相关，并且自然地与语言处理相结合，架起了音乐与自然语言输入之间的桥梁。</p>
+</section>
+<section id="id36">
+<h2>问题定义<a class="headerlink" href="#id36" title="Link to this heading">#</a></h2>
+<p><img alt="music_generation_definition" src="../_images/definition.PNG" /></p>
+<p>文本到音乐生成的概念如上图所示，模型通过训练学习一个概率函数，将给定的文本输入映射到音乐输出。图中包含了可能的文本描述示例：简单的描述可能由流派、情感、乐器或用途等关键词组成。更复杂的输入可以是传达详细音乐信息的完整句子，例如乐器分配（粉色）、调号和拍号（蓝色和绿色）以及”固定套路”（黄色）。模型的目标是准确编码这些文本线索，并将其反映在生成的音乐输出中。</p>
+<p>在接下来的章节中，我们将首先介绍音乐生成的评估方法。然后，我们将详细讲解两种代表性的文本到音乐模型：基于自回归语言模型的架构（MusicGen <span id="id37">[<a class="reference internal" href="../introduction/overview.html#id48" title="Jade Copet, Felix Kreuk, Itai Gat, Tal Remez, David Kant, Gabriel Synnaeve, Yossi Adi, and Alexandre Défossez. Simple and controllable music generation. Advances in Neural Information Processing Systems, 2024.">CKG+24</a>]</span>）和基于非自回归扩散模型的架构（StableAudio <span id="id38">[<a class="reference internal" href="../bibliography.html#id154" title="Zach Evans, CJ Carr, Josiah Taylor, Scott H. Hawley, and Jordi Pons. Fast timing-conditioned latent audio diffusion. International Conference on Machine Learning (ICML), 2024.">ECT+24</a>]</span>）。最后，我们将探讨文本到音乐模型的一些指导原则和当前局限性，旨在增强机器生成音乐与人类创造力之间的互动。</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./generation"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../retrieval/conversational_retrieval.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">对话式检索</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="evaluation.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">评估</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">历史</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id36">问题定义</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Seung Heon Doh, Ilaria Manco, Zachary Novack, Jong Wook Kim, Ke Chen
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

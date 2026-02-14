@@ -1,0 +1,752 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>研究进展 &#8212; 连接音乐音频与自然语言</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=9c3e77be" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=1ae7504c"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'lm/advances';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="挑战" href="challenges.html" />
+    <link rel="prev" title="框架" href="framework.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="连接音乐音频与自然语言 - Home"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="连接音乐音频与自然语言 - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    连接音乐音频与自然语言
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">第一章 引言</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../introduction/background.html">背景</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../introduction/overview.html">教程概览</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../introduction/advantange.html">为什么选择自然语言？</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">第二章 语言模型概述</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="intro.html">简介</a></li>
+<li class="toctree-l1"><a class="reference internal" href="framework.html">框架</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">研究进展</a></li>
+<li class="toctree-l1"><a class="reference internal" href="challenges.html">挑战</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">第三章 音乐描述</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../description/intro.html">概述</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../description/tasks.html">任务</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../description/models.html">模型</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../description/datasets.html">数据集</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../description/evaluation.html">评估</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../description/code.html">代码实践</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">第四章 文本到音乐检索</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../retrieval/intro.html">简介</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../retrieval/models.html">模型</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../retrieval/evaluate.html">评估</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../retrieval/code.html">代码实践</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../retrieval/challenge.html">挑战</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../retrieval/conversational_retrieval.html">对话式检索</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">第五章 文本到音乐生成</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../generation/intro.html">简介</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../generation/evaluation.html">评估</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../generation/lmmodel.html">MusicGEN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../generation/diffusionmodel.html">基于 Diffusion Model 的文本到音乐生成</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../generation/code.html">代码教程</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">第六章 总结</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../conclusion/intro.html">总结</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../conclusion/beyondaudio.html">超越音频模态</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../conclusion/beyondtext.html">超越基于文本的交互</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">参考文献</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../bibliography.html">Bibliography</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/beiciliang/intro2musictech" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/beiciliang/intro2musictech/issues/new?title=Issue%20on%20page%20%2Flm/advances.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/lm/advances.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>研究进展</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">局限性</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">从语言模型进行迁移学习</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#in-context-learning">零样本任务迁移和 In-Context Learning</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scaling-law">语言模型的 Scaling Law</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">语言模型的蒸馏</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">用人类反馈对齐语言模型</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#retrieval-augmented-generation-rag">检索增强生成（Retrieval-Augmented Generation, RAG）</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#function-calling">工具使用和 Function Calling</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">用于语言模型输入的多模态编码器</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">用于语言模型输出的多模态解码器</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#chain-of-thought">语言模型的 Chain-of-Thought 推理</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="id1">
+<h1>研究进展<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
+<p>在上一节中，我们介绍了语言建模作为一个强大的机器学习框架，用于学习任意输入和输出之间的映射：</p>
+<p><img alt="the-framework" src="../_images/the-framework.png" /></p>
+<p>在本节中，我们将指出使用该框架时的一些局限性及其解决方案。</p>
+<section id="id2">
+<h2>局限性<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
+<p>虽然这个框架非常强大，但在实践中，它当然也有各种局限性。下表列出了其中一些局限性以及该领域是如何应对的。</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-center"><p>局限性</p></th>
+<th class="head text-center"><p>因此难以……</p></th>
+<th class="head text-center"><p>但我们可以……</p></th>
+<th class="head text-center"><p>解决方案</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-center"><p>它是生成模型</p></td>
+<td class="text-center"><p>用于判别任务</p></td>
+<td class="text-center"><p>使用探针或在每个任务上 fine-tuning</p></td>
+<td class="text-center"><p>迁移学习</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>它生成无意义内容</p></td>
+<td class="text-center"><p>使用该模型</p></td>
+<td class="text-center"><p>使用更多数据/更大的 Transformer</p></td>
+<td class="text-center"><p>扩展（Scaling）</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>现在它太大太慢了</p></td>
+<td class="text-center"><p>快速且低成本地生成</p></td>
+<td class="text-center"><p>从大模型蒸馏出小模型</p></td>
+<td class="text-center"><p>蒸馏（Distillation）</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>它的行为不符合期望</p></td>
+<td class="text-center"><p>用作有用的助手</p></td>
+<td class="text-center"><p>根据人类偏好进行 fine-tuning</p></td>
+<td class="text-center"><p>后训练（Post-Training）/ RLHF</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>它的上下文有限</p></td>
+<td class="text-center"><p>处理更大的搜索空间</p></td>
+<td class="text-center"><p>从外部来源查询更多上下文</p></td>
+<td class="text-center"><p>RAG / 工具使用 / Function Calling</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>多模态数据量巨大</p></td>
+<td class="text-center"><p>难以作为条件输入</p></td>
+<td class="text-center"><p>使用编码器，如 CLIP 和 Whisper</p></td>
+<td class="text-center"><p>多模态编码器</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>输出必须是离散的</p></td>
+<td class="text-center"><p>采样连续数据</p></td>
+<td class="text-center"><p>使用 VQ-VAE 和/或扩散模型</p></td>
+<td class="text-center"><p>多模态解码器</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>每个 token 的计算量恒定</p></td>
+<td class="text-center"><p>在需要时进行更深层的思考</p></td>
+<td class="text-center"><p>让模型逐步思考</p></td>
+<td class="text-center"><p>Chain-of-Thought 推理</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>如你所见，每一个局限性都引出了围绕语言模型的一整个研究领域。下面，我将简要介绍这些主题及相关的研究进展。</p>
+<section id="id3">
+<h3>从语言模型进行迁移学习<a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
+<p>一旦我们有了一个训练好的语言模型，它能给出 token 的概率分布，我们可以采样一些文本来使用它，但其他类型的任务呢，比如分类这样的判别任务？这就引出了<strong>迁移学习（Transfer Learning）</strong>。</p>
+<p>我们用来训练语言模型的任务，如下一个 token 预测或填空，被称为 <strong>pretext task（前置任务）</strong>，意思是这些任务本身不一定是最终目标，但对于学习语言的通用表示非常有用。
+因此，以这种方式训练的语言模型不仅可以为给定的前缀生成续写内容，还学习了大量关于语言结构、模式和语义的知识，我们可以加以利用。</p>
+<p>为此，我们可以用一个任务特定的”头”替换模型的最后一层，复用模型的基础部分。这个头会针对特定任务进行 fine-tuning，而基础模型本身可以根据任务和可用数据量的不同，选择更新或冻结。</p>
+<p>这种迁移学习过程使我们能够利用模型学习到的表示，并灵活地将其应用于广泛的任务，通常只需要少量的任务特定数据。</p>
+</section>
+<section id="in-context-learning">
+<h3>零样本任务迁移和 In-Context Learning<a class="headerlink" href="#in-context-learning" title="Link to this heading">#</a></h3>
+<p>当我们拥有一个足够强大的生成模型时，不一定需要对每个特定任务进行 fine-tuning。我们可以简单地用任务描述来提示（prompt）生成式语言模型——比如 <code class="docutils literal notranslate"><span class="pre">translate</span> <span class="pre">English</span> <span class="pre">to</span> <span class="pre">German:</span></code> 或 <code class="docutils literal notranslate"><span class="pre">summarize</span> <span class="pre">this</span> <span class="pre">paragraph</span></code>，模型会基于其已有的知识生成回复。</p>
+<p>这种方法被称为零样本任务迁移（zero-shot task transfer），它允许我们完全跳过 fine-tuning 阶段，在无需额外训练的情况下将模型用于各种文本到文本的任务。
+分类或回归任务也可以被格式化为文本到文本的任务，例如在 prompt 中列出所有选项并加上 <code class="docutils literal notranslate"><span class="pre">A.</span></code> <code class="docutils literal notranslate"><span class="pre">B.</span></code> <code class="docutils literal notranslate"><span class="pre">C.</span></code> <code class="docutils literal notranslate"><span class="pre">D.</span></code> 的前缀，让模型续写对应正确答案的字母。</p>
+<p>我们还可以直接在 prompt 中提供几个当前任务的示例，使模型进入解决该特定任务的模式。例如，我们可以提供几对英法翻译对，帮助模型识别任务模式并提供更好的翻译。这被称为 <strong>few-shot learning（少样本学习）</strong>，因为模型可以仅从少量任务特定的训练数据中快速适应。而这种直接从 prompt 中学习任务、完全无需 fine-tuning 的能力被称为 <strong>in-context learning（上下文学习）</strong>。</p>
+<p>这些认识是随着语言模型规模的扩大而逐渐形成的——从 GPT-2 的超过十亿参数，到 T5 的超过一百亿参数，再到 GPT-3 的超过一千亿参数——由此普及了 large language model（大语言模型）或 LLM 这一术语。为什么这些能力会随着模型规模的扩大而”涌现”？</p>
+</section>
+<section id="scaling-law">
+<h3>语言模型的 Scaling Law<a class="headerlink" href="#scaling-law" title="Link to this heading">#</a></h3>
+<p>对于为什么某些涌现能力会在特定规模出现，我们还没有完美的答案，但这些发展引出了一个重要概念：语言模型的 Scaling Law（缩放定律）。</p>
+<p>神经网络可以通过增加更多的层、通道或参数来扩展，这通常意味着更好的性能。研究人员通过实验发现，增加训练所用的计算量对降低损失有可预测的效果。本质上，通过扩大计算资源，我们可以实现更低的错误率和更好的泛化能力。</p>
+<p><img alt="scaling-laws" src="../_images/scaling-laws.png" /></p>
+<p>左图展示了随着计算预算的增加，测试损失持续下降，其帕累托前沿在对数-对数图上是一条直线，这表明存在幂律关系。</p>
+<p>来自 Chinchilla 论文的第二张图显示，对于固定的计算预算，存在一个最优的模型大小和数据集大小能够实现最低的损失。在 LLM 术语中，这个大小被称为 Chinchilla-optimal。</p>
+<p>上面的图表只涉及训练计算量，但在实践中，推理可能需要大量额外的计算资源，因为模型在训练一次后可以被数百万用户使用。因此，语言模型通常会训练远超 Chinchilla-optimal 点的时长，因为一个能达到相同性能的更小模型可以节省大量推理计算成本，即使训练成本更高。</p>
+</section>
+<section id="id4">
+<h3>语言模型的蒸馏<a class="headerlink" href="#id4" title="Link to this heading">#</a></h3>
+<p>如上所述，扩大语言模型规模通常是有益的，但在实践中我们需要更小的模型来获得更快的推理速度和更低的成本。
+**知识蒸馏（Knowledge Distillation）**是一种很有前景的方法，可以获得一个小的”学生”模型，其表现与大的”教师”模型一样好。
+这之所以可能，是因为教师模型可以提供比训练数据更丰富的监督信号，例如预测时所有可能 token 的 logits，而不仅仅是训练数据所能提供的离散独热（one-hot）标签。</p>
+<p><img alt="distillation" src="../_images/distillation.png" /></p>
+<p>近年来，蒸馏这个术语也指在更”智能”或更大模型的输出上进行训练的过程，因为这些模型的输出质量足够高、数量足够大。一个很好的例子是对特定任务从 GPT-4o 模型的输出进行蒸馏，客户可以在这些输出上训练一个 GPT-4o mini 模型，从而在使用该模型完成特定任务时节省成本。</p>
+</section>
+<section id="id5">
+<h3>用人类反馈对齐语言模型<a class="headerlink" href="#id5" title="Link to this heading">#</a></h3>
+<p>由于自回归语言模型只是被训练来生成续写内容，它并不总是遵循我们的意图。例如，如果我们用一个问题来提示模型，它可能会回答这个问题，也可能继续生成一堆相关的问题。</p>
+<p>我们之前讨论了 few-shot learning 作为一种补救措施，即在 prompt 中提供几个遵循期望行为的示例，
+但让模型按照我们期望的方式行动，一种更有效的方法是在 InstructGPT 论文中提出的 <strong>RLHF</strong>，即<strong>基于人类反馈的强化学习（Reinforcement Learning from Human Feedback）</strong>。
+这是一个分三步对预训练语言模型进行 fine-tuning 以使其与期望行为对齐的过程。</p>
+<ul class="simple">
+<li><p><strong>第一步：监督微调（Supervised Fine-Tuning, SFT）</strong> —— 首先，我们收集演示数据。例如，我们可以请人类标注者为特定 prompt 生成回复，向模型展示期望的输出行为。然后使用这些监督数据对模型进行 fine-tuning，从而创建一个大致反映人类偏好的基准模型。</p></li>
+<li><p><strong>第二步：奖励建模（Reward Modeling, RM）</strong> —— 然后，我们通过向人类标注者展示同一 prompt 的多个模型输出并请他们从好到差排序来收集比较数据。这些数据用于训练一个独立的奖励模型，该模型能评估模型输出并提供奖励分数，表明输出与人类偏好的匹配程度。</p></li>
+<li><p><strong>第三步：近端策略优化（Proximal Policy Optimization, PPO）</strong> —— 我们使用强化学习，具体来说是 Proximal Policy Optimization，基于上一步训练的奖励模型来调整模型的行为，使其输出的奖励最大化。</p></li>
+</ul>
+<p>RLHF 的核心思想是将语言模型不仅视为文本续写模型，而是视为强化学习中的一个策略（policy），它经历一个多步马尔可夫决策过程，在每一步生成一个 token，最终根据整个回复的质量获得奖励信号。
+其直觉是，与仅进行优化下一个 token 预测准确性的监督微调相比，这个过程允许模型更全面地被微调以匹配人类偏好。</p>
+<p>一种更新的方法叫做 <strong>DPO（Direct Preference Optimization，直接偏好优化）</strong>，它是 RLHF 的替代方法，不涉及强化学习，但优化的目标与 RLHF 在数学上等价。DPO 被用于 LLaMA 2 和 LLaMA 3 的 fine-tuning。</p>
+<p>这个整体过程被称为<strong>后训练（post-training）</strong>，因为它发生在基础模型的预训练之后、语言模型作为产品发布之前——产品要求模型与人类偏好对齐。</p>
+</section>
+<section id="retrieval-augmented-generation-rag">
+<h3>检索增强生成（Retrieval-Augmented Generation, RAG）<a class="headerlink" href="#retrieval-augmented-generation-rag" title="Link to this heading">#</a></h3>
+<p>使用语言模型的另一个挑战是，它们只能基于训练数据生成回复，这意味着它们可能缺乏最新的或专业的信息。
+为了解决这个问题，我们可以在 prompt 中包含新的相关信息，正如我们在讨论 few-shot learning 和 in-context learning 时提到的，但语言模型的上下文长度是有限的。</p>
+<p>这就是 **RAG（检索增强生成）**作为一种强大方法发挥作用的地方。
+RAG 使模型能够从外部来源搜索相关信息——例如知识库、最新的新闻文章或公司的内部数据库——并将这些信息纳入其回复中，即使这些信息不在训练数据集中。</p>
+<p><img alt="RAG" src="../_images/rag.png" /></p>
+<p>其工作流程如下：</p>
+<ol class="arabic simple">
+<li><p>用户提交查询，首先由检索器处理。</p></li>
+<li><p>检索器在知识库或数据库中搜索最相关的信息。这个检索步骤可以使用多种方法，如 embedding 相似度或全文搜索，来找到最佳匹配。</p></li>
+<li><p>检索到的信息随后被添加到模型的上下文中，使生成步骤能够基于查询和检索到的信息生成有据可依的回复。</p></li>
+</ol>
+<p>RAG 可以减少模型产生幻觉（即生成不准确信息）的倾向，也使其更容易正确引用输出来源，而纯 LLM 生成通常在这方面表现不佳。
+RAG 的性能受限于检索系统的准确性和延迟，因此与纯 LLM 生成相比，要让系统的每个组件都准确工作变得更具挑战性。</p>
+</section>
+<section id="function-calling">
+<h3>工具使用和 Function Calling<a class="headerlink" href="#function-calling" title="Link to this heading">#</a></h3>
+<p>工具使用和 function calling 是 RAG 的自然延伸。
+虽然 RAG 允许模型检索相关信息，但某些任务需要实时数据、精确计算或超出检索范围的专门功能。
+通过工具使用和 function calling，语言模型可以动态调用外部工具——如计算器、网络搜索、代码解释器或 API——来增强其回复。</p>
+<p><img alt="tool-use" src="../_images/tool-use.png" /></p>
+<p>当用户提交查询时，模型可以决定是否需要调用特定工具，这取决于它是否采样到了一个指示应该使用工具或调用函数的特殊 token。
+如果是，它会向相关工具发送调用，获取结果，并将其整合到回复中。
+这种能力使模型能够超越静态知识，还能通过执行代码或调用 API 来对外部世界进行更改。</p>
+<p>在 ChatGPT 或 Claude 中，你可以让它执行自己生成的代码并展示结果，或者更近期地，你可以让 LLM 控制一台虚拟桌面计算机并使用它来执行任务。
+这催生了 LLM agent（智能体）这一新兴领域，而让多个智能体相互交互并实现复杂目标仍然是一个开放的挑战。</p>
+</section>
+<section id="id6">
+<h3>用于语言模型输入的多模态编码器<a class="headerlink" href="#id6" title="Link to this heading">#</a></h3>
+<p>为了将图像或音频数据纳入语言模型，我们可以使用多模态编码器。</p>
+<p>其思想是将图像或音频 embedding 而不仅仅是词 embedding 馈送到模型中。
+编码器可以是任何类型的，从监督学习、自监督学习到对比学习模型，只要它能为该模态提供良好的表示即可。
+常见的选择是从公开可用的预训练模型中挑选，例如用于图像输入的 CLIP 和用于语音输入的 Whisper。
+或者，编码器也可以从头训练，不过这通常需要更多的计算资源和数据。</p>
+<p>多模态语言模型允许文本、图像和音频交替出现的输入，语言模型接收多模态输入的编码特征。</p>
+<p>Flamingo 模型使用 cross attention 来关注图像特征，但也可以是任何其他形式的条件输入。正如我们之前所见，条件输入可以非常灵活。</p>
+</section>
+<section id="id7">
+<h3>用于语言模型输出的多模态解码器<a class="headerlink" href="#id7" title="Link to this heading">#</a></h3>
+<p>但对于多模态输出，我们需要更巧妙的方法。
+与文本不同，典型的语言模型只能生成离散 token，这对图像或音频来说并不理想。
+为了处理这个问题，我们有几种方法。</p>
+<p>一种早期的方法是直接预测离散化的像素值或振幅值，如用于图像的 ImageGPT 或用于音频的 WaveNet。
+近年来更常见的方法是使用 VQ-VAE（向量量化变分自编码器），它允许模型生成表示图像或音频信号的离散编码序列，如 DALL-E 中所见。然后这些编码被解码回原始模态。</p>
+<p>然而，VAE 的输出有时会比较模糊，因此为了提高质量，我们通常使用 GAN 或扩散模型作为更好的 VQ 解码器——如 VQGAN、Encodec 或 Sora。</p>
+<p><a class="reference internal" href="#../generation/diffusionmodel.html"><span class="xref myst">在本教程的后续部分</span></a>，Zackery 和 Ke 将更多地讨论这一方向在音乐生成中的应用。</p>
+</section>
+<section id="chain-of-thought">
+<h3>语言模型的 Chain-of-Thought 推理<a class="headerlink" href="#chain-of-thought" title="Link to this heading">#</a></h3>
+<p>语言模型通常会快速给出答案，而不会认真思考问题，也不会根据问题的难度投入更多的计算资源，这可能导致错误的回复，尤其是在复杂问题上。
+**Chain-of-Thought (CoT) prompting（思维链提示）**通过鼓励模型逐步推理来解决这个问题。</p>
+<p><img alt="cot" src="../_images/cot.png" /></p>
+<p>在 CoT prompting 中，我们给模型提供包含上下文推理的示例，例如数学问题的逐步解题过程。
+在左边的例子中，当 prompt 中只有简单的问题和答案列表时，语言模型无法解决一道数学题，
+但当上下文示例中包含逐步推理时，它能正确地解出问题。
+有趣的是，研究还表明，仅仅在 prompt 中添加”Let’s think step by step”就能带来更准确的结果，而无需提供任何上下文中的 few-shot 示例。</p>
+<p>更进一步，不仅仅是巧妙地设计 prompt，我们还可以使用强化学习来优化模型，使其生成更好的思维链，从而更有可能得出正确答案。这就是最近 OpenAI o1 模型背后的基本思想，该模型展示了随着模型花更多计算资源来采样更长的思维链，其性能可预测地提升，这暗示了推理时计算量的 scaling law，它可以在训练时计算量之外正交地提升语言模型的能力。</p>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./lm"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="framework.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">框架</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="challenges.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">挑战</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">局限性</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">从语言模型进行迁移学习</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#in-context-learning">零样本任务迁移和 In-Context Learning</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scaling-law">语言模型的 Scaling Law</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">语言模型的蒸馏</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">用人类反馈对齐语言模型</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#retrieval-augmented-generation-rag">检索增强生成（Retrieval-Augmented Generation, RAG）</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#function-calling">工具使用和 Function Calling</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">用于语言模型输入的多模态编码器</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">用于语言模型输出的多模态解码器</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#chain-of-thought">语言模型的 Chain-of-Thought 推理</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Seung Heon Doh, Ilaria Manco, Zachary Novack, Jong Wook Kim, Ke Chen
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

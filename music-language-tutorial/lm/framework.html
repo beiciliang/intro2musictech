@@ -1,0 +1,672 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>框架 &#8212; 连接音乐音频与自然语言</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=9c3e77be" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=1ae7504c"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'lm/framework';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="研究进展" href="advances.html" />
+    <link rel="prev" title="简介" href="intro.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="连接音乐音频与自然语言 - Home"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="连接音乐音频与自然语言 - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    连接音乐音频与自然语言
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">第一章 引言</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../introduction/background.html">背景</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../introduction/overview.html">教程概览</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../introduction/advantange.html">为什么选择自然语言？</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">第二章 语言模型概述</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="intro.html">简介</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">框架</a></li>
+<li class="toctree-l1"><a class="reference internal" href="advances.html">研究进展</a></li>
+<li class="toctree-l1"><a class="reference internal" href="challenges.html">挑战</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">第三章 音乐描述</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../description/intro.html">概述</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../description/tasks.html">任务</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../description/models.html">模型</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../description/datasets.html">数据集</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../description/evaluation.html">评估</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../description/code.html">代码实践</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">第四章 文本到音乐检索</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../retrieval/intro.html">简介</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../retrieval/models.html">模型</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../retrieval/evaluate.html">评估</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../retrieval/code.html">代码实践</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../retrieval/challenge.html">挑战</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../retrieval/conversational_retrieval.html">对话式检索</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">第五章 文本到音乐生成</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../generation/intro.html">简介</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../generation/evaluation.html">评估</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../generation/lmmodel.html">MusicGEN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../generation/diffusionmodel.html">基于 Diffusion Model 的文本到音乐生成</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../generation/code.html">代码教程</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">第六章 总结</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../conclusion/intro.html">总结</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../conclusion/beyondaudio.html">超越音频模态</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../conclusion/beyondtext.html">超越基于文本的交互</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">参考文献</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../bibliography.html">Bibliography</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/beiciliang/intro2musictech" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/beiciliang/intro2musictech/issues/new?title=Issue%20on%20page%20%2Flm/framework.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/lm/framework.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>框架</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#token">表示：文本作为 Token 序列</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">语言模型的实现</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#masked-language-model">Masked Language Model（掩码语言模型）</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#autoregressive-language-model">Autoregressive Language Model（自回归语言模型）</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">条件输入</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">自适应调制/归一化</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">通道拼接</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">前缀条件</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#encoder-decoder-attention-cross-attention">Encoder-Decoder Attention（编码器-解码器注意力，即 Cross Attention）</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">语言模型作为通用框架</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="id1">
+<h1>框架<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
+<p>在上一节中，我们从最一般的意义上定义了语言模型。
+在实践中，要实现和使用语言模型，还需要了解更多的细节。
+在本节中，我们将介绍处理语言模型的基础知识和标准实践，重点关注使用神经网络的现代语言模型。</p>
+<section id="token">
+<h2>表示：文本作为 Token 序列<a class="headerlink" href="#token" title="Link to this heading">#</a></h2>
+<p>首先，为了在文本上定义概率分布，我们需要一种方式来表示我们需要计算概率的文本。
+最直接的方式是将文本视为一个单词序列：</p>
+<p><img alt="tokenization" src="../_images/tokenization.png" /></p>
+<p>由于语言中的单词数量应该是有限的，我们可以为每个单词分配一个类别标签，这样就可以在每个位置上对所有可能的单词定义一个分类概率分布。
+然而在实践中，词汇量并不是固定的，因此历史上我们使用特殊的 <code class="docutils literal notranslate"><span class="pre">Unknown</span></code> token 来表示语料库中罕见或未见过的单词。更近期的标准做法是使用子词分词（subword tokenization），它将不常见的单词映射为多个子词组件，使用 <strong>Byte Pair Encoding (BPE)</strong> 或 <strong>SentencePiece</strong> 等技术。在这种方案中，像 <code class="docutils literal notranslate"><span class="pre">unforgettable</span></code> 这样的复杂单词可以被分解为三个 token：<code class="docutils literal notranslate"><span class="pre">un</span></code>、<code class="docutils literal notranslate"><span class="pre">forget</span></code> 和 <code class="docutils literal notranslate"><span class="pre">table</span></code>。</p>
+<p>这个过程称为 <strong>tokenization</strong>（分词），它可以将任意文本编码为整数或 token 序列。这些 token 就是语言模型使用分类分布来训练预测的对象。
+此外，在语言建模中，通常会使用一些特殊 token，它们不映射到单词或子词，而是具有特殊用途，比如标记句子的开头和结尾，如上图中的 <code class="docutils literal notranslate"><span class="pre">&lt;SOT&gt;</span></code> 和 <code class="docutils literal notranslate"><span class="pre">&lt;EOT&gt;</span></code>。</p>
+</section>
+<section id="id2">
+<h2>语言模型的实现<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
+<p>既然我们已经介绍了文本如何被表示为 token 序列，那么让我们看看语言模型具体是如何预测这些 token 的。
+虽然有多种方式可以实现这一点，但有两类方法是最广泛使用的。</p>
+<section id="masked-language-model">
+<h3>Masked Language Model（掩码语言模型）<a class="headerlink" href="#masked-language-model" title="Link to this heading">#</a></h3>
+<p>第一种是 Masked Language Modeling (MLM)。在掩码语言模型中，输出文本是如下图红色方块所示的 token 子序列，而条件是该片段周围的 token，即绿色方块。
+因此，模型学习的是根据句子中的上下文信息来填空，就像英语考试中的完形填空一样。</p>
+<p><img alt="fill-in-the-blanks" src="../_images/fill-in-the-blanks.png" /></p>
+<p>具体来说，在像 BERT 这样的掩码语言模型中，输入是表示句子的 token 序列，
+如下方底行所示，其中模型正在预测的 token 片段上施加了掩码（灰色方块），
+而模型的输出是被掩码片段中的所有 token，如顶行红色所示。</p>
+<p><img alt="BERT" src="../_images/bert.png" /></p>
+<p>以这种方式训练的 BERT 模型不仅可以用于填空，还可以将其学到的知识迁移到许多其他任务中，我们将在下一节中看到。</p>
+<p>BERT 及类似模型（如 RoBERTa）在发布时取得了巨大的成功，
+但近年来，下一类语言模型变得更加具有影响力。</p>
+</section>
+<section id="autoregressive-language-model">
+<h3>Autoregressive Language Model（自回归语言模型）<a class="headerlink" href="#autoregressive-language-model" title="Link to this heading">#</a></h3>
+<p>另一种主要的语言模型是自回归（autoregressive, AR）语言模型，其中模型根据所有之前的 token 来预测下一个 token。
+同样地，绿色方块是条件，红色方块是输出：</p>
+<p><img alt="next-word-prediction" src="../_images/next-word-prediction.png" /></p>
+<p>首先，当只给出”start of text”时，模型需要预测下一个词”The”，当给出了文本开头和第一个词”the”时，模型预测下一个词”lively”，以此类推。</p>
+<p>虽然预测下一个 token 看起来是一个非常简单的任务，只能以过去的 token 为条件，而不能像掩码语言模型那样看到未来的 token，
+但这种简单的方法在从大量无标注数据中学习各种任务方面被证明是极其有效的。
+这部分归功于训练这种下一个词预测任务时可以实现大规模并行化。</p>
+<p>让我们稍微重新排列绿色输入和红色输出：</p>
+<p><img alt="gpt" src="../_images/gpt.png" /></p>
+<p>连接红色和绿色 token 的线表示条件关系。例如，第一个输出 token “The”以第一个输入 token “&lt;SOT&gt;”为条件，第二个输出 token “lively”以它所连接的前两个绿色 token “&lt;SOT&gt;” 和 “The”为条件，以此类推。
+注意底行的输入 token 和顶行的输出 token 是相同的，只是偏移了一个位置。</p>
+<p>虽然这些连线看起来过于复杂，但像 RNN 或带有因果掩码的 Transformer 这样的自回归架构可以确保某个输出 token 的预测只依赖于当前和过去的位置。
+因此，通过在输入和相同但偏移一个位置的输出上进行训练，它实际上是在所有输出 token 及其对应的上下文上进行多任务训练。</p>
+<p>相比之下，前面的 BERT 示例每次只预测一小部分 token，这限制了它能学到多少（即受监督的任务数量有多少），尽管它能看到未来的 token。</p>
+</section>
+<section id="id3">
+<h3>条件输入<a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
+<p>在上面的内容中，我们介绍了语言模型实现中的”输出文本”部分。那么条件输入呢？</p>
+<p>当条件是文本时，它们可以像输出文本一样被表示为 token 序列。
+但条件不一定非得是文本，也不需要构成任何概率分布！它们可以是连续特征，比如梅尔频谱图或学习到的特征。
+基本上，条件信息如何输入到语言模型中，我们可以有非常大的灵活性。</p>
+<section id="id4">
+<h4>自适应调制/归一化<a class="headerlink" href="#id4" title="Link to this heading">#</a></h4>
+<p><img alt="adaptive-modulation-normalization" src="../_images/adaptive.png" /></p>
+<p>假设我们想让语言模型以某些特征为条件，一种常见的方式是根据条件输入来调整网络中的隐藏层或归一化层，例如 FiLM、Adaptive Instance Normalization、Adaptive Layer Normalization 等。这些方法非常有效，因为条件信息可以影响网络中每一层的计算。</p>
+</section>
+<section id="id5">
+<h4>通道拼接<a class="headerlink" href="#id5" title="Link to this heading">#</a></h4>
+<p><img alt="channel-concatenation" src="../_images/channel-concat.png" /></p>
+<p>另一种方式是在输入的通道维度上拼接条件信息，这是一种更简单且计算成本更低的方法，但仍然可以非常有效。当我们已经知道输入 token 与特征是对齐的时候，这种方法特别有用。在这种情况下，我们可以为每个 token 提供具体匹配的特征，而不是将相同的特征广播给所有 token。</p>
+<p>以上两种条件输入方法并非语言模型特有，也适用于其他类型的神经网络，例如条件 GAN。</p>
+</section>
+<section id="id6">
+<h4>前缀条件<a class="headerlink" href="#id6" title="Link to this heading">#</a></h4>
+<p><img alt="prefix-conditioning" src="../_images/prefix-conditioning.png" /></p>
+<p>在语言模型和 Transformer 的背景下，前缀条件（prefix conditioning）是另一种常见的条件输入方法。类别标签或音乐特征等条件信息可以作为额外的 token 放在主输入之前馈送给语言模型，如图中绿色部分所示。与文本 token 不同，这些信息不必是离散整数，任何连续特征都可以在此使用，只需投影到与 token embedding 相同的维度即可。</p>
+</section>
+<section id="encoder-decoder-attention-cross-attention">
+<h4>Encoder-Decoder Attention（编码器-解码器注意力，即 Cross Attention）<a class="headerlink" href="#encoder-decoder-attention-cross-attention" title="Link to this heading">#</a></h4>
+<p><img alt="encoder-decoder" src="../_images/encoder-decoder.png" /></p>
+<p>最后，encoder-decoder attention（编码器-解码器注意力），也称为 cross attention（交叉注意力），是一种更灵活的条件输入方法。其中使用一个独立的编码器模型来计算条件输入的特征（如梅尔频谱图），然后这些特征在解码器的注意力机制中被使用。
+这种编码器-解码器架构正是原始 Transformer 论文”Attention is All You Need”中使用的架构，也被 T5 和 Whisper 等模型所采用。</p>
+</section>
+</section>
+</section>
+<section id="id7">
+<h2>语言模型作为通用框架<a class="headerlink" href="#id7" title="Link to this heading">#</a></h2>
+<p>在本节中，我们介绍了语言模型是什么，以及条件输入和输出 token 是如何连接的。
+输入基本上可以是任何东西，只要我们能将输出表示为离散 token 序列，
+语言模型就可以为几乎任何机器学习问题提供一个简单的通用框架：</p>
+<p><img alt="the-framework" src="../_images/the-framework.png" /></p>
+<p>本教程中介绍的大部分研究进展都是对这一框架的适配或扩展。
+在下一节中，我们将从这一框架的一些局限性出发，介绍语言模型的各种应用和扩展。</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./lm"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="intro.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">简介</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="advances.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">研究进展</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#token">表示：文本作为 Token 序列</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">语言模型的实现</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#masked-language-model">Masked Language Model（掩码语言模型）</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#autoregressive-language-model">Autoregressive Language Model（自回归语言模型）</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">条件输入</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">自适应调制/归一化</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">通道拼接</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">前缀条件</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#encoder-decoder-attention-cross-attention">Encoder-Decoder Attention（编码器-解码器注意力，即 Cross Attention）</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">语言模型作为通用框架</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Seung Heon Doh, Ilaria Manco, Zachary Novack, Jong Wook Kim, Ke Chen
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

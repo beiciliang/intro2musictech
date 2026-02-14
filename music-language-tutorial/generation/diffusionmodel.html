@@ -1,0 +1,653 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>基于 Diffusion Model 的文本到音乐生成 &#8212; 连接音乐音频与自然语言</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=9c3e77be" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=1ae7504c"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'generation/diffusionmodel';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="代码教程" href="code.html" />
+    <link rel="prev" title="MusicGEN" href="lmmodel.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="连接音乐音频与自然语言 - Home"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="连接音乐音频与自然语言 - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    连接音乐音频与自然语言
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">第一章 引言</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../introduction/background.html">背景</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../introduction/overview.html">教程概览</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../introduction/advantange.html">为什么选择自然语言？</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">第二章 语言模型概述</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../lm/intro.html">简介</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lm/framework.html">框架</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lm/advances.html">研究进展</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lm/challenges.html">挑战</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">第三章 音乐描述</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../description/intro.html">概述</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../description/tasks.html">任务</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../description/models.html">模型</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../description/datasets.html">数据集</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../description/evaluation.html">评估</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../description/code.html">代码实践</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">第四章 文本到音乐检索</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../retrieval/intro.html">简介</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../retrieval/models.html">模型</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../retrieval/evaluate.html">评估</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../retrieval/code.html">代码实践</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../retrieval/challenge.html">挑战</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../retrieval/conversational_retrieval.html">对话式检索</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">第五章 文本到音乐生成</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="intro.html">简介</a></li>
+<li class="toctree-l1"><a class="reference internal" href="evaluation.html">评估</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lmmodel.html">MusicGEN</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">基于 Diffusion Model 的文本到音乐生成</a></li>
+<li class="toctree-l1"><a class="reference internal" href="code.html">代码教程</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">第六章 总结</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../conclusion/intro.html">总结</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../conclusion/beyondaudio.html">超越音频模态</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../conclusion/beyondtext.html">超越基于文本的交互</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">参考文献</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../bibliography.html">Bibliography</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/beiciliang/intro2musictech" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/beiciliang/intro2musictech/issues/new?title=Issue%20on%20page%20%2Fgeneration/diffusionmodel.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/generation/diffusionmodel.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>基于 Diffusion Model 的文本到音乐生成</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#diffusion">Diffusion：通过迭代精炼实现连续值生成</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">表示方法</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">架构</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id16">条件机制</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="diffusion-model">
+<h1>基于 Diffusion Model 的文本到音乐生成<a class="headerlink" href="#diffusion-model" title="Link to this heading">#</a></h1>
+<p>虽然我们可以用整个教程来讨论 diffusion（扩散）在生成式音频中的工作原理（事实上，今年在 ISMIR 上已有人做了这样的教程！），但这里我们先简要回顾 diffusion 的工作原理，然后介绍如何将文本条件融入这些模型，并以 <a class="reference external" href="https://huggingface.co/stabilityai/stable-audio-open-1.0">Stable Audio Open</a> 作为案例研究。</p>
+<section id="diffusion">
+<h2>Diffusion：通过迭代精炼实现连续值生成<a class="headerlink" href="#diffusion" title="Link to this heading">#</a></h2>
+<figure class="align-default" id="generating-continuous-valued-data">
+<img alt="../_images/diff1.png" src="../_images/diff1.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 4 </span><span class="caption-text">与操作离散 token 的语言模型不同，我们应该如何设计模型来生成<em>连续</em>数据？</span><a class="headerlink" href="#generating-continuous-valued-data" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>与基于语言模型的方法生成<em>离散</em> token <span class="math notranslate nohighlight">\(x \in \mathbb{N}\)</span> 不同，diffusion 的目标是生成某些<em>连续</em>值数据 <span class="math notranslate nohighlight">\(x \in \mathbb{R}\)</span>（这与更经典的 VAE 和 GAN 模型相同）。</p>
+<p>形式化地说，如果我们的数据来自某个分布 <span class="math notranslate nohighlight">\(\mathbf{x} \sim p(\mathbf{x})\)</span>，那么目标是学习某个模型，使我们能够从该分布中采样 <span class="math notranslate nohighlight">\(p_\theta(\mathbf{x}) \approx p(\mathbf{x})\)</span>。实际上，为了从数据分布中采样，在 VAE/GAN 中我们将模型参数化为某个生成器 <span class="math notranslate nohighlight">\(G_\theta\)</span>，使得：</p>
+<div class="math notranslate nohighlight">
+\[
+\mathbf{x} = G_\theta(z), \quad z \sim \mathcal{N}(0, \boldsymbol{I}),
+\]</div>
+<p>即我们学习某个模型，将各向同性的高斯噪声转换为我们的目标数据。</p>
+<p>Diffusion model 在许多生成式媒体任务上比这些经典模型更成功 <span id="id1">[<a class="reference internal" href="../bibliography.html#id172" title="Prafulla Dhariwal and Alexander Nichol. Diffusion models beat GANs on image synthesis. Neural Information Processing Systems (NeurIPS), 2021.">DN21</a>]</span>（也更具可控性）的<strong>主要</strong>原因之一是其<strong>迭代精炼</strong>的能力。在上面的方程中，整个生成过程发生在单次模型调用中。虽然这当然是高效的（许多 diffusion model 在概念上重新发明了 GAN 以利用其效率 <span id="id2">[<a class="reference internal" href="../bibliography.html#id243" title="Dongjun Kim, Chieh-Hsin Lai, Wei-Hsiang Liao, Naoki Murata, Yuhta Takida, Toshimitsu Uesaka, Yutong He, Yuki Mitsufuji, and Stefano Ermon. Consistency trajectory models: learning probability flow ODE trajectory of diffusion. In International Conference on Learning Representations (ICLR). 2023.">KLL+23</a>, <a class="reference internal" href="../bibliography.html#id155" title="Zachary Novack, Ge Zhu, Jonah Casebeer, Julian McAuley, Taylor Berg-Kirkpatrick, and Nicholas J. Bryan. Presto! distilling steps and layers for accelerating music generation. In N/A. 2024. URL: https://api.semanticscholar.org/CorpusID:273186269.">NZC+24</a>]</span>），但在单次模型前向传播中要完成的工作量<em>非常大</em>，尤其是对于高维数据！</p>
+<p>如果我们能在一次模型调用中只生成 <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> 的<strong>一部分</strong>，那将非常有用。这样，我们就可以多次调用模型来完整生成 <span class="math notranslate nohighlight">\(\mathbf{x}\)</span>（如果你注意到了，这听起来与自回归非常相似）。</p>
+<p>为了构建这种”多步生成器”，我们首先需要引入将数据<em>腐蚀</em>为噪声的概念（注意：虽然这一步在我们精简的 diffusion 介绍中不太容易融入，但我们鼓励读者查阅更完整的 diffusion 资料，它们从更宽泛的视角来阐述这个范式 <span id="id3">[<a class="reference internal" href="../bibliography.html#id244" title="Yang Song, Jascha Sohl-Dickstein, Diederik P Kingma, Abhishek Kumar, Stefano Ermon, and Ben Poole. Score-based generative modeling through stochastic differential equations. In International Conference on Learning Representations. 2021.">SSDK+21</a>]</span>）。首先，我们调整符号以建模从干净数据到噪声的<em>扩散</em>过程，用<em>时间步</em> <span class="math notranslate nohighlight">\(0\rightarrow T\)</span> 表示，其中 <span class="math notranslate nohighlight">\(\mathbf{x}_0 \sim p_0(\mathbf{x}_0)\)</span> 是我们的干净数据（即之前的 <span class="math notranslate nohighlight">\(\mathbf{x} \sim p(\mathbf{x})\)</span>），<span class="math notranslate nohighlight">\(\mathbf{x}_T \sim p_T(\mathbf{x}_T)\)</span> 是纯高斯噪声（即之前的 <span class="math notranslate nohighlight">\(z\)</span>）。然后，我们可以定义一个扩散过程，通过随机微分方程（SDE）逐步将干净数据 <span class="math notranslate nohighlight">\(\mathbf{x}_0\)</span> 转变为高斯噪声 <span class="math notranslate nohighlight">\(\mathbf{x}_T\)</span>：</p>
+<div class="math notranslate nohighlight">
+\[
+\mathrm{d}\mathbf{x} = f(\mathbf{x}, t)\mathrm{d}t + g(t)\mathrm{d}\boldsymbol{w},
+\]</div>
+<p>其中 <span class="math notranslate nohighlight">\(\boldsymbol{w}\)</span> 是标准维纳过程（即加性高斯噪声），<span class="math notranslate nohighlight">\(f(\mathbf{x}, t)\)</span> 是 <span class="math notranslate nohighlight">\(\mathbf{x}_t\)</span> 的<em>漂移</em>系数，<span class="math notranslate nohighlight">\(g(t)\)</span> 是<em>扩散</em>系数。如果 SDE 看起来难以理解，需要记住的关键点是：上述方程定义了一个 <span class="math notranslate nohighlight">\(0\rightarrow T\)</span> 的过程，逐渐向数据添加噪声，直到只剩下噪声。为了清晰起见，我们用 <span class="math notranslate nohighlight">\(p_t(\mathbf{x})\)</span> 表示 <span class="math notranslate nohighlight">\(\mathbf{x}_t\)</span> 的边际概率密度。</p>
+<figure class="align-default" id="forward-diffusion-process">
+<img alt="../_images/diff2.png" src="../_images/diff2.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 5 </span><span class="caption-text">Diffusion model 的起点是定义一个前向加噪过程，逐步将我们的数据腐蚀为高斯噪声。</span><a class="headerlink" href="#forward-diffusion-process" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>这之所以重要，是因为 <span id="id4">[<a class="reference internal" href="../bibliography.html#id171" title="Brian DO Anderson. Reverse-time diffusion equation models. Stochastic Processes and their Applications, 12(3):313–326, 1982.">And82</a>]</span> 的一个巧妙结果允许我们定义一个将高斯噪声转换回数据的<em>逆向</em>扩散过程，由以下公式给出：</p>
+<div class="math notranslate nohighlight">
+\[
+\mathrm{d}\mathbf{x} = [f(\mathbf{x}, t) - g(t)^2\nabla_{\mathbf{x}}\log p_t(\mathbf{x})]\mathrm{d}t + g(t)\mathrm{d}\bar{\boldsymbol{w}},
+\]</div>
+<p>其中 <span class="math notranslate nohighlight">\(\bar{\boldsymbol{w}}\)</span> 是逆时间维纳过程，值得注意的是，<span class="math notranslate nohighlight">\(\nabla_{\mathbf{x}}\log p_t(\mathbf{x})\)</span> 是 <span class="math notranslate nohighlight">\(\mathbf{x}_t\)</span> 边际概率分布的<em>得分函数</em>（score function）。通俗地说，得分函数定义了一个指向数据分布中更高密度区域的方向，你可以想象它类似于获取一维曲线路径的导数，只不过是在高维空间中。</p>
+<p>由于我们现在有了定义从噪声到数据的<em>过程</em>的方法，可以看出 VAE/GAN 本质上是在学习一个<em>积分</em>上述逆时间 SDE（从 <span class="math notranslate nohighlight">\(T\)</span> 到 <span class="math notranslate nohighlight">\(0\)</span>）的生成器，从而学习从噪声到数据的直接映射。
+然而，diffusion model 的优势在于学习一个<em>得分模型</em> <span class="math notranslate nohighlight">\(s_\theta(\mathbf{x}, t) \approx \nabla_{\mathbf{x}}\log p_t(\mathbf{x})\)</span>。通过这种方式，diffusion model 分多步迭代求解逆时间 SDE，在某种意义上以固定步长沿着逆扩散路径前进，在每个点检查导数以确定下一步应该走向哪里。这样，diffusion model 能够迭代地精炼模型输出，从起始的各向同性高斯噪声中逐步去除越来越多的噪声，直到我们的数据变得清晰！</p>
+<figure class="align-default" id="diffusion-models-vs-vaes-gans">
+<img alt="../_images/diff3.png" src="../_images/diff3.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 6 </span><span class="caption-text">VAE/GAN 建模的是从噪声到数据的直接映射，而 diffusion model 建模的是逆扩散过程的<em>得分</em>，这使得我们可以使用任何现成的 SDE 求解器沿逆扩散路径生成数据。</span><a class="headerlink" href="#diffusion-models-vs-vaes-gans" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>如果这一切听起来像是语言模型进行自回归的某种奇特版本，那你的想法大致是对的！Sander Dieleman 有一篇精彩的<a class="reference external" href="https://sander.ai/2024/09/02/spectral-autoregression.html">博客文章</a>讨论了这种概念上的相似性，以及如何将 diffusion 想象为在<em>频谱</em>域中的自回归。</p>
+<p>以上就是我们对 diffusion model 的介绍。虽然这里有很多数学内容，但只要你理解核心思想——diffusion model 近似的是从噪声到数据路径的<em><strong>梯度</strong></em>（而非学习路径本身）——你就可以顺利继续本教程了！</p>
+</section>
+<section id="id5">
+<h2>表示方法<a class="headerlink" href="#id5" title="Link to this heading">#</a></h2>
+<p>与自回归语言模型方法不同，自2021年 diffusion 出现以来，基于 diffusion 的文本到音乐（TTM）生成的具体输入表示方法变化很大。下面我们按<em>大致</em>时间顺序列出：</p>
+<ol class="arabic simple">
+<li><p>直接波形建模：<span class="math notranslate nohighlight">\(\mathbf{x}_0 \in \mathbb{R}^{f_s T \times 1}\)</span>，其中 <span class="math notranslate nohighlight">\(f_s\)</span> 是音频的采样率，<span class="math notranslate nohighlight">\(T\)</span> 是总时长（秒）。换言之，我们直接在原始音频信号上执行扩散过程。这种输入表示通常<em><strong>不</strong></em>被使用，原因既包括原始音频信号的规模可能非常大（仅30秒的 44.1 kHz 音频就超过100万个浮点数！），也因为 diffusion 在原始音频信号上效果不佳（而且有<a class="reference external" href="https://sander.ai/2024/09/02/spectral-autoregression.html">充分的理由</a>解释这一点）。</p></li>
+<li><p>直接（梅尔）频谱图建模 <span id="id6">[<a class="reference internal" href="../bibliography.html#id253" title="Zachary Novack, Julian McAuley, Taylor Berg-Kirkpatrick, and Nicholas J. Bryan. DITTO-2: distilled diffusion inference-time t-optimization for music generation. In International Society for Music Information Retrieval (ISMIR). 2024.">NMBKB24a</a>, <a class="reference internal" href="../introduction/overview.html#id47" title="Shih-Lun Wu, Chris Donahue, Shinji Watanabe, and Nicholas J Bryan. Music controlnet: multiple time-varying controls for music generation. arXiv preprint arXiv:2311.07069, 2023.">WDWB23</a>, <a class="reference internal" href="../bibliography.html#id189" title="Ge Zhu, Yutong Wen, Marc-André Carbonneau, and Zhiyao Duan. Edmsound: spectrogram based diffusion models for efficient and high-quality audio synthesis. arXiv:2311.08667, 2023.">ZWCD23</a>]</span>：<span class="math notranslate nohighlight">\(\mathbf{x}_0 \in \mathbb{R}^{H \times W \times C}\)</span>，其中 <span class="math notranslate nohighlight">\(H\)</span> 和 <span class="math notranslate nohighlight">\(W\)</span> 是音频（梅尔）频谱图的高度和宽度，<span class="math notranslate nohighlight">\(C\)</span> 是通道数（通常为1，但使用复数频谱图时可以为2）。这样，TTM diffusion 的过程几乎与非潜在空间的图像 diffusion 完全相同，因为我们只是将音频频谱图视为”图像”并在这些二维信号上运行 diffusion。由于我们不能直接将梅尔频谱图转换回音频，这些模型通常训练 <span id="id7">[<a class="reference internal" href="../bibliography.html#id259" title="Ge Zhu, Juan-Pablo Caceres, Zhiyao Duan, and Nicholas J. Bryan. MusicHiFi: fast high-fidelity stereo vocoding. IEEE Signal Processing Letters (SPL), 2024.">ZCDB24</a>]</span> 或使用现成的 <span id="id8">[<a class="reference internal" href="../introduction/overview.html#id47" title="Shih-Lun Wu, Chris Donahue, Shinji Watanabe, and Nicholas J Bryan. Music controlnet: multiple time-varying controls for music generation. arXiv preprint arXiv:2311.07069, 2023.">WDWB23</a>]</span> <em>声码器</em> <span class="math notranslate nohighlight">\(V(\mathbf{x}_0) : \mathbb{R}^{H \times W \times C} \rightarrow \mathbb{R}^{f_s T \times 1}\)</span> 将生成的梅尔频谱图转换回音频。</p></li>
+<li><p>潜在（梅尔）频谱图建模 <span id="id9">[<a class="reference internal" href="../introduction/overview.html#id108" title="Ke Chen, Yusong Wu, Haohe Liu, Marianna Nezhurina, Taylor Berg-Kirkpatrick, and Shlomo Dubnov. MusicLDM: enhancing novelty in text-to-music generation using beat-synchronous mixup strategies. In IEEE International Conference on Audio, Speech and Signal Processing (ICASSP). 2024.">CWL+24</a>, <a class="reference internal" href="../bibliography.html#id71" title="Seth Forsgren and Hayk Martiros. Riffusion: Stable diffusion for real-time music generation. 2022. URL: https://riffusion.com/about.">FM22</a>, <a class="reference internal" href="../bibliography.html#id76" title="Haohe Liu, Zehua Chen, Yi Yuan, Xinhao Mei, Xubo Liu, Danilo Mandic, Wenwu Wang, and Mark D Plumbley. AudioLDM: text-to-audio generation with latent diffusion models. In International Conference on Machine Learning (ICML). 2023.">LCY+23a</a>, <a class="reference internal" href="../bibliography.html#id77" title="Haohe Liu, Yi Yuan, Xubo Liu, Xinhao Mei, Qiuqiang Kong, Qiao Tian, Yuping Wang, Wenwu Wang, Yuxuan Wang, and Mark D. Plumbley. Audioldm 2: learning holistic audio generation with self-supervised pretraining. IEEE/ACM Transactions on Audio, Speech, and Language Processing, 2024.">LYL+24</a>]</span>：<span class="math notranslate nohighlight">\(\mathbf{x}_0 \in \mathbb{R}^{D_h \times D_w \times D_c}\)</span>，其中 <span class="math notranslate nohighlight">\(D_h, D_w, D_c\)</span> 是频谱图通过二维<strong>自编码器</strong>后的<em><strong>潜在</strong></em>高度、宽度和通道数（通常 <span class="math notranslate nohighlight">\(D_h \ll H, D_w \ll W\)</span> 以提高效率，而 <span class="math notranslate nohighlight">\(D_c &gt; C\)</span>）。这可能是真正开创 TTM 生成领域的第一个设计，<span id="id10">[<a class="reference internal" href="../bibliography.html#id71" title="Seth Forsgren and Hayk Martiros. Riffusion: Stable diffusion for real-time music generation. 2022. URL: https://riffusion.com/about.">FM22</a>]</span> 使用现有的 Stable Diffusion 自编码器并在频谱图上微调 SD。因此，这需要在训练 TTM diffusion 模型之前单独训练一个 VAE <span class="math notranslate nohighlight">\(\mathcal{D}, \mathcal{E}\)</span>。训练完成后，从模型采样包括用 diffusion 生成潜在表示，将其通过解码器 <span class="math notranslate nohighlight">\(\mathcal{D}(\mathbf{x}_0): \mathbb{R}^{D_h \times D_w \times D_c} \rightarrow  \mathbb{R}^{H \times W \times C}\)</span>，<em>然后</em>将该输出通过声码器 <span class="math notranslate nohighlight">\(V\)</span>。</p></li>
+<li><p>DAC 风格的潜在音频建模 <span id="id11">[<a class="reference internal" href="../bibliography.html#id154" title="Zach Evans, CJ Carr, Josiah Taylor, Scott H. Hawley, and Jordi Pons. Fast timing-conditioned latent audio diffusion. International Conference on Machine Learning (ICML), 2024.">ECT+24</a>, <a class="reference internal" href="../bibliography.html#id156" title="Zach Evans, Julian D Parker, CJ Carr, Zack Zukowski, Josiah Taylor, and Jordi Pons. Stable audio open. arXiv:2407.14358, 2024.">EPC+24</a>, <a class="reference internal" href="../bibliography.html#id155" title="Zachary Novack, Ge Zhu, Jonah Casebeer, Julian McAuley, Taylor Berg-Kirkpatrick, and Nicholas J. Bryan. Presto! distilling steps and layers for accelerating music generation. In N/A. 2024. URL: https://api.semanticscholar.org/CorpusID:273186269.">NZC+24</a>]</span>：<span class="math notranslate nohighlight">\(\mathbf{x}_0 \in \mathbb{R}^{D_T \times 1 \times D_c}\)</span>，其中 <span class="math notranslate nohighlight">\(D_T\)</span> 是压缩音频信号的长度，因为这里我们绕过了声码器和频谱图 VAE，而是使用<strong>原始音频 VAE</strong> 将音频直接压缩为潜在的一维（但多通道，因为 <span class="math notranslate nohighlight">\(D_c\)</span> 通常为 32/64/96）序列。实际上，这与 Encodec <span id="id12">[<a class="reference internal" href="../bibliography.html#id66" title="Alexandre Défossez, Jade Copet, Gabriel Synnaeve, and Yossi Adi. High fidelity neural audio compression. arXiv:2210.13438, 2022.">DCSA22</a>]</span> 或 DAC <span id="id13">[<a class="reference internal" href="../bibliography.html#id151" title="Rithesh Kumar, Prem Seetharaman, Alejandro Luebs, Ishaan Kumar, and Kundan Kumar. High-fidelity audio compression with improved RVQGAN. In Neural Information Processing Systems (NeurIPS). 2023.">KSL+23</a>]</span> 等离散语言模型编解码器几乎完全相同，唯一的区别是离散向量量化被替换为标准的 VAE KL 正则化，从而给出<strong>连续值潜在表示</strong>而非离散 token。事实上，训练过程和架构的其余部分基本保持不变（即全卷积一维编码器/解码器配合 snake 激活函数、多分辨率 STFT 判别器等）。因此，从模型采样时，我们生成潜在表示并直接通过解码器 <span class="math notranslate nohighlight">\(\mathcal{D}\)</span> 获取音频输出。在本教程的后续部分，我们将重点关注这种方法，因为它是 Stable Audio Open 所使用的。</p></li>
+</ol>
+</section>
+<section id="id14">
+<h2>架构<a class="headerlink" href="#id14" title="Link to this heading">#</a></h2>
+<p>在架构设计方面，大多数 diffusion model 遵循两大类之一：U-Net 和 Diffusion Transformer (DiT)。在本文中，我们重点关注 DiT，原因既包括大多数现代 diffusion model 正在采用这种建模范式 <span id="id15">[<a class="reference internal" href="../bibliography.html#id154" title="Zach Evans, CJ Carr, Josiah Taylor, Scott H. Hawley, and Jordi Pons. Fast timing-conditioned latent audio diffusion. International Conference on Machine Learning (ICML), 2024.">ECT+24</a>, <a class="reference internal" href="../bibliography.html#id156" title="Zach Evans, Julian D Parker, CJ Carr, Zack Zukowski, Josiah Taylor, and Jordi Pons. Stable audio open. arXiv:2407.14358, 2024.">EPC+24</a>, <a class="reference internal" href="../bibliography.html#id155" title="Zachary Novack, Ge Zhu, Jonah Casebeer, Julian McAuley, Taylor Berg-Kirkpatrick, and Nicholas J. Bryan. Presto! distilling steps and layers for accelerating music generation. In N/A. 2024. URL: https://api.semanticscholar.org/CorpusID:273186269.">NZC+24</a>]</span>，也因为 DiT 在代码设计上<em>简单得多</em>。一个 TTM DiT 通常看起来大致如下：</p>
+<figure class="align-default" id="dit-architecture">
+<img alt="../_images/dit.png" src="../_images/dit.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 7 </span><span class="caption-text">DiT 包含一个用于噪声输入数据的初始分块（patchify）和嵌入层，以及噪声级别和条件的嵌入，然后将其通过一系列双向 Transformer 模块（其中条件信息会调制噪声潜在表示的内部表征），最后投影回去以预测干净的潜在表示。</span><a class="headerlink" href="#dit-architecture" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>具体来说，在输入的潜在表示被转换为”分块”（即进一步下采样）并且输入条件（即文本，稍后详细介绍）和时间步/噪声级别被转换为相应的嵌入之后，DiT 只是一系列操作在此潜在表示上的双向 Transformer 编码器模块（类似 BERT）（条件信息提供某种形式的调制），最后通过线性层和反分块层得到我们的预测。相比 U-Net，DiT 具有许多良好的扩展特性，能够更好地处理可变长度序列，并且由于没有手动的残差下采样/上采样模块，代码明显更简洁。</p>
+</section>
+<section id="id16">
+<h2>条件机制<a class="headerlink" href="#id16" title="Link to this heading">#</a></h2>
+<p>现在最大的问题是，文本条件在模型中究竟是如何发挥作用的？在进入模型之前，文本提示 <span class="math notranslate nohighlight">\(\mathbf{c}_{\textrm{text}}\)</span> 首先需要从字符串转换为某种数值嵌入，我们将其称为 <span class="math notranslate nohighlight">\(\mathbf{e}_{\textrm{text}} = \textrm{Emb}(\mathbf{c}_{\textrm{text}})\)</span>，其中 <span class="math notranslate nohighlight">\(\textrm{Emb}\)</span> 是某个嵌入提取函数。在许多情况下，<span class="math notranslate nohighlight">\(\textrm{Emb}\)</span> 使用预训练的文本骨干网络（如 CLAP 或 T5），然后通过一个或多个线性层将嵌入投影到正确的尺寸。嵌入后，<span class="math notranslate nohighlight">\(\mathbf{e}_{\textrm{text}}\)</span> 要么是全局嵌入 <span class="math notranslate nohighlight">\(\mathbb{R}^{d}\)</span>，要么是序列级嵌入 <span class="math notranslate nohighlight">\(\mathbb{R}^{d \times \ell}\)</span>，其中 <span class="math notranslate nohighlight">\(d\)</span> 是 DiT 的隐藏维度，<span class="math notranslate nohighlight">\(\ell\)</span> 表示文本嵌入的 token 长度（即文本嵌入可以按 token 提取，T5 就是这种情况）。</p>
+<p>现在 <span class="math notranslate nohighlight">\(\mathbf{e}_{\textrm{text}}\)</span> 可以通过多种方式与模型内部的主扩散潜在表示交互（这些方式可以组合使用），下面我们介绍其中几种：</p>
+<ol class="arabic simple">
+<li><p><strong>时域拼接</strong>（又称上下文内条件或前缀条件）：这里，我们简单地将文本条件附加到扩散潜在序列中，得到新的潜在表示 <span class="math notranslate nohighlight">\(\hat{\mathbf{x}} = [\mathbf{x}, \mathbf{e}_{\textrm{text}}] \in \mathbb{R}^{(D_T + \ell) \times 1 \times d}\)</span>，其中 <span class="math notranslate nohighlight">\([\cdot]\)</span> 是沿<em>时间</em>轴的拼接操作（即序列变长），并在所有 DiT 模块之后移除这些额外的 token。这样，文本仅通过 DiT 的自注意力模块作用于扩散潜在表示，根据文本嵌入的长度会导致最小到中等程度的速度下降。</p></li>
+<li><p><strong>通道拼接</strong>：这里，<span class="math notranslate nohighlight">\(\mathbf{e}_{\textrm{text}}\)</span> 首先被投影为与主扩散潜在表示相同的<em>序列</em>长度，然后沿<em>通道维度</em>拼接 <span class="math notranslate nohighlight">\(\hat{\mathbf{x}} = [\mathbf{x}, \textrm{Proj}(\mathbf{e}_{\textrm{text}})] \in \mathbb{R}^{(D_T) \times 1 \times 2d}\)</span>（即序列在某种意义上变得更<em>深</em>）。这种方法通常不太用于文本条件（但对其他条件效果很好），因为它赋予文本一种时间性，而全局描述并不具备这种特征。</p></li>
+<li><p><strong>Cross-Attention（交叉注意力）</strong>：这里，我们在每个 DiT 模块的自注意力层之间添加额外的交叉注意力层，扩散潜在表示直接关注 <span class="math notranslate nohighlight">\(\mathbf{e}_{\textrm{text}}\)</span>。这可能提供最佳的控制能力（也是 Stable Audio Open 所使用的方法），代价是由于每个交叉注意力层的二次计算成本而增加了最多的计算量。</p></li>
+<li><p><strong>Adaptive Layer-Norm (AdaLN，自适应层归一化)</strong>：这里，每个 DiT 模块中的层归一化通过从 <span class="math notranslate nohighlight">\(\mathbf{e}_{\textrm{text}}\)</span> 学习的偏移、缩放和门控参数（隐藏维度每个索引各一个）来增强，这些参数通过一个小型 MLP 学习得到：<span class="math notranslate nohighlight">\(\gamma_{\textrm{shift}}, \gamma_{\textrm{scale}}, \gamma_{\textrm{gate}} = \textrm{MLP}(\mathbf{e}_{\textrm{text}})\)</span>。这为模型增加的计算量最少，也是原始 DiT 工作所使用的方法 <span id="id17">[<a class="reference internal" href="../bibliography.html#id88" title="William Peebles and Saining Xie. Scalable diffusion models with transformers. In IEEE/CVF International Conference on Computer Visio (ICCV). 2023.">PX23</a>]</span>。值得注意的是，从本质上讲，这与 MusicLDM <span id="id18">[<a class="reference internal" href="../introduction/overview.html#id108" title="Ke Chen, Yusong Wu, Haohe Liu, Marianna Nezhurina, Taylor Berg-Kirkpatrick, and Shlomo Dubnov. MusicLDM: enhancing novelty in text-to-music generation using beat-synchronous mixup strategies. In IEEE International Conference on Audio, Speech and Signal Processing (ICASSP). 2024.">CWL+24</a>]</span> 中使用的 Feature-wise Linear Modulation (FiLM) 层几乎完全相同。这些偏移、缩放和门控参数还可以被零初始化，使得每个模块本质上被初始化为恒等函数，这就是”AdaLN-Zero”所指的含义。</p></li>
+</ol>
+<figure class="align-default" id="types-of-dit-conditioning-mechanism-s">
+<img alt="../_images/conds.png" src="../_images/conds.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 8 </span><span class="caption-text">DiT 可以通过多种方式进行条件化，包括自适应层归一化、交叉注意力和上下文内条件（时域拼接）。</span><a class="headerlink" href="#types-of-dit-conditioning-mechanism-s" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./generation"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="lmmodel.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">MusicGEN</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="code.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">代码教程</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#diffusion">Diffusion：通过迭代精炼实现连续值生成</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">表示方法</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">架构</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id16">条件机制</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Seung Heon Doh, Ilaria Manco, Zachary Novack, Jong Wook Kim, Ke Chen
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

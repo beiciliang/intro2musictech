@@ -1,0 +1,858 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>模型 &#8212; 连接音乐音频与自然语言</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=9c3e77be" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=1ae7504c"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'description/models';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="数据集" href="datasets.html" />
+    <link rel="prev" title="任务" href="tasks.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="连接音乐音频与自然语言 - Home"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="连接音乐音频与自然语言 - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    连接音乐音频与自然语言
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">第一章 引言</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../introduction/background.html">背景</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../introduction/overview.html">教程概览</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../introduction/advantange.html">为什么选择自然语言？</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">第二章 语言模型概述</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../lm/intro.html">简介</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lm/framework.html">框架</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lm/advances.html">研究进展</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lm/challenges.html">挑战</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">第三章 音乐描述</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="intro.html">概述</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tasks.html">任务</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">模型</a></li>
+<li class="toctree-l1"><a class="reference internal" href="datasets.html">数据集</a></li>
+<li class="toctree-l1"><a class="reference internal" href="evaluation.html">评估</a></li>
+<li class="toctree-l1"><a class="reference internal" href="code.html">代码实践</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">第四章 文本到音乐检索</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../retrieval/intro.html">简介</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../retrieval/models.html">模型</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../retrieval/evaluate.html">评估</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../retrieval/code.html">代码实践</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../retrieval/challenge.html">挑战</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../retrieval/conversational_retrieval.html">对话式检索</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">第五章 文本到音乐生成</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../generation/intro.html">简介</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../generation/evaluation.html">评估</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../generation/lmmodel.html">MusicGEN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../generation/diffusionmodel.html">基于 Diffusion Model 的文本到音乐生成</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../generation/code.html">代码教程</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">第六章 总结</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../conclusion/intro.html">总结</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../conclusion/beyondaudio.html">超越音频模态</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../conclusion/beyondtext.html">超越基于文本的交互</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">参考文献</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../bibliography.html">Bibliography</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/beiciliang/intro2musictech" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/beiciliang/intro2musictech/issues/new?title=Issue%20on%20page%20%2Fdescription/models.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/description/models.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>模型</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#encoder-decoder">Encoder-Decoder 模型</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">架构</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id23">条件机制与融合</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#multimodal-ar">多模态自回归模型</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adapted-llm-llm">Adapted LLM（经过适配的 LLM）</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id34">原生多模态自回归模型</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id37">参考文献</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="description-models">
+<span id="id1"></span><h1>模型<a class="headerlink" href="#description-models" title="Link to this heading">#</a></h1>
+<p>用于基于自然语言的音乐描述的深度学习模型通常属于以下两种设计之一：</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#encoder-decoder-models"><span class="std std-ref">Encoder-decoder</span></a>（编码器-解码器）模型</p></li>
+<li><p><a class="reference internal" href="#multimodal-ar"><span class="std std-ref">多模态自回归</span></a>模型，最常见的形式为<a class="reference internal" href="#adapted-llms"><span class="std std-ref">经过适配的 LLM</span></a></p></li>
+</ul>
+<p>在 <a class="reference internal" href="#description-models-table"><span class="std std-numref">Table 1</span></a> 中，我们概述了从 2016 年至今的音乐描述模型。* 标记的任务不属于音乐描述范畴，但仍由该模型处理。</p>
+<div class="pst-scrollable-table-container"><table class="table" id="description-models-table">
+<caption><span class="caption-number">Table 1 </span><span class="caption-text">Music description models.</span><a class="headerlink" href="#description-models-table" title="Link to this table">#</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>Model</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Task(s)</p></th>
+<th class="head"><p>Weights</p></th>
+<th class="head"><p>Training dataset</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Choi <em>et al.</em> <span id="id2">[<a class="reference internal" href="../introduction/overview.html#id51" title="Ilaria Manco, Emmanouil Benetos, Elio Quinton, and György Fazekas. Muscaps: generating captions for music audio. In 2021 International Joint Conference on Neural Networks (IJCNN), 1–8. IEEE, 2021.">MBQF21</a>]</span></p></td>
+<td><p>Encoder-decoder</p></td>
+<td><p>Captioning (playlist)</p></td>
+<td><p>❌</p></td>
+<td><p>Private data</p></td>
+</tr>
+<tr class="row-odd"><td><p>MusCaps <span id="id3">[<a class="reference internal" href="../introduction/overview.html#id51" title="Ilaria Manco, Emmanouil Benetos, Elio Quinton, and György Fazekas. Muscaps: generating captions for music audio. In 2021 International Joint Conference on Neural Networks (IJCNN), 1–8. IEEE, 2021.">MBQF21</a>]</span></p></td>
+<td><p>Encoder-decoder</p></td>
+<td><p>Captioning, retrieval*</p></td>
+<td><p>❌</p></td>
+<td><p>Private data</p></td>
+</tr>
+<tr class="row-even"><td><p>PlayNTell <span id="id4">[<a class="reference internal" href="tasks.html#id67" title="Giovanni Gabbolini, Romain Hennequin, and Elena Epure. Data-efficient playlist captioning with musical and linguistic knowledge. In Yoav Goldberg, Zornitsa Kozareva, and Yue Zhang, editors, Proceedings of the 2022 Conference on Empirical Methods in Natural Language Processing, 11401–11415. Abu Dhabi, United Arab Emirates, December 2022. Association for Computational Linguistics. URL: https://aclanthology.org/2022.emnlp-main.784, doi:10.18653/v1/2022.emnlp-main.784.">GHE22</a>]</span></p></td>
+<td><p>Encoder-decoder</p></td>
+<td><p>Captioning (playlist)</p></td>
+<td><p>✅ <a class="reference internal" href="#"><span class="xref myst">link</span></a></p></td>
+<td><p>PlayNTell</p></td>
+</tr>
+<tr class="row-odd"><td><p>LP-MusicCaps <span id="id5">[<a class="reference internal" href="../introduction/overview.html#id51" title="Ilaria Manco, Emmanouil Benetos, Elio Quinton, and György Fazekas. Muscaps: generating captions for music audio. In 2021 International Joint Conference on Neural Networks (IJCNN), 1–8. IEEE, 2021.">MBQF21</a>]</span></p></td>
+<td><p>Encoder-decoder</p></td>
+<td><p>Captioning</p></td>
+<td><p>✅ <a class="reference external" href="https://huggingface.co/seungheondoh/lp-music-caps">link</a></p></td>
+<td><p>LP-MusicCaps</p></td>
+</tr>
+<tr class="row-even"><td><p>ALCAP <span id="id6">[<a class="reference internal" href="tasks.html#id291" title="Zihao He, Weituo Hao, Wei-Tsung Lu, Changyou Chen, Kristina Lerman, and Xuchen Song. Alcap: alignment-augmented music captioner. In Proceedings of the 2023 Conference on Empirical Methods in Natural Language Processing, 16501–16512. 2023.">HHL+23</a>]</span></p></td>
+<td><p>Encoder-decoder</p></td>
+<td><p>Captioning</p></td>
+<td><p>❌</p></td>
+<td><p>Song Interpretation Dataset, NetEase Cloud Music Review Dataset</p></td>
+</tr>
+<tr class="row-odd"><td><p>BLAP <span id="id7">[<a class="reference internal" href="#id342" title="Luca A Lanzendorfer, Nathanal Perraudin, Constantin Pinkl, and Roger Wattenhofer. BLAP: Bootstrapping Language-Audio Pre-training for Music Captioning. In Workshop on AI-Driven Speech, Music, and Sound Generation. 2024.">LPPW24</a>]</span></p></td>
+<td><p>Adapted LLM</p></td>
+<td><p>Captioning</p></td>
+<td><p>✅ <a class="reference external" href="https://huggingface.co/Tino3141/blap/tree/main">link</a></p></td>
+<td><p>Shutterstock (31k clips)</p></td>
+</tr>
+<tr class="row-even"><td><p>LLark <span id="id8">[<a class="reference internal" href="../introduction/overview.html#id52" title="Josh Gardner, Simon Durand, Daniel Stoller, and Rachel M Bittner. Llark: a multimodal foundation model for music. arXiv preprint arXiv:2310.07160, 2023.">GDSB23</a>]</span></p></td>
+<td><p>Adapted LLM</p></td>
+<td><p>Captioning, MQA</p></td>
+<td><p>❌</p></td>
+<td><p>MusicCaps, YouTube8M-MusicTextClips, MusicNet, FMA, MTG-Jamendo, MagnaTagATune</p></td>
+</tr>
+<tr class="row-odd"><td><p>MU-LLaMA <span id="id9">[<a class="reference internal" href="#id92" title="Shansong Liu, Atin Sakkeer Hussain, Chenshuo Sun, and Ying Shan. Music understanding llama: advancing text-to-music generation with question answering and captioning. In ICASSP 2024 - 2024 IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP), volume, 286-290. 2024. doi:10.1109/ICASSP48485.2024.10447027.">LHSS24</a>]</span></p></td>
+<td><p>Adapted LLM</p></td>
+<td><p>Captioning, MQA</p></td>
+<td><p>✅ <a class="reference external" href="https://huggingface.co/mu-llama/MU-LLaMA/tree/main">link</a></p></td>
+<td><p>MusicQA</p></td>
+</tr>
+<tr class="row-even"><td><p>MusiLingo <span id="id10">[<a class="reference internal" href="tasks.html#id78" title="Zihao Deng, Yinghao Ma, Yudong Liu, Rongchen Guo, Ge Zhang, Wenhu Chen, Wenhao Huang, and Emmanouil Benetos. MusiLingo: Bridging Music and Text with Pre-trained Language Models for Music Captioning and Query Response. In Kevin Duh, Helena Gomez, and Steven Bethard, editors, Findings of the Association for Computational Linguistics: NAACL 2024, 3643–3655. Mexico City, Mexico, June 2024. Association for Computational Linguistics. URL: https://aclanthology.org/2024.findings-naacl.231 (visited on 2024-07-04).">DML+24</a>]</span></p></td>
+<td><p>Adapted LLM</p></td>
+<td><p>Captioning, MQA</p></td>
+<td><p>✅ <a class="reference external" href="https://github.com/zihaod/MusiLingo?tab=readme-ov-file#model-checkpoints">link</a></p></td>
+<td><p>MusicInstruct</p></td>
+</tr>
+<tr class="row-odd"><td><p>M2UGen<span id="id11">[<a class="reference internal" href="#id96" title="Atin Sakkeer Hussain, Shansong Liu, Chenshuo Sun, and Ying Shan. M2UGen: Multi-modal Music Understanding and Generation with the Power of Large Language Models. arXiv preprint arXiv:2311.11255, 2023.">HLSS23</a>]</span></p></td>
+<td><p>Adapted LLM</p></td>
+<td><p>Captioning, MQA, music generation</p></td>
+<td><p>✅ <a class="reference external" href="https://huggingface.co/M2UGen">link</a></p></td>
+<td><p>MUCaps, MUEdit</p></td>
+</tr>
+<tr class="row-even"><td><p>OpenMU <span id="id12">[<a class="reference internal" href="#id348" title="Mengjie Zhao, Zhi Zhong, Zhuoyuan Mao, Shiqi Yang, Wei-Hsiang Liao, Shusuke Takahashi, Hiromi Wakaki, and Yuki Mitsufuji. Openmu: your swiss army knife for music understanding. arXiv preprint arXiv:2410.15573, 2024.">ZZM+24</a>]</span></p></td>
+<td><p>Adapted LLM</p></td>
+<td><p>Captioning, MQA</p></td>
+<td><p>✅ <a class="reference internal" href="#"><span class="xref myst">link</span></a></p></td>
+<td><p>MusicCaps, YouTube8M-MusicTextClips, MusicNet, FMA, MTG-Jamendo, MagnaTagATune</p></td>
+</tr>
+<tr class="row-odd"><td><p>FUTGA <span id="id13">[<a class="reference internal" href="tasks.html#id84" title="Junda Wu, Zachary Novack, Amit Namburi, Jiaheng Dai, Hao-Wen Dong, Zhouhang Xie, Carol Chen, and Julian McAuley. Futga: towards fine-grained music understanding through temporally-enhanced generative augmentation. arXiv preprint arXiv:2407.20445, 2024.">WNN+24</a>]</span></p></td>
+<td><p>Adapted LLM</p></td>
+<td><p>Captioning (fine-grained)</p></td>
+<td><p>✅ <a class="reference external" href="https://huggingface.co/JoshuaW1997/FUTGA">link</a></p></td>
+<td><p>FUTGA</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<section id="encoder-decoder">
+<span id="encoder-decoder-models"></span><h2>Encoder-Decoder 模型<a class="headerlink" href="#encoder-decoder" title="Link to this heading">#</a></h2>
+<p>这是最早的深度学习 music captioning 模型所采用的建模框架。
+Encoder-decoder 模型最初出现在序列到序列任务（如机器翻译）的背景下。不难看出，许多任务都可以被转化为序列到序列问题，因此 encoder-decoder 模型首先在图像字幕生成中得到广泛应用，随后很快被用于音频字幕生成，包括音乐领域。</p>
+<p>顾名思义，此类模型由两个主要模块组成：<em>encoder</em>（编码器）和 <em>decoder</em>（解码器）。尽管存在多种变体，但在最简单的设计中，encoder 负责将输入序列（即音频输入）处理为中间表示（上下文 <span class="math notranslate nohighlight">\(c\)</span>）：</p>
+<div class="math notranslate nohighlight">
+\[
+c = f_{\text{encoder}}(X)
+\]</div>
+<p>然后 decoder 将这一表示”展开”为目标序列（例如描述音频输入的文本），通常在序列的每一步计算可能 token 的概率分布，以上下文 <span class="math notranslate nohighlight">\(c\)</span> 为条件：</p>
+<div class="math notranslate nohighlight">
+\[
+P_{\theta}(Y | c) = \prod_{t=1}^{n} P(y_t | y_1, y_2, \ldots, y_{t-1}, c).
+\]</div>
+<section id="id14">
+<h3>架构<a class="headerlink" href="#id14" title="Link to this heading">#</a></h3>
+<p>在 encoder 和 decoder 组件的设计方面，一般原则是采用各自模态的最先进架构，在特定领域限制（例如需要在音乐信号中捕捉不同时间尺度的特征）的要求与我们可用的计算和数据资源之间取得平衡。这意味着理论上 encoder-decoder 音乐字幕生成模型有许多可能的设计，但大多数都遵循标准选择。下面我们回顾其中一些。</p>
+<p>第一个 encoder-decoder 音乐描述模型出现在 Choi <em>et al.</em> <span id="id15">[<a class="reference internal" href="#id85" title="Keunwoo Choi, George Fazekas, and Mark Sandler. Towards music captioning: generating music playlist descriptions. In Extended abstracts for the Late-Breaking Demo Session of the 17th International Society for Music Information Retrieval Conference. 08 2016. doi:10.48550/arXiv.1608.04868.">CFS16</a>]</span> 的工作中。虽然该模型尚未能生成格式良好的句子，但 Manco <em>et al.</em> 后来提出的 MusCaps <span id="id16">[<a class="reference internal" href="../introduction/overview.html#id51" title="Ilaria Manco, Emmanouil Benetos, Elio Quinton, and György Fazekas. Muscaps: generating captions for music audio. In 2021 International Joint Conference on Neural Networks (IJCNN), 1–8. IEEE, 2021.">MBQF21</a>]</span> 巩固了类似架构在轨道级 music captioning 中的使用。这些早期的 encoder-decoder 音乐字幕生成模型采用基于 CNN 的音频编码器和基于 RNN 的语言解码器。该框架的更新迭代版本通常使用基于 Transformer 的语言解码器（例如基于 GPT-2 <span id="id17">[<a class="reference internal" href="tasks.html#id67" title="Giovanni Gabbolini, Romain Hennequin, and Elena Epure. Data-efficient playlist captioning with musical and linguistic knowledge. In Yoav Goldberg, Zornitsa Kozareva, and Yue Zhang, editors, Proceedings of the 2022 Conference on Empirical Methods in Natural Language Processing, 11401–11415. Abu Dhabi, United Arab Emirates, December 2022. Association for Computational Linguistics. URL: https://aclanthology.org/2022.emnlp-main.784, doi:10.18653/v1/2022.emnlp-main.784.">GHE22</a>]</span> 或 BART <span id="id18">[<a class="reference internal" href="../introduction/overview.html#id53" title="SeungHeon Doh, Keunwoo Choi, Jongpil Lee, and Juhan Nam. Lp-musiccaps: llm-based pseudo music captioning. In International Society for Music Information Retrieval (ISMIR). 2023.">DCLN23</a>]</span> 等 Transformer decoder），搭配 CNN <span id="id19">[<a class="reference internal" href="tasks.html#id67" title="Giovanni Gabbolini, Romain Hennequin, and Elena Epure. Data-efficient playlist captioning with musical and linguistic knowledge. In Yoav Goldberg, Zornitsa Kozareva, and Yue Zhang, editors, Proceedings of the 2022 Conference on Empirical Methods in Natural Language Processing, 11401–11415. Abu Dhabi, United Arab Emirates, December 2022. Association for Computational Linguistics. URL: https://aclanthology.org/2022.emnlp-main.784, doi:10.18653/v1/2022.emnlp-main.784.">GHE22</a>]</span> 或 Transformer 音频编码器 <span id="id20">[<a class="reference internal" href="#id306" title="Nikita Srivatsan, Ke Chen, Shlomo Dubnov, and Taylor Berg-Kirkpatrick. Retrieval guided music captioning via multimodal prefixes. In Kate Larson, editor, Proceedings of the Thirty-Third International Joint Conference on Artificial Intelligence, IJCAI-24, 7762–7770. International Joint Conferences on Artificial Intelligence Organization, 8 2024. AI, Arts &amp; Creativity. URL: https://doi.org/10.24963/ijcai.2024/859, doi:10.24963/ijcai.2024/859.">SCDBK24</a>]</span>，有时还结合两者 <span id="id21">[<a class="reference internal" href="../introduction/overview.html#id53" title="SeungHeon Doh, Keunwoo Choi, Jongpil Lee, and Juhan Nam. Lp-musiccaps: llm-based pseudo music captioning. In International Society for Music Information Retrieval (ISMIR). 2023.">DCLN23</a>]</span>。</p>
+<figure class="align-center" id="id22">
+<a class="reference internal image-reference" href="../_images/encoder_decoder.png"><img alt="../_images/encoder_decoder.png" src="../_images/encoder_decoder.png" style="width: 600px;" />
+</a>
+</figure>
+</section>
+<section id="id23">
+<h3>条件机制与融合<a class="headerlink" href="#id23" title="Link to this heading">#</a></h3>
+<p>我们已经讨论了如何选择 encoder 和 decoder，那么如何将两者连接起来以实现两种模态之间的转换呢？当然，将 encoder 的输出传递给 decoder 有标准的方法，但由于我们处理的是不同的模态，这比通常需要更多注意。用于将语言生成以音频输入为条件的机制类型，实际上是不同 encoder-decoder 模型之间的一个关键区别。在实践中，这一选择与 encoder 和 decoder 模块的网络架构密切相关。在最简单的情况下，encoder 为整个输入序列输出一个固定大小的 embedding，我们称之为 <span class="math notranslate nohighlight">\(\boldsymbol{a}\)</span>，而 decoder（例如 RNN）以此 embedding 进行初始化。更准确地说，RNN 的初始状态 <span class="math notranslate nohighlight">\(\boldsymbol{h}_0\)</span> 被设置为 encoder 的输出，或其（非）线性投影：</p>
+<div class="math notranslate nohighlight">
+\[
+\boldsymbol{h}_0 = \boldsymbol{a}.
+\]</div>
+<p>然而在大多数情况下，我们使用更复杂的架构，条件机制通过音频和文本表示的**融合（fusion）**来实现。
+早期使用基于 RNN 的文本解码器的模型采用了多种融合机制，如特征拼接或跨模态 attention <span id="id24">[<a class="reference internal" href="../introduction/overview.html#id51" title="Ilaria Manco, Emmanouil Benetos, Elio Quinton, and György Fazekas. Muscaps: generating captions for music audio. In 2021 International Joint Conference on Neural Networks (IJCNN), 1–8. IEEE, 2021.">MBQF21</a>]</span>。在 RNN 中，拼接作为模态融合机制通常是将音频 embedding（例如 encoder 模块的输出 <span class="math notranslate nohighlight">\(\boldsymbol{a}\)</span>）与输入 <span class="math notranslate nohighlight">\(\boldsymbol{x}\)</span> 拼接，使 RNN 状态 <span class="math notranslate nohighlight">\(\boldsymbol{h}\)</span> 依赖于 <span class="math notranslate nohighlight">\([\boldsymbol{a}; \boldsymbol{x}]\)</span>，或与前一状态向量拼接 <span class="math notranslate nohighlight">\([\boldsymbol{a}; \boldsymbol{h}_{t-1}]\)</span>，有时两者兼用。在这种情况下，我们假设 encoder 产生单个音频 embedding。</p>
+<p>如果我们的 encoder 产生的是一系列音频 embedding，并且我们希望保留条件信号的序列特性，一种替代的融合方式是通过 <strong>cross-attention</strong>（交叉注意力）。在这种情况下，我们不再在每个时间步 <span class="math notranslate nohighlight">\(t\)</span> 拼接相同的音频 embedding，而是计算注意力分数 <span class="math notranslate nohighlight">\(\beta_{t i}\)</span>，以在每个时间步 <span class="math notranslate nohighlight">\(t\)</span> 对音频序列中的每个元素 <span class="math notranslate nohighlight">\(\boldsymbol{a}_i\)</span> 赋予不同的权重：</p>
+<div class="math notranslate nohighlight">
+\[
+\hat{\boldsymbol{a}}_t=\sum_{i=1}^L \beta_{t i} \boldsymbol{a}_i,
+\]</div>
+<p>其中注意力分数由以下公式给出：</p>
+<div class="math notranslate nohighlight">
+\[
+\beta_{t i}=\frac{\exp \left(e_{t i}\right)}{\sum_{k=1}^L \exp \left(e_{t k}\right)}.
+\]</div>
+<p><span class="math notranslate nohighlight">\(e_{t i}\)</span> 的具体计算取决于所使用的评分函数。例如，可以有：</p>
+<div class="math notranslate nohighlight">
+\[
+e_{t i}=\boldsymbol{w}_{a t t}^{\top} \tanh \left(\boldsymbol{W}^{a t t} [\boldsymbol{a}; \boldsymbol{h}_{t-1}]\right),
+\]</div>
+<p>其中 <span class="math notranslate nohighlight">\(\boldsymbol{w}_{a t t}\)</span> 和 <span class="math notranslate nohighlight">\(\boldsymbol{W}^{a t t}\)</span> 是可学习参数。</p>
+<p>类似的基于 attention 的融合方式也可用于基于 Transformer 的架构 <span id="id25">[<a class="reference internal" href="tasks.html#id67" title="Giovanni Gabbolini, Romain Hennequin, and Elena Epure. Data-efficient playlist captioning with musical and linguistic knowledge. In Yoav Goldberg, Zornitsa Kozareva, and Yue Zhang, editors, Proceedings of the 2022 Conference on Empirical Methods in Natural Language Processing, 11401–11415. Abu Dhabi, United Arab Emirates, December 2022. Association for Computational Linguistics. URL: https://aclanthology.org/2022.emnlp-main.784, doi:10.18653/v1/2022.emnlp-main.784.">GHE22</a>]</span> <span id="id26">[<a class="reference internal" href="../introduction/overview.html#id53" title="SeungHeon Doh, Keunwoo Choi, Jongpil Lee, and Juhan Nam. Lp-musiccaps: llm-based pseudo music captioning. In International Society for Music Information Retrieval (ISMIR). 2023.">DCLN23</a>]</span>。在这种设置下，除了上述的 cross-attention 外，融合还可以直接嵌入到 Transformer 块中，通过修改其 self-attention 机制使其同时依赖于文本和音频 embedding，尽管 co-attentional Transformer 层的具体实现在不同模型之间有所不同：</p>
+<div class="math notranslate nohighlight">
+\[
+\boldsymbol{A}\left(\boldsymbol{q}^{\text{text}}_{i}, \boldsymbol{K}^{\text{audio}}, \boldsymbol{V}^{\text{audio}}\right)=\operatorname{softmax}\left(\frac{\boldsymbol{q}^{\text{text}}_{i} K^{\text{audio}}}{\sqrt{d_{k}}}\right) \boldsymbol{V}^{\text{audio}}.
+\]</div>
+<figure class="align-center" id="lp-musiccaps">
+<a class="reference internal image-reference" href="../_images/lp_musiccaps.png"><img alt="../_images/lp_musiccaps.png" src="../_images/lp_musiccaps.png" style="width: 500px;" />
+</a>
+</figure>
+<p>除了所使用的融合机制类型外，根据模态组合的层级，通常还可以区分<em>早期融合</em>（即在输入层面）、<em>中间融合</em>（在整个处理流程中某个中间步骤产生的潜在表示层面）或<em>晚期融合</em>（即在输出层面）。需要注意的是，<em>早期、中间</em>和<em>晚期</em>融合这些术语并没有统一的定义，在不同的工作中使用方式略有不同。</p>
+</section>
+</section>
+<section id="multimodal-ar">
+<span id="id27"></span><h2>多模态自回归模型<a class="headerlink" href="#multimodal-ar" title="Link to this heading">#</a></h2>
+<p>大语言模型（LLM）的成功在近年来极大地影响了音乐描述的发展。因此，当今最先进的模型都在某种程度上依赖于 LLM。通常，这意味着音乐描述系统密切模仿基于 Transformer 的纯文本自回归建模，但在此框架内有两条主要路径可以选择。第一条也是最常见的路径是适配纯文本 LLM，通过增加额外的建模组件使其成为多模态模型。我们称这些为 <em>adapted LLM</em>（经过适配的 LLM）。第二种选择是从一开始就将音频和文本视为 token 序列，设计分词技术并在多种模态上进行训练，而无需额外的模态特定组件。这两种方法之间的界限并不总是清晰的。在下一节中，我们尝试更好地定义适配于音乐-语言输入的 LLM 的显著特征，并勾勒出原生多模态模型的新趋势及其在音乐描述中的潜力。</p>
+<p>总的来说，这一研究方向的共同主线是试图通过将所有多模态任务重新表述为文本生成来统一它们。当在音乐数据上训练时，多模态 LLM 可以利用其基于文本的接口来支持各种音乐理解和描述任务，只需允许用户通过文本查询并获取关于给定音频输入的信息。这正是实现我们在<a class="reference internal" href="tasks.html#description-tasks"><span class="std std-ref">任务</span></a>章节中看到的基于对话的音乐描述任务的机制。</p>
+<section id="adapted-llm-llm">
+<span id="adapted-llms"></span><h3>Adapted LLM（经过适配的 LLM）<a class="headerlink" href="#adapted-llm-llm" title="Link to this heading">#</a></h3>
+<p>在音频描述（包括音乐）中，一种特别流行的建模范式是 adapted（多模态）LLM。这种方法的核心是一个预训练的纯文本 LLM，它被适配为能够接收不同模态的输入，例如音频。这通过一个 <em>adapter</em>（适配器）模块实现——一个轻量级神经网络，经过训练将音频特征提取器（通常是预训练后冻结的）产生的 embedding 映射到 LLM 的输入空间。经过这一适配过程，LLM 就可以同时接收音频 embedding 和文本 embedding。</p>
+<figure class="align-center" id="adapted-llm">
+<a class="reference internal image-reference" href="../_images/adapted.png"><img alt="../_images/adapted.png" src="../_images/adapted.png" style="width: 600px;" />
+</a>
+</figure>
+<p>在用于音乐的 adapted LLM 中，adapter 模块的架构通常由轻量级的 MLP（2到3个隐藏层）或 Q-Former 组成。在通用音频 adapted LLM（或视觉领域的类似模型）中使用的其他架构还包括更复杂的设计，如 Gated XATTN dense layers。<a class="reference external" href="https://lilianweng.github.io/posts/2022-06-09-vlm/">这篇关于 Visual Language Models 的博客文章</a>对这些进行了更详细的介绍。</p>
+<p>从训练的角度来看，与纯文本设置类似，adapted LLM 的训练通常分为多个阶段。在纯文本部分的预训练和微调之后，其余组件经历一系列多模态训练阶段，同时骨干 LLM 要么保持冻结，要么进一步微调。这些步骤通常是多任务预训练和有监督微调的组合，通常还包括指令微调（instruction tuning），所有这些都在音频和文本配对数据上进行。</p>
+<p>除了 <a class="reference internal" href="#description-models-table"><span class="std std-numref">Table 1</span></a> 中专门面向音乐的多模态 LLM 外，具有通用音频理解能力的 LLM 同样可以执行 captioning 和 MQA 等音乐描述任务。其中包括：</p>
+<ul class="simple">
+<li><p>SALMONN <span id="id28">[<a class="reference internal" href="#id97" title="Changli Tang, Wenyi Yu, Guangzhi Sun, Xianzhao Chen, Tian Tan, Wei Li, Lu Lu, Zejun Ma, and Chao Zhang. SALMONN: Towards Generic Hearing Abilities for Large Language Models. In The Twelfth International Conference on Learning Representations. October 2023. URL: https://openreview.net/forum?id=14rn7HpKVk (visited on 2024-02-22).">TYS+23</a>]</span></p></li>
+<li><p>Pengi <span id="id29">[<a class="reference internal" href="#id98" title="Soham Deshmukh, Benjamin Elizalde, Rita Singh, and Huaming Wang. Pengi: An Audio Language Model for Audio Tasks. In Thirty-seventh Conference on Neural Information Processing Systems. 2023. arXiv:2305.11834 [cs, eess]. URL: http://arxiv.org/abs/2305.11834 (visited on 2024-02-16), doi:10.48550/arXiv.2305.11834.">DESW23</a>]</span></p></li>
+<li><p>Qwen-Audio <span id="id30">[<a class="reference internal" href="#id99" title="Yunfei Chu, Jin Xu, Xiaohuan Zhou, Qian Yang, Shiliang Zhang, Zhijie Yan, Chang Zhou, and Jingren Zhou. Qwen-Audio: Advancing Universal Audio Understanding via Unified Large-Scale Audio-Language Models. December 2023. arXiv:2311.07919 [cs, eess]. URL: http://arxiv.org/abs/2311.07919 (visited on 2024-02-26), doi:10.48550/arXiv.2311.07919.">CXZ+23</a>]</span></p></li>
+<li><p>LTU <span id="id31">[<a class="reference internal" href="#id350" title="Yuan Gong, Hongyin Luo, Alexander H Liu, Leonid Karlinsky, and James Glass. Listen, think, and understand. arXiv preprint arXiv:2305.10790, 2023.">GLL+23</a>]</span></p></li>
+<li><p>Audio Flamingo <span id="id32">[<a class="reference internal" href="#id351" title="Zhifeng Kong, Arushi Goel, Rohan Badlani, Wei Ping, Rafael Valle, and Bryan Catanzaro. Audio flamingo: a novel audio language model with few-shot learning and dialogue abilities. In ICML. 2024. URL: https://openreview.net/forum?id=WYi3WKZjYe.">KGB+24</a>]</span></p></li>
+<li><p>Audio-LLM <span id="id33">[<a class="reference internal" href="#id349" title="Dongting Li, Chenchong Tang, and Han Liu. Audio-llm: activating theâ capabilities ofâ large language models toâ comprehend audio data. In Xinyi Le and Zhijun Zhang, editors, Advances in Neural Networks – ISNN 2024, 133–142. Singapore, 2024. Springer Nature Singapore.">LTL24</a>]</span></p></li>
+</ul>
+</section>
+<section id="id34">
+<h3>原生多模态自回归模型<a class="headerlink" href="#id34" title="Link to this heading">#</a></h3>
+<p>Adapted LLM 可以相对高效地将纯文本 LLM 转化为多模态模型：根据本节讨论的模型，适配阶段的训练大约需要 2万到15万个音频-文本配对样本，而多模态预训练则需要多出几个数量级的数据。然而，这也限制了它们的性能，往往导致对语言模态的偏向以及较差的音频和音乐理解能力 <span id="id35">[<a class="reference internal" href="#id95" title="Benno Weck, Ilaria Manco, Emmanouil Benetos, Elio Quinton, George Fazekas, and Dmitry Bogdanov. MuChoMusic: Evaluating Music Understanding in Multimodal Audio-Language Models. In 25th International Society for Music Information Retrieval Conference. August 2024. arXiv:2408.01337 [cs, eess]. URL: http://arxiv.org/abs/2408.01337 (visited on 2024-08-21), doi:10.48550/arXiv.2408.01337.">WMB+24</a>]</span>。一种有望克服这一局限的替代方案是采用原生多模态的自回归建模方法。一个关键区别在于，adapted LLM 需要模态特定的编码器（通常是单独预训练的），而原生多模态 LLM 则放弃这些，转而采用统一的分词方案，从一开始就将音频 token 像文本 token 一样处理。
+这一范式有时被称为混合模态早期融合建模（mixed-modal early-fusion modelling）。</p>
+<p>值得注意的是，目前这类模型对于音乐描述来说是一个有前景的方向，而非完全成熟的范式。目前尚不存在专门面向音乐的多模态自回归 Transformer 模型，但一些通用模型，如 AnyGPT <span id="id36">[<a class="reference internal" href="#id347" title="Jun Zhan, Junqi Dai, Jiasheng Ye, Yunhua Zhou, Dong Zhang, Zhigeng Liu, Xin Zhang, Ruibin Yuan, Ge Zhang, Linyang Li, Hang Yan, Jie Fu, Tao Gui, Tianxiang Sun, Yu-Gang Jiang, and Xipeng Qiu. AnyGPT: unified multimodal LLM with discrete sequence modeling. In Lun-Wei Ku, Andre Martins, and Vivek Srikumar, editors, Proceedings of the 62nd Annual Meeting of the Association for Computational Linguistics (Volume 1: Long Papers), 9637–9662. Bangkok, Thailand, August 2024. Association for Computational Linguistics. URL: https://aclanthology.org/2024.acl-long.521, doi:10.18653/v1/2024.acl-long.521.">ZDY+24</a>]</span>，在其训练和评估中包含了音乐领域的数据。这与开发覆盖所有领域的大规模模型的总体趋势一致，但这一建模范式在未来几年对音乐描述的影响仍有待观察。</p>
+</section>
+</section>
+<section id="id37">
+<h2>参考文献<a class="headerlink" href="#id37" title="Link to this heading">#</a></h2>
+<div class="docutils container" id="id38">
+<div role="list" class="citation-list">
+<div class="citation" id="id85" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id15">CFS16</a><span class="fn-bracket">]</span></span>
+<p>Keunwoo Choi, George Fazekas, and Mark Sandler. Towards music captioning: generating music playlist descriptions. In <em>Extended abstracts for the Late-Breaking Demo Session of the 17th International Society for Music Information Retrieval Conference</em>. 08 2016. <a class="reference external" href="https://doi.org/10.48550/arXiv.1608.04868">doi:10.48550/arXiv.1608.04868</a>.</p>
+</div>
+<div class="citation" id="id99" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id30">CXZ+23</a><span class="fn-bracket">]</span></span>
+<p>Yunfei Chu, Jin Xu, Xiaohuan Zhou, Qian Yang, Shiliang Zhang, Zhijie Yan, Chang Zhou, and Jingren Zhou. Qwen-Audio: Advancing Universal Audio Understanding via Unified Large-Scale Audio-Language Models. December 2023. arXiv:2311.07919 [cs, eess]. URL: <a class="reference external" href="http://arxiv.org/abs/2311.07919">http://arxiv.org/abs/2311.07919</a> (visited on 2024-02-26), <a class="reference external" href="https://doi.org/10.48550/arXiv.2311.07919">doi:10.48550/arXiv.2311.07919</a>.</p>
+</div>
+<div class="citation" id="id94" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id10">DML+24</a><span class="fn-bracket">]</span></span>
+<p>Zihao Deng, Yinghao Ma, Yudong Liu, Rongchen Guo, Ge Zhang, Wenhu Chen, Wenhao Huang, and Emmanouil Benetos. MusiLingo: Bridging Music and Text with Pre-trained Language Models for Music Captioning and Query Response. In Kevin Duh, Helena Gomez, and Steven Bethard, editors, <em>Findings of the Association for Computational Linguistics: NAACL 2024</em>, 3643–3655. Mexico City, Mexico, June 2024. Association for Computational Linguistics. URL: <a class="reference external" href="https://aclanthology.org/2024.findings-naacl.231">https://aclanthology.org/2024.findings-naacl.231</a> (visited on 2024-07-04).</p>
+</div>
+<div class="citation" id="id98" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id29">DESW23</a><span class="fn-bracket">]</span></span>
+<p>Soham Deshmukh, Benjamin Elizalde, Rita Singh, and Huaming Wang. Pengi: An Audio Language Model for Audio Tasks. In <em>Thirty-seventh Conference on Neural Information Processing Systems</em>. 2023. arXiv:2305.11834 [cs, eess]. URL: <a class="reference external" href="http://arxiv.org/abs/2305.11834">http://arxiv.org/abs/2305.11834</a> (visited on 2024-02-16), <a class="reference external" href="https://doi.org/10.48550/arXiv.2305.11834">doi:10.48550/arXiv.2305.11834</a>.</p>
+</div>
+<div class="citation" id="id61" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>DCLN23<span class="fn-bracket">]</span></span>
+<span class="backrefs">(<a role="doc-backlink" href="#id18">1</a>,<a role="doc-backlink" href="#id21">2</a>,<a role="doc-backlink" href="#id26">3</a>)</span>
+<p>SeungHeon Doh, Keunwoo Choi, Jongpil Lee, and Juhan Nam. Lp-musiccaps: llm-based pseudo music captioning. In <em>International Society for Music Information Retrieval (ISMIR)</em>. 2023.</p>
+</div>
+<div class="citation" id="id83" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>GHE22<span class="fn-bracket">]</span></span>
+<span class="backrefs">(<a role="doc-backlink" href="#id4">1</a>,<a role="doc-backlink" href="#id17">2</a>,<a role="doc-backlink" href="#id19">3</a>,<a role="doc-backlink" href="#id25">4</a>)</span>
+<p>Giovanni Gabbolini, Romain Hennequin, and Elena Epure. Data-efficient playlist captioning with musical and linguistic knowledge. In Yoav Goldberg, Zornitsa Kozareva, and Yue Zhang, editors, <em>Proceedings of the 2022 Conference on Empirical Methods in Natural Language Processing</em>, 11401–11415. Abu Dhabi, United Arab Emirates, December 2022. Association for Computational Linguistics. URL: <a class="reference external" href="https://aclanthology.org/2022.emnlp-main.784">https://aclanthology.org/2022.emnlp-main.784</a>, <a class="reference external" href="https://doi.org/10.18653/v1/2022.emnlp-main.784">doi:10.18653/v1/2022.emnlp-main.784</a>.</p>
+</div>
+<div class="citation" id="id60" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id8">GDSB23</a><span class="fn-bracket">]</span></span>
+<p>Josh Gardner, Simon Durand, Daniel Stoller, and Rachel M Bittner. Llark: a multimodal foundation model for music. <em>arXiv preprint arXiv:2310.07160</em>, 2023.</p>
+</div>
+<div class="citation" id="id350" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id31">GLL+23</a><span class="fn-bracket">]</span></span>
+<p>Yuan Gong, Hongyin Luo, Alexander H Liu, Leonid Karlinsky, and James Glass. Listen, think, and understand. <em>arXiv preprint arXiv:2305.10790</em>, 2023.</p>
+</div>
+<div class="citation" id="id307" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id6">HHL+23</a><span class="fn-bracket">]</span></span>
+<p>Zihao He, Weituo Hao, Wei-Tsung Lu, Changyou Chen, Kristina Lerman, and Xuchen Song. Alcap: alignment-augmented music captioner. In <em>Proceedings of the 2023 Conference on Empirical Methods in Natural Language Processing</em>, 16501–16512. 2023.</p>
+</div>
+<div class="citation" id="id96" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id11">HLSS23</a><span class="fn-bracket">]</span></span>
+<p>Atin Sakkeer Hussain, Shansong Liu, Chenshuo Sun, and Ying Shan. M2UGen: Multi-modal Music Understanding and Generation with the Power of Large Language Models. <em>arXiv preprint arXiv:2311.11255</em>, 2023.</p>
+</div>
+<div class="citation" id="id351" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id32">KGB+24</a><span class="fn-bracket">]</span></span>
+<p>Zhifeng Kong, Arushi Goel, Rohan Badlani, Wei Ping, Rafael Valle, and Bryan Catanzaro. Audio flamingo: a novel audio language model with few-shot learning and dialogue abilities. In <em>ICML</em>. 2024. URL: <a class="reference external" href="https://openreview.net/forum?id=WYi3WKZjYe">https://openreview.net/forum?id=WYi3WKZjYe</a>.</p>
+</div>
+<div class="citation" id="id342" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id7">LPPW24</a><span class="fn-bracket">]</span></span>
+<p>Luca A Lanzendorfer, Nathanal Perraudin, Constantin Pinkl, and Roger Wattenhofer. BLAP: Bootstrapping Language-Audio Pre-training for Music Captioning. In <em>Workshop on AI-Driven Speech, Music, and Sound Generation</em>. 2024.</p>
+</div>
+<div class="citation" id="id349" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id33">LTL24</a><span class="fn-bracket">]</span></span>
+<p>Dongting Li, Chenchong Tang, and Han Liu. Audio-llm: activating theâ capabilities ofâ large language models toâ comprehend audio data. In Xinyi Le and Zhijun Zhang, editors, <em>Advances in Neural Networks – ISNN 2024</em>, 133–142. Singapore, 2024. Springer Nature Singapore.</p>
+</div>
+<div class="citation" id="id92" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id9">LHSS24</a><span class="fn-bracket">]</span></span>
+<p>Shansong Liu, Atin Sakkeer Hussain, Chenshuo Sun, and Ying Shan. Music understanding llama: advancing text-to-music generation with question answering and captioning. In <em>ICASSP 2024 - 2024 IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP)</em>, volume, 286–290. 2024. <a class="reference external" href="https://doi.org/10.1109/ICASSP48485.2024.10447027">doi:10.1109/ICASSP48485.2024.10447027</a>.</p>
+</div>
+<div class="citation" id="id59" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>MBQF21<span class="fn-bracket">]</span></span>
+<span class="backrefs">(<a role="doc-backlink" href="#id2">1</a>,<a role="doc-backlink" href="#id3">2</a>,<a role="doc-backlink" href="#id5">3</a>,<a role="doc-backlink" href="#id16">4</a>,<a role="doc-backlink" href="#id24">5</a>)</span>
+<p>Ilaria Manco, Emmanouil Benetos, Elio Quinton, and György Fazekas. Muscaps: generating captions for music audio. In <em>2021 International Joint Conference on Neural Networks (IJCNN)</em>, 1–8. IEEE, 2021.</p>
+</div>
+<div class="citation" id="id306" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id20">SCDBK24</a><span class="fn-bracket">]</span></span>
+<p>Nikita Srivatsan, Ke Chen, Shlomo Dubnov, and Taylor Berg-Kirkpatrick. Retrieval guided music captioning via multimodal prefixes. In Kate Larson, editor, <em>Proceedings of the Thirty-Third International Joint Conference on Artificial Intelligence, IJCAI-24</em>, 7762–7770. International Joint Conferences on Artificial Intelligence Organization, 8 2024. AI, Arts &amp; Creativity. URL: <a class="reference external" href="https://doi.org/10.24963/ijcai.2024/859">https://doi.org/10.24963/ijcai.2024/859</a>, <a class="reference external" href="https://doi.org/10.24963/ijcai.2024/859">doi:10.24963/ijcai.2024/859</a>.</p>
+</div>
+<div class="citation" id="id97" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id28">TYS+23</a><span class="fn-bracket">]</span></span>
+<p>Changli Tang, Wenyi Yu, Guangzhi Sun, Xianzhao Chen, Tian Tan, Wei Li, Lu Lu, Zejun Ma, and Chao Zhang. SALMONN: Towards Generic Hearing Abilities for Large Language Models. In <em>The Twelfth International Conference on Learning Representations</em>. October 2023. URL: <a class="reference external" href="https://openreview.net/forum?id=14rn7HpKVk">https://openreview.net/forum?id=14rn7HpKVk</a> (visited on 2024-02-22).</p>
+</div>
+<div class="citation" id="id95" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id35">WMB+24</a><span class="fn-bracket">]</span></span>
+<p>Benno Weck, Ilaria Manco, Emmanouil Benetos, Elio Quinton, George Fazekas, and Dmitry Bogdanov. MuChoMusic: Evaluating Music Understanding in Multimodal Audio-Language Models. In <em>25th International Society for Music Information Retrieval Conference</em>. August 2024. arXiv:2408.01337 [cs, eess]. URL: <a class="reference external" href="http://arxiv.org/abs/2408.01337">http://arxiv.org/abs/2408.01337</a> (visited on 2024-08-21), <a class="reference external" href="https://doi.org/10.48550/arXiv.2408.01337">doi:10.48550/arXiv.2408.01337</a>.</p>
+</div>
+<div class="citation" id="id100" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id13">WNN+24</a><span class="fn-bracket">]</span></span>
+<p>Junda Wu, Zachary Novack, Amit Namburi, Jiaheng Dai, Hao-Wen Dong, Zhouhang Xie, Carol Chen, and Julian McAuley. Futga: towards fine-grained music understanding through temporally-enhanced generative augmentation. <em>arXiv preprint arXiv:2407.20445</em>, 2024.</p>
+</div>
+<div class="citation" id="id347" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id36">ZDY+24</a><span class="fn-bracket">]</span></span>
+<p>Jun Zhan, Junqi Dai, Jiasheng Ye, Yunhua Zhou, Dong Zhang, Zhigeng Liu, Xin Zhang, Ruibin Yuan, Ge Zhang, Linyang Li, Hang Yan, Jie Fu, Tao Gui, Tianxiang Sun, Yu-Gang Jiang, and Xipeng Qiu. AnyGPT: unified multimodal LLM with discrete sequence modeling. In Lun-Wei Ku, Andre Martins, and Vivek Srikumar, editors, <em>Proceedings of the 62nd Annual Meeting of the Association for Computational Linguistics (Volume 1: Long Papers)</em>, 9637–9662. Bangkok, Thailand, August 2024. Association for Computational Linguistics. URL: <a class="reference external" href="https://aclanthology.org/2024.acl-long.521">https://aclanthology.org/2024.acl-long.521</a>, <a class="reference external" href="https://doi.org/10.18653/v1/2024.acl-long.521">doi:10.18653/v1/2024.acl-long.521</a>.</p>
+</div>
+<div class="citation" id="id348" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id12">ZZM+24</a><span class="fn-bracket">]</span></span>
+<p>Mengjie Zhao, Zhi Zhong, Zhuoyuan Mao, Shiqi Yang, Wei-Hsiang Liao, Shusuke Takahashi, Hiromi Wakaki, and Yuki Mitsufuji. Openmu: your swiss army knife for music understanding. <em>arXiv preprint arXiv:2410.15573</em>, 2024.</p>
+</div>
+</div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./description"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="tasks.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">任务</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="datasets.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">数据集</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#encoder-decoder">Encoder-Decoder 模型</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">架构</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id23">条件机制与融合</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#multimodal-ar">多模态自回归模型</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adapted-llm-llm">Adapted LLM（经过适配的 LLM）</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id34">原生多模态自回归模型</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id37">参考文献</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Seung Heon Doh, Ilaria Manco, Zachary Novack, Jong Wook Kim, Ke Chen
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

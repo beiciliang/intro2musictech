@@ -1,0 +1,787 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>模型 &#8212; 连接音乐音频与自然语言</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=9c3e77be" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=1ae7504c"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'retrieval/models';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="评估" href="evaluate.html" />
+    <link rel="prev" title="简介" href="intro.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="连接音乐音频与自然语言 - Home"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="连接音乐音频与自然语言 - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    连接音乐音频与自然语言
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">第一章 引言</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../introduction/background.html">背景</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../introduction/overview.html">教程概览</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../introduction/advantange.html">为什么选择自然语言？</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">第二章 语言模型概述</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../lm/intro.html">简介</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lm/framework.html">框架</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lm/advances.html">研究进展</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lm/challenges.html">挑战</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">第三章 音乐描述</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../description/intro.html">概述</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../description/tasks.html">任务</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../description/models.html">模型</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../description/datasets.html">数据集</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../description/evaluation.html">评估</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../description/code.html">代码实践</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">第四章 文本到音乐检索</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="intro.html">简介</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">模型</a></li>
+<li class="toctree-l1"><a class="reference internal" href="evaluate.html">评估</a></li>
+<li class="toctree-l1"><a class="reference internal" href="code.html">代码实践</a></li>
+<li class="toctree-l1"><a class="reference internal" href="challenge.html">挑战</a></li>
+<li class="toctree-l1"><a class="reference internal" href="conversational_retrieval.html">对话式检索</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">第五章 文本到音乐生成</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../generation/intro.html">简介</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../generation/evaluation.html">评估</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../generation/lmmodel.html">MusicGEN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../generation/diffusionmodel.html">基于 Diffusion Model 的文本到音乐生成</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../generation/code.html">代码教程</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">第六章 总结</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../conclusion/intro.html">总结</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../conclusion/beyondaudio.html">超越音频模态</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../conclusion/beyondtext.html">超越基于文本的交互</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">参考文献</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../bibliography.html">Bibliography</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/beiciliang/intro2musictech" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/beiciliang/intro2musictech/issues/new?title=Issue%20on%20page%20%2Fretrieval/models.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/retrieval/models.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>模型</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">多模态联合嵌入模型架构</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">度量学习损失函数</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">联合嵌入的优势是什么？</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">模型</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">音频-标签联合嵌入</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">音频-句子联合嵌入</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id25">超越语义属性，迈向相似性查询处理</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id27">训练音频-文本联合嵌入模型的技巧</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id28">利用多样化的训练数据源</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id31">使用预训练模型初始化</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id33">应用文本增强技术</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id36">采用策略性负采样</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id40">参考文献</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="id1">
+<h1>模型<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
+<p>音乐检索系统已经从简单的分类方法发展到能够处理自然语言查询的更复杂方法。音频-文本联合嵌入（Audio-text joint embedding）代表了该领域的重大进步，为音乐与文本描述的匹配提供了强大的框架。这种基于多模态深度度量学习的方法，使用户能够使用灵活的自然语言描述来搜索音乐，而不受限于预定义的类别。通过将音频内容和文本描述投射到共享的嵌入空间（embedding space）中，系统可以高效地计算音乐与文本之间的相似度，从而实现根据任意文本查询检索最匹配音乐的功能。</p>
+<figure class="align-default" id="classification-to-joint-embedding">
+<img alt="../_images/cls_to_je.png" src="../_images/cls_to_je.png" />
+</figure>
+<section id="id2">
+<h2>多模态联合嵌入模型架构<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
+<p>从高层来看，联合嵌入模型（joint embedding model）使用配对的文本和音频样本进行训练。模型学习将语义相关的配对映射到共享嵌入空间中相近的位置，同时将不相关的样本推开。这样就创建了一种有意义的几何排列，其中嵌入之间的距离反映了它们的语义相似度。</p>
+<p>令 <span class="math notranslate nohighlight">\(x_{a}\)</span> 表示一个音乐音频样本，<span class="math notranslate nohighlight">\(x_{t}\)</span> 表示其配对的文本描述。函数 <span class="math notranslate nohighlight">\(f(\cdot)\)</span> 和 <span class="math notranslate nohighlight">\(g(\cdot)\)</span> 分别表示音频编码器和文本编码器，通常实现为深度神经网络。音频编码器处理原始音频波形或频谱图以提取相关的声学特征，而文本编码器将文本描述转换为密集向量表示。每个编码器输出的特征嵌入随后通过投影层映射到共享的协同嵌入空间（co-embedding space），以对齐嵌入的维度和尺度。在训练过程中，模型通常使用基于铰链间隔的 <code class="docutils literal notranslate"><span class="pre">triplet</span> <span class="pre">loss</span></code>（三元组损失）或基于交叉熵的 <code class="docutils literal notranslate"><span class="pre">contrastive</span> <span class="pre">loss</span></code>（对比损失）来学习这些映射。这些损失函数鼓励模型最小化正样本对之间的距离，同时最大化负样本对之间的距离，从而有效地塑造嵌入空间的结构。</p>
+</section>
+<section id="id3">
+<h2>度量学习损失函数<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
+<p>用于训练联合嵌入模型的最常见度量学习损失函数是 triplet loss 和 contrastive loss。</p>
+<figure class="align-default" id="loss-functions">
+<img alt="../_images/loss_function.png" src="../_images/loss_function.png" />
+</figure>
+<p>triplet loss 模型的目标是学习一个嵌入空间，使得语义相关的输入对在潜在空间中的映射比不相关的对更接近。对于每个训练样本，模型接收一个锚定音频输入、一个与该音频匹配的正文本描述以及一个不相关的负文本描述。目标函数表述如下：</p>
+<div class="math notranslate nohighlight">
+\[
+\mathcal{L}_{triplet}= \text{max}(0, - f(x_{a}) \cdot g(x_{t}^{+}) + f(x_{a}) \cdot g(x_{t}^{-}) + \delta )
+\]</div>
+<p>其中 <span class="math notranslate nohighlight">\(\delta\)</span> 是控制正负样本对之间最小距离的间隔超参数，<span class="math notranslate nohighlight">\(f(x_{a})\)</span> 是锚定样本的音频嵌入，<span class="math notranslate nohighlight">\(g(x_{t}^{+})\)</span> 是正描述的文本嵌入，<span class="math notranslate nohighlight">\(g(x_{t}^{-})\)</span> 是负描述的文本嵌入。点积用于衡量嵌入之间的相似度。损失函数鼓励锚定样本与正样本对之间的相似度比锚定样本与负样本对之间的相似度至少大 <span class="math notranslate nohighlight">\(\delta\)</span>。</p>
+<p>contrastive loss 模型的核心思想是在整个 mini-batch 样本中减小正样本对之间的距离，同时增大负样本对之间的距离。与每个锚点只使用一个负样本的 triplet loss 不同，contrastive loss 模型利用大小为 <span class="math notranslate nohighlight">\(N\)</span> 的 mini-batch 中存在的多个负样本。在训练过程中，音频编码器和文本编码器被联合优化，以最大化 <span class="math notranslate nohighlight">\(N\)</span> 个正（音乐，文本）配对的相似度，同时最小化 <span class="math notranslate nohighlight">\(N \times (N-1)\)</span> 个负配对的相似度。这种方法被称为 InfoNCE 损失的多模态版本 <span id="id4">[<a class="reference internal" href="#id251" title="Aaron van den Oord, Yazhe Li, and Oriol Vinyals. Representation learning with contrastive predictive coding. arXiv:1807.03748, 2018.">OLV18</a>]</span>，<span id="id5">[<a class="reference internal" href="#id70" title="Alec Radford, Jong Wook Kim, Chris Hallacy, Aditya Ramesh, Gabriel Goh, Sandhini Agarwal, Girish Sastry, Amanda Askell, Pamela Mishkin, Jack Clark, and others. Learning transferable visual models from natural language supervision. In International conference on machine learning, 8748–8763. PMLR, 2021.">RKH+21</a>]</span>，通过同时考虑多个负样本实现了更高效的训练。损失函数表述如下：</p>
+<div class="math notranslate nohighlight">
+\[
+\mathcal{L}_\text{Contrastive} = - \frac{1}{N} \sum_{i=1}^N \log \frac{\exp(f(x_{a_i}) \cdot g(x_{t_i}^{+}) / \tau)}{\sum_{j=1}^N \exp(f(x_{a_i}) \cdot g(x_{t_j}) / \tau)}
+\]</div>
+<p>其中 <span class="math notranslate nohighlight">\(\tau\)</span> 是一个可学习的参数。</p>
+</section>
+<section id="id6">
+<h2>联合嵌入的优势是什么？<a class="headerlink" href="#id6" title="Link to this heading">#</a></h2>
+<figure class="align-default" id="joint-embedding-benefit">
+<img alt="../_images/benefit.png" src="../_images/benefit.png" />
+</figure>
+<p>联合嵌入的关键优势在于，它允许我们利用预训练语言模型的嵌入空间作为监督信号，而不是受限于固定的词汇表。预训练语言模型在互联网上的大规模文本语料库上训练，有效地编码了词汇和短语之间丰富的语义关系。这使得音乐检索系统能够通过利用这些全面的语言表示来高效处理零样本（zero-shot）用户查询，这些表示捕获了细微的含义和关联。</p>
+<p>此外，通过引入语言模型编码器，我们可以借助先进的子词分词技术（如 byte-pair encoding（BPE）或 sentence-piece encoding）有效地解决词汇表外问题。这些分词方法能够智能地将未知词拆分为模型词汇表中已有的更小子词单元。例如，如果用户查询一个不熟悉的艺术家名字”Radiohead”，分词器可能会将其拆分为”radio”+”head”，使系统能够根据其组成部分来处理和理解这个新词。</p>
+<p>预训练语言模型语义和子词分词的强大组合提供了两个关键优势：</p>
+<ol class="arabic simple">
+<li><p>通过语言模型表示灵活处理开放词汇查询——系统可以利用预训练语言模型中编码的丰富语义知识来理解和处理几乎无限范围的自然语言描述</p></li>
+<li><p>通过子词分词稳健处理词汇表外的词——即使是完全新颖或罕见的术语，也可以通过将其拆分为有意义的子词组件来有效处理，确保系统在遇到新词汇时仍然保持功能和准确性</p></li>
+</ol>
+</section>
+<section id="id7">
+<h2>模型<a class="headerlink" href="#id7" title="Link to this heading">#</a></h2>
+<p>在本节中，我们全面回顾了用于音乐检索的音频-文本联合嵌入模型的最新进展。我们考察了这些模型如何从简单的词嵌入方法演变为利用预训练语言模型和 contrastive learning（对比学习）的更深层架构。此外，我们讨论了实用的设计选择和实现技巧，这些可以帮助研究人员和从业者构建稳健的音频-文本联合嵌入系统。</p>
+<section id="id8">
+<h3>音频-标签联合嵌入<a class="headerlink" href="#id8" title="Link to this heading">#</a></h3>
+<figure class="align-default" id="audio-tag-joint-embedding">
+<img alt="../_images/choi_zeroshot.png" src="../_images/choi_zeroshot.png" />
+</figure>
+<p>首个引入 ISMIR 社区的重要音频-文本联合嵌入工作由 <span id="id9">[<a class="reference internal" href="#id55" title="Jeong Choi, Jongpil Lee, Jiyoung Park, and Juhan Nam. Zero-shot learning for audio-based music classification and tagging. In ISMIR. 2019.">CLPN19</a>]</span> 提出。他们的研究展示了预训练词嵌入（特别是 GloVe（Global Vectors for Word Representation））在零样本音乐标注和检索场景中的有效性。这种方法使模型能够理解和处理训练期间从未见过的音乐属性。</p>
+<p>在此基础上，<span id="id10">[<a class="reference internal" href="#id92" title="Minz Won, Sergio Oramas, Oriol Nieto, Fabien Gouyon, and Xavier Serra. Multimodal metric learning for tag-based music retrieval. In ICASSP 2021-2021 IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP), 591–595. IEEE, 2021.">WON+21</a>]</span> 通过纳入协同过滤嵌入扩展了纯音频分析的范围。这一创新使模型能够同时捕获声学属性（音乐如何听起来）和文化方面（人们如何与音乐互动和感知音乐）。<span id="id11">[<a class="reference internal" href="#id92" title="Minz Won, Sergio Oramas, Oriol Nieto, Fabien Gouyon, and Xavier Serra. Multimodal metric learning for tag-based music retrieval. In ICASSP 2021-2021 IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP), 591–595. IEEE, 2021.">WON+21</a>]</span> 和 <span id="id12">[<a class="reference internal" href="#id91" title="SeungHeon Doh, Jongpil Lee, Dasaem Jeong, and Juhan Nam. Musical word embedding for music tagging and retrieval. arXiv preprint arXiv:2404.13569, 2024.">DLJN24</a>]</span> 的进一步研究解决了通用词嵌入的一个关键限制——缺乏音乐特定的上下文。他们开发了专门针对音乐领域词汇和概念训练的音频-文本联合嵌入，从而获得了更准确的音乐相关表示。</p>
+<p>然而，这些早期模型在处理更复杂的查询时遇到了显著的限制。具体来说，它们在处理多属性查询（例如，”happy, energetic, rock”）或复杂的句子级查询（例如，”a song that reminds me of a sunny day at the beach”）时表现不佳。这一限制源于它们对静态词嵌入的依赖，静态词嵌入为每个词分配固定的向量表示，与上下文无关。与更高级的语言模型不同，这些嵌入无法根据周围的上下文标记来捕获词汇的不同含义。因此，利用这些模型的研究主要局限于简单的标签级检索场景，即查询由单个词或简单短语组成。</p>
+</section>
+<section id="id13">
+<h3>音频-句子联合嵌入<a class="headerlink" href="#id13" title="Link to this heading">#</a></h3>
+<p>为了更好地处理多属性语义查询，研究人员将注意力从词嵌入转向了双向 Transformer 编码器 <span id="id14">[<a class="reference internal" href="#id73" title="Jacob Devlin, Ming-Wei Chang, Kenton Lee, and Kristina Toutanova. Bert: pre-training of deep bidirectional transformers for language understanding. arXiv preprint arXiv:1810.04805, 2018.">DCLT18</a>]</span> <span id="id15">[<a class="reference internal" href="#id72" title="Yinhan Liu. Roberta: a robustly optimized bert pretraining approach. arXiv preprint arXiv:1907.11692, 2019.">Liu19</a>]</span>。这些 Transformer 模型相比静态词嵌入具有以下几个关键优势：</p>
+<figure class="align-default" id="contextualized-word-representation">
+<img alt="../_images/contextualize_word.png" src="../_images/contextualize_word.png" />
+</figure>
+<ol class="arabic simple">
+<li><p><strong>上下文化词表示（Contextualized Word Representations）</strong>：与为每个词分配固定向量的静态词嵌入不同，Transformer 根据周围的上下文生成动态表示。例如，”heavy”这个词在”heavy metal music”和”heavy bass line”中会有不同的表示。</p></li>
+<li><p><strong>注意力机制（Attention Mechanism）</strong>：Transformer 中的自注意力层使模型能够权衡不同词汇之间的相对重要性。这对于理解多个属性之间的交互特别有用——例如，区分”soft rock”和”hard rock”。</p></li>
+<li><p><strong>双向上下文（Bidirectional Context）</strong>：与使用因果遮蔽只关注前文标记的自回归 Transformer（例如 GPT）不同，BERT 和 RoBERTa 使用无遮蔽的双向自注意力。这使得每个标记能够同时关注序列中的前文和后文标记。例如，在处理”upbeat jazz with smooth saxophone solos”时，”smooth”一词可以同时关注”upbeat jazz”（前文上下文）和”saxophone solos”（后文上下文），从而实现更丰富的上下文理解。这种双向注意力对于音乐查询尤为重要，因为描述性术语的含义通常同时依赖于前后的上下文。</p></li>
+</ol>
+<figure class="align-default" id="audio-sentence-joint-embedding">
+<img alt="../_images/clap_mulan.png" src="../_images/clap_mulan.png" />
+</figure>
+<p>近期的研究工作已经证明了这些基于 Transformer 方法的有效性。<span id="id16">[<a class="reference internal" href="#id60" title="Tianyu Chen, Yuan Xie, Shuai Zhang, Shaohan Huang, Haoyi Zhou, and Jianxin Li. Learning music sequence representation from text supervision. In ICASSP 2022-2022 IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP), 4583–4587. IEEE, 2022.">CXZ+22</a>]</span> 使用 MagnaTagATune 数据集评估了 BERT 语言模型嵌入，展示了在处理包含多个流派和乐器标签的查询时的准确性提升。类似地，<span id="id17">[<a class="reference internal" href="#id61" title="SeungHeon Doh, Minz Won, Keunwoo Choi, and Juhan Nam. Toward universal text-to-music retrieval. In ICASSP 2023-2023 IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP), 1–5. IEEE, 2023.">DWCN23</a>]</span> 利用 BERT 在 <a class="reference external" href="https://zenodo.org/records/7107130">MSD-ECALS dataset</a> 上处理复杂的属性组合，展示了对”electronic, female vocal elements”或”ambient, piano”等音乐描述的更好理解。</p>
+<p>这些研究利用现有的多标签标注数据集来训练和评估语言模型理解多属性查询的能力。结果表明，基于 Transformer 的模型不仅能够处理单个属性，还能有效捕获查询中多个音乐特征之间的关系和依赖。</p>
+<p>为了处理灵活的自然语言查询，研究人员专注于嘈杂的音频-文本数据集 <span id="id18">[<a class="reference internal" href="#id66" title="Qingqing Huang, Aren Jansen, Joonseok Lee, Ravi Ganti, Judith Yue Li, and Daniel PW Ellis. Mulan: a joint embedding of music audio and natural language. arXiv preprint arXiv:2208.12415, 2022.">HJL+22</a>]</span> 和人工生成的自然语言标注 <span id="id19">[<a class="reference internal" href="#id65" title="Ilaria Manco, Emmanouil Benetos, Elio Quinton, and György Fazekas. Contrastive audio-language learning for music. arXiv preprint arXiv:2208.12208, 2022.">MBQF22</a>]</span>。得益于充分的数据集规模和利用大批量优势的 contrastive loss，他们构建了比之前研究具有更强音频-文本关联的联合嵌入模型。<span id="id20">[<a class="reference internal" href="#id65" title="Ilaria Manco, Emmanouil Benetos, Elio Quinton, and György Fazekas. Contrastive audio-language learning for music. arXiv preprint arXiv:2208.12208, 2022.">MBQF22</a>]</span>、<span id="id21">[<a class="reference internal" href="#id66" title="Qingqing Huang, Aren Jansen, Joonseok Lee, Ravi Ganti, Judith Yue Li, and Daniel PW Ellis. Mulan: a joint embedding of music audio and natural language. arXiv preprint arXiv:2208.12415, 2022.">HJL+22</a>]</span>、<span id="id22">[<a class="reference internal" href="#id245" title="Yusong Wu, Ke Chen, Tianyu Zhang, Yuchen Hui, Taylor Berg-Kirkpatrick, and Shlomo Dubnov. Large-scale contrastive language-audio pretraining with feature fusion and keyword-to-caption augmentation. In IEEE International Conference on Audio, Speech and Signal Processing (ICASSP). 2023.">WCZ+23</a>]</span> 证明了使用大规模音频-文本配对进行 contrastive learning 可以有效学习音乐与自然语言描述之间的语义关系。</p>
+<figure class="align-default" id="benefit-of-language-model-text-encoders">
+<img alt="../_images/benefit_lm.png" src="../_images/benefit_lm.png" />
+</figure>
+<p>在实践中，预训练语言模型文本编码器在多标签查询检索 <span id="id23">[<a class="reference internal" href="#id61" title="SeungHeon Doh, Minz Won, Keunwoo Choi, and Juhan Nam. Toward universal text-to-music retrieval. In ICASSP 2023-2023 IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP), 1–5. IEEE, 2023.">DWCN23</a>]</span> 和自然语言查询检索 <span id="id24">[<a class="reference internal" href="#id65" title="Ilaria Manco, Emmanouil Benetos, Elio Quinton, and György Fazekas. Contrastive audio-language learning for music. arXiv preprint arXiv:2208.12208, 2022.">MBQF22</a>]</span> 场景中并未表现出显著的性能提升。</p>
+</section>
+<section id="id25">
+<h3>超越语义属性，迈向相似性查询处理<a class="headerlink" href="#id25" title="Link to this heading">#</a></h3>
+<figure class="align-default" id="similarity-queries">
+<img alt="../_images/similarity_query.png" src="../_images/similarity_query.png" />
+</figure>
+<p>近期的研究探索了将联合嵌入模型扩展到语义属性查询之外，以处理基于相似性的搜索场景。虽然现有的数据集和模型主要关注流派、情绪、乐器、风格和主题等语义属性，但 <span id="id26">[<a class="reference internal" href="#id91" title="SeungHeon Doh, Jongpil Lee, Dasaem Jeong, and Juhan Nam. Musical word embedding for music tagging and retrieval. arXiv preprint arXiv:2404.13569, 2024.">DLJN24</a>]</span> 提出了一种新颖的方法，通过利用丰富的元数据和音乐知识图谱来实现基于相似性的查询。</p>
+<p>具体来说，他们构建了一个大规模的音乐知识图谱，捕获歌曲之间的各种关系，例如艺术家相似性（风格相似的艺术家的歌曲）、元数据连接（同一艺术家的歌曲）以及曲目-属性关系。通过在该知识图谱上训练联合嵌入模型，模型学会了理解歌曲与其他音乐实体之间的复杂关系。这使系统能够处理诸如”类似 Hotel California 的歌曲”或”听起来像早期 Beatles 的音乐”这样的查询，方法是将查询和音乐嵌入到一个共享的语义空间中，该空间捕获了这些丰富的关系。这种方法显著扩展了音乐检索系统的能力，实现了更加自然和灵活的搜索体验，更好地匹配了人类思考和关联不同音乐作品的方式。</p>
+</section>
+<section id="id27">
+<h3>训练音频-文本联合嵌入模型的技巧<a class="headerlink" href="#id27" title="Link to this heading">#</a></h3>
+<p>近期的研究已经确定了几个有效训练音频-文本联合嵌入模型的关键策略，这些策略显著提高了模型的性能和稳健性。一个主要挑战是查询格式的多样性——模型必须理解和处理从简单标签（例如，”rock”、”energetic”）到复杂自然语言描述（例如，”a melancholic piano piece with subtle jazz influences”）的各种查询。此外，模型必须弥合音频特征与文本描述中表达的语义概念之间的语义鸿沟。研究人员已经开发了几种有效的策略来应对这些基本挑战，详述如下。</p>
+<section id="id28">
+<h4>利用多样化的训练数据源<a class="headerlink" href="#id28" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p>利用嘈杂的网络规模文本数据 <span id="id29">[<a class="reference internal" href="#id66" title="Qingqing Huang, Aren Jansen, Joonseok Lee, Ravi Ganti, Judith Yue Li, and Daniel PW Ellis. Mulan: a joint embedding of music audio and natural language. arXiv preprint arXiv:2208.12415, 2022.">HJL+22</a>, <a class="reference internal" href="#id47" title="Benno Weck, Holger Kirchhoff, Peter Grosche, and Xavier Serra. Wikimute: a web-sourced dataset of semantic descriptions for music audio. In International Conference on Multimedia Modeling, 42–56. Springer, 2024.">WKGS24</a>]</span>，使模型接触真实世界的音乐描述</p></li>
+<li><p>结合多个标注数据集 <span id="id30">[<a class="reference internal" href="#id61" title="SeungHeon Doh, Minz Won, Keunwoo Choi, and Juhan Nam. Toward universal text-to-music retrieval. In ICASSP 2023-2023 IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP), 1–5. IEEE, 2023.">DWCN23</a>, <a class="reference internal" href="#id46" title="Ilaria Manco, Justin Salamon, and Oriol Nieto. Augment, drop &amp; swap: improving diversity in llm captions for efficient music-text representation learning. arXiv preprint arXiv:2409.11498, 2024.">MSN24</a>, <a class="reference internal" href="#id245" title="Yusong Wu, Ke Chen, Tianyu Zhang, Yuchen Hui, Taylor Berg-Kirkpatrick, and Shlomo Dubnov. Large-scale contrastive language-audio pretraining with feature fusion and keyword-to-caption augmentation. In IEEE International Conference on Audio, Speech and Signal Processing (ICASSP). 2023.">WCZ+23</a>]</span>，以捕获音乐-文本关系的各个方面</p></li>
+<li><p>这种多源方法有助于模型在不同的描述风格和音乐概念中发展稳健的表示</p></li>
+</ul>
+</section>
+<section id="id31">
+<h4>使用预训练模型初始化<a class="headerlink" href="#id31" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p>从预训练的文本编码器（例如 BERT、RoBERTa）和音频编码器（例如 MERT、HT-AST）开始 <span id="id32">[<a class="reference internal" href="#id46" title="Ilaria Manco, Justin Salamon, and Oriol Nieto. Augment, drop &amp; swap: improving diversity in llm captions for efficient music-text representation learning. arXiv preprint arXiv:2409.11498, 2024.">MSN24</a>, <a class="reference internal" href="#id245" title="Yusong Wu, Ke Chen, Tianyu Zhang, Yuchen Hui, Taylor Berg-Kirkpatrick, and Shlomo Dubnov. Large-scale contrastive language-audio pretraining with feature fusion and keyword-to-caption augmentation. In IEEE International Conference on Audio, Speech and Signal Processing (ICASSP). 2023.">WCZ+23</a>]</span></p></li>
+<li><p>这种迁移学习方法利用通用的语言/音频理解能力，同时适应音乐特定的需求</p></li>
+</ul>
+</section>
+<section id="id33">
+<h4>应用文本增强技术<a class="headerlink" href="#id33" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p>实施文本 dropout 损坏 <span id="id34">[<a class="reference internal" href="#id61" title="SeungHeon Doh, Minz Won, Keunwoo Choi, and Juhan Nam. Toward universal text-to-music retrieval. In ICASSP 2023-2023 IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP), 1–5. IEEE, 2023.">DWCN23</a>, <a class="reference internal" href="#id46" title="Ilaria Manco, Justin Salamon, and Oriol Nieto. Augment, drop &amp; swap: improving diversity in llm captions for efficient music-text representation learning. arXiv preprint arXiv:2409.11498, 2024.">MSN24</a>]</span> 以增强模型稳健性</p></li>
+<li><p>利用 LLM 生成的标签到描述（tag-to-caption）数据 <span id="id35">[<a class="reference internal" href="#id61" title="SeungHeon Doh, Minz Won, Keunwoo Choi, and Juhan Nam. Toward universal text-to-music retrieval. In ICASSP 2023-2023 IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP), 1–5. IEEE, 2023.">DWCN23</a>, <a class="reference internal" href="#id245" title="Yusong Wu, Ke Chen, Tianyu Zhang, Yuchen Hui, Taylor Berg-Kirkpatrick, and Shlomo Dubnov. Large-scale contrastive language-audio pretraining with feature fusion and keyword-to-caption augmentation. In IEEE International Conference on Audio, Speech and Signal Processing (ICASSP). 2023.">WCZ+23</a>]</span> 来扩展训练数据</p></li>
+<li><p>这些技术帮助模型处理各种查询措辞并提高泛化能力</p></li>
+</ul>
+</section>
+<section id="id36">
+<h4>采用策略性负采样<a class="headerlink" href="#id36" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p>实施困难负样本采样（hard negative sampling）策略 <span id="id37">[<a class="reference internal" href="#id46" title="Ilaria Manco, Justin Salamon, and Oriol Nieto. Augment, drop &amp; swap: improving diversity in llm captions for efficient music-text representation learning. arXiv preprint arXiv:2409.11498, 2024.">MSN24</a>, <a class="reference internal" href="#id92" title="Minz Won, Sergio Oramas, Oriol Nieto, Fabien Gouyon, and Xavier Serra. Multimodal metric learning for tag-based music retrieval. In ICASSP 2021-2021 IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP), 591–595. IEEE, 2021.">WON+21</a>]</span> 以提高区分能力</p></li>
+<li><p>精心选择语义相似但不同的具有挑战性的负样本</p></li>
+<li><p>这种方法帮助模型发展在相似音乐概念之间做出细粒度区分的能力</p></li>
+</ul>
+<figure class="align-default" id="tips-for-training-audio-text-joint-embedding-models">
+<img alt="../_images/tips.png" src="../_images/tips.png" />
+</figure>
+<p>在 <span id="id38">[<a class="reference internal" href="#id46" title="Ilaria Manco, Justin Salamon, and Oriol Nieto. Augment, drop &amp; swap: improving diversity in llm captions for efficient music-text representation learning. arXiv preprint arXiv:2409.11498, 2024.">MSN24</a>]</span> 中，这些思路被实现并显著提高了音频-文本联合嵌入模型的检索性能。实验结果显示了显著的改进，在基线模型 <span id="id39">[<a class="reference internal" href="#id61" title="SeungHeon Doh, Minz Won, Keunwoo Choi, and Juhan Nam. Toward universal text-to-music retrieval. In ICASSP 2023-2023 IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP), 1–5. IEEE, 2023.">DWCN23</a>]</span> 的基础上应用预训练编码器、标签到描述增强、dropout 和困难负采样（text swap）技术后，R&#64;10 指标从 9.6 提升到了 15.8。这一显著的性能提升证明了组合这些训练策略的有效性。</p>
+</section>
+</section>
+</section>
+<section id="id40">
+<h2>参考文献<a class="headerlink" href="#id40" title="Link to this heading">#</a></h2>
+<div class="docutils container" id="id41">
+<div role="list" class="citation-list">
+<div class="citation" id="id60" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id16">CXZ+22</a><span class="fn-bracket">]</span></span>
+<p>Tianyu Chen, Yuan Xie, Shuai Zhang, Shaohan Huang, Haoyi Zhou, and Jianxin Li. Learning music sequence representation from text supervision. In <em>ICASSP 2022-2022 IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP)</em>, 4583–4587. IEEE, 2022.</p>
+</div>
+<div class="citation" id="id55" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id9">CLPN19</a><span class="fn-bracket">]</span></span>
+<p>Jeong Choi, Jongpil Lee, Jiyoung Park, and Juhan Nam. Zero-shot learning for audio-based music classification and tagging. In <em>ISMIR</em>. 2019.</p>
+</div>
+<div class="citation" id="id73" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id14">DCLT18</a><span class="fn-bracket">]</span></span>
+<p>Jacob Devlin, Ming-Wei Chang, Kenton Lee, and Kristina Toutanova. Bert: pre-training of deep bidirectional transformers for language understanding. <em>arXiv preprint arXiv:1810.04805</em>, 2018.</p>
+</div>
+<div class="citation" id="id91" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>DLJN24<span class="fn-bracket">]</span></span>
+<span class="backrefs">(<a role="doc-backlink" href="#id12">1</a>,<a role="doc-backlink" href="#id26">2</a>)</span>
+<p>SeungHeon Doh, Jongpil Lee, Dasaem Jeong, and Juhan Nam. Musical word embedding for music tagging and retrieval. <em>arXiv preprint arXiv:2404.13569</em>, 2024.</p>
+</div>
+<div class="citation" id="id61" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>DWCN23<span class="fn-bracket">]</span></span>
+<span class="backrefs">(<a role="doc-backlink" href="#id17">1</a>,<a role="doc-backlink" href="#id23">2</a>,<a role="doc-backlink" href="#id30">3</a>,<a role="doc-backlink" href="#id34">4</a>,<a role="doc-backlink" href="#id35">5</a>,<a role="doc-backlink" href="#id39">6</a>)</span>
+<p>SeungHeon Doh, Minz Won, Keunwoo Choi, and Juhan Nam. Toward universal text-to-music retrieval. In <em>ICASSP 2023-2023 IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP)</em>, 1–5. IEEE, 2023.</p>
+</div>
+<div class="citation" id="id66" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>HJL+22<span class="fn-bracket">]</span></span>
+<span class="backrefs">(<a role="doc-backlink" href="#id18">1</a>,<a role="doc-backlink" href="#id21">2</a>,<a role="doc-backlink" href="#id29">3</a>)</span>
+<p>Qingqing Huang, Aren Jansen, Joonseok Lee, Ravi Ganti, Judith Yue Li, and Daniel PW Ellis. Mulan: a joint embedding of music audio and natural language. <em>arXiv preprint arXiv:2208.12415</em>, 2022.</p>
+</div>
+<div class="citation" id="id72" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id15">Liu19</a><span class="fn-bracket">]</span></span>
+<p>Yinhan Liu. Roberta: a robustly optimized bert pretraining approach. <em>arXiv preprint arXiv:1907.11692</em>, 2019.</p>
+</div>
+<div class="citation" id="id65" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>MBQF22<span class="fn-bracket">]</span></span>
+<span class="backrefs">(<a role="doc-backlink" href="#id19">1</a>,<a role="doc-backlink" href="#id20">2</a>,<a role="doc-backlink" href="#id24">3</a>)</span>
+<p>Ilaria Manco, Emmanouil Benetos, Elio Quinton, and György Fazekas. Contrastive audio-language learning for music. <em>arXiv preprint arXiv:2208.12208</em>, 2022.</p>
+</div>
+<div class="citation" id="id46" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>MSN24<span class="fn-bracket">]</span></span>
+<span class="backrefs">(<a role="doc-backlink" href="#id30">1</a>,<a role="doc-backlink" href="#id32">2</a>,<a role="doc-backlink" href="#id34">3</a>,<a role="doc-backlink" href="#id37">4</a>,<a role="doc-backlink" href="#id38">5</a>)</span>
+<p>Ilaria Manco, Justin Salamon, and Oriol Nieto. Augment, drop &amp; swap: improving diversity in llm captions for efficient music-text representation learning. <em>arXiv preprint arXiv:2409.11498</em>, 2024.</p>
+</div>
+<div class="citation" id="id251" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id4">OLV18</a><span class="fn-bracket">]</span></span>
+<p>Aaron van den Oord, Yazhe Li, and Oriol Vinyals. Representation learning with contrastive predictive coding. <em>arXiv:1807.03748</em>, 2018.</p>
+</div>
+<div class="citation" id="id70" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id5">RKH+21</a><span class="fn-bracket">]</span></span>
+<p>Alec Radford, Jong Wook Kim, Chris Hallacy, Aditya Ramesh, Gabriel Goh, Sandhini Agarwal, Girish Sastry, Amanda Askell, Pamela Mishkin, Jack Clark, and others. Learning transferable visual models from natural language supervision. In <em>International conference on machine learning</em>, 8748–8763. PMLR, 2021.</p>
+</div>
+<div class="citation" id="id47" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id29">WKGS24</a><span class="fn-bracket">]</span></span>
+<p>Benno Weck, Holger Kirchhoff, Peter Grosche, and Xavier Serra. Wikimute: a web-sourced dataset of semantic descriptions for music audio. In <em>International Conference on Multimedia Modeling</em>, 42–56. Springer, 2024.</p>
+</div>
+<div class="citation" id="id92" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>WON+21<span class="fn-bracket">]</span></span>
+<span class="backrefs">(<a role="doc-backlink" href="#id10">1</a>,<a role="doc-backlink" href="#id11">2</a>,<a role="doc-backlink" href="#id37">3</a>)</span>
+<p>Minz Won, Sergio Oramas, Oriol Nieto, Fabien Gouyon, and Xavier Serra. Multimodal metric learning for tag-based music retrieval. In <em>ICASSP 2021-2021 IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP)</em>, 591–595. IEEE, 2021.</p>
+</div>
+<div class="citation" id="id245" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>WCZ+23<span class="fn-bracket">]</span></span>
+<span class="backrefs">(<a role="doc-backlink" href="#id22">1</a>,<a role="doc-backlink" href="#id30">2</a>,<a role="doc-backlink" href="#id32">3</a>,<a role="doc-backlink" href="#id35">4</a>)</span>
+<p>Yusong Wu, Ke Chen, Tianyu Zhang, Yuchen Hui, Taylor Berg-Kirkpatrick, and Shlomo Dubnov. Large-scale contrastive language-audio pretraining with feature fusion and keyword-to-caption augmentation. In <em>IEEE International Conference on Audio, Speech and Signal Processing (ICASSP)</em>. 2023.</p>
+</div>
+</div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./retrieval"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="intro.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">简介</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="evaluate.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">评估</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">多模态联合嵌入模型架构</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">度量学习损失函数</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">联合嵌入的优势是什么？</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">模型</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">音频-标签联合嵌入</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">音频-句子联合嵌入</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id25">超越语义属性，迈向相似性查询处理</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id27">训练音频-文本联合嵌入模型的技巧</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id28">利用多样化的训练数据源</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id31">使用预训练模型初始化</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id33">应用文本增强技术</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id36">采用策略性负采样</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id40">参考文献</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Seung Heon Doh, Ilaria Manco, Zachary Novack, Jong Wook Kim, Ke Chen
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
