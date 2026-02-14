@@ -38,6 +38,7 @@ uv run jupyter nbconvert --to notebook --execute <notebook.ipynb>
 - `MIR-01.ipynb` — music visualization basics
 - `MIR-02_*.ipynb` — audio feature extraction series (time-domain, frequency-domain, musical features)
 - `MIR-CC.py` — interactive Claude Code + MIR tutorial (marimo notebook, run with `uv run marimo edit MIR-CC.py`)
+- `docs/` — static HTML exports for GitHub Pages hosting (e.g. `docs/index.html` for MIR-CC)
 - `attachment/` — audio samples (.wav, .mp3) and educational images used by notebooks
 - `INFO-ResearchGroups.md` — curated list of MIR research groups worldwide
 - `README.md` — detailed setup guide and index of articles with publication dates
