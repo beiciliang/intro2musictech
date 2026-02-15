@@ -4,3 +4,8 @@ updates:
     directory: "/"
     schedule:
       interval: "weekly"
+    ignore:
+      # music-language-tutorial/requirements.txt — pinned for Jupyter Book v1 compatibility
+      - dependency-name: "transformers"
+      - dependency-name: "pandas"
+      - dependency-name: "scikit-learn"
