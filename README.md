@@ -59,6 +59,7 @@ uv run marimo edit MIR-CC.py  # 启动 marimo 交互式笔记本
 | 2023.03.26 | [「INFO」分享我的MIR研发技术栈](https://mp.weixin.qq.com/s?__biz=MzU5MzY3NzI0OA==&mid=2247483994&idx=1&sn=3dfeefafc11c264106f448379052b42d&chksm=fe0d9cf5c97a15e30a5338b9031ae1741ea45856d234dc02d13ecc7723b5682a747f9c00de31&scene=178&cur_album_id=1342444458121576448#rd) | [B站视频](https://www.bilibili.com/video/BV1MX4y1R7cu/?share_source=copy_web&vd_source=9a7c2143e3aca83788929d6099a36f8f) |
 | 2026.02.14 | [「MIR-CC」2026年，用Claude Code就可以无痛入门音乐科技](https://mp.weixin.qq.com/s?__biz=MzU5MzY3NzI0OA==&mid=2247484015&idx=1&sn=ffb0e282814654db668b9aeaae7070e6&scene=19&poc_token=HOHwkGmjA6j2m1IrUPZG7-8YVeVabxBGl9z10Nyt) | [MIR-CC.py](MIR-CC.py) · [在线预览](https://beiciliang.github.io/intro2musictech/MIR-CC.html) |
 | 2026.02.14 | 「INFO」连接音乐音频与自然语言（2024 ISMIR Tutorial） | [英文原版](https://github.com/mulab-mir/music-language-tutorial) · [中文版](https://beiciliang.github.io/intro2musictech/music-language-tutorial/intro.html) |
+| 2026.02.15 | [「TECH」过年好！分享一个可速度分析AI论文的技能指令: /ai-paper-reader](https://mp.weixin.qq.com/s?__biz=MzU5MzY3NzI0OA==&mid=2247484032&idx=1&sn=02b93aa8c86730083c2bf3004fa680c1&scene=19&poc_token=HG4xkmmjershfKlaODZCAW8rQfMNzyXXIPHky1zU) | — |
 
 ---
 
