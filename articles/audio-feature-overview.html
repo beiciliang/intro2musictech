@@ -272,7 +272,7 @@
         <h3>『音频特征的类别』</h3>
         <p>
           <img
-            src="https://mmbiz.qpic.cn/mmbiz_png/7CrMia15fFJVcf6KcKuAw9yeqWV1icsH1M4lR15ozIHGsVAk4s5dq1st0Yoc4C2UkgX9KvsXS2grmkiaXJY1owLHQ/640"
+            src="images/f3927920404f.png"
           />
         </p>
         <p>
@@ -315,7 +315,7 @@
         <pre><ol><li><p><span><code><span># 加载音频</span></code></span></p></li><li><p><span><code><span>audio_data, sr = librosa.load(</span><span>'attachment/mir01-music-example.wav'</span><span>, sr=</span><span>None</span><span>)</span></code></span></p></li><li><p><span><code><span># 调用librosa中的rmse直接对音频每个长度为2048的帧进行计算得到均方根能量</span></code></span></p></li><li><p><span><code><span>rmse = librosa.feature.rmse(audio_data, frame_length=</span><span>2048</span><span>, hop_length=</span><span>512</span><span>)</span></code></span></p></li><li><p><span><code><span># 画出音频波形及均方根能量随时间的变化</span></code></span></p></li><li><p><span><code><span>plt.figure(figsize=(</span><span>10</span><span>,</span><span>5</span><span>))</span></code></span></p></li><li><p><span><code><span>librosa.display.waveplot(audio_data, sr, alpha=</span><span>0.8</span><span>)</span></code></span></p></li><li><p><span><code><span>times = librosa.frames_to_time(np.arange(len(rmse.T)), sr=sr, hop_length=</span><span>512</span><span>)</span></code></span></p></li><li><p><span><code><span>plt.plot(times, rmse.T, label=</span><span>'RMS Energy'</span><span>)</span></code></span></p></li><li><p><span><code><span>plt.legend(loc=</span><span>'best'</span><span>)</span></code></span></p></li></ol></pre>
         <p>
           <img
-            src="https://mmbiz.qpic.cn/mmbiz_png/7CrMia15fFJVcf6KcKuAw9yeqWV1icsH1MnJzldPnuRO9ZuIqWdxlUGgWELQ2SiaSIefSILCMQaib0ic0QojIeyZczA/640"
+            src="images/56ec7e69fef5.png"
           />
         </p>
         <p>
