@@ -26,6 +26,8 @@ uv run marimo edit MIR-CC.py  # 启动 marimo 交互式笔记本
 
 ## 文章目录
 
+所有文章链接到微信公众号原文，也可通过 https://beiciliang.github.io/intro2musictech/ 浏览。
+
 | 日期 | 文章 | 代码 |
 |:----:|------|------|
 | 2018.07.27 | [「README」无痛入门音乐科技门槛须知](https://mp.weixin.qq.com/s/S8Q5iSUMgKZQ5g-17dF8UA) | — |
