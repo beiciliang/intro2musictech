@@ -1,0 +1,372 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>「MIR-02_1」音频特征小全之概览 - 无痛入门音乐科技</title>
+    <style>
+      :root {
+        --bg: #f5f5f7;
+        --card-bg: #ffffff;
+        --text: #1d1d1f;
+        --text-secondary: #6e6e73;
+        --accent: #5856d6;
+        --border: #d2d2d7;
+        --code-bg: #f0f0f3;
+      }
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --bg: #0d0d12;
+          --card-bg: #1c1c24;
+          --text: #f0f0f5;
+          --text-secondary: #8e8e93;
+          --accent: #7b79ff;
+          --border: #2c2c34;
+          --code-bg: #15151d;
+        }
+      }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        font-family:
+          -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI",
+          Roboto, "Noto Sans SC", sans-serif;
+        background: var(--bg);
+        color: var(--text);
+        line-height: 1.8;
+      }
+      .header {
+        background: linear-gradient(
+          135deg,
+          #0f0c29 0%,
+          #302b63 50%,
+          #24243e 100%
+        );
+        padding: 2rem 1.5rem;
+        text-align: center;
+      }
+      .header a {
+        color: rgba(255, 255, 255, 0.7);
+        text-decoration: none;
+        font-size: 0.9rem;
+      }
+      .header a:hover {
+        color: #fff;
+      }
+      article {
+        max-width: 720px;
+        margin: 0 auto;
+        padding: 2rem 1.5rem 4rem;
+      }
+      article h1 {
+        font-size: 1.8rem;
+        font-weight: 700;
+        margin-bottom: 0.5rem;
+        line-height: 1.3;
+      }
+      .meta {
+        color: var(--text-secondary);
+        font-size: 0.85rem;
+        margin-bottom: 2rem;
+        padding-bottom: 1rem;
+        border-bottom: 1px solid var(--border);
+      }
+      .content {
+        font-size: 1rem;
+      }
+      .content p,
+      .content section {
+        margin-bottom: 1rem;
+      }
+      .content img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 8px;
+        margin: 1rem 0;
+      }
+      .content h2,
+      .content h3 {
+        text-align: center;
+        margin: 1.5rem 0 0.8rem;
+        font-weight: 600;
+      }
+      .content blockquote {
+        border-left: 3px solid var(--accent);
+        padding-left: 1rem;
+        color: var(--text-secondary);
+        margin: 1rem 0;
+      }
+      .content a {
+        color: var(--accent);
+      }
+      .content hr {
+        border: none;
+        border-top: 1px solid var(--border);
+        margin: 1.5rem 0;
+      }
+      .content ul,
+      .content ol {
+        padding-left: 1.5rem;
+        margin-bottom: 1rem;
+      }
+      .content li {
+        margin-bottom: 0.3rem;
+      }
+      .content table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 1rem 0;
+      }
+      .content th,
+      .content td {
+        border: 1px solid var(--border);
+        padding: 0.5rem;
+        text-align: left;
+      }
+      .content pre,
+      .content code {
+        font-family:
+          "SF Mono", SFMono-Regular, Menlo, Consolas, "Liberation Mono",
+          monospace;
+        font-size: 0.85em;
+      }
+      .content code {
+        background: var(--code-bg);
+        border: 1px solid var(--border);
+        border-radius: 4px;
+        padding: 0.15rem 0.4rem;
+      }
+      .content pre {
+        background: var(--code-bg);
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        padding: 1rem 1.2rem;
+        overflow-x: auto;
+        margin: 1rem 0;
+        line-height: 1.5;
+      }
+      .content pre code {
+        background: none;
+        border: none;
+        padding: 0;
+        font-size: inherit;
+        display: block;
+      }
+      .content pre ol {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+      .content pre li {
+        margin: 0;
+        padding: 0;
+      }
+      .content pre p {
+        margin: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="header">
+      <a href="../index.html">&larr; 返回 无痛入门音乐科技</a>
+    </div>
+    <article>
+      <h1>「MIR-02_1」音频特征小全之概览</h1>
+      <div class="meta">无痛入门音乐科技</div>
+      <div class="content">
+        <blockquote>
+          <p>
+            在深度学习成为给音频打上标签的小能手之前，设计各种各样的音频特征（audio
+            feature）才是音频分类或识别任务的领头军，其中充满了声学、数学建模和信号处理等技术的灵活运用，也是领会音乐技术的必修知识。
+          </p>
+        </blockquote>
+        <p>
+          <span
+            ><strong>♬ 本文为MIR音乐信息检索系列的第2.1篇文章 ♬</strong></span
+          >
+        </p>
+        <p>
+          <span
+            ><strong
+              >♬ 该文作为概览将与后续2.X文章共同组成音频特征小全 ♬</strong
+            ></span
+          >
+        </p>
+        <p><span>概览内容包括：</span></p>
+        <ul>
+          <li>
+            <p><span>音频特征可以从几种角度去理解？</span></p>
+          </li>
+          <li>
+            <p><span>根据特征的来源可以将其分为几类？</span></p>
+          </li>
+          <li>
+            <p><span>提取特征之前有哪些预处理工作？</span></p>
+          </li>
+        </ul>
+        <hr />
+        <h3>『理解音频特征』</h3>
+        <p>
+          大多数音频特征起源于语音识别领域，用于理解录音中人们说了哪些话，直到九十年代末它们才被应用到音乐信息检索的任务中，逐渐也就有了更多针对于音乐音频的特征被发明出来。
+        </p>
+        <p>
+          <span>☞ 大概是最久远的MIR论文之一：</span
+          ><span
+            >Foote, Jonathan T. "Content-based retrieval of music and audio."
+            Multimedia Storage and Archiving Systems II. Vol. 3229.
+            International Society for Optics and Photonics, 1997.</span
+          >
+        </p>
+        <p>
+          我们的目的并不在于如何把所有特征细致地分类，而是指明可用哪些角度理解或区分开各种特征。大致上有以下四种角度：
+        </p>
+        <p>
+          ✎
+          特征的动与稳：一个特征在每段时间内都可用数值表示，随着时间轴的移动，数值大小会不断变换，那么连续多段时间内多个数值的均值/方差等就代表了该特征的动态性，但这个数值本身的物理意义是不变的，这就构成了特征“稳”的部分。
+        </p>
+        <p>
+          ✎
+          特征可覆盖的时间长短：上面提到的每段时间中的段字，即可以是音频信号加窗后得到的一帧帧，也可以是前奏/主歌/副歌等时间跨度略长的片段，因此得到的特征可以是瞬态的(instantaneous)或全局的(global)。
+        </p>
+        <p>
+          ✎
+          特征的抽象程度：越抽象，人们就越难理解，那么就对应了越底层的特征，底层特征经过处理可以变成中层的特征，比如音高、音符起始点等等，抽象程度大致等于理解乐谱里常见的音乐元素，最高层的特征则被赋予了更多语义，比如音乐的体裁等等。
+        </p>
+        <p>✎ 特征的提取过程：在这种角度下，还能细分成以下四种过程</p>
+        <ul>
+          <li>
+            <p>
+              <span
+                >直接在音频波形上提取的特征，比如过零率(zero-crossing
+                rate)</span
+              >
+            </p>
+          </li>
+          <li>
+            <p>
+              <span
+                >将音频进行DFT/FFT等变换后提取的特征，比如谱质心(spectral
+                centroid)</span
+              >
+            </p>
+          </li>
+          <li>
+            <p>
+              <span
+                >需通过模型才能得到的特征，比如通过声源分离得到乐音相关的特征</span
+              >
+            </p>
+          </li>
+          <li>
+            <p>
+              <span
+                >受人耳听觉认知的启发，经过特定比例(mel或bark)过滤后得到的特征</span
+              >
+            </p>
+          </li>
+        </ul>
+        <hr />
+        <h3>『音频特征的类别』</h3>
+        <p>
+          <img
+            src="https://mmbiz.qpic.cn/mmbiz_png/7CrMia15fFJVcf6KcKuAw9yeqWV1icsH1M4lR15ozIHGsVAk4s5dq1st0Yoc4C2UkgX9KvsXS2grmkiaXJY1owLHQ/640"
+          />
+        </p>
+        <p>
+          如果被上述角度绕得云里雾里的，可以参考上方图片里的各处流程中得到的不同特征，由此可将特征分为以下几大常用类别：<br />
+        </p>
+        <p>
+          ✎ 时域特征(temporal
+          feature)：可从音频波形直接观察到的能量包络得出有关ADSR的特征，也可在某一帧下计算自相关系数和过零率等特征。
+        </p>
+        <p>
+          ✎ 频域特征(spectral
+          feature)：此类特征更更多，随意举例包括质心(centroid)、偏态(skewness)、峰态(kurtosis)，还有大名鼎鼎的MFCC等等。
+        </p>
+        <p>
+          ✎ 乐音特征(harmonic feature)：对输入经过sinusoidal harmonic
+          modelling后得出的特征，比如乐音与噪音的比值等等。
+        </p>
+        <p>
+          ✎ 感知特征(spectral
+          feature)：符合人耳听觉认知的特征，如响度(loudness)。
+        </p>
+        <p>
+          ✎ 能量特征(energy
+          feature)：主要指各种与能量相关的特征，如乐音能量、噪音能量，或计算每帧下均方根的能量(RMS
+          energy)等等。
+        </p>
+        <p>
+          <strong
+            >在公众号接下来的2.X文章中，就会重点讲解每一类下常见特征的计算过程及其在MIR上的应用。</strong
+          >
+        </p>
+        <hr />
+        <h3>『提取特征前的预处理』</h3>
+        <p>
+          虽然名字上叫预处理，但对于许多特征来说，其实是在提取前必须要做的步骤。
+        </p>
+        <p>
+          比如上段提到的能量包络，可以通过计算均方根能量得到。我们仍用MIR-01博文中的音频为例，代码及图像如下：
+        </p>
+        <pre><ol><li><p><span><code><span># 加载音频</span></code></span></p></li><li><p><span><code><span>audio_data, sr = librosa.load(</span><span>'attachment/mir01-music-example.wav'</span><span>, sr=</span><span>None</span><span>)</span></code></span></p></li><li><p><span><code><span># 调用librosa中的rmse直接对音频每个长度为2048的帧进行计算得到均方根能量</span></code></span></p></li><li><p><span><code><span>rmse = librosa.feature.rmse(audio_data, frame_length=</span><span>2048</span><span>, hop_length=</span><span>512</span><span>)</span></code></span></p></li><li><p><span><code><span># 画出音频波形及均方根能量随时间的变化</span></code></span></p></li><li><p><span><code><span>plt.figure(figsize=(</span><span>10</span><span>,</span><span>5</span><span>))</span></code></span></p></li><li><p><span><code><span>librosa.display.waveplot(audio_data, sr, alpha=</span><span>0.8</span><span>)</span></code></span></p></li><li><p><span><code><span>times = librosa.frames_to_time(np.arange(len(rmse.T)), sr=sr, hop_length=</span><span>512</span><span>)</span></code></span></p></li><li><p><span><code><span>plt.plot(times, rmse.T, label=</span><span>'RMS Energy'</span><span>)</span></code></span></p></li><li><p><span><code><span>plt.legend(loc=</span><span>'best'</span><span>)</span></code></span></p></li></ol></pre>
+        <p>
+          <img
+            src="https://mmbiz.qpic.cn/mmbiz_png/7CrMia15fFJVcf6KcKuAw9yeqWV1icsH1MnJzldPnuRO9ZuIqWdxlUGgWELQ2SiaSIefSILCMQaib0ic0QojIeyZczA/640"
+          />
+        </p>
+        <p>
+          另外一大常用的预处理就是将音频信号从时域变换为频域，主要用到的时频谱在MIR-01文章的最后一部分已有介绍过，这里主要提示下在变换过程中，容易混淆的一些概念与术语。<br />
+        </p>
+        <p>
+          经过STFT得到的振幅谱其实是一个二维矩阵 <code><span>D</span></code
+          >，其中一维沿着时间，另一维沿着频率。首先“时间”并不用日常生活中的分秒来表示，画图显示频谱时会用分秒，但数据本身的时间轴是以“帧”即frame为单位，每一帧代表多少秒，是由原始音频的采样率
+          <code><span>sr</span></code
+          >，和对信号加窗后两窗之间的距离 <code><span>hop_length</span></code
+          >决定，因此一帧等于 <code><span>hop_length/sr</span></code
+          >所得的秒数。
+        </p>
+        <p>
+          每一帧下的频谱，频率的分辨率由 <code><span>sr</span></code
+          >以及DFT或FFT的窗长 <code><span>n_fft</span></code
+          >决定，因此每一个频点frequency bin覆盖了
+          <code><span>sr/n_fft</span></code
+          >范围的频率。
+        </p>
+        <p>
+          在指定frame（假设为 <code><span>t</span></code
+          >）与frequency bin（假设为 <code><span>f</span></code
+          >）对应的矩阵位置上即 <code><span>D[f,t]</span></code
+          >，由于经过傅里叶变换的原因，其值是一个复数，由此可得该点振幅magnitude为
+          <code><span>numpy.abs(D[f,t])</span></code
+          >，而相位则为 <code><span>numpy.angle(D[f,t])</span></code
+          >。将振幅谱D上的所有值做平方即 <code><span>D**2</span></code
+          >，我们就得到了功率谱。无论是振幅谱(amplitude
+          spectrogram)还是功率谱(power
+          spectrogram)，都可以对矩阵上的值取对数转换为以dB为单位的值，此时可称频谱为对数谱log-spectrogram。
+        </p>
+        <p>
+          注意不要混淆的是，沿着频率轴也经常进行对数操作(log-frequency
+          scale)以得到梅尔频谱，这样得到的梅尔频率标度拟合了人耳对频率的感知度。此外，Bark
+          scale是更加贴切人耳对频率感知的标度，但它对频率并不采取对数操作。
+        </p>
+        <p>
+          其他预处理涉及到滤波和专用模型的运用，博主还是后续文章中就着具体例子具体介绍吧_(:3
+          」∠ )_
+        </p>
+        <hr />
+        <p>
+          <span>上文回顾：</span
+          ><a
+            href="http://mp.weixin.qq.com/s?__biz=MzU5MzY3NzI0OA==&amp;mid=2247483684&amp;idx=1&amp;sn=d3f3746a6837f7d12044d1931cfd4ead&amp;chksm=fe0d9f8bc97a169dbfcb80443e8da87d8e35ae643bae76841060442d8f88a4f292cda594afa5&amp;scene=21#wechat_redirect"
+            target="_blank"
+            ><span>「MIR-01」要把音乐画出来，总共分几步？</span></a
+          >
+        </p>
+      </div>
+    </article>
+  </body>
+</html>

@@ -1,0 +1,581 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>「MIR-02_4」音频特征小全之提取工具 - 无痛入门音乐科技</title>
+    <style>
+      :root {
+        --bg: #f5f5f7;
+        --card-bg: #ffffff;
+        --text: #1d1d1f;
+        --text-secondary: #6e6e73;
+        --accent: #5856d6;
+        --border: #d2d2d7;
+        --code-bg: #f0f0f3;
+      }
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --bg: #0d0d12;
+          --card-bg: #1c1c24;
+          --text: #f0f0f5;
+          --text-secondary: #8e8e93;
+          --accent: #7b79ff;
+          --border: #2c2c34;
+          --code-bg: #15151d;
+        }
+      }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        font-family:
+          -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI",
+          Roboto, "Noto Sans SC", sans-serif;
+        background: var(--bg);
+        color: var(--text);
+        line-height: 1.8;
+      }
+      .header {
+        background: linear-gradient(
+          135deg,
+          #0f0c29 0%,
+          #302b63 50%,
+          #24243e 100%
+        );
+        padding: 2rem 1.5rem;
+        text-align: center;
+      }
+      .header a {
+        color: rgba(255, 255, 255, 0.7);
+        text-decoration: none;
+        font-size: 0.9rem;
+      }
+      .header a:hover {
+        color: #fff;
+      }
+      article {
+        max-width: 720px;
+        margin: 0 auto;
+        padding: 2rem 1.5rem 4rem;
+      }
+      article h1 {
+        font-size: 1.8rem;
+        font-weight: 700;
+        margin-bottom: 0.5rem;
+        line-height: 1.3;
+      }
+      .meta {
+        color: var(--text-secondary);
+        font-size: 0.85rem;
+        margin-bottom: 2rem;
+        padding-bottom: 1rem;
+        border-bottom: 1px solid var(--border);
+      }
+      .content {
+        font-size: 1rem;
+      }
+      .content p,
+      .content section {
+        margin-bottom: 1rem;
+      }
+      .content img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 8px;
+        margin: 1rem 0;
+      }
+      .content h2,
+      .content h3 {
+        text-align: center;
+        margin: 1.5rem 0 0.8rem;
+        font-weight: 600;
+      }
+      .content blockquote {
+        border-left: 3px solid var(--accent);
+        padding-left: 1rem;
+        color: var(--text-secondary);
+        margin: 1rem 0;
+      }
+      .content a {
+        color: var(--accent);
+      }
+      .content hr {
+        border: none;
+        border-top: 1px solid var(--border);
+        margin: 1.5rem 0;
+      }
+      .content ul,
+      .content ol {
+        padding-left: 1.5rem;
+        margin-bottom: 1rem;
+      }
+      .content li {
+        margin-bottom: 0.3rem;
+      }
+      .content table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 1rem 0;
+      }
+      .content th,
+      .content td {
+        border: 1px solid var(--border);
+        padding: 0.5rem;
+        text-align: left;
+      }
+      .content pre,
+      .content code {
+        font-family:
+          "SF Mono", SFMono-Regular, Menlo, Consolas, "Liberation Mono",
+          monospace;
+        font-size: 0.85em;
+      }
+      .content code {
+        background: var(--code-bg);
+        border: 1px solid var(--border);
+        border-radius: 4px;
+        padding: 0.15rem 0.4rem;
+      }
+      .content pre {
+        background: var(--code-bg);
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        padding: 1rem 1.2rem;
+        overflow-x: auto;
+        margin: 1rem 0;
+        line-height: 1.5;
+      }
+      .content pre code {
+        background: none;
+        border: none;
+        padding: 0;
+        font-size: inherit;
+        display: block;
+      }
+      .content pre ol {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+      .content pre li {
+        margin: 0;
+        padding: 0;
+      }
+      .content pre p {
+        margin: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="header">
+      <a href="../index.html">&larr; 返回 无痛入门音乐科技</a>
+    </div>
+    <article>
+      <h1>「MIR-02_4」音频特征小全之提取工具</h1>
+      <div class="meta">2019年11月13日 10:11 · 无痛入门音乐科技</div>
+      <div class="content">
+        <blockquote>
+          <p>工欲善其事必先利其器，可自动提取音频特征的工具有哪些？</p>
+        </blockquote>
+        <p>
+          <strong
+            ><span>♬ 本文为MIR音乐信息检索系列的第2.5篇文章 ♬</span></strong
+          >
+        </p>
+        <p>
+          <strong
+            ><span
+              >♬
+              该文与之前2.1概览+2.2时域特征+2.3频域特征及+2.4乐音特征共同组成音频特征小全
+              ♬</span
+            ></strong
+          >
+        </p>
+        <p><span>本文将大致介绍以下特征提取工具：</span></p>
+        <ul>
+          <li>
+            <p><span>基于Python</span></p>
+          </li>
+          <li>
+            <p><span>基于Matlab</span></p>
+          </li>
+          <li>
+            <p><span>其他Toolbox</span></p>
+          </li>
+        </ul>
+        <hr />
+        <h2><span>『基于Python的工具』</span></h2>
+        <p>
+          <strong><span>☞</span> LibROSA</strong> |
+          算是最常用的音乐音频工具，可做各种时频变换并画图，也能提相应的频域特征，此外还能做基本的音符起始点检测、节拍检测、乐音与噪声分离等等。
+        </p>
+        <p>
+          <span
+            >➥
+            <a
+              href="https://librosa.github.io/librosa"
+              target="_blank"
+              rel="noopener"
+              >https://librosa.github.io/librosa</a
+            ></span
+          >
+        </p>
+        <p>
+          <strong><span>☞</span> Madmom</strong> |
+          和LibROSA类似，但更针对于音符起始点和节拍检测等时域相关的MIR任务。
+        </p>
+        <p>
+          <span
+            >➥
+            <a
+              href="https://madmom.readthedocs.io"
+              target="_blank"
+              rel="noopener"
+              >https://madmom.readthedocs.io</a
+            ></span
+          >
+        </p>
+        <p>还有一些Python包支持某特定的MIR任务，如：</p>
+        <p>
+          <strong><span>☞</span> MSAF</strong> | 可做歌曲结构的分析。
+        </p>
+        <p>
+          <span
+            >➥
+            <a
+              href="https://github.com/urinieto/msaf"
+              target="_blank"
+              rel="noopener"
+              >https://github.com/urinieto/msaf</a
+            ></span
+          >
+        </p>
+        <p>
+          <strong
+            ><strong><span>☞</span>&nbsp;</strong>Muda</strong
+          >
+          | 可用于扩增音频数据量，方便用于深度学习。
+        </p>
+        <p>
+          <span
+            >➥
+            <a href="https://muda.readthedocs.io" target="_blank" rel="noopener"
+              >https://muda.readthedocs.io</a
+            ></span
+          >
+        </p>
+        <p>
+          <strong
+            ><strong><span>☞</span>&nbsp;</strong>mir_eval</strong
+          >
+          | 可用于计算常见MIR任务相关算法的评估分数。
+        </p>
+        <p>
+          <span
+            >➥
+            <a
+              href="https://github.com/craffel/mir_eval"
+              target="_blank"
+              rel="noopener"
+              >https://github.com/craffel/mir_eval</a
+            ></span
+          >
+        </p>
+        <hr />
+        <h2><span>『基于Matlab的工具』</span></h2>
+        <p>
+          <strong
+            ><strong><span>☞</span>&nbsp;</strong>MIRtoolbox</strong
+          >
+          | 可提取乐音特征，如音频里的调性等。
+        </p>
+        <p>
+          <span
+            >➥
+            <a
+              href="https://www.jyu.fi/hytk/fi/laitokset/mutku/en/research/materials/mirtoolbox"
+              target="_blank"
+              rel="noopener"
+              >https://www.jyu.fi/hytk/fi/laitokset/mutku/en/research/materials/mirtoolbox</a
+            ></span
+          >
+        </p>
+        <p>
+          <strong
+            ><strong><span>☞</span>&nbsp;</strong>Chroma Toolbox</strong
+          >
+          | 可提取和音高有关的诸多色度特征(chroma)。
+        </p>
+        <p>
+          <span
+            >➥
+            <a
+              href="https://www.audiolabs-erlangen.de/resources/MIR/chromatoolbox"
+              target="_blank"
+              rel="noopener"
+              >https://www.audiolabs-erlangen.de/resources/MIR/chromatoolbox</a
+            ></span
+          >
+        </p>
+        <p>
+          <strong
+            ><strong><span>☞</span>&nbsp;</strong>Constant-Q Toolbox</strong
+          >
+          | 可做常数Q变换并基于此改变输入音频中的音高。
+        </p>
+        <p>
+          <span
+            >➥
+            <a
+              href="https://www.cs.tut.fi/sgn/arg/CQT"
+              target="_blank"
+              rel="noopener"
+              >https://www.cs.tut.fi/sgn/arg/CQT</a
+            ></span
+          >
+        </p>
+        <p>
+          <strong
+            ><strong><span>☞</span>&nbsp;</strong>Tempogram Toolbox</strong
+          >
+          | 可提取用于做节拍检测的不同tempogram。
+        </p>
+        <p>
+          <span
+            >➥
+            <a
+              href="http://resources.mpi-inf.mpg.de/MIR/tempogramtoolbox"
+              target="_blank"
+              rel="noopener"
+              >http://resources.mpi-inf.mpg.de/MIR/tempogramtoolbox</a
+            ></span
+          >
+        </p>
+        <hr />
+        <h2><span>『其他Toolbox』</span></h2>
+        <p>
+          <strong
+            ><strong><span>☞</span>&nbsp;</strong>Essentia</strong
+          >
+          |
+          基于C++，可提取各种音频底层高层、时域频域等诸多特征，也可直接运行一些MIR任务。
+        </p>
+        <p>
+          <span
+            >➥
+            <a href="http://essentia.upf.edu/" target="_blank" rel="noopener"
+              >http://essentia.upf.edu/</a
+            ></span
+          >
+        </p>
+        <p>
+          <strong
+            ><strong><span>☞</span>&nbsp;</strong>Marsyas</strong
+          >
+          | 基于C++，可用其界面或命令行进行实时特征提取。
+        </p>
+        <p>
+          <span
+            >➥
+            <a href="http://marsyas.info/" target="_blank" rel="noopener"
+              >http://marsyas.info/</a
+            ></span
+          >
+        </p>
+        <p>
+          <strong
+            ><strong><span>☞</span>&nbsp;</strong>YAAFE</strong
+          >
+          | 基于C++，也可在Python和Matlab里调用，主要提取底层的特征。
+        </p>
+        <p>
+          <span
+            >➥
+            <a
+              href="http://yaafe.github.io/Yaafe/"
+              target="_blank"
+              rel="noopener"
+              >http://yaafe.github.io/Yaafe/</a
+            ></span
+          >
+        </p>
+        <p>
+          <strong
+            ><strong><span>☞</span>&nbsp;</strong>aubio</strong
+          >
+          | 基于C，也可在Python里调用，可做音高追踪、节拍追踪等。
+        </p>
+        <p>
+          <span
+            >➥
+            <a href="https://aubio.org/" target="_blank" rel="noopener"
+              >https://aubio.org/</a
+            ></span
+          >
+        </p>
+        <p>
+          <strong
+            ><strong><span>☞</span>&nbsp;</strong>LibXtract</strong
+          >
+          | 杂糅了C/Max-MSP/Pure Data/Super Collider/Vamp可实时提取底层特征。
+        </p>
+        <p>
+          <span
+            >➥
+            <a
+              href="http://jamiebullock.github.io/LibXtract/documentation/"
+              target="_blank"
+              rel="noopener"
+              >http://jamiebullock.github.io/LibXtract/documentation/</a
+            ></span
+          >
+        </p>
+        <p>
+          <strong
+            ><strong><span>☞</span>&nbsp;</strong>jAudio</strong
+          >
+          | 基于Java可批量提取特征并输出为XML和ARFF格式。
+        </p>
+        <p>
+          <span
+            >➥
+            <a
+              href="http://jaudio.sourceforge.net/"
+              target="_blank"
+              rel="noopener"
+              >http://jaudio.sourceforge.net/</a
+            ></span
+          >
+        </p>
+        <p>
+          <strong
+            ><strong><span>☞</span>&nbsp;</strong>jMIR</strong
+          >
+          |
+          基于Java，主要用于音乐分类任务的研究。除了可处理音频，也提供分析乐谱/歌词等其他音乐信息的功能。
+        </p>
+        <p>
+          <span
+            >➥
+            <a
+              href="http://jmir.sourceforge.net/"
+              target="_blank"
+              rel="noopener"
+              >http://jmir.sourceforge.net/</a
+            ></span
+          >
+        </p>
+        <p>
+          <strong
+            ><strong><span>☞</span>&nbsp;</strong>Meyda</strong
+          >
+          | 基于Javascript，主要用于网页端提取底层音频特征的开发。
+        </p>
+        <p>
+          <span
+            >➥
+            <a href="https://meyda.surge.sh/" target="_blank" rel="noopener"
+              >https://meyda.surge.sh/</a
+            ></span
+          >
+        </p>
+        <hr />
+        <section>
+          另外推荐使用<strong>Sonic Visualiser</strong
+          >来“可视化”被提取出的特征随当前播放音频的变化，特征可使用<strong
+            >Sonic Annotator</strong
+          >中集成的<strong>Vamp Plugins</strong
+          >提取，也可自己编译Plugin进行提取！
+        </section>
+        <section>
+          <span
+            >➥
+            <a
+              href="https://www.sonicvisualiser.org/"
+              target="_blank"
+              rel="noopener"
+              >https://www.sonicvisualiser.org/</a
+            ></span
+          >
+        </section>
+        <section>
+          <span
+            >➥
+            <a
+              href="https://vamp-plugins.org/sonic-annotator/"
+              target="_blank"
+              rel="noopener"
+              >https://vamp-plugins.org/sonic-annotator/</a
+            ></span
+          >
+        </section>
+        <section>
+          <span
+            >➥
+            <a
+              href="https://vamp-plugins.org/index.html"
+              target="_blank"
+              rel="noopener"
+              >https://vamp-plugins.org/index.html</a
+            ></span
+          >
+        </section>
+        <hr />
+        <section>
+          <strong><span>上文回顾：</span></strong>
+        </section>
+        <ul>
+          <li>
+            <p>
+              <a
+                href="http://mp.weixin.qq.com/s?__biz=MzU5MzY3NzI0OA==&amp;mid=2247483704&amp;idx=1&amp;sn=e6705ea9535890e16f87a9b1c7956226&amp;chksm=fe0d9f97c97a16815ac0df35d02ef2d66eb14644589f05ab8aec8f407c2c9d31ced863f6240f&amp;scene=21#wechat_redirect"
+                target="_blank"
+                data-itemshowtype="0"
+                data-linktype="2"
+                ><span>「MIR-02_1」音频特征小全之概览</span></a
+              >
+            </p>
+          </li>
+          <li>
+            <section>
+              <a
+                href="http://mp.weixin.qq.com/s?__biz=MzU5MzY3NzI0OA==&amp;mid=2247483733&amp;idx=1&amp;sn=e880a75645ad92e49fe9b80f5b5d5b67&amp;chksm=fe0d9ffac97a16ecc093ee5461812d9010134755a5642244200054cad693e99749fae18cc25d&amp;scene=21#wechat_redirect"
+                target="_blank"
+                data-itemshowtype="0"
+                data-linktype="2"
+                ><span>「MIR-02_2」音频特征小全之时域特征</span></a
+              ><br />
+            </section>
+          </li>
+          <li>
+            <section>
+              <a
+                href="http://mp.weixin.qq.com/s?__biz=MzU5MzY3NzI0OA==&amp;mid=2247483747&amp;idx=1&amp;sn=3651815c811239e4d68fd6901132c87b&amp;chksm=fe0d9fccc97a16da88eccd6c5aaf7f69d0fa00be2b785016779a7b03be29a244c4e72ffe0175&amp;scene=21#wechat_redirect"
+                target="_blank"
+                data-itemshowtype="0"
+                data-linktype="2"
+                ><span>「MIR-02_3」音频特征小全之频域特征</span></a
+              ><br />
+            </section>
+          </li>
+          <li>
+            <section>
+              <a
+                href="http://mp.weixin.qq.com/s?__biz=MzU5MzY3NzI0OA==&amp;mid=2247483756&amp;idx=1&amp;sn=b2fc7cf0396fda41b50b02d377e45e77&amp;chksm=fe0d9fc3c97a16d57f9b02177f30d63bbc2e55adb4be88f50149b2d6808b05ab0d43f74534e8&amp;scene=21#wechat_redirect"
+                target="_blank"
+                data-itemshowtype="0"
+                data-linktype="2"
+                ><span>「MIR-02_4」音频特征小全之乐音特征</span></a
+              ><br />
+            </section>
+          </li>
+        </ul>
+        <p><br /></p>
+        <p><br /></p>
+      </div>
+    </article>
+  </body>
+</html>

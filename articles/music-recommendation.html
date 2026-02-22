@@ -1,0 +1,581 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>「MIR-04」音乐推荐: 努力懂你的预言家 - 无痛入门音乐科技</title>
+    <style>
+      :root {
+        --bg: #f5f5f7;
+        --card-bg: #ffffff;
+        --text: #1d1d1f;
+        --text-secondary: #6e6e73;
+        --accent: #5856d6;
+        --border: #d2d2d7;
+        --code-bg: #f0f0f3;
+      }
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --bg: #0d0d12;
+          --card-bg: #1c1c24;
+          --text: #f0f0f5;
+          --text-secondary: #8e8e93;
+          --accent: #7b79ff;
+          --border: #2c2c34;
+          --code-bg: #15151d;
+        }
+      }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        font-family:
+          -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI",
+          Roboto, "Noto Sans SC", sans-serif;
+        background: var(--bg);
+        color: var(--text);
+        line-height: 1.8;
+      }
+      .header {
+        background: linear-gradient(
+          135deg,
+          #0f0c29 0%,
+          #302b63 50%,
+          #24243e 100%
+        );
+        padding: 2rem 1.5rem;
+        text-align: center;
+      }
+      .header a {
+        color: rgba(255, 255, 255, 0.7);
+        text-decoration: none;
+        font-size: 0.9rem;
+      }
+      .header a:hover {
+        color: #fff;
+      }
+      article {
+        max-width: 720px;
+        margin: 0 auto;
+        padding: 2rem 1.5rem 4rem;
+      }
+      article h1 {
+        font-size: 1.8rem;
+        font-weight: 700;
+        margin-bottom: 0.5rem;
+        line-height: 1.3;
+      }
+      .meta {
+        color: var(--text-secondary);
+        font-size: 0.85rem;
+        margin-bottom: 2rem;
+        padding-bottom: 1rem;
+        border-bottom: 1px solid var(--border);
+      }
+      .content {
+        font-size: 1rem;
+      }
+      .content p,
+      .content section {
+        margin-bottom: 1rem;
+      }
+      .content img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 8px;
+        margin: 1rem 0;
+      }
+      .content h2,
+      .content h3 {
+        text-align: center;
+        margin: 1.5rem 0 0.8rem;
+        font-weight: 600;
+      }
+      .content blockquote {
+        border-left: 3px solid var(--accent);
+        padding-left: 1rem;
+        color: var(--text-secondary);
+        margin: 1rem 0;
+      }
+      .content a {
+        color: var(--accent);
+      }
+      .content hr {
+        border: none;
+        border-top: 1px solid var(--border);
+        margin: 1.5rem 0;
+      }
+      .content ul,
+      .content ol {
+        padding-left: 1.5rem;
+        margin-bottom: 1rem;
+      }
+      .content li {
+        margin-bottom: 0.3rem;
+      }
+      .content table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 1rem 0;
+      }
+      .content th,
+      .content td {
+        border: 1px solid var(--border);
+        padding: 0.5rem;
+        text-align: left;
+      }
+      .content pre,
+      .content code {
+        font-family:
+          "SF Mono", SFMono-Regular, Menlo, Consolas, "Liberation Mono",
+          monospace;
+        font-size: 0.85em;
+      }
+      .content code {
+        background: var(--code-bg);
+        border: 1px solid var(--border);
+        border-radius: 4px;
+        padding: 0.15rem 0.4rem;
+      }
+      .content pre {
+        background: var(--code-bg);
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        padding: 1rem 1.2rem;
+        overflow-x: auto;
+        margin: 1rem 0;
+        line-height: 1.5;
+      }
+      .content pre code {
+        background: none;
+        border: none;
+        padding: 0;
+        font-size: inherit;
+        display: block;
+      }
+      .content pre ol {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+      .content pre li {
+        margin: 0;
+        padding: 0;
+      }
+      .content pre p {
+        margin: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="header">
+      <a href="../index.html">&larr; 返回 无痛入门音乐科技</a>
+    </div>
+    <article>
+      <h1>「MIR-04」音乐推荐: 努力懂你的预言家</h1>
+      <div class="meta">2020年3月14日 13:44 · 无痛入门音乐科技</div>
+      <div class="content">
+        <blockquote>
+          <p>
+            如何在千万首你从来没听过的歌曲/歌手/歌单中, 挑出最符合你品味的候选?
+            让音乐推荐算法成为你挑歌之路上的专属预言家!
+          </p>
+        </blockquote>
+        <section>
+          <span><strong>♬ 本文为MIR音乐信息检索系列的第8篇文章 ♬</strong></span>
+        </section>
+        <section>
+          <span
+            >首先直观展示一下, QQ音乐9.8版本的推荐页在我手机上的样子,
+            这也是音乐推荐算法主要工作的地方.</span
+          >
+        </section>
+        <p>
+          <img
+            data-original-style=""
+            data-index="2"
+            src="https://mmbiz.qpic.cn/mmbiz_jpg/7CrMia15fFJVEAe7MpmJK8icuEx0H2hNV00IBhzIzibpRYhiaA3rWmX72Eq8hzicO0Q4gqGM9LOYiaG3lcPPa1Qk2OIg/640"
+            _width="677px"
+            alt="Image"
+            data-report-img-idx="0"
+          />
+        </p>
+        <section>
+          <span
+            >这里每日都会更新专属于我的推荐歌曲即"每日30首",
+            如果我只想随意听听歌就像背景音乐一样一直播放,
+            那不妨点开同样根据我口味定制的"个性电台".&nbsp;此外还有更多为我推荐的歌单与视频,&nbsp;如果一直往下翻可以无限加载:</span
+          >
+        </section>
+        <section>
+          <span
+            >音乐推荐系统动真格儿地讲起来, 那就是一本书.
+            本文依然本着无痛入门的科普目的, 将大致讲解：</span
+          ><br />
+        </section>
+        <ul>
+          <li>
+            <section><span>经典的协同过滤&nbsp;</span></section>
+          </li>
+          <li>
+            <section>
+              <span>完全基于音频信号的推荐<br /></span>
+            </section>
+          </li>
+          <li>
+            <section>
+              <span>万物皆可embedding<br /></span>
+            </section>
+          </li>
+        </ul>
+        <hr />
+        <h3>『经典的协同过滤』</h3>
+        <p>
+          <span
+            >协同过滤 (简称CF)
+            大概是最常见的推荐算法了,&nbsp;它和我们首先能想到的推荐逻辑一样:
+            "用户1和用户2是因为音乐结缘的好朋友,
+            两个人有很相似的听歌历史(都听过歌曲A和B),
+            当用户2给1推荐1没听过的新歌C, 用户1应该会喜欢哒!&nbsp;"
+            这就是所谓的User-based CF.</span
+          >
+        </p>
+        <p>
+          <img
+            data-croporisrc="https://mmbiz.qlogo.cn/mmbiz_png/7CrMia15fFJVEAe7MpmJK8icuEx0H2hNV05xJ4ic3uxAEDLaicYVicZSwrnBnwwXJMW25dZCfMichianXltoJHicw5gceQ/0?wx_fmt=png"
+            data-cropx1="0"
+            data-cropx2="1280"
+            data-cropy1="42.076124567474054"
+            data-cropy2="535.9169550173011"
+            data-original-style="width: 578px;height: 223px;"
+            data-index="3"
+            src="https://mmbiz.qpic.cn/mmbiz_jpg/7CrMia15fFJVEAe7MpmJK8icuEx0H2hNV0iaCNLibXVDn6d9wkiaOUdomh8umuTrUyvibBy8Bcic2icAicbGl5hEqMibd9oQ/640"
+            _width="578px"
+            alt="Image"
+          /><span>上图来自Medium</span>
+        </p>
+        <p>
+          <span
+            >而另外一种Item-based&nbsp;CF则是通过物品之间的相似进行推荐:</span
+          >
+        </p>
+        <p>
+          <img
+            data-croporisrc="https://mmbiz.qlogo.cn/mmbiz_png/7CrMia15fFJVEAe7MpmJK8icuEx0H2hNV07TVkA3M3lSCczibZboibTPOibjBHgic7njgkreoOgf9eEL3G3N1pnpszEw/0?wx_fmt=png"
+            data-cropx1="0"
+            data-cropx2="664.5519031141869"
+            data-cropy1="0"
+            data-cropy2="403.8321799307958"
+            data-original-style="width: 469px;height: 285px;"
+            data-index="4"
+            src="https://mmbiz.qpic.cn/mmbiz_jpg/7CrMia15fFJVEAe7MpmJK8icuEx0H2hNV0iciciaZeAcGR34mjVF6sE2gGicOh6WrWO7UKnc67Hpqzlib4XREic8lRbYTQ/640"
+            _width="469px"
+            alt="Image"
+          />
+        </p>
+        <p><span>上图来自Medium</span></p>
+        <p>
+          <span
+            >那么问题来了, 在音乐这个场景中, 如何判断不同歌曲之间是相似的?
+            又如何判断不同听歌群众之间的相似?&nbsp;先来解决歌曲相似的问题,&nbsp;直接抛出Spotify的解决方案:
+            <strong
+              >用自然语言处理中word2vec的方法,&nbsp;<span>从海量歌单入手</span>实现song2vec.</strong
+            ></span
+          >
+        </p>
+        <p>
+          <span
+            >在文本信息中, 语义相似或有潜在联系的词语,
+            会更大概率地出现在同一个段落,
+            因此用海量文本信息训练出来的自然语言处理模型,
+            其中隐层的权重就可以隐晦地表示一个词语, 实现word2vec. 比如下图中,
+            在训练这个大模型时, 输入端用了"后巷", 输出端用了"小", "暗", "后边",
+            "the"(顿时不知道咋翻译)这些与"后巷"在同个自然段出现的词语.
+            以后我们判断"后巷"与"大街"有多相似时, 可以直接用下图中的模型权重W1,
+            与输入"大街"时模型对应的W1', 互相比较.</span
+          >
+        </p>
+        <p>
+          <img
+            data-original-style=""
+            data-index="5"
+            src="https://mmbiz.qpic.cn/mmbiz_png/7CrMia15fFJVEAe7MpmJK8icuEx0H2hNV05jvN9aYuGD0j44eYh1ib9ae7W9SpaDNQrBF85wia9KEgOxfEgibZa5OPA/640"
+            _width="677px"
+            alt="Image"
+          /><span>上图来自Medium</span>
+        </p>
+        <p>
+          <span
+            >同理, 音乐平台上海量用户创建了海量的歌单,
+            这些歌单里涵盖的歌曲一般都有很强的相关性, 也许是流派相似,
+            也许是同个时代的热门, 等等等等. 那我们也可以像word2vec一样,
+            实现song2vec:</span
+          >
+        </p>
+        <p>
+          <img
+            data-croporisrc="https://mmbiz.qlogo.cn/mmbiz_png/7CrMia15fFJVEAe7MpmJK8icuEx0H2hNV0h0BLHH3RznvBrAurqXQQIKS5PqdtpjghR6Fx4c195VvkrT98DjMvag/0?wx_fmt=png"
+            data-cropx1="0"
+            data-cropx2="1280"
+            data-cropy1="57.57785467128027"
+            data-cropy2="628.9273356401384"
+            data-original-style="width: 578px;height: 258px;"
+            data-index="6"
+            src="https://mmbiz.qpic.cn/mmbiz_jpg/7CrMia15fFJVEAe7MpmJK8icuEx0H2hNV0kDTby6RNOoWcz4lE82wqM5dj5HicEDolJoEMysDT1RZIb1SZQh40oBA/640"
+            _width="578px"
+            alt="Image"
+          /><span>上图来自Medium</span>
+        </p>
+        <p>
+          <span
+            >此时此刻,&nbsp;每一首出现在歌单里的歌曲都能分别被表示成一个向量,
+            向量之间的相似性可通过欧氏距离, cosine距离, 或其他各种距离去计算,
+            或者交给开源的"ANNOY".<br
+          /></span>
+        </p>
+        <p>
+          <span
+            >而用户之间的相似性,
+            则可以根据他们的听歌历史对应的向量去计算.&nbsp;比如下图中用户A和B分别听过4首歌曲,
+            每个歌曲通过song2vec得到的向量用简单的2个数值表示一下:</span
+          >
+        </p>
+        <p>
+          <img
+            data-croporisrc="https://mmbiz.qlogo.cn/mmbiz_png/7CrMia15fFJVEAe7MpmJK8icuEx0H2hNV0NUibHWkLpTJ0vDhfUbMDBt9nNDlKBiahm4T7ryAeicDXwyyZMibaXMaGeQ/0?wx_fmt=png"
+            data-cropx1="28.78892733564014"
+            data-cropx2="1280"
+            data-cropy1="179.3771626297578"
+            data-cropy2="604.5674740484429"
+            data-original-style="width: 565px;height: 192px;"
+            data-index="7"
+            src="https://mmbiz.qpic.cn/mmbiz_jpg/7CrMia15fFJVEAe7MpmJK8icuEx0H2hNV0kPXJuOGl6AzpNcVxPr5pzR1CoErWk4BTxKmmficUkwyB8b3U2pXic1gw/640"
+            _width="565px"
+            alt="Image"
+          />
+        </p>
+        <p>
+          <span
+            >那么将歌曲的向量加和取平均, 就能得到代表用户A和B的向量, 分别是(2.5,
+            2.5)和(3.5, 3.5).</span
+          >
+        </p>
+        <p>
+          <img
+            data-croporisrc="https://mmbiz.qlogo.cn/mmbiz_png/7CrMia15fFJVEAe7MpmJK8icuEx0H2hNV0I1EHESm7g7KgdMD4DEmV0zCBa7S8BDTd6OqBPQ8oJfV9icCANq4SP4A/0?wx_fmt=png"
+            data-cropx1="0"
+            data-cropx2="1280"
+            data-cropy1="267.95847750865056"
+            data-cropy2="611.2110726643599"
+            data-original-style="width: 578px;height: 155px;"
+            data-index="8"
+            src="https://mmbiz.qpic.cn/mmbiz_jpg/7CrMia15fFJVEAe7MpmJK8icuEx0H2hNV0fTg3GzQTeAiaxLABuwaR9Ir8fFYvw0dcDVFGQgrbIWh3k5u4R9ziafnA/640"
+            _width="578px"
+            alt="Image"
+          />
+        </p>
+        <p>
+          <span
+            >接下来用户A和B到底多相似, 就又回到计算向量之间的距离问题了.</span
+          >
+        </p>
+        <p>
+          <span
+            ><span>☞ ANNOY:&nbsp;</span
+            ><span
+              ><a
+                href="https://github.com/spotify/annoy"
+                target="_blank"
+                rel="noopener"
+                >https://github.com/spotify/annoy</a
+              ></span
+            ></span
+          ><br />
+        </p>
+        <p>
+          <span
+            >说到这里, 不知道大家是否有发现协同过滤的弊端? 那就是"冷启动"问题,
+            即song2vec只能将在歌单里出现过的歌曲变成向量,&nbsp;如果有太冷门的歌曲,
+            从来没被任何用户放在歌单里,
+            或者一首刚刚发布的新歌,&nbsp;岂不是没有对应向量的存在?</span
+          >
+        </p>
+        <p>
+          <span
+            >基于内容的推荐就是解决冷启动的一剂良药,&nbsp;而海量的音乐内容除了有歌词,
+            语种, 发行时间等信息之外,
+            音乐本身最最本质的音频信号也可以用于推荐.<br
+          /></span>
+        </p>
+        <hr />
+        <h3>『完全基于音频信号的推荐』</h3>
+        <p>
+          <span
+            >已经有不少工作尝试将我们之前"音频特征小全"里提到的各种特征,
+            加入进推荐系统里, 然而收效甚微.&nbsp;直到2013年NeurIPS上的一篇"Deep
+            content-based music recommendation"横空出世, 这是一作</span
+          ><span
+            >Aäron van den Oord在Spotify实习时的成果,
+            他现在在Google&nbsp;DeepMind工作,&nbsp;WavNet也是他的主要成就.&nbsp;这篇文章和对应的博客也已经被许多人翻译成了中文</span
+          ><span>.</span>
+        </p>
+        <p>
+          <span
+            >文章里并没有用到多炫酷的深度学习模型,&nbsp;音频预处理也是常见的波形转变为2D的时频谱,
+            再将其作为输入.
+            训练好的模型可以实现将一首歌表示成一个40维的向量:</span
+          >
+        </p>
+        <p>
+          <img
+            data-original-style=""
+            data-index="9"
+            src="https://mmbiz.qpic.cn/mmbiz_png/7CrMia15fFJVEAe7MpmJK8icuEx0H2hNV0DhGTwFV9K0UTeVzQJ4BzziadO8zOxokLvcKjwouOEyWF1PowPH4Yzmg/640"
+            _width="677px"
+            alt="Image"
+          />
+        </p>
+        <p>
+          <span
+            >最关键的点就在于,&nbsp;在训练模型的过程中用到的40维是什么?
+            从哪儿来的? 答案是<strong
+              >把"各个用户对各个歌曲收听次数量"的矩阵进行分解后得到的表示各个歌曲的40维潜在因子(latent
+              factors),</strong
+            >&nbsp;也就是下图里的"y_i".</span
+          >
+        </p>
+        <p>
+          <img
+            data-original-style=""
+            data-index="10"
+            src="https://mmbiz.qpic.cn/mmbiz_png/7CrMia15fFJVEAe7MpmJK8icuEx0H2hNV01sibpTA06hC3AI0bORCX11ZqBW89z1KSRNa9qgnQ2ZnaCiaaoccibfTpg/640"
+            _width="677px"
+            alt="Image"
+          />
+        </p>
+        <p>
+          <span
+            >论文中矩阵分解用到的是WMF (weighted matrix factorization,
+            详见后文方参考文献),
+            设定超参数为40即可分别得到表示用户的和表示歌曲的40维潜在因子.</span
+          >
+        </p>
+        <p>
+          <span
+            >我们单独把"歌曲i的40维潜在因子y_i"抽出来, 在训练深度模型时,
+            将该歌曲的时频谱作为输入,&nbsp;设定模型输出y'_i也是40维,
+            训练过程中使y'_i不断地去接近y_i的值.&nbsp;对于其他训练集中的歌曲也是同样操作,&nbsp;最后深度学习模型的参数<span>θ</span>可以做到使所有y'_i和y_i之间的MSE差距最小:</span
+          >
+        </p>
+        <p>
+          <img
+            data-original-style=""
+            data-index="11"
+            src="https://mmbiz.qpic.cn/mmbiz_png/7CrMia15fFJVEAe7MpmJK8icuEx0H2hNV0eNBQwSSscVG2Vd8cDOwKyWnWjt2Zmh2oVMwicE0fDAHTDIPtl7tVauw/640"
+            _width="677px"
+            alt="Image"
+          />
+        </p>
+        <p>
+          <span
+            >当来了一首全新的歌时, 将其时频谱输入到刚训练好的模型中,
+            就能预测输出一个表示这首歌的40维潜在因子,&nbsp;将它与原来分解出来的用户u的40维潜在因子x_u相乘,
+            就能估算出用户u将来会收听这首新歌多少次了! 若预测到收听次数越高,
+            把这首新歌推荐给用户u的可能性就越大.<br
+          /></span>
+        </p>
+        <p>
+          <span
+            >当然也可以把深度学习模型输出的40维潜在因子, 像上文的song2vec一样,
+            用于相似歌曲的召回!</span
+          >
+        </p>
+        <p>
+          <span>☞ 原论文链接:&nbsp;</span
+          ><span
+            ><a
+              href="https://papers.nips.cc/paper/5004-deep-content-based-music-recommendation"
+              target="_blank"
+              rel="noopener"
+              >https://papers.nips.cc/paper/5004-deep-content-based-music-recommendation</a
+            ></span
+          ><br />
+        </p>
+        <p>
+          <span
+            ><span>☞ WMF参考文献: </span
+            ><span
+              >Yifan Hu, Yehuda Koren, and Chris Volinsky. Collaborative
+              filtering for implicit feedback datasets. In Proceedings of the
+              2008 Eighth IEEE International Conference on Data Mining,
+              2008.</span
+            ></span
+          >
+        </p>
+        <hr />
+        <h3>『万物皆可embedding』</h3>
+        <p>
+          <span
+            >除了协同过滤和基于内容的推荐,
+            更厉害的音乐推荐系统还应该做到为用户设身处地的进行推荐,&nbsp;即contex-aware.
+            比如我在跑步的时候要是一直被推荐到瑜伽歌曲, 那就不太合适,
+            但这里又会涉及到app与用户隐私之间的问题.</span
+          ><br />
+        </p>
+        <p>
+          <span
+            >目前业界多为混合推荐,
+            各种策略均有.&nbsp;所用特征如果一个值无法清晰表示,
+            不如变成像song2vec或潜在因子那样的embedding.
+            关于音乐推荐系统的更多前沿学术内容可以参考Markus Schedl和Peter
+            Knees发表过的文章.</span
+          >
+        </p>
+        <p>
+          <span>☞ </span
+          ><span
+            >"Deep Learning in Music Recommendation Systems." Frontiers in
+            Applied Mathematics and Statistics 5 (2019): 44.&nbsp;</span
+          >
+        </p>
+        <hr />
+        <p>
+          <span
+            >最后,
+            音乐推荐更离不开用户的反馈,&nbsp;当你在app上对我们推荐歌曲的喜恶越明确,
+            算法就越会贴合你的口味.&nbsp;</span
+          >
+        </p>
+        <p>
+          <span
+            >分别用"完全基于音频的潜在因子"和"<span>协同过滤里word2vec"</span>召回的相似歌曲,
+            有什么微妙的不同, 欢迎大家扫码去我的QQ音乐歌单中感受一下 (</span
+          ><span
+            >注: 歌单中均以第一首歌曲为起源, 第2&amp;3首用了42维audio embedding,
+            第3&amp;4首用了84维, 最后两首用word2vec进行相似歌曲召回).</span
+          >
+        </p>
+        <p>
+          <img
+            data-original-style="width: 100%;height: auto;"
+            data-index="12"
+            src="https://mmbiz.qpic.cn/mmbiz_jpg/7CrMia15fFJVEAe7MpmJK8icuEx0H2hNV0XEqTk2LVxncseBlzibzyEKdXFqqZMrxANDNYxibJuAk2mrqqaEkYEhAw/640"
+            _width="100%"
+            alt="Image"
+          />
+        </p>
+        <p>
+          <img
+            data-original-style=""
+            data-index="13"
+            src="https://mmbiz.qpic.cn/mmbiz_jpg/7CrMia15fFJVEAe7MpmJK8icuEx0H2hNV0SNpaxicP2zNqVSlsqib8LKvsZAibPd3IPEcKAuib5vKT3Wol70fNBR2pYA/640"
+            _width="677px"
+            alt="Image"
+          />
+        </p>
+      </div>
+    </article>
+  </body>
+</html>

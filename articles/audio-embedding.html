@@ -1,0 +1,487 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>
+      「MIR-05_2」当音乐标签化身为音频Embedding时能解决什么？ - 无痛入门音乐科技
+    </title>
+    <style>
+      :root {
+        --bg: #f5f5f7;
+        --card-bg: #ffffff;
+        --text: #1d1d1f;
+        --text-secondary: #6e6e73;
+        --accent: #5856d6;
+        --border: #d2d2d7;
+        --code-bg: #f0f0f3;
+      }
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --bg: #0d0d12;
+          --card-bg: #1c1c24;
+          --text: #f0f0f5;
+          --text-secondary: #8e8e93;
+          --accent: #7b79ff;
+          --border: #2c2c34;
+          --code-bg: #15151d;
+        }
+      }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        font-family:
+          -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI",
+          Roboto, "Noto Sans SC", sans-serif;
+        background: var(--bg);
+        color: var(--text);
+        line-height: 1.8;
+      }
+      .header {
+        background: linear-gradient(
+          135deg,
+          #0f0c29 0%,
+          #302b63 50%,
+          #24243e 100%
+        );
+        padding: 2rem 1.5rem;
+        text-align: center;
+      }
+      .header a {
+        color: rgba(255, 255, 255, 0.7);
+        text-decoration: none;
+        font-size: 0.9rem;
+      }
+      .header a:hover {
+        color: #fff;
+      }
+      article {
+        max-width: 720px;
+        margin: 0 auto;
+        padding: 2rem 1.5rem 4rem;
+      }
+      article h1 {
+        font-size: 1.8rem;
+        font-weight: 700;
+        margin-bottom: 0.5rem;
+        line-height: 1.3;
+      }
+      .meta {
+        color: var(--text-secondary);
+        font-size: 0.85rem;
+        margin-bottom: 2rem;
+        padding-bottom: 1rem;
+        border-bottom: 1px solid var(--border);
+      }
+      .content {
+        font-size: 1rem;
+      }
+      .content p,
+      .content section {
+        margin-bottom: 1rem;
+      }
+      .content img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 8px;
+        margin: 1rem 0;
+      }
+      .content h2,
+      .content h3 {
+        text-align: center;
+        margin: 1.5rem 0 0.8rem;
+        font-weight: 600;
+      }
+      .content blockquote {
+        border-left: 3px solid var(--accent);
+        padding-left: 1rem;
+        color: var(--text-secondary);
+        margin: 1rem 0;
+      }
+      .content a {
+        color: var(--accent);
+      }
+      .content hr {
+        border: none;
+        border-top: 1px solid var(--border);
+        margin: 1.5rem 0;
+      }
+      .content ul,
+      .content ol {
+        padding-left: 1.5rem;
+        margin-bottom: 1rem;
+      }
+      .content li {
+        margin-bottom: 0.3rem;
+      }
+      .content table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 1rem 0;
+      }
+      .content th,
+      .content td {
+        border: 1px solid var(--border);
+        padding: 0.5rem;
+        text-align: left;
+      }
+      .content pre,
+      .content code {
+        font-family:
+          "SF Mono", SFMono-Regular, Menlo, Consolas, "Liberation Mono",
+          monospace;
+        font-size: 0.85em;
+      }
+      .content code {
+        background: var(--code-bg);
+        border: 1px solid var(--border);
+        border-radius: 4px;
+        padding: 0.15rem 0.4rem;
+      }
+      .content pre {
+        background: var(--code-bg);
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        padding: 1rem 1.2rem;
+        overflow-x: auto;
+        margin: 1rem 0;
+        line-height: 1.5;
+      }
+      .content pre code {
+        background: none;
+        border: none;
+        padding: 0;
+        font-size: inherit;
+        display: block;
+      }
+      .content pre ol {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+      .content pre li {
+        margin: 0;
+        padding: 0;
+      }
+      .content pre p {
+        margin: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="header">
+      <a href="../index.html">&larr; 返回 无痛入门音乐科技</a>
+    </div>
+    <article>
+      <h1>「MIR-05_2」当音乐标签化身为音频Embedding时能解决什么？</h1>
+      <div class="meta">2021年6月4日 19:14 · 无痛入门音乐科技</div>
+      <div class="content">
+        <blockquote>
+          <p>
+            无论是信号处理还是机器学习，基于歌曲音频做自动打标的最终输出总是明确的音乐标签，但在运算过程的中间产物也大有其发挥天地，你可以说它是特征向量、或是一种音乐表征、或用当前我甚至不知道中文翻译是什么的流行叫法：Embedding。<br />
+          </p>
+        </blockquote>
+        <section>
+          <span
+            ><strong>♬ 本文为MIR音乐信息检索系列的第11篇文章 ♬</strong></span
+          >
+        </section>
+        <section>
+          <span>在之前的文章</span
+          ><a
+            target="_blank"
+            href="http://mp.weixin.qq.com/s?__biz=MzU5MzY3NzI0OA==&amp;mid=2247483885&amp;idx=1&amp;sn=f9e4c9f71451575d1111e566943f4aff&amp;chksm=fe0d9f42c97a16544b35edd490294e754e9e3cf48a13ca6585bcb7f58c02d0c1bf0222822793&amp;scene=21#wechat_redirect"
+            data-itemshowtype="0"
+            tab="innerlink"
+            data-linktype="2"
+            hasload="1"
+            ><span>「MIR-04」音乐推荐: 努力懂你的预言家</span></a
+          ><span
+            >博主有简单介绍，每个歌曲可以用Embedding即推荐模型中的特征向量来隐晦地表示多维度的信息，再通过计算某用户喜欢过的歌曲与众多未听歌曲的Embedding之间的相似程度，来召回相似程度大的歌曲进行推荐。</span
+          >
+        </section>
+        <section>
+          <span
+            >输出Embedding的推荐模型，在训练过程中采用的是大量用户行为数据，在音乐推荐这个场景中就是听歌历史、收藏/扎心歌曲、关注某些歌手等等。那么问题来了，新歌和冷门歌曲没有多少与用户的互动，这些歌曲的Embedding不能充分的代表歌曲本身，也就不能真正地找到相似歌曲，在推荐时就面临了“内容冷启动”的问题。</span
+          >
+        </section>
+        <section>
+          <span
+            >这时我们就需要一种从音频内容本身出发的新型Embedding，音乐它就算再怎么缺乏metadata少了各种标签，也总会有音频存在（别拿John
+            Cage的4'3''抬杠）。2020年我在腾讯音乐工作时，和推荐团队的朋友们一起开发了各种以音频为输入的Embeddings，实现论文专利双丰收。博主将用以下三部分简单解读下研发过程</span
+          ><span>：</span>
+        </section>
+        <ul>
+          <li>
+            <section><span>可以解释的Audio Embedding</span></section>
+          </li>
+          <li>
+            <section>
+              <span
+                >难以解释的User Audio Embedding
+                (在今年ICASSP大会上有线上演讲)</span
+              >
+            </section>
+          </li>
+          <li>
+            <section><span>Embedding作为特征在各类MIR任务的应用</span></section>
+          </li>
+        </ul>
+        <hr />
+        <h3>『Audio Embedding』</h3>
+        <p>
+          <span
+            >之所以是“可以解释的”，因为在构建Embedding之前已经设定好需要从音频中获取哪些类信息，即<span>属性（表示歌曲是唱是说是纯音乐等</span>）和流派（10类具有区分度的</span
+          ><span
+            >大类流派）。因此研发的重点更多落在了如何分别训练可区分流派和属性的音频模型，这里可参考前一篇文章</span
+          ><a
+            target="_blank"
+            href="http://mp.weixin.qq.com/s?__biz=MzU5MzY3NzI0OA==&amp;mid=2247483923&amp;idx=1&amp;sn=2fe1ad96ba0b764888f28fdd88ce9e36&amp;chksm=fe0d9cbcc97a15aa70632d73d3d7cafbc63d97027d8a9d1ecd7fee20212649d6b1fbde37c90f&amp;scene=21#wechat_redirect"
+            data-itemshowtype="0"
+            tab="innerlink"
+            data-linktype="2"
+            ><span>「MIR-05_1」音乐流派自动识别的前世今生</span></a
+          ><span
+            >。在这个步骤之后，对于任意1首歌曲，其每3秒都会得到14个值（4个属性与10个流派），那么沿着时间轴得到的整个“14
+            x N个3秒片段”矩阵画出来，就会如下图所示：</span
+          >
+        </p>
+        <p>
+          <img
+            data-galleryid=""
+            data-original-style=""
+            data-index="2"
+            src="https://mmbiz.qpic.cn/mmbiz_png/7CrMia15fFJVHEWelsvBVpzfZH8H0bzWtlWQPJeJBuibiaRcJAToxdnYnAj4bz5V5yMt6TatR2kYLw7MlThm2zicbQ/640"
+            _width="677px"
+            alt="Image"
+          />
+        </p>
+        <p>
+          <span></span><span>这个图</span
+          ><span>的音频输入是周杰伦的《以父之名</span><span>》，</span
+          ><span>如果你还记得这首嘻哈说</span
+          ><span>唱和R&amp;B演唱等元素兼</span><span>有</span><span>的好</span
+          ><span>歌，</span><span>就也能发现上图中</span><span>某些时段内</span
+          ><span
+            >，<span>vocal w/ acc (人声带伴奏</span
+            ><span>)&nbsp;</span>以及rap和rhythm对应的值很高亮</span
+          ><span>。</span>
+        </p>
+        <p>
+          <span
+            >但每首歌的时长不定，如何将<span>“</span><span>14</span
+            ><span> x N</span><span>个</span><span>3秒片段</span><span>”</span
+            ><span>矩阵</span
+            >再降维到统一维度的特征，作为Embedding供推荐系统使用，我们非常直接的取了6大描述性统计值，比如对rap维度沿时间轴的N个值取其最大值、最小值、均值、方差、峰度、偏度，因此每首歌最终能被表示为“14
+            x 6”的Audio Embedding。</span
+          >
+        </p>
+        <p>
+          <span
+            >之后融合到推荐系统中测试对新歌的推荐是否管用，我们采用了线上A/B
+            Test，的确对于新歌在保证播放量的前提下同时提升完播率</span
+          ><span
+            >有显著作用。整套架构“丘比特—QQ音乐新歌精准投放系统”也在刚刚过去的QCon全球软件开发大会上，由我们数据科学团队负责人李一凡博士进行了介绍。</span
+          >
+        </p>
+        <p>
+          <span
+            >✎ 论文：Beici Liang, Zonghan Cai, Quan Chen, Yifan Li, Minwei Gu.
+            ”Novel Audio Embeddings for Personalized Recommendations on Newly
+            Released Tracks”, <span>in Proceedings of the</span> Machine
+            Learning for Media Discovery Workshop (ML4MD) at the&nbsp;37th
+            International Conference on Machine Learning (ICML), 2020.</span
+          >
+        </p>
+        <p>
+          <span
+            >☞ ICML演讲：<a
+              href="https://slideslive.com/38931318/novel-audio-embeddings-for-personalized-recommendations-on-newly-released-tracks?ref=speaker-36496-latest"
+              target="_blank"
+              rel="noopener"
+              >https://slideslive.com/38931318/novel-audio-embeddings-for-personalized-recommendations-on-newly-released-tracks?ref=speaker-36496-latest</a
+            ></span
+          >
+        </p>
+        <p>
+          <span
+            ><span>☞</span
+            ><span
+              >&nbsp;QCon介绍：<a
+                href="https://qcon.infoq.cn/2021/beijing/presentation/3312"
+                target="_blank"
+                rel="noopener"
+                >https://qcon.infoq.cn/2021/beijing/presentation/3312</a
+              ></span
+            ></span
+          >
+        </p>
+        <hr />
+        <h3>『User Audio Embedding』</h3>
+        <p>
+          <span
+            >上部分的Embedding由于规定好对流派和属性信息的捕捉，难免遗漏掉其他未被定义的音乐信息。更何况人类对于音乐的偏好，确实难以用具体的维度量化。与其定义好更多的维度，不如直接拿音频训练一个模型，使其输出去拟合之前“基于用户行为训练出的推荐模型”得到的User
+            Embedding (UE)。这种结合用户信息得到的新型音频输出，我们命名为User
+            Audio Embedding
+            (UAE)，相当于让大量的用户行为信息去定义音频模型到底应该学出什么，所以“难以解释”（这是陈轲同学在跟我实习期间的主要工作，不愧是UCSD的博士生，完成度相当高）。</span
+          >
+        </p>
+        <p>
+          <span
+            >所以第一步，我们要拿到UE（感谢推荐算法高级工程师马小栓的鼎力相助！）。这里可参考YoutubeDNN的模型架构和训练策略，但数据替换为音乐场景，如下图所示：</span
+          >
+        </p>
+        <p>
+          <img
+            data-galleryid=""
+            data-original-style=""
+            data-index="3"
+            src="https://mmbiz.qpic.cn/mmbiz_png/7CrMia15fFJVHEWelsvBVpzfZH8H0bzWtCjqcLCtzZujdwX0s1eD8ez8ahVM0AR9fL2zrft4fIsXtw3aNOYfTVw/640"
+            _width="677px"
+            alt="Image"
+          />
+        </p>
+        <p>
+          <span
+            >已知每个用户的UE，及其最近加心/收藏以及拉黑/快速切过的正负反馈歌曲，采用metric
+            learning构建下图所示的网络，训练时我们需要将正反馈与UE的乘积vs负反馈与UE的乘积，离得越远越好：</span
+          >
+        </p>
+        <p>
+          <img
+            data-original-style=""
+            data-index="4"
+            src="https://mmbiz.qpic.cn/mmbiz_png/7CrMia15fFJVHEWelsvBVpzfZH8H0bzWtvYTvZ1ictLsFZ6JooBrUyo4AwSTRjtHFibYsIv5cafg1Motf9lPg1xCg/640"
+            _width="677px"
+            alt="Image"
+          />
+        </p>
+        <p>
+          <span
+            >模型训练完毕，我们即可得到一个网络，对于任何音频输入，都能输出相应的UAE。它在音乐推荐离线任务上的表现，可详见论文。如果有参加ICASSP的同僚，也可以线上听我们做详细的讲演，具体会议信息如下。</span
+          ><br />
+        </p>
+        <section>
+          <span
+            >✎ 论文：Ke Chen, Beici Liang, Xiaoshuan Ma, Minwei Gu. ”Learning
+            Audio Embeddings with User Listening Data for Content-based Music
+            Recommendation”, in Proceedings of the IEEE International Conference
+            on Audio, Speech and Signal Processing (ICASSP), 2021.</span
+          ><br />
+        </section>
+        <section>
+          <span
+            >☞ PDF可见：<a
+              href="https://arxiv.org/pdf/2010.15389.pdf"
+              target="_blank"
+              rel="noopener"
+              >https://arxiv.org/pdf/2010.15389.pdf</a
+            ></span
+          >
+        </section>
+        <section>
+          <span
+            ><span>☞ ICASSP线上信息</span
+            ><span
+              >：2021年6月8号多伦多时间16:30-17:15
+              (北京时间为9号凌晨04:30-05:15)，MLSP-10 Deep Learning for Speech
+              and Audio</span
+            ></span
+          ><span></span>
+        </section>
+        <hr />
+        <h3>『在MIR任务中的应用』</h3>
+        <p>
+          <span
+            >虽然难以解释UAE各个维度上代表的语义，但我们可以把它应用到具体的MIR任务中，试探其功效。比如单纯用musicnn模型的特征
+            vs.
+            额外加上UAE，来比对这些特征在流派识别上的效果，确实加上UAE的精确度更高。我们也用这个方案参加了2020年的MIREX竞赛，综合指标达到0.7474，且对于乡村
+            (country)、说唱 (rap/hip-hop)、韩国流行 (K-pop ballad)
+            这三类的检测可达历史最高分。</span
+          >
+        </p>
+        <p>
+          <span
+            ><span
+              >☞ MIREX竞赛结果：<a
+                href="https://www.music-ir.org/nema_out/mirex2020/results/act/mixed_report/"
+                target="_blank"
+                rel="noopener"
+                >https://www.music-ir.org/nema_out/mirex2020/results/act/mixed_report/</a
+              ></span
+            ><span></span
+          ></span>
+        </p>
+        <p>
+          <span
+            >Embedding这个概念本身可以说是音乐内容的一种表达形式，既可如音频指纹一样精细，也可以像音乐流派一样笼统。处于中等颗粒度的Embedding已经被运用到翻唱检测、歌手识别等任务中，当每个音频可以被定长的Embedding表示时，之后在大规模数据中做快速检索便易如反掌。我在腾讯音乐最后发表的论文就是关于歌手识别。</span
+          >
+        </p>
+        <p>
+          <span><span>✎ 论文</span></span
+          ><span
+            >：Shichao Hu, Beici Liang, Zhouxuan Chen, Xiao Lu, Ethan Zhao,
+            Simon Lui. ”Large-scale Singer Recognition using Deep Metric
+            Learning”, accepted to the IEEE International Joint Conference on
+            Neural Networks (IJCNN), 2021.</span
+          >
+        </p>
+        <hr />
+        <section>
+          <span
+            >最后说点题外话，在腾讯音乐工作期间能做这么多音频Embedding的研发和落地，非常感谢推荐团队负责人aka音乐科技届前辈顾旻玮让我自由发挥无限折腾，以及丘比特项目的配合（尤其感谢宗颔/陈全/孙寒的技术支持和彭蔚的策略把控）。你们和申申、鲁霄、凡哥、曹翔、Mark以及泽堉，在无数个充满音乐和咖啡的午休和周末里对我的鼓励，是我在深圳最大的快乐。</span
+          >
+        </section>
+        <section>
+          <span
+            >离职但不离业，我还会在全球范围的音乐科技界活跃，公众号也许还是更新得很慢（谢谢近2000位关注者）。参加今年ICASSP的朋友们，欢迎来线上聊天！</span
+          >
+        </section>
+        <p>
+          <strong><span>上文回顾：</span></strong>
+        </p>
+        <ul>
+          <li>
+            <p>
+              <a
+                target="_blank"
+                href="http://mp.weixin.qq.com/s?__biz=MzU5MzY3NzI0OA==&amp;mid=2247483898&amp;idx=1&amp;sn=3a405119a32714442c8dcd9be830cdb9&amp;chksm=fe0d9f55c97a1643a091acb7d6c25c14a8d19d107f9d430ffd9055a468f4d18c43666b2c260f&amp;scene=21#wechat_redirect"
+                data-itemshowtype="0"
+                tab="innerlink"
+                data-linktype="2"
+                ><span>「MIR-05_0」震惊! AI发现这些歌竟然...</span></a
+              ><br />
+            </p>
+          </li>
+          <li>
+            <p>
+              <a
+                target="_blank"
+                href="http://mp.weixin.qq.com/s?__biz=MzU5MzY3NzI0OA==&amp;mid=2247483923&amp;idx=1&amp;sn=2fe1ad96ba0b764888f28fdd88ce9e36&amp;chksm=fe0d9cbcc97a15aa70632d73d3d7cafbc63d97027d8a9d1ecd7fee20212649d6b1fbde37c90f&amp;scene=21#wechat_redirect"
+                data-itemshowtype="0"
+                tab="innerlink"
+                data-linktype="2"
+                >「MIR-05_1」音乐流派自动识别<span>的前世今生</span></a
+              >
+            </p>
+          </li>
+          <li>
+            <p>
+              <a
+                target="_blank"
+                href="http://mp.weixin.qq.com/s?__biz=MzU5MzY3NzI0OA==&amp;mid=2247483885&amp;idx=1&amp;sn=f9e4c9f71451575d1111e566943f4aff&amp;chksm=fe0d9f42c97a16544b35edd490294e754e9e3cf48a13ca6585bcb7f58c02d0c1bf0222822793&amp;scene=21#wechat_redirect"
+                data-itemshowtype="0"
+                tab="innerlink"
+                data-linktype="2"
+                ><span>「MIR-04」音乐推荐: 努力懂你的预言家</span></a
+              >
+            </p>
+          </li>
+        </ul>
+      </div>
+    </article>
+  </body>
+</html>

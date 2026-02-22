@@ -130,12 +130,19 @@
 
     /* ── Content ── */
     .container {
-      max-width: 760px;
+      max-width: 920px;
       margin: -2rem auto 0;
       padding: 0 1.5rem 4rem;
       position: relative;
       z-index: 1;
       flex: 1;
+      display: flex;
+      gap: 1.2rem;
+      align-items: flex-start;
+    }
+    .cards {
+      flex: 1;
+      min-width: 0;
     }
 
     /* ── Card ── */
@@ -228,6 +235,53 @@
     }
     div.card h2 a:hover { color: var(--accent); }
 
+    /* ── Filter sidebar ── */
+    .filters {
+      position: sticky;
+      top: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+      flex-shrink: 0;
+      width: 72px;
+    }
+    .filter-btn {
+      appearance: none;
+      border: 1px solid var(--border);
+      background: var(--card-bg);
+      color: var(--text-secondary);
+      font-family: inherit;
+      font-size: 0.75rem;
+      font-weight: 500;
+      padding: 0.4rem 0;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.2s;
+      text-align: center;
+    }
+    .filter-btn:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+    .filter-btn.active {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: #fff;
+    }
+    .card.hidden {
+      display: none;
+    }
+    @media (max-width: 640px) {
+      .container { flex-direction: column; }
+      .filters {
+        position: static;
+        flex-direction: row;
+        flex-wrap: wrap;
+        width: auto;
+      }
+      .filter-btn { padding: 0.35rem 0.75rem; }
+    }
+
   </style>
 </head>
 <body>
@@ -268,315 +322,400 @@
     </svg>
   </div>
   <main class="container">
+    <div class="filters">
+      <button class="filter-btn active" data-filter="all">全部</button>
+      <button class="filter-btn" data-filter="mir">MIR</button>
+      <button class="filter-btn" data-filter="info">INFO</button>
+      <button class="filter-btn" data-filter="tech">TECH</button>
+      <button class="filter-btn" data-filter="nime">NIME</button>
+      <button class="filter-btn" data-filter="other">OTHER</button>
+    </div>
+    <div class="cards">
     <!-- 2026-02-15 TECH -->
-    <a class="card" href="https://mp.weixin.qq.com/s?__biz=MzU5MzY3NzI0OA==&mid=2247484032&idx=1&sn=02b93aa8c86730083c2bf3004fa680c1&scene=19&poc_token=HG4xkmmjershfKlaODZCAW8rQfMNzyXXIPHky1zU" target="_blank">
+    <div class="card" data-tag="tech">
       <div class="card-top">
         <span class="tag tag-tech">TECH</span>
         <span class="card-date">2026-02-15</span>
       </div>
-      <h2>过年好！分享一个可速度分析AI论文的技能指令: /ai-paper-reader</h2>
-    </a>
+      <h2><a href="articles/ai-paper-reader.html">过年好！分享一个可速度分析AI论文的技能指令: /ai-paper-reader</a></h2>
+      <div class="card-links">
+        <a href="https://mp.weixin.qq.com/s?__biz=MzU5MzY3NzI0OA==&mid=2247484032&idx=1&sn=02b93aa8c86730083c2bf3004fa680c1&scene=19&poc_token=HG4xkmmjershfKlaODZCAW8rQfMNzyXXIPHky1zU" target="_blank">公众号文章</a>
+      </div>
+    </div>
     <!-- 2026-02-14 INFO — has extra links -->
-    <div class="card">
+    <div class="card" data-tag="info">
       <div class="card-top">
         <span class="tag tag-info">INFO</span>
         <span class="card-date">2026-02-14</span>
       </div>
-      <h2><a href="https://mp.weixin.qq.com/s?__biz=MzU5MzY3NzI0OA==&mid=2247484022&idx=1&sn=94535fbc6c7a56490dd52d11f0962f4d&scene=19&poc_token=HFgzkmmjmF53Hz5-bJCS3mDASmeI4RhAuTrEu65S" target="_blank">连接音乐音频与自然语言（2024 ISMIR Tutorial）</a></h2>
+      <h2><a href="articles/music-language-tutorial.html">连接音乐音频与自然语言（2024 ISMIR Tutorial）</a></h2>
       <p>ISMIR 2024 教程中文翻译版：探索语言模型如何理解和生成音乐，涵盖音乐描述、检索与生成</p>
       <div class="card-links">
+        <a href="https://mp.weixin.qq.com/s?__biz=MzU5MzY3NzI0OA==&mid=2247484022&idx=1&sn=94535fbc6c7a56490dd52d11f0962f4d&scene=19&poc_token=HFgzkmmjmF53Hz5-bJCS3mDASmeI4RhAuTrEu65S" target="_blank">公众号文章</a>
         <a href="https://github.com/mulab-mir/music-language-tutorial" target="_blank">英文原版</a>
         <a href="music-language-tutorial/intro.html">中文版在线阅读</a>
       </div>
     </div>
     <!-- 2026-02-14 MIR-CC — has extra links -->
-    <div class="card">
+    <div class="card" data-tag="mir">
       <div class="card-top">
         <span class="tag tag-mir-cc">MIR-CC</span>
         <span class="card-date">2026-02-14</span>
       </div>
-      <h2><a href="https://mp.weixin.qq.com/s?__biz=MzU5MzY3NzI0OA==&mid=2247484015&idx=1&sn=ffb0e282814654db668b9aeaae7070e6&scene=19&poc_token=HOHwkGmjA6j2m1IrUPZG7-8YVeVabxBGl9z10Nyt" target="_blank">2026年，用 Claude Code 就可以无痛入门音乐科技</a></h2>
+      <h2><a href="articles/claude-code-mir.html">2026年，用 Claude Code 就可以无痛入门音乐科技</a></h2>
       <p>用 Claude Code + marimo 交互式笔记本，从零开始探索音乐信息检索的核心概念</p>
       <div class="card-links">
+        <a href="https://mp.weixin.qq.com/s?__biz=MzU5MzY3NzI0OA==&mid=2247484015&idx=1&sn=ffb0e282814654db668b9aeaae7070e6&scene=19&poc_token=HOHwkGmjA6j2m1IrUPZG7-8YVeVabxBGl9z10Nyt" target="_blank">公众号文章</a>
         <a href="https://github.com/beiciliang/intro2musictech/blob/main/MIR-CC.py" target="_blank">MIR-CC.py</a>
         <a href="MIR-CC.html">在线预览</a>
       </div>
     </div>
     <!-- 2023-03-26 INFO — has extra links -->
-    <div class="card">
+    <div class="card" data-tag="info">
       <div class="card-top">
         <span class="tag tag-info">INFO</span>
         <span class="card-date">2023-03-26</span>
       </div>
-      <h2><a href="https://mp.weixin.qq.com/s?__biz=MzU5MzY3NzI0OA==&mid=2247483994&idx=1&sn=3dfeefafc11c264106f448379052b42d&chksm=fe0d9cf5c97a15e30a5338b9031ae1741ea45856d234dc02d13ecc7723b5682a747f9c00de31&scene=178&cur_album_id=1342444458121576448#rd" target="_blank">分享我的MIR研发技术栈</a></h2>
+      <h2><a href="articles/mir-tech-stack.html">分享我的MIR研发技术栈</a></h2>
       <div class="card-links">
+        <a href="https://mp.weixin.qq.com/s?__biz=MzU5MzY3NzI0OA==&mid=2247483994&idx=1&sn=3dfeefafc11c264106f448379052b42d&chksm=fe0d9cf5c97a15e30a5338b9031ae1741ea45856d234dc02d13ecc7723b5682a747f9c00de31&scene=178&cur_album_id=1342444458121576448#rd" target="_blank">公众号文章</a>
         <a href="https://www.bilibili.com/video/BV1MX4y1R7cu/?share_source=copy_web&vd_source=9a7c2143e3aca83788929d6099a36f8f" target="_blank">B站视频</a>
       </div>
     </div>
     <!-- 2022-10-17 INFO -->
-    <a class="card" href="https://mp.weixin.qq.com/s?__biz=MzU5MzY3NzI0OA==&mid=2247483988&idx=1&sn=d5b6dfa1ab0e460f9abad915838f6e59&chksm=fe0d9cfbc97a15edff8b2f5ac49ca678350bc3af18d6558c6508499703e384f82bca36253ca8&scene=178&cur_album_id=1342444458121576448#rd" target="_blank">
+    <div class="card" data-tag="info">
       <div class="card-top">
         <span class="tag tag-info">INFO</span>
         <span class="card-date">2022-10-17</span>
       </div>
-      <h2>从数据角度聊聊音乐版权版税</h2>
-    </a>
+      <h2><a href="articles/music-copyright.html">从数据角度聊聊音乐版权版税</a></h2>
+      <div class="card-links">
+        <a href="https://mp.weixin.qq.com/s?__biz=MzU5MzY3NzI0OA==&mid=2247483988&idx=1&sn=d5b6dfa1ab0e460f9abad915838f6e59&chksm=fe0d9cfbc97a15edff8b2f5ac49ca678350bc3af18d6558c6508499703e384f82bca36253ca8&scene=178&cur_album_id=1342444458121576448#rd" target="_blank">公众号文章</a>
+      </div>
+    </div>
     <!-- 2021-09-04 MIR -->
-    <a class="card" href="http://mp.weixin.qq.com/s?__biz=MzU5MzY3NzI0OA==&mid=2247483966&idx=1&sn=f968b4f55595357afa8f6d483715262d&chksm=fe0d9c91c97a1587f42ce8e52d3cd4eec9ba49cad01680aead1b60d0918c134340ce75e3c469#rd" target="_blank">
+    <div class="card" data-tag="mir">
       <div class="card-top">
         <span class="tag tag-mir">MIR</span>
         <span class="card-date">2021-09-04</span>
       </div>
-      <h2>打破砂锅问到底，不同python库做音频预处理的区别在哪里？</h2>
-    </a>
+      <h2><a href="articles/audio-preprocessing.html">打破砂锅问到底，不同python库做音频预处理的区别在哪里？</a></h2>
+      <div class="card-links">
+        <a href="http://mp.weixin.qq.com/s?__biz=MzU5MzY3NzI0OA==&mid=2247483966&idx=1&sn=f968b4f55595357afa8f6d483715262d&chksm=fe0d9c91c97a1587f42ce8e52d3cd4eec9ba49cad01680aead1b60d0918c134340ce75e3c469#rd" target="_blank">公众号文章</a>
+      </div>
+    </div>
     <!-- 2021-08-06 INFO — has extra links -->
-    <div class="card">
+    <div class="card" data-tag="info">
       <div class="card-top">
         <span class="tag tag-info">INFO</span>
         <span class="card-date">2021-08-06</span>
       </div>
-      <h2><a href="http://mp.weixin.qq.com/s?__biz=MzU5MzY3NzI0OA==&mid=2247483960&idx=1&sn=80ce28a10186dab81af2af239df76c8a&chksm=fe0d9c97c97a158114decdbdbe6cc6916c6c81f6fce9f9c52617fc6d0ea8738b9720efe8975a#rd" target="_blank">三分钟认识音乐科技</a></h2>
+      <h2><a href="articles/intro-music-tech.html">三分钟认识音乐科技</a></h2>
       <div class="card-links">
+        <a href="http://mp.weixin.qq.com/s?__biz=MzU5MzY3NzI0OA==&mid=2247483960&idx=1&sn=80ce28a10186dab81af2af239df76c8a&chksm=fe0d9c97c97a158114decdbdbe6cc6916c6c81f6fce9f9c52617fc6d0ea8738b9720efe8975a#rd" target="_blank">公众号文章</a>
         <a href="https://www.youtube.com/watch?v=YgYV-7-ohxQ" target="_blank">YouTube视频</a>
       </div>
     </div>
     <!-- 2021-06-04 MIR — has extra links -->
-    <div class="card">
+    <div class="card" data-tag="mir">
       <div class="card-top">
         <span class="tag tag-mir">MIR</span>
         <span class="card-date">2021-06-04</span>
       </div>
-      <h2><a href="http://mp.weixin.qq.com/s?__biz=MzU5MzY3NzI0OA==&mid=2247483954&idx=1&sn=7bdcc70838c0fc3d014cdedec91411b2&chksm=fe0d9c9dc97a158b31d11ec699d6e5ab53caf1897431cdf2f20f73ab67d885790b4a9361f055#rd" target="_blank">当音乐标签化身为音频Embedding时能解决什么？</a></h2>
+      <h2><a href="articles/audio-embedding.html">当音乐标签化身为音频Embedding时能解决什么？</a></h2>
       <div class="card-links">
+        <a href="http://mp.weixin.qq.com/s?__biz=MzU5MzY3NzI0OA==&mid=2247483954&idx=1&sn=7bdcc70838c0fc3d014cdedec91411b2&chksm=fe0d9c9dc97a158b31d11ec699d6e5ab53caf1897431cdf2f20f73ab67d885790b4a9361f055#rd" target="_blank">公众号文章</a>
         <a href="https://arxiv.org/abs/2010.15389" target="_blank">arXiv论文</a>
       </div>
     </div>
     <!-- 2021-03-06 INFO -->
-    <a class="card" href="http://mp.weixin.qq.com/s?__biz=MzU5MzY3NzI0OA==&mid=2247483940&idx=1&sn=c6470c7b689da2882ee4fb6c43e1577c&chksm=fe0d9c8bc97a159d2c7734ab466b38d2d524f4e8e2ce87a2d54cf5303ae5c436eadbdd103b09#rd" target="_blank">
+    <div class="card" data-tag="info">
       <div class="card-top">
         <span class="tag tag-info">INFO</span>
         <span class="card-date">2021-03-06</span>
       </div>
-      <h2>2020年度那些亮眼的音乐科技成就</h2>
-    </a>
+      <h2><a href="articles/music-tech-2020.html">2020年度那些亮眼的音乐科技成就</a></h2>
+      <div class="card-links">
+        <a href="http://mp.weixin.qq.com/s?__biz=MzU5MzY3NzI0OA==&mid=2247483940&idx=1&sn=c6470c7b689da2882ee4fb6c43e1577c&chksm=fe0d9c8bc97a159d2c7734ab466b38d2d524f4e8e2ce87a2d54cf5303ae5c436eadbdd103b09#rd" target="_blank">公众号文章</a>
+      </div>
+    </div>
     <!-- 2020-10-08 MIR -->
-    <a class="card" href="http://mp.weixin.qq.com/s?__biz=MzU5MzY3NzI0OA==&mid=2247483923&idx=1&sn=2fe1ad96ba0b764888f28fdd88ce9e36&chksm=fe0d9cbcc97a15aa70632d73d3d7cafbc63d97027d8a9d1ecd7fee20212649d6b1fbde37c90f#rd" target="_blank">
+    <div class="card" data-tag="mir">
       <div class="card-top">
         <span class="tag tag-mir">MIR</span>
         <span class="card-date">2020-10-08</span>
       </div>
-      <h2>音乐流派自动识别的前世今生</h2>
-    </a>
+      <h2><a href="articles/music-genre.html">音乐流派自动识别的前世今生</a></h2>
+      <div class="card-links">
+        <a href="http://mp.weixin.qq.com/s?__biz=MzU5MzY3NzI0OA==&mid=2247483923&idx=1&sn=2fe1ad96ba0b764888f28fdd88ce9e36&chksm=fe0d9cbcc97a15aa70632d73d3d7cafbc63d97027d8a9d1ecd7fee20212649d6b1fbde37c90f#rd" target="_blank">公众号文章</a>
+      </div>
+    </div>
     <!-- 2020-05-16 说得好听 — has extra links -->
-    <div class="card">
+    <div class="card" data-tag="other">
       <div class="card-top">
         <span class="tag tag-podcast">说得好听</span>
         <span class="card-date">2020-05-16</span>
       </div>
-      <h2><a href="http://mp.weixin.qq.com/s?__biz=MzU5MzY3NzI0OA==&mid=2247483914&idx=1&sn=1a474f9bdfb1c7981a461151737bb5e0&chksm=fe0d9ca5c97a15b36c77c5879d916cb7f2a56c62741c3490dd1c18c5f638231452e9929e398f#rd" target="_blank">EP7-音乐推荐算法的小秘密</a></h2>
+      <h2><a href="articles/podcast-ep7.html">EP7-音乐推荐算法的小秘密</a></h2>
       <div class="card-links">
+        <a href="http://mp.weixin.qq.com/s?__biz=MzU5MzY3NzI0OA==&mid=2247483914&idx=1&sn=1a474f9bdfb1c7981a461151737bb5e0&chksm=fe0d9ca5c97a15b36c77c5879d916cb7f2a56c62741c3490dd1c18c5f638231452e9929e398f#rd" target="_blank">公众号文章</a>
         <a href="https://www.xiaoyuzhoufm.com/episode/5ebeec95418a84a0468f2ed5" target="_blank">小宇宙播客</a>
       </div>
     </div>
     <!-- 2020-04-30 INFO -->
-    <a class="card" href="http://mp.weixin.qq.com/s?__biz=MzU5MzY3NzI0OA==&mid=2247483904&idx=1&sn=959fd70b768b9416a5065748ba6f5818&chksm=fe0d9cafc97a15b9c1123a30af34497d5e79e5b636a15a70ad169434ed5b0cf937f13ca87a7b#rd" target="_blank">
+    <div class="card" data-tag="info">
       <div class="card-top">
         <span class="tag tag-info">INFO</span>
         <span class="card-date">2020-04-30</span>
       </div>
-      <h2>《音频音乐技术》正式出版</h2>
-    </a>
+      <h2><a href="articles/audio-music-tech-book.html">《音频音乐技术》正式出版</a></h2>
+      <div class="card-links">
+        <a href="http://mp.weixin.qq.com/s?__biz=MzU5MzY3NzI0OA==&mid=2247483904&idx=1&sn=959fd70b768b9416a5065748ba6f5818&chksm=fe0d9cafc97a15b9c1123a30af34497d5e79e5b636a15a70ad169434ed5b0cf937f13ca87a7b#rd" target="_blank">公众号文章</a>
+      </div>
+    </div>
     <!-- 2020-03-20 MIR -->
-    <a class="card" href="http://mp.weixin.qq.com/s?__biz=MzU5MzY3NzI0OA==&mid=2247483898&idx=1&sn=3a405119a32714442c8dcd9be830cdb9&chksm=fe0d9f55c97a1643a091acb7d6c25c14a8d19d107f9d430ffd9055a468f4d18c43666b2c260f#rd" target="_blank">
+    <div class="card" data-tag="mir">
       <div class="card-top">
         <span class="tag tag-mir">MIR</span>
         <span class="card-date">2020-03-20</span>
       </div>
-      <h2>震惊! AI发现这些歌竟然...</h2>
-    </a>
+      <h2><a href="articles/ai-music-discovery.html">震惊! AI发现这些歌竟然...</a></h2>
+      <div class="card-links">
+        <a href="http://mp.weixin.qq.com/s?__biz=MzU5MzY3NzI0OA==&mid=2247483898&idx=1&sn=3a405119a32714442c8dcd9be830cdb9&chksm=fe0d9f55c97a1643a091acb7d6c25c14a8d19d107f9d430ffd9055a468f4d18c43666b2c260f#rd" target="_blank">公众号文章</a>
+      </div>
+    </div>
     <!-- 2020-03-14 MIR -->
-    <a class="card" href="http://mp.weixin.qq.com/s?__biz=MzU5MzY3NzI0OA==&mid=2247483885&idx=1&sn=f9e4c9f71451575d1111e566943f4aff&chksm=fe0d9f42c97a16544b35edd490294e754e9e3cf48a13ca6585bcb7f58c02d0c1bf0222822793#rd" target="_blank">
+    <div class="card" data-tag="mir">
       <div class="card-top">
         <span class="tag tag-mir">MIR</span>
         <span class="card-date">2020-03-14</span>
       </div>
-      <h2>音乐推荐: 努力懂你的预言家</h2>
-    </a>
+      <h2><a href="articles/music-recommendation.html">音乐推荐: 努力懂你的预言家</a></h2>
+      <div class="card-links">
+        <a href="http://mp.weixin.qq.com/s?__biz=MzU5MzY3NzI0OA==&mid=2247483885&idx=1&sn=f9e4c9f71451575d1111e566943f4aff&chksm=fe0d9f42c97a16544b35edd490294e754e9e3cf48a13ca6585bcb7f58c02d0c1bf0222822793#rd" target="_blank">公众号文章</a>
+      </div>
+    </div>
     <!-- 2020-03-07 MIR — has extra links -->
-    <div class="card">
+    <div class="card" data-tag="mir">
       <div class="card-top">
         <span class="tag tag-mir">MIR</span>
         <span class="card-date">2020-03-07</span>
       </div>
-      <h2><a href="http://mp.weixin.qq.com/s?__biz=MzU5MzY3NzI0OA==&mid=2247483818&idx=1&sn=db17b69603b98532f993f7f094248ce3&chksm=fe0d9f05c97a16139ee4114ed6890c8d99bd2c09210aa7ba0d085a2f44599e5cbd5a93375290#rd" target="_blank">听歌识曲: 音乐宇宙里的占星师</a></h2>
+      <h2><a href="articles/audio-fingerprint.html">听歌识曲: 音乐宇宙里的占星师</a></h2>
       <div class="card-links">
+        <a href="http://mp.weixin.qq.com/s?__biz=MzU5MzY3NzI0OA==&mid=2247483818&idx=1&sn=db17b69603b98532f993f7f094248ce3&chksm=fe0d9f05c97a16139ee4114ed6890c8d99bd2c09210aa7ba0d085a2f44599e5cbd5a93375290#rd" target="_blank">公众号文章</a>
         <a href="https://zhuanlan.zhihu.com/p/75360272" target="_blank">知乎系列文章</a>
       </div>
     </div>
     <!-- 2020-01-12 INFO -->
-    <a class="card" href="http://mp.weixin.qq.com/s?__biz=MzU5MzY3NzI0OA==&mid=2247483802&idx=1&sn=9790d92e685baa74f28f3053c4ff15ef&chksm=fe0d9f35c97a1623fc305ce8c79b19e7451f5500d95b08c4fd5c27e47c8a256094c3e2022066#rd" target="_blank">
+    <div class="card" data-tag="info">
       <div class="card-top">
         <span class="tag tag-info">INFO</span>
         <span class="card-date">2020-01-12</span>
       </div>
-      <h2>2019年度那些亮眼的音乐科技成就</h2>
-    </a>
+      <h2><a href="articles/music-tech-2019.html">2019年度那些亮眼的音乐科技成就</a></h2>
+      <div class="card-links">
+        <a href="http://mp.weixin.qq.com/s?__biz=MzU5MzY3NzI0OA==&mid=2247483802&idx=1&sn=9790d92e685baa74f28f3053c4ff15ef&chksm=fe0d9f35c97a1623fc305ce8c79b19e7451f5500d95b08c4fd5c27e47c8a256094c3e2022066#rd" target="_blank">公众号文章</a>
+      </div>
+    </div>
     <!-- 2019-11-13 MIR -->
-    <a class="card" href="http://mp.weixin.qq.com/s?__biz=MzU5MzY3NzI0OA==&mid=2247483792&idx=1&sn=38b07d6efff4523eecd78366f3e87962&chksm=fe0d9f3fc97a1629669c5875ea33a3b43878a2859e71a052c7c38b212127fea936e935e79c75#rd" target="_blank">
+    <div class="card" data-tag="mir">
       <div class="card-top">
         <span class="tag tag-mir">MIR</span>
         <span class="card-date">2019-11-13</span>
       </div>
-      <h2>音频特征小全之提取工具</h2>
-    </a>
+      <h2><a href="articles/audio-feature-tools.html">音频特征小全之提取工具</a></h2>
+      <div class="card-links">
+        <a href="http://mp.weixin.qq.com/s?__biz=MzU5MzY3NzI0OA==&mid=2247483792&idx=1&sn=38b07d6efff4523eecd78366f3e87962&chksm=fe0d9f3fc97a1629669c5875ea33a3b43878a2859e71a052c7c38b212127fea936e935e79c75#rd" target="_blank">公众号文章</a>
+      </div>
+    </div>
     <!-- 2019-08-19 INFO -->
-    <a class="card" href="https://mp.weixin.qq.com/s/N4p_jmsuY6RVuz1IjrSMeg" target="_blank">
+    <div class="card" data-tag="info">
       <div class="card-top">
         <span class="tag tag-info">INFO</span>
         <span class="card-date">2019-08-19</span>
       </div>
-      <h2>在C4DM读博是怎样一番体验？</h2>
-    </a>
+      <h2><a href="articles/c4dm-phd.html">在C4DM读博是怎样一番体验？</a></h2>
+      <div class="card-links">
+        <a href="https://mp.weixin.qq.com/s/N4p_jmsuY6RVuz1IjrSMeg" target="_blank">公众号文章</a>
+      </div>
+    </div>
     <!-- 2019-02-18 INFO -->
-    <a class="card" href="https://mp.weixin.qq.com/s/RkcOyFf4eLIe512B37nmIw" target="_blank">
+    <div class="card" data-tag="info">
       <div class="card-top">
         <span class="tag tag-info">INFO</span>
         <span class="card-date">2019-02-18</span>
       </div>
-      <h2>C4DM在ICASSP 2019的收录成果</h2>
-    </a>
+      <h2><a href="articles/c4dm-icassp2019.html">C4DM在ICASSP 2019的收录成果</a></h2>
+      <div class="card-links">
+        <a href="https://mp.weixin.qq.com/s/RkcOyFf4eLIe512B37nmIw" target="_blank">公众号文章</a>
+      </div>
+    </div>
     <!-- 2018-12-17 INFO -->
-    <a class="card" href="https://mp.weixin.qq.com/s/5FBzxHm1PcgBpHy6645JmA" target="_blank">
+    <div class="card" data-tag="info">
       <div class="card-top">
         <span class="tag tag-info">INFO</span>
         <span class="card-date">2018-12-17</span>
       </div>
-      <h2>2018年度那些亮眼的音乐科技成就</h2>
-    </a>
+      <h2><a href="articles/music-tech-2018.html">2018年度那些亮眼的音乐科技成就</a></h2>
+      <div class="card-links">
+        <a href="https://mp.weixin.qq.com/s/5FBzxHm1PcgBpHy6645JmA" target="_blank">公众号文章</a>
+      </div>
+    </div>
     <!-- 2018-11-30 INFO -->
-    <a class="card" href="https://mp.weixin.qq.com/s?__biz=MzU5MzY3NzI0OA==&mid=2247483761&idx=1&sn=52b81b9fca161df1afad2a8babad251a&scene=19#wechat_redirect" target="_blank">
+    <div class="card" data-tag="info">
       <div class="card-top">
         <span class="tag tag-info">INFO</span>
         <span class="card-date">2018-11-30</span>
       </div>
-      <h2>音乐科技相关会议期刊列表</h2>
-    </a>
+      <h2><a href="articles/conferences-journals.html">音乐科技相关会议期刊列表</a></h2>
+      <div class="card-links">
+        <a href="https://mp.weixin.qq.com/s?__biz=MzU5MzY3NzI0OA==&mid=2247483761&idx=1&sn=52b81b9fca161df1afad2a8babad251a&scene=19#wechat_redirect" target="_blank">公众号文章</a>
+      </div>
+    </div>
     <!-- 2018-11-24 MIR — has extra links -->
-    <div class="card">
+    <div class="card" data-tag="mir">
       <div class="card-top">
         <span class="tag tag-mir">MIR</span>
         <span class="card-date">2018-11-24</span>
       </div>
-      <h2><a href="https://mp.weixin.qq.com/s/XqZvZ4-m3xd81udyUSg4wg" target="_blank">音频特征小全之乐音特征</a></h2>
+      <h2><a href="articles/audio-feature-musical.html">音频特征小全之乐音特征</a></h2>
       <div class="card-links">
+        <a href="https://mp.weixin.qq.com/s/XqZvZ4-m3xd81udyUSg4wg" target="_blank">公众号文章</a>
         <a href="https://github.com/beiciliang/intro2musictech/blob/main/MIR-02_4.ipynb" target="_blank">MIR-02_4.ipynb</a>
       </div>
     </div>
     <!-- 2018-10-14 MIR — has extra links -->
-    <div class="card">
+    <div class="card" data-tag="mir">
       <div class="card-top">
         <span class="tag tag-mir">MIR</span>
         <span class="card-date">2018-10-14</span>
       </div>
-      <h2><a href="https://mp.weixin.qq.com/s/TOAXROVlOVYDmVlmFIyBxQ" target="_blank">音频特征小全之频域特征</a></h2>
+      <h2><a href="articles/audio-feature-frequency.html">音频特征小全之频域特征</a></h2>
       <div class="card-links">
+        <a href="https://mp.weixin.qq.com/s/TOAXROVlOVYDmVlmFIyBxQ" target="_blank">公众号文章</a>
         <a href="https://github.com/beiciliang/intro2musictech/blob/main/MIR-02_3.ipynb" target="_blank">MIR-02_3.ipynb</a>
       </div>
     </div>
     <!-- 2018-09-13 MIR — has extra links -->
-    <div class="card">
+    <div class="card" data-tag="mir">
       <div class="card-top">
         <span class="tag tag-mir">MIR</span>
         <span class="card-date">2018-09-13</span>
       </div>
-      <h2><a href="https://mp.weixin.qq.com/s/fwbxA0ZWJPuOKolouQea3Q" target="_blank">音频特征小全之时域特征</a></h2>
+      <h2><a href="articles/audio-feature-time.html">音频特征小全之时域特征</a></h2>
       <div class="card-links">
+        <a href="https://mp.weixin.qq.com/s/fwbxA0ZWJPuOKolouQea3Q" target="_blank">公众号文章</a>
         <a href="https://github.com/beiciliang/intro2musictech/blob/main/MIR-02_2.ipynb" target="_blank">MIR-02_2.ipynb</a>
       </div>
     </div>
     <!-- 2018-08-27 NIME — has extra links -->
-    <div class="card">
+    <div class="card" data-tag="nime">
       <div class="card-top">
         <span class="tag tag-nime">NIME</span>
         <span class="card-date">2018-08-27</span>
       </div>
-      <h2><a href="https://mp.weixin.qq.com/s?__biz=MzU5MzY3NzI0OA==&mid=2247483718&idx=1&sn=fbf3f7c11e61096bafd72ea6ed0c0e8a&scene=19#wechat_redirect" target="_blank">为什么说钢琴是乐器之王？复杂！</a></h2>
+      <h2><a href="articles/piano-complexity.html">为什么说钢琴是乐器之王？复杂！</a></h2>
       <div class="card-links">
+        <a href="https://mp.weixin.qq.com/s?__biz=MzU5MzY3NzI0OA==&mid=2247483718&idx=1&sn=fbf3f7c11e61096bafd72ea6ed0c0e8a&scene=19#wechat_redirect" target="_blank">公众号文章</a>
         <a href="https://www.zhihu.com/question/288614974" target="_blank">知乎问题</a>
       </div>
     </div>
     <!-- 2018-08-22 INFO — has extra links -->
-    <div class="card">
+    <div class="card" data-tag="info">
       <div class="card-top">
         <span class="tag tag-info">INFO</span>
         <span class="card-date">2018-08-22</span>
       </div>
-      <h2><a href="https://mp.weixin.qq.com/s/2nDWikda9fh2x5o093F6HA" target="_blank">音乐科技相关科研组列表</a></h2>
+      <h2><a href="articles/research-groups.html">音乐科技相关科研组列表</a></h2>
       <div class="card-links">
+        <a href="https://mp.weixin.qq.com/s/2nDWikda9fh2x5o093F6HA" target="_blank">公众号文章</a>
         <a href="https://github.com/beiciliang/intro2musictech/blob/main/INFO-ResearchGroups.md" target="_blank">INFO-ResearchGroups.md</a>
       </div>
     </div>
     <!-- 2018-08-18 MIR — has extra links -->
-    <div class="card">
+    <div class="card" data-tag="mir">
       <div class="card-top">
         <span class="tag tag-mir">MIR</span>
         <span class="card-date">2018-08-18</span>
       </div>
-      <h2><a href="https://mp.weixin.qq.com/s/oFrW7hmZgmAuZGIVHjZTAQ" target="_blank">音频特征小全之概览</a></h2>
+      <h2><a href="articles/audio-feature-overview.html">音频特征小全之概览</a></h2>
       <div class="card-links">
+        <a href="https://mp.weixin.qq.com/s/oFrW7hmZgmAuZGIVHjZTAQ" target="_blank">公众号文章</a>
         <a href="https://github.com/beiciliang/intro2musictech/blob/main/MIR-02_1.ipynb" target="_blank">MIR-02_1.ipynb</a>
       </div>
     </div>
     <!-- 2018-08-11 NIME — has extra links -->
-    <div class="card">
+    <div class="card" data-tag="nime">
       <div class="card-top">
         <span class="tag tag-nime">NIME</span>
         <span class="card-date">2018-08-11</span>
       </div>
-      <h2><a href="https://mp.weixin.qq.com/s/X05DgjhXO7oMf8Gej5P3Mw" target="_blank">日常物件在没有成精的前提下如何发声儿？</a></h2>
+      <h2><a href="articles/bela-everyday-objects.html">日常物件在没有成精的前提下如何发声儿？</a></h2>
       <div class="card-links">
+        <a href="https://mp.weixin.qq.com/s/X05DgjhXO7oMf8Gej5P3Mw" target="_blank">公众号文章</a>
         <a href="http://blog.bela.io/" target="_blank">The Bela Blog</a>
       </div>
     </div>
     <!-- 2018-08-05 MIR — has extra links -->
-    <div class="card">
+    <div class="card" data-tag="mir">
       <div class="card-top">
         <span class="tag tag-mir">MIR</span>
         <span class="card-date">2018-08-05</span>
       </div>
-      <h2><a href="https://mp.weixin.qq.com/s/pvpFoKKa0Ki_uZ3Y6rqaJw" target="_blank">要把音乐画出来，总共分几步？</a></h2>
+      <h2><a href="articles/music-visualization.html">要把音乐画出来，总共分几步？</a></h2>
       <div class="card-links">
+        <a href="https://mp.weixin.qq.com/s/pvpFoKKa0Ki_uZ3Y6rqaJw" target="_blank">公众号文章</a>
         <a href="https://github.com/beiciliang/intro2musictech/blob/main/MIR-01.ipynb" target="_blank">MIR-01.ipynb</a>
       </div>
     </div>
     <!-- 2018-08-03 NIME -->
-    <a class="card" href="https://mp.weixin.qq.com/s/vUU30Ap5ot-Ygpy8eBeC4w" target="_blank">
+    <div class="card" data-tag="nime">
       <div class="card-top">
         <span class="tag tag-nime">NIME</span>
         <span class="card-date">2018-08-03</span>
       </div>
-      <h2>那些为身障人士设计的乐器</h2>
-    </a>
+      <h2><a href="articles/accessible-instruments.html">那些为身障人士设计的乐器</a></h2>
+      <div class="card-links">
+        <a href="https://mp.weixin.qq.com/s/vUU30Ap5ot-Ygpy8eBeC4w" target="_blank">公众号文章</a>
+      </div>
+    </div>
     <!-- 2018-07-28 SETUP — has extra links -->
-    <div class="card">
+    <div class="card" data-tag="other">
       <div class="card-top">
         <span class="tag tag-setup">SETUP</span>
         <span class="card-date">2018-07-28</span>
       </div>
-      <h2><a href="https://mp.weixin.qq.com/s/ngvmPl5S7QI-PqUUBtbQ3w" target="_blank">从零设置编程环境</a></h2>
+      <h2><a href="articles/setup-environment.html">从零设置编程环境</a></h2>
       <div class="card-links">
+        <a href="https://mp.weixin.qq.com/s/ngvmPl5S7QI-PqUUBtbQ3w" target="_blank">公众号文章</a>
         <a href="https://github.com/beiciliang/intro2musictech/blob/main/00-Hello.ipynb" target="_blank">00-Hello.ipynb</a>
       </div>
     </div>
     <!-- 2018-07-27 README -->
-    <a class="card" href="https://mp.weixin.qq.com/s/S8Q5iSUMgKZQ5g-17dF8UA" target="_blank">
+    <div class="card" data-tag="other">
       <div class="card-top">
         <span class="tag tag-readme">README</span>
         <span class="card-date">2018-07-27</span>
       </div>
-      <h2>无痛入门音乐科技门槛须知</h2>
-    </a>
+      <h2><a href="articles/readme-intro.html">无痛入门音乐科技门槛须知</a></h2>
+      <div class="card-links">
+        <a href="https://mp.weixin.qq.com/s/S8Q5iSUMgKZQ5g-17dF8UA" target="_blank">公众号文章</a>
+      </div>
+    </div>
+    </div>
   </main>
 
+  <script>
+    document.querySelector('.filters').addEventListener('click', function(e) {
+      if (!e.target.classList.contains('filter-btn')) return;
+      document.querySelectorAll('.filter-btn').forEach(function(b) { b.classList.remove('active'); });
+      e.target.classList.add('active');
+      var filter = e.target.getAttribute('data-filter');
+      document.querySelectorAll('.card').forEach(function(card) {
+        card.classList.toggle('hidden', filter !== 'all' && card.getAttribute('data-tag') !== filter);
+      });
+    });
+  </script>
 </body>
 </html>
