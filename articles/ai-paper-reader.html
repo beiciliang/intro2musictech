@@ -1,0 +1,350 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>
+      「TECH」过年好！分享一个可速度分析AI论文的技能指令: /ai-paper-reader -
+      无痛入门音乐科技
+    </title>
+    <style>
+      :root {
+        --bg: #f5f5f7;
+        --card-bg: #ffffff;
+        --text: #1d1d1f;
+        --text-secondary: #6e6e73;
+        --accent: #5856d6;
+        --border: #d2d2d7;
+        --code-bg: #f0f0f3;
+      }
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --bg: #0d0d12;
+          --card-bg: #1c1c24;
+          --text: #f0f0f5;
+          --text-secondary: #8e8e93;
+          --accent: #7b79ff;
+          --border: #2c2c34;
+          --code-bg: #15151d;
+        }
+      }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        font-family:
+          -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI",
+          Roboto, "Noto Sans SC", sans-serif;
+        background: var(--bg);
+        color: var(--text);
+        line-height: 1.8;
+      }
+      .header {
+        background: linear-gradient(
+          135deg,
+          #0f0c29 0%,
+          #302b63 50%,
+          #24243e 100%
+        );
+        padding: 2rem 1.5rem;
+        text-align: center;
+      }
+      .header a {
+        color: rgba(255, 255, 255, 0.7);
+        text-decoration: none;
+        font-size: 0.9rem;
+      }
+      .header a:hover {
+        color: #fff;
+      }
+      article {
+        max-width: 720px;
+        margin: 0 auto;
+        padding: 2rem 1.5rem 4rem;
+      }
+      article h1 {
+        font-size: 1.8rem;
+        font-weight: 700;
+        margin-bottom: 0.5rem;
+        line-height: 1.3;
+      }
+      .meta {
+        color: var(--text-secondary);
+        font-size: 0.85rem;
+        margin-bottom: 2rem;
+        padding-bottom: 1rem;
+        border-bottom: 1px solid var(--border);
+      }
+      .content {
+        font-size: 1rem;
+      }
+      .content p,
+      .content section {
+        margin-bottom: 1rem;
+      }
+      .content img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 8px;
+        margin: 1rem 0;
+      }
+      .content h2,
+      .content h3 {
+        text-align: center;
+        margin: 1.5rem 0 0.8rem;
+        font-weight: 600;
+      }
+      .content blockquote {
+        border-left: 3px solid var(--accent);
+        padding-left: 1rem;
+        color: var(--text-secondary);
+        margin: 1rem 0;
+      }
+      .content a {
+        color: var(--accent);
+      }
+      .content hr {
+        border: none;
+        border-top: 1px solid var(--border);
+        margin: 1.5rem 0;
+      }
+      .content ul,
+      .content ol {
+        padding-left: 1.5rem;
+        margin-bottom: 1rem;
+      }
+      .content li {
+        margin-bottom: 0.3rem;
+      }
+      .content table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 1rem 0;
+      }
+      .content th,
+      .content td {
+        border: 1px solid var(--border);
+        padding: 0.5rem;
+        text-align: left;
+      }
+      .content pre,
+      .content code {
+        font-family:
+          "SF Mono", SFMono-Regular, Menlo, Consolas, "Liberation Mono",
+          monospace;
+        font-size: 0.85em;
+      }
+      .content code {
+        background: var(--code-bg);
+        border: 1px solid var(--border);
+        border-radius: 4px;
+        padding: 0.15rem 0.4rem;
+      }
+      .content pre {
+        background: var(--code-bg);
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        padding: 1rem 1.2rem;
+        overflow-x: auto;
+        margin: 1rem 0;
+        line-height: 1.5;
+      }
+      .content pre code {
+        background: none;
+        border: none;
+        padding: 0;
+        font-size: inherit;
+        display: block;
+      }
+      .content pre ol {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+      .content pre li {
+        margin: 0;
+        padding: 0;
+      }
+      .content pre p {
+        margin: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="header">
+      <a href="../index.html">&larr; 返回 无痛入门音乐科技</a>
+    </div>
+    <article>
+      <h1>
+        「TECH」过年好！分享一个可速度分析AI论文的技能指令: /ai-paper-reader
+      </h1>
+      <div class="meta">2026年2月15日 17:05 · 无痛入门音乐科技</div>
+      <div class="content">
+        <blockquote>
+          <p>
+            <span leaf=""
+              >分享我在Claude Code中经常使用到的一个技能<span textstyle=""
+                >/ai-paper-reader</span
+              >，只需要声明想了解的AI论文的PDF文件路径，就可以生成该论文的阅读笔记。</span
+            >
+          </p>
+        </blockquote>
+        <section>
+          <span
+            ><span leaf=""
+              >本文将以英文论文为例，输出中文的阅读笔记。原论文是arXiv上的一篇5页文章，已发表在2025年的INTERSPEECH上。</span
+            ></span
+          >
+        </section>
+        <section>
+          <pre
+            data-lang="perl"
+          ><code><span leaf=""><span>@misc</span>{özer2025comprehensiverealworldassessmentaudio,</span></code><code><span leaf="">&nbsp; &nbsp; &nbsp; title={A Comprehensive Real-World Assessment of Audio Watermarking Algorithms: Will They Survive Neural Codecs?},&nbsp;</span></code><code><span leaf="">&nbsp; &nbsp; &nbsp; author={Yigitcan Özer&nbsp;<span>and</span>&nbsp;Woosung Choi&nbsp;<span>and</span>&nbsp;Joan Serrà&nbsp;<span>and</span>&nbsp;Mayank Kumar Singh&nbsp;<span>and</span>&nbsp;Wei-Hsiang Liao&nbsp;<span>and</span>&nbsp;Yuki Mitsufuji},</span></code><code><span leaf="">&nbsp; &nbsp; &nbsp; year=<span>{2025}</span>,</span></code><code><span leaf="">&nbsp; &nbsp; &nbsp; eprint={<span>2505.19663</span>},</span></code><code><span leaf="">&nbsp; &nbsp; &nbsp; archivePrefix=<span>{arXiv}</span>,</span></code><code><span leaf="">&nbsp; &nbsp; &nbsp; primaryClass={cs.SD},</span></code><code><span leaf="">&nbsp; &nbsp; &nbsp; url={https:<span>//arxi</span>v.org/<span>abs</span>/<span>2505.19663</span>},&nbsp;</span></code><code><span leaf="">}</span></code></pre>
+        </section>
+        <hr />
+        <h3><span leaf="">『Claude Code界面』</span></h3>
+        <p>
+          <span><span leaf="">先让CC解释一下这个技能:</span></span>
+        </p>
+        <section nodeleaf="">
+          <img
+            data-aistatus="1"
+            type="block"
+            data-original-style="null"
+            data-index="2"
+            src="https://mmbiz.qpic.cn/sz_mmbiz_png/FJfic83TmLLtyckZxbQudqoyMOLjdib8IZPE8Oiaib9R40LVoWU8jbLibaLlmSXibSaeMZ7owtlsxwUmm2l7MgWFQyj4Yw3MoJqz84ZjKKAPR3yCY/640"
+            _width="677px"
+            alt="Image"
+            data-report-img-idx="0"
+          />
+        </section>
+        <section>
+          <span leaf=""
+            >之后直接输入以下指令（我对原版指令进行了修改，使其能输出中文或英文的笔记）：</span
+          >
+        </section>
+        <section>
+          <pre
+            data-lang="css"
+          ><code><span leaf="">/ai-paper-reader&nbsp;<span>--lang</span>&nbsp;zh&nbsp;<span>@2025-eval-watermark</span>.pdf</span></code></pre>
+        </section>
+        <section>
+          <span leaf="">✎ 以下为指令运行后的截图</span
+          ><span
+            ><section nodeleaf="">
+              <img
+                data-aistatus="1"
+                type="block"
+                data-original-style="null"
+                data-index="3"
+                src="https://mmbiz.qpic.cn/sz_mmbiz_png/FJfic83TmLLuqPria1g6EzLLpO8xgxwm75ZknyPWSlt0f4LJxCtLibuaiaJ8IQ9XGZ8jtRdGiaVwK6exbEAWoWDC1SYHnSRTtjg5NSfuXqq7riavc/640"
+                _width="677px"
+                alt="Image"
+              /></section
+          ></span>
+        </section>
+        <hr />
+        <h3><span leaf="">『阅读笔记』</span></h3>
+        <p>
+          <span
+            ><span leaf=""
+              >不到3分钟生成的阅读笔记为markdown格式，我可以继续让CC将其保存为其他格式，以下是笔记另存为HTML后的长截图：</span
+            ></span
+          >
+        </p>
+        <section nodeleaf="">
+          <img
+            data-aistatus="1"
+            type="block"
+            data-original-style="null"
+            data-index="4"
+            src="https://mmbiz.qpic.cn/mmbiz_png/FJfic83TmLLvd5nsjNctvU2SRsY0hQP0CLbnWoYEzWviaWQWptpUAickjcasxO1XqiaLibcv2bLI0bibPbvVFvMpT4AdbOiaib2aeAvNp2z5vSEWk4U/640"
+            _width="677px"
+            alt="Image"
+          />
+        </section>
+        <hr />
+        <p>
+          <span
+            ><span leaf=""
+              >阅读笔记的质量还是不错的，原版的<span textstyle=""
+                >/ai-paper-reader</span
+              >我是直接通过skill.fish安装的，这里建议在安装第三方的skill或command或plugin时，还是要检查一下有没有prompt
+              injection等风险。</span
+            ></span
+          ><span
+            ><span leaf=""><br /></span
+          ></span>
+        </p>
+        <p>
+          <span
+            leaf=""
+            data-pm-slice='1 1 ["para",{"tagName":"section","attributes":{"style":"margin-top: 15px; margin-bottom: 15px; box-sizing: border-box; font-size: 16px; white-space: pre-line; line-height: 1.5em; color: rgb(74, 74, 74); font-family: Avenir, -apple-system-font, 微软雅黑, sans-serif;"},"namespaceURI":""}]'
+            >✎&nbsp;</span
+          ><span leaf=""
+            ><a
+              href="https://mcpmarket.com/tools/skills/ai-paper-reader"
+              target="_blank"
+              rel="noopener"
+              >https://mcpmarket.com/tools/skills/ai-paper-reader</a
+            ></span
+          >
+        </p>
+        <p>
+          <strong
+            ><span
+              ><span leaf=""><span textstyle="">上文回顾：</span></span></span
+            ></strong
+          >
+        </p>
+        <ul>
+          <li>
+            <p>
+              <span leaf=""
+                ><a
+                  target="_blank"
+                  href="https://mp.weixin.qq.com/s?__biz=MzU5MzY3NzI0OA==&amp;mid=2247484022&amp;idx=1&amp;sn=94535fbc6c7a56490dd52d11f0962f4d&amp;scene=21#wechat_redirect"
+                  textvalue="「INFO」连接音乐音频与自然语言"
+                  data-itemshowtype="0"
+                  linktype="text"
+                  data-linktype="2"
+                  link-id="1392"
+                  ><span textstyle="">「INFO」连接音乐音频与自然语言</span></a
+                ></span
+              ><span leaf=""><br /></span>
+            </p>
+          </li>
+          <li>
+            <p>
+              <span leaf=""
+                ><a
+                  target="_blank"
+                  href="https://mp.weixin.qq.com/s?__biz=MzU5MzY3NzI0OA==&amp;mid=2247484015&amp;idx=1&amp;sn=ffb0e282814654db668b9aeaae7070e6&amp;scene=21#wechat_redirect"
+                  textvalue="「MIR-CC」2026年用Claude Code就可以无痛入门音乐科技"
+                  data-itemshowtype="0"
+                  linktype="text"
+                  data-linktype="2"
+                  link-id="9b8f"
+                  ><span textstyle=""
+                    >「MIR-CC」2026年用Claude Code就可以无痛入门音乐科技</span
+                  ></a
+                ></span
+              >
+            </p>
+          </li>
+        </ul>
+        <section>
+          <span leaf=""
+            >我平时工作时还会用到很多软件开发相关的指令、技能、插件、MCP、甚至是bot，和这个公众号的音乐科技主题关联没那么密切，但感兴趣的朋友欢迎关注我的GitHub，查看最近星标的repo。</span
+          ><span data-pm-slice="0 0 []"
+            ><strong
+              ><span leaf=""><br /></span></strong
+          ></span>
+        </section>
+        <p><mp-style-type data-value="3"></mp-style-type></p>
+      </div>
+    </article>
+  </body>
+</html>

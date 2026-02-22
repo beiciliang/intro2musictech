@@ -1,0 +1,493 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>「MIR-05_1」音乐流派自动识别的前世今生 - 无痛入门音乐科技</title>
+    <style>
+      :root {
+        --bg: #f5f5f7;
+        --card-bg: #ffffff;
+        --text: #1d1d1f;
+        --text-secondary: #6e6e73;
+        --accent: #5856d6;
+        --border: #d2d2d7;
+        --code-bg: #f0f0f3;
+      }
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --bg: #0d0d12;
+          --card-bg: #1c1c24;
+          --text: #f0f0f5;
+          --text-secondary: #8e8e93;
+          --accent: #7b79ff;
+          --border: #2c2c34;
+          --code-bg: #15151d;
+        }
+      }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        font-family:
+          -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI",
+          Roboto, "Noto Sans SC", sans-serif;
+        background: var(--bg);
+        color: var(--text);
+        line-height: 1.8;
+      }
+      .header {
+        background: linear-gradient(
+          135deg,
+          #0f0c29 0%,
+          #302b63 50%,
+          #24243e 100%
+        );
+        padding: 2rem 1.5rem;
+        text-align: center;
+      }
+      .header a {
+        color: rgba(255, 255, 255, 0.7);
+        text-decoration: none;
+        font-size: 0.9rem;
+      }
+      .header a:hover {
+        color: #fff;
+      }
+      article {
+        max-width: 720px;
+        margin: 0 auto;
+        padding: 2rem 1.5rem 4rem;
+      }
+      article h1 {
+        font-size: 1.8rem;
+        font-weight: 700;
+        margin-bottom: 0.5rem;
+        line-height: 1.3;
+      }
+      .meta {
+        color: var(--text-secondary);
+        font-size: 0.85rem;
+        margin-bottom: 2rem;
+        padding-bottom: 1rem;
+        border-bottom: 1px solid var(--border);
+      }
+      .content {
+        font-size: 1rem;
+      }
+      .content p,
+      .content section {
+        margin-bottom: 1rem;
+      }
+      .content img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 8px;
+        margin: 1rem 0;
+      }
+      .content h2,
+      .content h3 {
+        text-align: center;
+        margin: 1.5rem 0 0.8rem;
+        font-weight: 600;
+      }
+      .content blockquote {
+        border-left: 3px solid var(--accent);
+        padding-left: 1rem;
+        color: var(--text-secondary);
+        margin: 1rem 0;
+      }
+      .content a {
+        color: var(--accent);
+      }
+      .content hr {
+        border: none;
+        border-top: 1px solid var(--border);
+        margin: 1.5rem 0;
+      }
+      .content ul,
+      .content ol {
+        padding-left: 1.5rem;
+        margin-bottom: 1rem;
+      }
+      .content li {
+        margin-bottom: 0.3rem;
+      }
+      .content table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 1rem 0;
+      }
+      .content th,
+      .content td {
+        border: 1px solid var(--border);
+        padding: 0.5rem;
+        text-align: left;
+      }
+      .content pre,
+      .content code {
+        font-family:
+          "SF Mono", SFMono-Regular, Menlo, Consolas, "Liberation Mono",
+          monospace;
+        font-size: 0.85em;
+      }
+      .content code {
+        background: var(--code-bg);
+        border: 1px solid var(--border);
+        border-radius: 4px;
+        padding: 0.15rem 0.4rem;
+      }
+      .content pre {
+        background: var(--code-bg);
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        padding: 1rem 1.2rem;
+        overflow-x: auto;
+        margin: 1rem 0;
+        line-height: 1.5;
+      }
+      .content pre code {
+        background: none;
+        border: none;
+        padding: 0;
+        font-size: inherit;
+        display: block;
+      }
+      .content pre ol {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+      .content pre li {
+        margin: 0;
+        padding: 0;
+      }
+      .content pre p {
+        margin: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="header">
+      <a href="../index.html">&larr; 返回 无痛入门音乐科技</a>
+    </div>
+    <article>
+      <h1>「MIR-05_1」音乐流派自动识别的前世今生</h1>
+      <div class="meta">2020年10月8日 13:31 · 无痛入门音乐科技</div>
+      <div class="content">
+        <blockquote>
+          <p>
+            世界上有那么多新歌老歌，但各种歌曲之间总能被一些共性联系起来，“流派”就是共性之一。那我们能否通过MIR技术，直接依据音频自动识别出一首歌曲是民谣、乡村、爵士、摇滚、电音…还是哪种流派呢？<br />
+          </p>
+        </blockquote>
+        <section>
+          <span
+            ><strong>♬ 本文为MIR音乐信息检索系列的第10篇文章 ♬</strong></span
+          >
+        </section>
+        <section>
+          <span
+            ><strong><strong></strong></strong
+          ></span>
+        </section>
+        <section>
+          <span
+            >该文针对于“音乐流派” (music
+            genres)，会与后续5.X系列文章共同讲解“基于音频完成自动打标签” (audio
+            auto-tagging)。本文将大致讲解：</span
+          >
+        </section>
+        <ul>
+          <li>
+            <section><span>什么是音乐流派？</span></section>
+          </li>
+          <li>
+            <section><span>近20年来流派识别发展到什么水平？</span></section>
+          </li>
+          <li>
+            <section><span>主要的挑战和未来的方向？</span></section>
+          </li>
+        </ul>
+        <hr />
+        <h3>『音乐流派』</h3>
+        <p>
+          <span
+            >根据《音频音乐与计算机的交融——音频音乐技术》第13章“音乐分类”中提到的定义：音乐的流派或风格常用来描述音乐家及其音乐作品的相似性，传达音乐偏好和品味，并用来组织音乐曲目，是文化、艺术家和音乐市场之间相互影响的产物。</span
+          >
+        </p>
+        <p>
+          <span
+            >大多数人谈论音乐流派时，一般指的是现当代流行文化下的流派，与此同时，不同人对不同流派间的界限感知也是模糊的，对于人脑来说“流派检测”都是一项偏主观的任务，更不用说依赖MIR技术直接从音频中自动识别了。</span
+          >
+        </p>
+        <p>
+          <span
+            >鉴于音乐流派的确切定义还涉及许多音乐专业知识，与其我在这儿长篇大论，不如一图胜千言：</span
+          >
+        </p>
+        <p>
+          <img
+            data-original-style="width: 100%;height: auto;"
+            data-index="2"
+            src="https://mmbiz.qpic.cn/mmbiz_png/7CrMia15fFJX3icfhE6q9NznYg7N0p6PCU9jwedXKfRbGIZkSxTiagslGHb3YuzbuyRqbibzfZiceXD8Ozk7PWbvohw/640"
+            _width="100%"
+            alt="Image"
+            data-report-img-idx="0"
+          /><span>以上截图来源于我最爱的可以交互式认识音乐流派的网站</span
+          ><em>musicmap.info</em
+          ><span
+            >，图片中圆圈/长方条出现的位置表示该流派出现的时间早晚，比如最上方的四大圆圈都是世界上较早出现的音乐流派/类型（utility主要指带某种功能的音乐比如宗教音乐，folk主要指传统民谣，classical就是古典音乐了，world泛指世界各地的民族音乐），下面</span
+          ><span>五颜六色</span
+          ><span
+            >的长方条就是大家更熟悉的流行音乐流派，颜色越相近，流派越相似。</span
+          >
+        </p>
+        <p>
+          <span
+            >如果流派之间真的就像上图那样分立，那事情就简单得多了，然而我们放大图片后看到的事实是这样的：</span
+          >
+        </p>
+        <p>
+          <img
+            data-original-style="width: 100%;height: auto;"
+            data-index="3"
+            src="https://mmbiz.qpic.cn/mmbiz_png/7CrMia15fFJX3icfhE6q9NznYg7N0p6PCU6HeHI2AOQ0icIcKl3p7m8fmOLvfSSalQHVXhYd1HpEo3RwwoGKsQeag/640"
+            _width="100%"
+            alt="Image"
+          />
+        </p>
+        <p>
+          <span
+            >能理清不同流派之间的关系，本身就是门复杂的taxonomy/ontology大学问了，在</span
+          ><em>everynoise.com</em
+          ><span
+            >网站上，Spotify的工程师Glenn
+            Mcdonald更是把平台上能“搜刮”到的流派通通通通列了出来。</span
+          >
+        </p>
+        <p><span></span></p>
+        <section>
+          <span>☞ </span
+          ><span
+            ><a href="https://musicmap.info/" target="_blank" rel="noopener"
+              >https://musicmap.info/</a
+            ><br
+          /></span>
+        </section>
+        <section>
+          <span
+            ><span>☞ </span
+            ><span
+              ><a href="http://everynoise.com/" target="_blank" rel="noopener"
+                >http://everynoise.com/</a
+              ></span
+            ></span
+          >
+        </section>
+        <hr />
+        <h3>『流派识别』</h3>
+        <p>
+          <span
+            >所以，当我们谈论“音乐流派的自动识别” (Music Genre Recognition,
+            即MGR) 的时候，到底在谈论什么？</span
+          ><span>这要取决于</span><span>面对的音乐样本大体在哪个范围</span
+          ><span>，以及到底要识别成哪些流派的类</span><span>。</span>
+        </p>
+        <p>
+          <span
+            >学术界里大多受制于音乐数据集，自动识别就变成了一个分类任务。比如，当我们采用被广泛使用的GTZAN数据集时，MGR任务就是将集内的歌曲
+            (其实是30秒的片段)&nbsp;识别为规定好的十大流派之一。<br
+          /></span>
+        </p>
+        <p>
+          <span
+            >截止到2012年年末，已经有500余篇论文研究MGR算法，基于音乐音频做识别占大多数，且大部分采用特征工程的策略，即先对音频进行预处理提取特征，再训练分类模型进行流派识别。鉴于属于同一流派的音乐之间，总会在音色、和声、节奏等方面相似，因此提取的音频特征大多对应以上三种。</span
+          >
+        </p>
+        <p>
+          <span
+            >✎ 以上特征工程相关论文的大调查，可参考文献:&nbsp;Sturm, Bob L. "A
+            survey of evaluation in music genre recognition." International
+            Workshop on Adaptive Multimedia</span
+          ><span><span> Retrieval. Springer, Cham, 2012..</span>&nbsp;</span>
+        </p>
+        <p>
+          <span
+            >然而，音频特征对应到音色等方面时，就已经自带了一层“语义隔阂”&nbsp;(比如说从MFCC的系数变化中，你真的能理解到这是个什么音色么?)，再从中去提取更高的语义信息“流派”，真的会有效么？当然，可以不断地去叠加各种特征，增加模型的训练参数，甚至实现“端到端”从无到有硬生生的学出来。</span
+          >
+        </p>
+        <p>
+          <span
+            ><span>此时此刻</span
+            >这种策略，大家应该都能get到吧？没错，深度学习的时代来临了。</span
+          ><span>这里的</span><span>标杆</span
+          ><span>进展，可以直接搬出三位老</span><span>朋友</span
+          ><span>的名字，大家搜他们的google scholar或个人主页就好</span
+          ><span
+            >（此处并没有“其他人的工作就没啥亮点了”的意思，以下三位确实是连文章带代码都清清楚楚的）：</span
+          >
+        </p>
+        <p>
+          <span
+            ><span>☞&nbsp;</span>Keunwoo
+            Choi：首先将图像领域火起来的CNN、CRNN等模型运用到音乐音频分类任务中
+            (下图a)<br
+          /></span>
+        </p>
+        <p>
+          <span
+            ><span>☞&nbsp;</span>Jordi
+            Pons：改良CNN的前/中/后端，结合音乐先验知识进行各种实验，并已将训练好的musicnn模型集成到Essentia中，开源的榜样！<span
+              >(下图b</span
+            ><span>)</span></span
+          >
+        </p>
+        <p>
+          <span
+            ><span
+              >☞ Jongpil
+              Lee：和以上两位工作里“基于音频的时频谱做输入”不同，直接采用音频的波形，从sample-level搞事情&nbsp;<span
+                >(下图c</span
+              ><span>)</span></span
+            ></span
+          >
+        </p>
+        <p>
+          <img
+            data-croporisrc="https://mmbiz.qlogo.cn/mmbiz_png/7CrMia15fFJX3icfhE6q9NznYg7N0p6PCUPe60BoVGf0ln2INBCvMs6ssIOHPR1QJfYrpeQT6B92vLicuicj5fLibIg/0?wx_fmt=png"
+            data-cropx1="0"
+            data-cropx2="1280"
+            data-cropy1="46.50519031141869"
+            data-cropy2="427.4048442906575"
+            data-original-style='text-align: center;color: rgb(51, 51, 51);font-family: mp-quote, -apple-system-font, BlinkMacSystemFont, "Helvetica Neue", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei UI", "Microsoft YaHei", Arial, sans-serif;font-size: 17px;width: 578px;height: 172px;'
+            data-index="4"
+            src="https://mmbiz.qpic.cn/mmbiz_jpg/7CrMia15fFJX3icfhE6q9NznYg7N0p6PCUuzM1WzL8Q8ln0h4ks9AiaQ2DAZosHDicj7SeSJYez3AGMEj93VWE7gmg/640"
+            _width="578px"
+            alt="Image"
+          /><span></span>
+        </p>
+        <p>
+          <span
+            ><span
+              >鉴于以上深度学习的模型，依赖的环境和评估用的数据集有不同，所以UPF的Minz
+              Won小哥将他们都复现到pytorch中，并和自己的算法 (上图d)
+              做了详细比较，发表在今年的SMC上：</span
+            ></span
+          >
+        </p>
+        <p>
+          <img
+            data-original-style="width: 100%;height: auto;"
+            data-index="5"
+            src="https://mmbiz.qpic.cn/mmbiz_png/7CrMia15fFJX3icfhE6q9NznYg7N0p6PCUswISXskqeudCWjWZfTw7UIaXyl3gke5G3NsIE8HE588DI7a8qtIicug/640"
+            _width="100%"
+            alt="Image"
+          />
+        </p>
+        <p>
+          <span
+            >✎ 以上截图来源自文献:&nbsp;Won, Minz, et al. "Evaluation of
+            CNN-based Automatic Music Tagging Models." arXiv preprint
+            arXiv:2006.00751 (2020).</span
+          >
+        </p>
+        <p>
+          <span
+            >☞ 代码可见:
+            <a
+              href="https://github.com/minzwon/sota-music-tagging-models/"
+              target="_blank"
+              rel="noopener"
+              >https://github.com/minzwon/sota-music-tagging-models/</a
+            ></span
+          ><br />
+        </p>
+        <hr />
+        <h3>『挑战与未来』</h3>
+        <p>
+          <span
+            >虽然大量音频数据+深度学习帮助流派识别任务又迈了一大步，但其在工业界的大规模落地还是任重道远。</span
+          >
+        </p>
+        <p>
+          <span
+            >鉴于受过音乐训练的人，听了3秒左右的音乐就能判别出音乐的大类流派
+            (且准确率&gt;70%)，目前训练模型时也都采用3秒到30秒不等的秒级输入。但是当我们真的想准确描述一首歌的流派时，需要考虑整首。片段级的结果如何映射为整曲级？是否要考虑不同结构化片段的权重&nbsp;(比如是否要更看重副歌段落下的检测结果)？</span
+          >
+        </p>
+        <p>
+          <span
+            >模型的输出结果，和“标准答案”不一致时，就真的错了么？即使号召了20位音乐专业人士对一些曲子进行标注，流派结果依然众说纷纭（参考2017年Palmason等人的论文Music
+            Genre Classification Revisited: An In-Depth Examination Guided by
+            Music Experts）。如果判别流派自动标注的性能需要beyond
+            accuracy，那什么是合适的新指标？</span
+          >
+        </p>
+        <p>
+          <span
+            ><span
+              >如果基于音频的自动流派识别只能停留在对大类流派标签的输出，怎样活用其他信息比如歌曲歌词、专辑封面等等，提升某些流派的识别能力？另外，</span
+            ><span>能否</span><span>用</span><span>其中间结果</span
+            ><span>搭建embedding</span><span>，</span><span>辅助其他音乐</span
+            ><span>相关的任务 (比如解决新歌推荐冷启动)</span><span>？</span
+            ><span></span
+          ></span>
+        </p>
+        <p>
+          <span
+            >在真正面对千万级曲库时，如何结合音乐知识，让已有算法迅速对流派标签查缺补漏，而不是只能停留在模型底层的开发？(正所谓用假模假式的fancy模型，掩盖模型开发者本身对音乐知识的欠缺…这个锅，不懂音乐的产品经理也有份)</span
+          >
+        </p>
+        <p>
+          <span
+            >所以说，做MIR还是离不开音乐本乐。否则，即使某天发现了一个<span>识别算法</span>好似万金油，实际却是the
+            famous horse "Clever Hans"。</span
+          >
+        </p>
+        <p>
+          <span
+            ><span>✎&nbsp;</span>上面一句话的典故来自文献: Sturm, Bob L. "A
+            simple method to determine if a music information retrieval system
+            is a “horse”." IEEE Transactions on Multimedia 16.6 (2014):
+            1636-1644.</span
+          >
+        </p>
+        <hr />
+        <p>
+          <span
+            >最后，秉着无痛入门的原则，读者想自己搭建一个流派分类模型，但电脑又不带高端的GPU资源的话，不妨先尝试下“迁移学习”
+            (transfer learning)！</span
+          >
+        </p>
+        <section><span>有条件的话，也可以参考现成的资源：</span></section>
+        <section>
+          <span
+            ><span>☞&nbsp;</span
+            ><a
+              href="http://teaching.jordipons.me"
+              target="_blank"
+              rel="noopener"
+              >http://teaching.jordipons.me</a
+            ></span
+          >
+        </section>
+        <section>
+          <span><br /></span>
+        </section>
+        <p>
+          <strong><span>上文回顾:</span></strong
+          ><a
+            target="_blank"
+            href="http://mp.weixin.qq.com/s?__biz=MzU5MzY3NzI0OA==&amp;mid=2247483898&amp;idx=1&amp;sn=3a405119a32714442c8dcd9be830cdb9&amp;chksm=fe0d9f55c97a1643a091acb7d6c25c14a8d19d107f9d430ffd9055a468f4d18c43666b2c260f&amp;scene=21#wechat_redirect"
+            data-itemshowtype="0"
+            tab="innerlink"
+            data-linktype="2"
+            >「MIR-05_0」震惊! AI发现这些歌竟然...</a
+          >
+        </p>
+      </div>
+    </article>
+  </body>
+</html>

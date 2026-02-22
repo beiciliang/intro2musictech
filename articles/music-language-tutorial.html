@@ -1,0 +1,438 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>「INFO」连接音乐音频与自然语言 - 无痛入门音乐科技</title>
+    <style>
+      :root {
+        --bg: #f5f5f7;
+        --card-bg: #ffffff;
+        --text: #1d1d1f;
+        --text-secondary: #6e6e73;
+        --accent: #5856d6;
+        --border: #d2d2d7;
+        --code-bg: #f0f0f3;
+      }
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --bg: #0d0d12;
+          --card-bg: #1c1c24;
+          --text: #f0f0f5;
+          --text-secondary: #8e8e93;
+          --accent: #7b79ff;
+          --border: #2c2c34;
+          --code-bg: #15151d;
+        }
+      }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        font-family:
+          -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI",
+          Roboto, "Noto Sans SC", sans-serif;
+        background: var(--bg);
+        color: var(--text);
+        line-height: 1.8;
+      }
+      .header {
+        background: linear-gradient(
+          135deg,
+          #0f0c29 0%,
+          #302b63 50%,
+          #24243e 100%
+        );
+        padding: 2rem 1.5rem;
+        text-align: center;
+      }
+      .header a {
+        color: rgba(255, 255, 255, 0.7);
+        text-decoration: none;
+        font-size: 0.9rem;
+      }
+      .header a:hover {
+        color: #fff;
+      }
+      article {
+        max-width: 720px;
+        margin: 0 auto;
+        padding: 2rem 1.5rem 4rem;
+      }
+      article h1 {
+        font-size: 1.8rem;
+        font-weight: 700;
+        margin-bottom: 0.5rem;
+        line-height: 1.3;
+      }
+      .meta {
+        color: var(--text-secondary);
+        font-size: 0.85rem;
+        margin-bottom: 2rem;
+        padding-bottom: 1rem;
+        border-bottom: 1px solid var(--border);
+      }
+      .content {
+        font-size: 1rem;
+      }
+      .content p,
+      .content section {
+        margin-bottom: 1rem;
+      }
+      .content img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 8px;
+        margin: 1rem 0;
+      }
+      .content h2,
+      .content h3 {
+        text-align: center;
+        margin: 1.5rem 0 0.8rem;
+        font-weight: 600;
+      }
+      .content blockquote {
+        border-left: 3px solid var(--accent);
+        padding-left: 1rem;
+        color: var(--text-secondary);
+        margin: 1rem 0;
+      }
+      .content a {
+        color: var(--accent);
+      }
+      .content hr {
+        border: none;
+        border-top: 1px solid var(--border);
+        margin: 1.5rem 0;
+      }
+      .content ul,
+      .content ol {
+        padding-left: 1.5rem;
+        margin-bottom: 1rem;
+      }
+      .content li {
+        margin-bottom: 0.3rem;
+      }
+      .content table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 1rem 0;
+      }
+      .content th,
+      .content td {
+        border: 1px solid var(--border);
+        padding: 0.5rem;
+        text-align: left;
+      }
+      .content pre,
+      .content code {
+        font-family:
+          "SF Mono", SFMono-Regular, Menlo, Consolas, "Liberation Mono",
+          monospace;
+        font-size: 0.85em;
+      }
+      .content code {
+        background: var(--code-bg);
+        border: 1px solid var(--border);
+        border-radius: 4px;
+        padding: 0.15rem 0.4rem;
+      }
+      .content pre {
+        background: var(--code-bg);
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        padding: 1rem 1.2rem;
+        overflow-x: auto;
+        margin: 1rem 0;
+        line-height: 1.5;
+      }
+      .content pre code {
+        background: none;
+        border: none;
+        padding: 0;
+        font-size: inherit;
+        display: block;
+      }
+      .content pre ol {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+      .content pre li {
+        margin: 0;
+        padding: 0;
+      }
+      .content pre p {
+        margin: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="header">
+      <a href="../index.html">&larr; 返回 无痛入门音乐科技</a>
+    </div>
+    <article>
+      <h1>「INFO」连接音乐音频与自然语言</h1>
+      <div class="meta">2026年2月15日 01:25 · 无痛入门音乐科技</div>
+      <div class="content">
+        <blockquote>
+          <p>
+            <span leaf=""
+              >博主用Claude Code将ISMIR
+              2024上的一篇高质量教程翻译为中文版，并呈现在Github
+              Pages上，方便读者阅读。</span
+            >
+          </p>
+          <p>
+            <span leaf="">📖&nbsp;</span
+            ><span leaf=""
+              ><a
+                href="https://beiciliang.github.io/intro2musictech/music-language-tutorial"
+                target="_blank"
+                rel="noopener"
+                >https://beiciliang.github.io/intro2musictech/music-language-tutorial</a
+              ></span
+            >
+          </p>
+        </blockquote>
+        <section>
+          <span
+            ><strong
+              ><span leaf=""
+                >♬ 博主发文时还未完整校对，如有勘误请参照英文原版♬</span
+              ></strong
+            ></span
+          >
+        </section>
+        <section>
+          <pre
+            data-lang="typescript"
+          ><code><span leaf=""><span>@book</span>{connecting-music-audio-and-natural-<span>language</span>:book,</span></code><code><span leaf="">&nbsp; &nbsp;&nbsp;<span>Author</span>&nbsp;= {<span>Doh</span>,&nbsp;<span>SeungHeon</span>&nbsp;and&nbsp;<span>Manco</span>,&nbsp;<span>Ilaria</span>&nbsp;and&nbsp;<span>Novack</span>,&nbsp;<span>Zachary</span>&nbsp;and&nbsp;<span>Kim</span>,&nbsp;<span>Jong</span>&nbsp;<span>Wook</span>&nbsp;and&nbsp;<span>Chen</span>,&nbsp;<span>Ke</span>},</span></code><code><span leaf="">&nbsp; &nbsp;&nbsp;<span>Publisher</span>&nbsp;= {<span>https</span>:<span>//mulab-mir.github.io/music-language-tutorial},</span></span></code><code><span leaf="">&nbsp; &nbsp;&nbsp;<span>Title</span>&nbsp;= {<span>Connecting</span>&nbsp;<span>Music</span>&nbsp;<span>Audio</span>&nbsp;and&nbsp;<span>Natural</span>&nbsp;<span>Language</span>},</span></code><code><span leaf="">&nbsp; &nbsp;&nbsp;<span>Year</span>&nbsp;=&nbsp;<span>2024</span>,</span></code><code><span leaf="">&nbsp; &nbsp;&nbsp;<span>Url</span>&nbsp;= {<span>https</span>:<span>//mulab-mir.github.io/music-language-tutorial},</span></span></code><code><span leaf="">}</span></code></pre>
+        </section>
+        <section nodeleaf="">
+          <img
+            data-aistatus="1"
+            type="block"
+            data-original-style="width:578px;height:334px;"
+            data-index="2"
+            src="https://mmbiz.qpic.cn/mmbiz_png/FJfic83TmLLt5icfkhV5CtfPgkIxAiaTQDCudNfXXv5Ptb7NiaicJqal7FNHTSL4e5U1QEHhGIUNvqLVvmvP4L0GnO3CQE4JFJVT48kWAjdY8g68/640"
+            _width="578px"
+            alt="Image"
+            data-report-img-idx="0"
+          />
+        </section>
+        <hr />
+        <h3><span leaf="">『教程内容』</span></h3>
+        <p>
+          <span
+            ><span
+              leaf=""
+              data-pm-slice='1 1 ["para",{"tagName":"p","attributes":{"style":"margin-top: 15px;margin-bottom: 15px;box-sizing: border-box;font-size: 16px;white-space: pre-line;line-height: 30px;color: rgb(74, 74, 74);font-family: Avenir, -apple-system-font, 微软雅黑, sans-serif;"},"namespaceURI":"http://www.w3.org/1999/xhtml"},"node",{"tagName":"span","attributes":{"style":"font-size: 14px;"},"namespaceURI":"http://www.w3.org/1999/xhtml"}]'
+              >✎&nbsp;</span
+            ></span
+          ><span leaf="">第一章 引言</span>
+        </p>
+        <p>
+          <span leaf=""
+            >介绍语言模型在音乐信息检索（MIR）领域的研究背景与发展脉络。回顾早期基于监督分类的音乐标注与检索方法，分析其固定词汇表、独热编码等局限性。概述本教程的整体框架：从语言模型基础出发，依次探索音乐描述、检索与生成三大方向。同时展示语言模型如何推动音乐理解从简单分类走向自然语言交互。</span
+          >
+        </p>
+        <p>
+          <span
+            ><span
+              leaf=""
+              data-pm-slice='1 1 ["para",{"tagName":"p","attributes":{"style":"margin-top: 15px;margin-bottom: 15px;box-sizing: border-box;font-size: 16px;white-space: pre-line;line-height: 30px;color: rgb(74, 74, 74);font-family: Avenir, -apple-system-font, 微软雅黑, sans-serif;"},"namespaceURI":"http://www.w3.org/1999/xhtml"},"node",{"tagName":"span","attributes":{"style":"font-size: 14px;"},"namespaceURI":"http://www.w3.org/1999/xhtml"}]'
+              >✎&nbsp;</span
+            ></span
+          ><span leaf="">第二章 语言模型概述</span>
+        </p>
+        <p>
+          <span leaf=""
+            >系统介绍语言模型的核心概念，包括分词策略（BPE、SentencePiece）、掩码语言模型（BERT）和自回归语言模型（GPT）等范式。深入讲解将非文本输入融入语言模型的多种条件化方法：自适应调制、通道拼接、前缀条件化和交叉注意力机制。梳理迁移学习、零样本推理、缩放定律、RLHF
+            对齐、检索增强生成（RAG）、工具调用及多模态编解码器等前沿进展。同时讨论幻觉、偏见、计算成本、上下文长度限制等尚未解决的挑战。</span
+          >
+        </p>
+        <p>
+          <span
+            ><span
+              leaf=""
+              data-pm-slice='1 1 ["para",{"tagName":"p","attributes":{"style":"margin-top: 15px;margin-bottom: 15px;box-sizing: border-box;font-size: 16px;white-space: pre-line;line-height: 30px;color: rgb(74, 74, 74);font-family: Avenir, -apple-system-font, 微软雅黑, sans-serif;"},"namespaceURI":"http://www.w3.org/1999/xhtml"},"node",{"tagName":"span","attributes":{"style":"font-size: 14px;"},"namespaceURI":"http://www.w3.org/1999/xhtml"}]'
+              >✎&nbsp;</span
+            ></span
+          ><span leaf="">第三章 音乐描述</span>
+        </p>
+        <p>
+          <span leaf=""
+            >涵盖从传统音乐分类（流派、乐器、情绪标签）到自然语言描述生成（音乐字幕）的完整任务谱系，并延伸至音乐问答和对话式描述等新兴交互范式。对比编码器-解码器架构与适配大语言模型（LLM）两大主流建模方案的优劣，附带详细的模型对照表。介绍BLEU、METEOR、BERT-Score
+            等自动评估指标及其局限性，以及 MuChoMusic、OpenMU
+            等专为音乐理解设计的新基准。提供基于真实数据集的代码实践环节。</span
+          >
+        </p>
+        <p>
+          <span
+            ><span
+              leaf=""
+              data-pm-slice='1 1 ["para",{"tagName":"p","attributes":{"style":"margin-top: 15px;margin-bottom: 15px;box-sizing: border-box;font-size: 16px;white-space: pre-line;line-height: 30px;color: rgb(74, 74, 74);font-family: Avenir, -apple-system-font, 微软雅黑, sans-serif;"},"namespaceURI":"http://www.w3.org/1999/xhtml"},"node",{"tagName":"span","attributes":{"style":"font-size: 14px;"},"namespaceURI":"http://www.w3.org/1999/xhtml"}]'
+              >✎&nbsp;</span
+            ></span
+          ><span leaf="">第四章 文本到音乐检索</span>
+        </p>
+        <p>
+          <span leaf=""
+            >从基于分类的布尔检索出发，引出词汇表外（OOV）问题，进而介绍音频-文本联合嵌入这一核心解决方案。详细讲解多模态度量学习中的三元组损失与对比损失，以及从静态词嵌入（GloVe）到上下文化表示（BERT/RoBERTa）的演进。讨论当前面临的三大挑战：查询与描述的分布偏差、训练数据局限于内容属性而忽略文化与元数据维度、单轮检索无法保持上下文。展望对话式音乐检索如何通过多轮交互和用户反馈实现更</span
+          ><span leaf="">自然的搜索体验。</span>
+        </p>
+        <p>
+          <span
+            ><span
+              leaf=""
+              data-pm-slice='1 1 ["para",{"tagName":"p","attributes":{"style":"margin-top: 15px;margin-bottom: 15px;box-sizing: border-box;font-size: 16px;white-space: pre-line;line-height: 30px;color: rgb(74, 74, 74);font-family: Avenir, -apple-system-font, 微软雅黑, sans-serif;"},"namespaceURI":"http://www.w3.org/1999/xhtml"},"node",{"tagName":"span","attributes":{"style":"font-size: 14px;"},"namespaceURI":"http://www.w3.org/1999/xhtml"}]'
+              >✎&nbsp;</span
+            ></span
+          ><span leaf="">第五章 文本到音乐生成</span>
+        </p>
+        <p>
+          <span leaf=""
+            >回顾从算法作曲到神经音频合成的发展历程，聚焦文本到音乐生成的两大技术路线。深入剖析
+            MusicGen 的自回归方案：利用 Encodec 将音频离散化为 token，再通过
+            Transformer
+            逐步生成。对照介绍扩散模型方案的数学基础（SDE、分数函数）、音频表示策略（波形、梅尔频谱、潜空间）以及
+            U-Net 与 DiT 架构。涵盖主观评估（MOS、MUSHRA
+            听力测试）和客观评估（FAD、CLAP
+            Score）等完整的评价体系，并提供代码实践。</span
+          >
+        </p>
+        <p>
+          <span
+            ><span
+              leaf=""
+              data-pm-slice='1 1 ["para",{"tagName":"p","attributes":{"style":"margin-top: 15px;margin-bottom: 15px;box-sizing: border-box;font-size: 16px;white-space: pre-line;line-height: 30px;color: rgb(74, 74, 74);font-family: Avenir, -apple-system-font, 微软雅黑, sans-serif;"},"namespaceURI":"http://www.w3.org/1999/xhtml"},"node",{"tagName":"span","attributes":{"style":"font-size: 14px;"},"namespaceURI":"http://www.w3.org/1999/xhtml"}]'
+              >✎&nbsp;</span
+            ></span
+          ><span leaf="">第六章 总结</span>
+        </p>
+        <p>
+          <span leaf=""
+            >总结全教程的核心知识脉络，回顾从监督分类到大语言模型驱动的范式演进。探讨超越文本控制的未来方向：音频到音频的控制（伴奏生成、音色迁移、迭代编辑）以及基于强度、旋律、和弦等抽象音乐属性的精细化控制。指出文本作为控制媒介在表达细粒度音乐细节方面的固有局限，展望更直觉化的音乐创作交互方式。</span
+          ><span
+            ><span leaf=""><br /></span
+          ></span>
+        </p>
+        <hr />
+        <h3><span leaf="">『网页配置』</span></h3>
+        <p><span leaf="">为了呈现该教程，GitHub Pages 配置如下：</span></p>
+        <ul>
+          <li>
+            <p>
+              <span leaf=""
+                >部署方式：legacy（经典模式，非 GitHub Actions）</span
+              >
+            </p>
+          </li>
+          <li>
+            <p><span leaf="">源分支：gh-pages，根目录 /</span></p>
+          </li>
+          <li>
+            <p>
+              <span leaf=""
+                >站点地址：<a
+                  href="https://beiciliang.github.io/intro2musictech/"
+                  target="_blank"
+                  rel="noopener"
+                  >https://beiciliang.github.io/intro2musictech/</a
+                ></span
+              >
+            </p>
+          </li>
+        </ul>
+        <p>
+          <span leaf=""
+            >工作原理：每次向 gh-pages 分支推送新的提交，GitHub
+            会自动触发部署，将该分支根目录下的所有静态文件发布到站点。因为根目录有
+            .nojekyll 文件，GitHub 跳过 Jekyll
+            构建，直接原样部署所有文件（包括以 _ 开头的目录如
+            _static/、_images/）。</span
+          >
+        </p>
+        <p><span leaf="">当前 gh-pages 分支结构：</span></p>
+        <section>
+          <pre
+            data-lang="bash"
+          ><code><span leaf="">gh-pages/</span></code><code><span leaf="">├── .nojekyll &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span># 禁用 Jekyll，直接部署静态文件</span></span></code><code><span leaf="">├── index.html &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;<span># 首页，教程卡片列表</span></span></code><code><span leaf="">├── MIR-CC.html &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span># marimo 教程的静态导出</span></span></code><code><span leaf="">└── music-language-tutorial/ &nbsp; &nbsp; &nbsp;&nbsp;<span># Jupyter Book 渲染的完整站点</span></span></code><code><span leaf="">&nbsp; &nbsp; ├── intro.html &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;<span># 教程首页</span></span></code><code><span leaf="">&nbsp; &nbsp; ├── introduction/ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span># 第一章</span></span></code><code><span leaf="">&nbsp; &nbsp; ├── lm/ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span># 第二章</span></span></code><code><span leaf="">&nbsp; &nbsp; ├── description/ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;<span># 第三章</span></span></code><code><span leaf="">&nbsp; &nbsp; ├── retrieval/ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;<span># 第四章</span></span></code><code><span leaf="">&nbsp; &nbsp; ├── generation/ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span># 第五章</span></span></code><code><span leaf="">&nbsp; &nbsp; ├── conclusion/ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span># 第六章</span></span></code><code><span leaf="">&nbsp; &nbsp; ├── bibliography.html &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span># 参考文献</span></span></code><code><span leaf="">&nbsp; &nbsp; ├── _static/ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;<span># CSS/JS/字体等静态资源</span></span></code><code><span leaf="">&nbsp; &nbsp; └── _images/ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;<span># 图片资源</span></span></code></pre>
+        </section>
+        <p>
+          <span leaf=""
+            >更新流程：在 main 分支用 Jupyter Book v1 构建 → 切换到 gh-pages →
+            复制构建产物 → 提交并推送 → GitHub 自动部署。</span
+          >
+        </p>
+        <p>
+          <span
+            ><span leaf=""
+              >☞ 如果你想帮助博主更新，欢迎发起Pull Request!</span
+            ></span
+          ><span leaf=""><br /></span>
+        </p>
+        <hr />
+        <p>
+          <span
+            ><span leaf=""
+              >如果还有哪些高质量MIR相关教程值得英译中，欢迎留言！</span
+            ></span
+          >
+        </p>
+        <p>
+          <strong
+            ><span
+              ><span leaf=""
+                >上文回顾：<a
+                  target="_blank"
+                  href="https://mp.weixin.qq.com/s?__biz=MzU5MzY3NzI0OA==&amp;mid=2247484015&amp;idx=1&amp;sn=ffb0e282814654db668b9aeaae7070e6&amp;scene=21#wechat_redirect"
+                  textvalue="「MIR-CC」2026年用Claude Code就可以无痛入门音乐科技"
+                  data-itemshowtype="0"
+                  linktype="text"
+                  data-linktype="2"
+                  link-id="3c31"
+                  >「MIR-CC」2026年用Claude Code就可以无痛入门音乐科技</a
+                ></span
+              ><span leaf=""><br /></span></span
+          ></strong>
+        </p>
+        <p>
+          <span
+            ><strong><span leaf="">点</span></strong></span
+          ><strong
+            ><span leaf="">击下方</span
+            ><span><span leaf="">阅读原文</span></span
+            ><span leaf="">可直达教程索引</span></strong
+          >
+        </p>
+        <p>
+          <strong
+            ><span
+              ><span
+                leaf=""
+                data-pm-slice='1 1 ["para",{"tagName":"p","attributes":{"style":"margin-top: 15px;margin-bottom: 15px;box-sizing: border-box;font-size: 16px;white-space: pre-line;color: rgb(74, 74, 74);font-family: Avenir, -apple-system-font, 微软雅黑, sans-serif;line-height: normal;"},"namespaceURI":"http://www.w3.org/1999/xhtml"},"node",{"tagName":"span","attributes":{"style":"box-sizing: border-box; white-space: pre-line; line-height: 30px; color: rgb(74, 74, 74); font-family: Avenir, -apple-system-font, 微软雅黑, sans-serif; font-size: 14px;"},"namespaceURI":"http://www.w3.org/1999/xhtml"}]'
+                ><span textstyle=""
+                  >☞
+                  <a
+                    href="https://beiciliang.github.io/intro2musictech"
+                    target="_blank"
+                    rel="noopener"
+                    >https://beiciliang.github.io/intro2musictech</a
+                  ></span
+                ></span
+              ></span
+            ></strong
+          >
+        </p>
+        <p>
+          <span leaf=""><br /></span>
+        </p>
+        <p><mp-style-type data-value="3"></mp-style-type></p>
+      </div>
+    </article>
+  </body>
+</html>

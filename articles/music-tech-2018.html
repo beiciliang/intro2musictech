@@ -1,0 +1,787 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>「INFO」2018年度那些亮眼的音乐科技成就 - 无痛入门音乐科技</title>
+    <style>
+      :root {
+        --bg: #f5f5f7;
+        --card-bg: #ffffff;
+        --text: #1d1d1f;
+        --text-secondary: #6e6e73;
+        --accent: #5856d6;
+        --border: #d2d2d7;
+        --code-bg: #f0f0f3;
+      }
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --bg: #0d0d12;
+          --card-bg: #1c1c24;
+          --text: #f0f0f5;
+          --text-secondary: #8e8e93;
+          --accent: #7b79ff;
+          --border: #2c2c34;
+          --code-bg: #15151d;
+        }
+      }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        font-family:
+          -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI",
+          Roboto, "Noto Sans SC", sans-serif;
+        background: var(--bg);
+        color: var(--text);
+        line-height: 1.8;
+      }
+      .header {
+        background: linear-gradient(
+          135deg,
+          #0f0c29 0%,
+          #302b63 50%,
+          #24243e 100%
+        );
+        padding: 2rem 1.5rem;
+        text-align: center;
+      }
+      .header a {
+        color: rgba(255, 255, 255, 0.7);
+        text-decoration: none;
+        font-size: 0.9rem;
+      }
+      .header a:hover {
+        color: #fff;
+      }
+      article {
+        max-width: 720px;
+        margin: 0 auto;
+        padding: 2rem 1.5rem 4rem;
+      }
+      article h1 {
+        font-size: 1.8rem;
+        font-weight: 700;
+        margin-bottom: 0.5rem;
+        line-height: 1.3;
+      }
+      .meta {
+        color: var(--text-secondary);
+        font-size: 0.85rem;
+        margin-bottom: 2rem;
+        padding-bottom: 1rem;
+        border-bottom: 1px solid var(--border);
+      }
+      .content {
+        font-size: 1rem;
+      }
+      .content p,
+      .content section {
+        margin-bottom: 1rem;
+      }
+      .content img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 8px;
+        margin: 1rem 0;
+      }
+      .content h2,
+      .content h3 {
+        text-align: center;
+        margin: 1.5rem 0 0.8rem;
+        font-weight: 600;
+      }
+      .content blockquote {
+        border-left: 3px solid var(--accent);
+        padding-left: 1rem;
+        color: var(--text-secondary);
+        margin: 1rem 0;
+      }
+      .content a {
+        color: var(--accent);
+      }
+      .content hr {
+        border: none;
+        border-top: 1px solid var(--border);
+        margin: 1.5rem 0;
+      }
+      .content ul,
+      .content ol {
+        padding-left: 1.5rem;
+        margin-bottom: 1rem;
+      }
+      .content li {
+        margin-bottom: 0.3rem;
+      }
+      .content table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 1rem 0;
+      }
+      .content th,
+      .content td {
+        border: 1px solid var(--border);
+        padding: 0.5rem;
+        text-align: left;
+      }
+      .content pre,
+      .content code {
+        font-family:
+          "SF Mono", SFMono-Regular, Menlo, Consolas, "Liberation Mono",
+          monospace;
+        font-size: 0.85em;
+      }
+      .content code {
+        background: var(--code-bg);
+        border: 1px solid var(--border);
+        border-radius: 4px;
+        padding: 0.15rem 0.4rem;
+      }
+      .content pre {
+        background: var(--code-bg);
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        padding: 1rem 1.2rem;
+        overflow-x: auto;
+        margin: 1rem 0;
+        line-height: 1.5;
+      }
+      .content pre code {
+        background: none;
+        border: none;
+        padding: 0;
+        font-size: inherit;
+        display: block;
+      }
+      .content pre ol {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+      .content pre li {
+        margin: 0;
+        padding: 0;
+      }
+      .content pre p {
+        margin: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="header">
+      <a href="../index.html">&larr; 返回 无痛入门音乐科技</a>
+    </div>
+    <article>
+      <h1>「INFO」2018年度那些亮眼的音乐科技成就</h1>
+      <div class="meta">无痛入门音乐科技</div>
+      <div class="content">
+        <blockquote>
+          <p>
+            简单盘点一下，2018年音乐科技在算法层面令博主印象深刻的学术研究！个人眼界有限，如有勘误或遗漏，还请包涵！
+          </p>
+        </blockquote>
+        <p>
+          <span
+            >过去的一年里，深度学习在音乐信息检索与音乐智能创作上的应用可谓层出不穷，同时成功吸引了工业界的注意力。本文将在以下几个方面做简要总结：</span
+          >
+        </p>
+        <ul>
+          <li>
+            <p><span>乐音估计：音高(pitch)，和弦(chord)</span></p>
+          </li>
+          <li>
+            <p><span>节奏追踪：重拍(downbeat)，节奏(tempo)</span></p>
+          </li>
+          <li>
+            <p>
+              <span
+                >与人相关的识别：演奏技巧(playing technique)，人声(singing
+                voice)，情绪(mood)</span
+              >
+            </p>
+          </li>
+          <li>
+            <p><span>声源分离(source separation)</span></p>
+          </li>
+          <li>
+            <p><span>自动标注(auto-tagging)</span></p>
+          </li>
+          <li>
+            <p><span>智能生成(intelligent generation)</span></p>
+          </li>
+          <li>
+            <p><span>非西方音乐的研究(world music)</span></p>
+          </li>
+          <li>
+            <p><span>博主所在C4DM科研组的其他亮点</span></p>
+          </li>
+        </ul>
+        <hr />
+        <h3>『乐音估计』</h3>
+        <p><strong>♬ 音高 ♬</strong></p>
+        <p>
+          ☞ 博主一直崇拜的女神Rachel M.
+          Bittner今年从纽约大学MARL科研组博士毕业了！她的课题就是从最底层的数字信号处理到目前最流行的深度卷积神经网络，全方位地研究基频估计，论文题目是Data-Driven
+          Fundamental Frequency Estimation。
+        </p>
+        <p>
+          <span
+            >➥
+            <a
+              href="https://drive.google.com/file/d/1Lf6G5yaqi-JwpwOFN99p6HMr4AvefSzc/view"
+              target="_blank"
+              rel="noopener"
+              >https://drive.google.com/file/d/1Lf6G5yaqi-JwpwOFN99p6HMr4AvefSzc/view</a
+            ></span
+          >
+        </p>
+        <p>
+          ☞
+          另外MARL科研组在18年的一个颇有名气的成就，就是基于单旋律的音高识别，即Jong
+          Wook Kim等人提出的CREPE: A Convolutional Representation for Pitch
+          Estimation。除了论文，还有非常不错的网页应用小样！
+        </p>
+        <p>
+          <span
+            >➥
+            <a
+              href="https://arxiv.org/pdf/1802.06182.pdf"
+              target="_blank"
+              rel="noopener"
+              >https://arxiv.org/pdf/1802.06182.pdf</a
+            ></span
+          >
+        </p>
+        <p>
+          <span
+            >➥
+            <a
+              href="https://marl.github.io/crepe/"
+              target="_blank"
+              rel="noopener"
+              >https://marl.github.io/crepe/</a
+            ></span
+          >
+        </p>
+        <p>
+          ☞
+          对于多旋律的音高估计，很大一部分的研究都是基于钢琴这个乐器的音频进行评价的，目前效果最好的就是由Google
+          Magenta提出的Onsets and Frames: Dual-Objective Piano
+          Transcription。又是一个自带网页应用小样的算法展示。
+        </p>
+        <p>
+          <span
+            >➥
+            <a
+              href="https://magenta.tensorflow.org/onsets-frames"
+              target="_blank"
+              rel="noopener"
+              >https://magenta.tensorflow.org/onsets-frames</a
+            ></span
+          >
+        </p>
+        <p>
+          <span
+            >➥
+            <a
+              href="https://piano-scribe.glitch.me/"
+              target="_blank"
+              rel="noopener"
+              >https://piano-scribe.glitch.me/</a
+            ></span
+          >
+        </p>
+        <p><strong>♬ 和弦 ♬</strong></p>
+        <p>
+          ☞ JKU的Filip
+          Korzeniowski小哥通过将声学模型、语言模型和时长模型融合进RNN，进行大小和弦等25类和弦的识别，在今年的EUSIPCO、ICASSP和ISMIR会议上都能见到他展示成果时长发飘飘的身影。下方链接为ISMIR上的文章Improved
+          Chord Recognition by Combining Duration and Harmonic Language Models。
+        </p>
+        <p>
+          <span
+            >➥
+            <a
+              href="https://arxiv.org/pdf/1808.05335.pdf"
+              target="_blank"
+              rel="noopener"
+              >https://arxiv.org/pdf/1808.05335.pdf</a
+            ></span
+          >
+        </p>
+        <hr />
+        <h3>『节奏追踪』</h3>
+        <p>
+          ☞
+          通过比较RNN和CRNN在重拍检测上的性能，分析针对于这类检测问题最佳的深度学习模型设置方案：Analysis
+          of common design choices in deep learning systems for downbeat
+          tracking。
+        </p>
+        <p>
+          <span
+            >➥
+            <a
+              href="https://bmcfee.github.io/papers/ismir2018_downbeat.pdf"
+              target="_blank"
+              rel="noopener"
+              >https://bmcfee.github.io/papers/ismir2018_downbeat.pdf</a
+            ></span
+          >
+        </p>
+        <p>
+          ☞
+          在全局层面衡量一首歌曲的节奏，可以通过用CNN估计局部的节奏后再推断全局节奏，这篇文章用更简单的模型实现了其他复杂模型的性能，数据库和代码的开源链接也都包含在文章里A
+          single-step approach to musical tempo estimation using a convolutional
+          neural network。
+        </p>
+        <p>
+          <span
+            >➥
+            <a
+              href="https://www.researchgate.net/profile/Hendrik_Schreiber/publication/328028453_A_Single-Step_Approach_to_Musical_Tempo_Estimation_Using_a_Convolutional_Neural_Network/links/5bb3933692851ca9ed349cf7/A-Single-Step-Approach-to-Musical-Tempo-Estimation-Using-a-Convolutional-Neural-Network.pdf"
+              target="_blank"
+              rel="noopener"
+              >https://www.researchgate.net/profile/Hendrik_Schreiber/publication/328028453</a
+            ></span
+          >
+        </p>
+        <hr />
+        <h3>『与人相关的识别』</h3>
+        <p><strong>♬ 演奏技巧 ♬</strong></p>
+        <p>
+          ☞ Vincent
+          Lostanlen提出演奏技巧的识别是从乐器识别中衍生的下一个里程碑般的任务，对于如何理解“演奏技巧”以及都有哪些成果，可以参考他的文章Extended
+          playing techniques: The next milestone in musical instrument
+          recognition。
+        </p>
+        <p>
+          <span
+            >➥
+            <a
+              href="https://arxiv.org/pdf/1808.09730.pdf"
+              target="_blank"
+              rel="noopener"
+              >https://arxiv.org/pdf/1808.09730.pdf</a
+            ></span
+          >
+        </p>
+        <p>
+          ☞ 目前基于鼓的研究是相对完整的，佐治亚理工的Chih-Wei
+          Wu今年成功拿到了关于鼓类音乐信息检索的博士学位，并发表了这篇高质量综述A
+          Review of Automatic Drum Transcription。
+        </p>
+        <p>
+          <span
+            >➥
+            <a
+              href="https://dl.acm.org/citation.cfm?id=3232299"
+              target="_blank"
+              rel="noopener"
+              >https://dl.acm.org/citation.cfm?id=3232299</a
+            ></span
+          >
+        </p>
+        <p>
+          ☞ 针对于吉他，往年有一些论文，但在今年最醒目的还是Qingyang
+          Xi等人公布的新数据库。
+        </p>
+        <p>
+          <span
+            >➥
+            <a
+              href="https://github.com/marl/GuitarSet"
+              target="_blank"
+              rel="noopener"
+              >https://github.com/marl/GuitarSet</a
+            ></span
+          >
+        </p>
+        <p>
+          ☞
+          这里插播一条广告，博主本人也是做这个方向的，不过是针对于钢琴演奏中的踏板技巧。既有设计硬件直接捕获，也有结合钢琴声学的信号处理，目前也走上了深度学习的道路。
+        </p>
+        <p>
+          <span
+            >➥
+            <a
+              href="https://beiciliang.weebly.com/blog/deep-pedal"
+              target="_blank"
+              rel="noopener"
+              >https://beiciliang.weebly.com/blog/deep-pedal</a
+            ></span
+          >
+        </p>
+        <p>
+          ☞ 组里的其他同学也有在做基于其他乐器的演奏技巧识别，Changhong
+          Wang的研究针对于中国竹笛，Yudong Zhao则是针对于小提琴。
+        </p>
+        <p><strong>♬ 人声 ♬</strong></p>
+        <p>
+          ☞ 这里是指检测出一首歌中有哪些地方包含了人声，Kyungyun
+          Lee比较分析了经典算法并提出了许多建设性意见：Revisiting Singing Voice
+          Detection: A quantitative review and the future outlook。
+        </p>
+        <p>
+          <span
+            >➥
+            <a
+              href="https://arxiv.org/pdf/1806.01180.pdf"
+              target="_blank"
+              rel="noopener"
+              >https://arxiv.org/pdf/1806.01180.pdf</a
+            ></span
+          >
+        </p>
+        <p>
+          ☞ 一个新量级的数据库也在今年提出，DALI: a large Dataset of
+          synchronized Audio, LyrIcs and notes, automatically created using
+          teacher-student machine learning paradigm
+        </p>
+        <p>
+          <span
+            >➥
+            <a
+              href="https://github.com/gabolsgabs/DALI"
+              target="_blank"
+              rel="noopener"
+              >https://github.com/gabolsgabs/DALI</a
+            ></span
+          >
+        </p>
+        <p><strong>♬ 情绪 ♬</strong></p>
+        <p>
+          ☞
+          音乐中的情绪识别一直是个难点，但这篇文章里考虑了同时利用音频信号和歌词信息：Music
+          Mood Detection Based On Audio And Lyrics With Deep Neural Net。
+        </p>
+        <p>
+          <span
+            >➥
+            <a
+              href="https://arxiv.org/pdf/1809.07276.pdf"
+              target="_blank"
+              rel="noopener"
+              >https://arxiv.org/pdf/1809.07276.pdf</a
+            ></span
+          >
+        </p>
+        <p>
+          ☞
+          现有的音乐情绪研究大多基于MSD数据库，其中每个音频对应一种情绪标签。实际上人的情绪在一首歌里并不是一成不变的，我们组里的Simin
+          Yang就在针对这种live情境下的音乐情绪进行研究。
+        </p>
+        <hr />
+        <h3>『声源分离』</h3>
+        <p>
+          在以上任务中，一种常见的提升识别准确度的预处理办法就是声源分离，今年第14届LVA
+          ICA会议召开后更是涌现了好多论文，在之后的论文SiSEC 2018: State of the
+          art in musical audio source separation - subjective selection of the
+          best algorithm中就召集了LVA
+          ICA的参会人员，对6种性能较突出的算法分离出的音乐结果进行主观评价，看看大家目前对哪一种算法的效果更满意。
+        </p>
+        <p>
+          <span
+            >➥
+            <a
+              href="https://hal.inria.fr/hal-01945362/document"
+              target="_blank"
+              rel="noopener"
+              >https://hal.inria.fr/hal-01945362/document</a
+            ></span
+          >
+        </p>
+        <p>
+          ☞ 不得不提其中一种算法是我们组Daniel Stoller的成果Wave-U-Net: A
+          Multi-Scale Neural Network for End-to-End Audio Source Separation。
+        </p>
+        <p>
+          <span
+            >➥
+            <a
+              href="https://github.com/f90/Wave-U-Net"
+              target="_blank"
+              rel="noopener"
+              >https://github.com/f90/Wave-U-Net</a
+            ></span
+          >
+        </p>
+        <hr />
+        <h3>『自动标注』</h3>
+        <p>
+          ☞ 首先是这个领域的名人，也是我的亲师哥Keunwoo
+          Choi博士毕业，毕业论文为Deep Neural Networks for Music Tagging。
+        </p>
+        <p>
+          <span
+            >➥
+            <a
+              href="https://qmro.qmul.ac.uk/xmlui/bitstream/handle/123456789/46029/CHOI_Keunwoo_PhD_Final_190918.pdf?sequence=1"
+              target="_blank"
+              rel="noopener"
+              >https://qmro.qmul.ac.uk/xmlui/bitstream/handle/123456789/46029/CHOI_Keunwoo_PhD_Final_190918.pdf</a
+            ></span
+          >
+        </p>
+        <p>
+          ☞ 今年ISMIR上的最佳论文颁给了UPF大学MTG科研组Jordi Pons的End-to-end
+          Learning for Music Audio Tagging at Scale。
+        </p>
+        <p>
+          <span
+            >➥
+            <a
+              href="https://arxiv.org/pdf/1711.02520.pdf"
+              target="_blank"
+              rel="noopener"
+              >https://arxiv.org/pdf/1711.02520.pdf</a
+            ></span
+          >
+        </p>
+        <p>
+          ☞
+          DCASE竞赛中任务2里的挑战也是用的MTG开发的freesound数据库，在该任务中韩国Young
+          Jeong等人提出的算法取得了最高的性能。
+        </p>
+        <p>
+          <span
+            >➥
+            <a
+              href="https://www.researchgate.net/profile/Hyungui_Lim/publication/328927908_Audio_Tagging_System_Using_Densely_Connected_Convolutional_Networks/links/5bebdaff299bf1124fd11f77/Audio-Tagging-System-Using-Densely-Connected-Convolutional-Networks.pdf"
+              target="_blank"
+              rel="noopener"
+              >https://www.researchgate.net/profile/Hyungui_Lim/publication/328927908</a
+            ></span
+          >
+        </p>
+        <p>
+          ☞ 值得注意的是萨利大学的Qiuqiang
+          Kong和许多国内的学者们在DCASE此项任务中也是表现不凡。
+        </p>
+        <p>
+          <span
+            >➥
+            <a
+              href="http://dcase.community/challenge2018/task-general-purpose-audio-tagging"
+              target="_blank"
+              rel="noopener"
+              >http://dcase.community/challenge2018/task-general-purpose-audio-tagging</a
+            ></span
+          >
+        </p>
+        <hr />
+        <h3>『智能创新』</h3>
+        <p>
+          ☞
+          讲到这儿就不得不说智能作曲了，我一直自诩耳朵刁钻所以保持一个“怀疑者”的姿态，直到我最近看到Google
+          Magenta里Cheng-Zhi Anna Huang等人做出的Music Transformer: Generating
+          Music with Long-Term Structure。
+        </p>
+        <p>
+          <span
+            >➥
+            <a
+              href="https://magenta.tensorflow.org/music-transformer"
+              target="_blank"
+              rel="noopener"
+              >https://magenta.tensorflow.org/music-transformer</a
+            ></span
+          >
+        </p>
+        <p>
+          <span
+            >➥
+            <a
+              href="https://arxiv.org/pdf/1809.04281.pdf"
+              target="_blank"
+              rel="noopener"
+              >https://arxiv.org/pdf/1809.04281.pdf</a
+            ></span
+          >
+        </p>
+        <p><span>➥ 视频小样如下：</span></p>
+        <p>
+          ☞
+          如果你也想训练一个基于钢琴音乐自动生成的深度学习模型，不妨用一用Magenta刚发布的MAESTRO数据库，包含大量MIDI与音频且相互时间轴同步的数据。<br />
+        </p>
+        <p>
+          <span
+            >➥
+            <a
+              href="https://magenta.tensorflow.org/datasets/maestro"
+              target="_blank"
+              rel="noopener"
+              >https://magenta.tensorflow.org/datasets/maestro</a
+            ></span
+          >
+        </p>
+        <p>
+          ☞
+          除了智能作曲，另外可以利用机器展现创造力的例子是，基于文本内容智能生成电台广播或有声书。比如一段文字是“我正走在寂静的森林里，突然一大群蜜蜂从我脑顶上方飞过”，生成出的音频就需要有“森林”和“蜜蜂”这两个元素，同时要用音效表现“寂静”和“一大群”的环境以及“脑顶上方”的方位和“突然飞过”的动态。我们组的Emmanouil
+          Theofanis Chourdakis就在论文From my pen to your ears: automatic
+          production of radio plays from unstructured story
+          text中做了这样的工作。
+        </p>
+        <p>
+          <span
+            >➥
+            <a
+              href="https://qmro.qmul.ac.uk/xmlui/bitstream/handle/123456789/45984/Chourdakis%20From%20my%20pen%202018%20Published.pdf?sequence=1"
+              target="_blank"
+              rel="noopener"
+              >https://qmro.qmul.ac.uk/xmlui/bitstream/handle/123456789/45984/Chourdakis%20From%20my%20pen%202018%20Published.pdf?sequence=1</a
+            ></span
+          >
+        </p>
+        <p>
+          ☞ 说到音效，智能控制不同音效的参数也是C4DM的一大研究方向。比如Di
+          Sheng就提出了Feature design using audio decomposition for intelligent
+          control of the dynamic range compressor，Marco Martínez提出End-to-end
+          equalization with convolutional neural networks等等。
+        </p>
+        <p>
+          <span
+            >➥
+            <a
+              href="https://ieeexplore.ieee.org/document/8461513"
+              target="_blank"
+              rel="noopener"
+              >https://ieeexplore.ieee.org/document/8461513</a
+            ></span
+          >
+        </p>
+        <p>
+          <span
+            >➥
+            <a
+              href="http://dafx2018.web.ua.pt/papers/DAFx2018_paper_27.pdf"
+              target="_blank"
+              rel="noopener"
+              >http://dafx2018.web.ua.pt/papers/DAFx2018_paper_27.pdf</a
+            ></span
+          >
+        </p>
+        <hr />
+        <h3>『非西方音乐的研究』</h3>
+        <p>这里主要介绍以下三位在今年获得博士学位的朋友们的学术工作：</p>
+        <p>
+          ☞ 我们C4DM组的Maria Panteli对世界音乐的大数据分析：Computational
+          analysis of world music corpora
+        </p>
+        <p>
+          <span
+            >➥
+            <a
+              href="https://www.eecs.qmul.ac.uk/~simond/phd/MariaPanteli-PhD-Thesis.pdf"
+              target="_blank"
+              rel="noopener"
+              >https://www.eecs.qmul.ac.uk/~simond/phd/MariaPanteli-PhD-Thesis.pdf</a
+            ></span
+          >
+        </p>
+        <p>
+          ☞ UPF大学MTG组Rong Gong对京剧中歌唱发音的自动评价：Automatic
+          Assessment of Singing Voice Pronunciation: A Case Study with Jingju
+          Music
+        </p>
+        <p>
+          <span
+            >➥
+            <a
+              href="https://compmusic.upf.edu/phd-thesis-rgong"
+              target="_blank"
+              rel="noopener"
+              >https://compmusic.upf.edu/phd-thesis-rgong</a
+            ></span
+          >
+        </p>
+        <p>
+          ☞ UPF大学MTG组Rafael Caro Repetto利用计算机辅助京剧音乐学的分析：The
+          musical dimension of Chinese traditional theatre: An analysis from
+          computer aided musicology
+        </p>
+        <p>
+          <span
+            >➥
+            <a
+              href="https://compmusic.upf.edu/caro2018thesis"
+              target="_blank"
+              rel="noopener"
+              >https://compmusic.upf.edu/caro2018thesis</a
+            ></span
+          >
+        </p>
+        <hr />
+        <p>
+          <strong><span>博主所在C4DM科研组的其他亮点:&nbsp;</span></strong>
+        </p>
+        <p>
+          五年大项目Fusing Audio and Semantic
+          Technologies进入收尾一年，并在Abbey Road Studios对工业界进行展示：
+        </p>
+        <p>
+          <span
+            >➥
+            <a
+              href="http://www.semanticaudio.ac.uk/"
+              target="_blank"
+              rel="noopener"
+              >http://www.semanticaudio.ac.uk/</a
+            ></span
+          >
+        </p>
+        <p>下属machine listening实验室的年度总结：</p>
+        <p>
+          <span
+            >➥
+            <a
+              href="http://machine-listening.eecs.qmul.ac.uk/2018/12/2018-the-year-in-review/"
+              target="_blank"
+              rel="noopener"
+              >http://machine-listening.eecs.qmul.ac.uk/2018/12/2018-the-year-in-review/</a
+            ></span
+          >
+        </p>
+        <p>
+          我们组每年圣诞前召开的Digital Music Research Network One-day
+          Workshop已经举办到了第13届：
+        </p>
+        <p>
+          <span
+            >➥
+            <a
+              href="https://www.qmul.ac.uk/dmrn/dmrn13/"
+              target="_blank"
+              rel="noopener"
+              >https://www.qmul.ac.uk/dmrn/dmrn13/</a
+            ></span
+          >
+        </p>
+        <p>联合诸多欧盟院校共同开展的博士培养项目MIPFrontiers于今年开始：</p>
+        <p>
+          <span
+            >➥
+            <a
+              href="https://www.upf.edu/web/mip-frontiers"
+              target="_blank"
+              rel="noopener"
+              >https://www.upf.edu/web/mip-frontiers</a
+            ></span
+          >
+        </p>
+        <p>更多关于C4DM的信息请访问官网：</p>
+        <p>
+          <span
+            >➥
+            <a
+              href="http://c4dm.eecs.qmul.ac.uk/"
+              target="_blank"
+              rel="noopener"
+              >http://c4dm.eecs.qmul.ac.uk/</a
+            ></span
+          >
+        </p>
+      </div>
+    </article>
+  </body>
+</html>

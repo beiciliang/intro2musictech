@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>「MIR-02_3」音频特征小全之频域特征 - 无痛入门音乐科技</title>
+  <style>
+    :root {
+      --bg: #f5f5f7;
+      --card-bg: #ffffff;
+      --text: #1d1d1f;
+      --text-secondary: #6e6e73;
+      --accent: #5856d6;
+      --border: #d2d2d7;
+      --code-bg: #f0f0f3;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #0d0d12;
+        --card-bg: #1c1c24;
+        --text: #f0f0f5;
+        --text-secondary: #8e8e93;
+        --accent: #7b79ff;
+        --border: #2c2c34;
+        --code-bg: #15151d;
+      }
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, "Noto Sans SC", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.8;
+    }
+    .header {
+      background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
+      padding: 2rem 1.5rem;
+      text-align: center;
+    }
+    .header a {
+      color: rgba(255,255,255,0.7);
+      text-decoration: none;
+      font-size: 0.9rem;
+    }
+    .header a:hover { color: #fff; }
+    article {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem 4rem;
+    }
+    article h1 {
+      font-size: 1.8rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      line-height: 1.3;
+    }
+    .meta {
+      color: var(--text-secondary);
+      font-size: 0.85rem;
+      margin-bottom: 2rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .content { font-size: 1rem; }
+    .content p,
+      .content section { margin-bottom: 1rem; }
+    .content img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 1rem 0;
+    }
+    .content h2, .content h3 {
+      text-align: center;
+      margin: 1.5rem 0 0.8rem;
+      font-weight: 600;
+    }
+    .content blockquote {
+      border-left: 3px solid var(--accent);
+      padding-left: 1rem;
+      color: var(--text-secondary);
+      margin: 1rem 0;
+    }
+    .content a { color: var(--accent); }
+    .content hr {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 1.5rem 0;
+    }
+    .content ul, .content ol {
+      padding-left: 1.5rem;
+      margin-bottom: 1rem;
+    }
+    .content li { margin-bottom: 0.3rem; }
+    .content table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1rem 0;
+    }
+    .content th, .content td {
+      border: 1px solid var(--border);
+      padding: 0.5rem;
+      text-align: left;
+    }
+    .content pre, .content code {
+      font-family: "SF Mono", SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+      font-size: 0.85em;
+    }
+    .content code {
+      background: var(--code-bg);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 0.15rem 0.4rem;
+    }
+    .content pre {
+      background: var(--code-bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1rem 1.2rem;
+      overflow-x: auto;
+      margin: 1rem 0;
+      line-height: 1.5;
+    }
+    .content pre code {
+      background: none;
+      border: none;
+      padding: 0;
+      font-size: inherit;
+      display: block;
+    }
+    .content pre ol {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .content pre li {
+      margin: 0;
+      padding: 0;
+    }
+    .content pre p {
+      margin: 0;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <a href="../index.html">&larr; 返回 无痛入门音乐科技</a>
+  </div>
+  <article>
+    <h1>「MIR-02_3」音频特征小全之频域特征</h1>
+    <div class="meta">无痛入门音乐科技</div>
+    <div class="content">
+      <blockquote><p>频域特征(spectral feature)是将音频波形变换到频域之后得出的一系列基于频谱的指标。</p></blockquote><p><span><strong>♬ 本文为MIR音乐信息检索系列的第2.3篇文章 ♬</strong></span></p><p><span><strong>♬ 该文与2.1概览+2.2时域特征及后续2.X文章共同组成音频特征小全 ♬</strong></span></p><p><span>本文将主要讲解以下频域特征及其简单应用：</span></p><ul><li><p><span>为什么用频谱质心的高低来衡量乐器声音的亮暗？</span></p></li><li><p><span>如何用频谱差分幅度得出一个个乐音开始演奏的时刻？</span></p></li><li><p><span>大名鼎鼎的MFCC到底是什么？</span></p></li></ul><hr><h3>『回顾音色』</h3><p>前文2.2提到时域包络的差异是帮助我们理解“不同乐器有不同音色”的助手之一，其他助手集中在频域。这个不是我瞎说的，而是早在90年代左右就有心理声学学者给志愿者们听许多对儿乐器声音，并让他们给这一对对声音在音色上的不相似程度打分，最后用数学建模估计出大致可以用多少个维度来共同表示出人们如何区分不同音色，实验过程如下图：</p><p><img src="https://mmbiz.qpic.cn/mmbiz_png/7CrMia15fFJXmNvSXgEbnw32vmks2Wov6AA4vOFRv5KZUGia6EWXSoQneiaGwvtIgjZ11tT3bClzlaoZjCbGPms0w/640"></p><p>✎ McAdam在1995年发表的论文中指出，可以用以下3个维度来表示音色空间：起音的时间（详见上文2.2），频谱质心，频谱差分幅度。后两者就是本文频域特征的两大主角儿。</p><p><img src="https://mmbiz.qpic.cn/mmbiz_png/7CrMia15fFJXmNvSXgEbnw32vmks2Wov6I92kN9a4Nys2icBd3GwEwic9hGf7djicpSaxrLia4uxOJQmib0IpGgNJyxA/640"></p><hr><h3>『频谱质心』</h3><p>频谱质心(spectral centroid)可表示频谱X中的能量大致平均集中在哪个频率附近，数学计算公式为：</p><p><img src="https://mmbiz.qpic.cn/mmbiz_png/7CrMia15fFJXmNvSXgEbnw32vmks2Wov66dsSUM9wyfmlDJT7cXOKRM9EicruibYlJibnUNNaEV0SKtPz6eYI3b3Rw/640"></p><p>其中|X(k)|指频谱在第k个频点上的幅度值，f(k)则为第k个频点对应的频率值，<br></p><p>即使是同样音高的音符，不同乐器每个音上泛音能量的分布不一样，则各个音在“听上去相对明亮的乐器”中大部分能量分布在频率较高的区域，那么频谱质心的值当然就更高。我们用下方音频为例，可看到演奏同音高的音符时，钢琴vs羽管键琴在频谱质心上数值的变化。</p><p></mpvoice></p><p>我们可以直接调用librosa中计算频谱质心的方法，画出它随着音乐波形和STFT频谱的变化，可见在5.5秒左右羽管键琴开始演奏时，数值跟之前的钢琴音频相比有明显升高。代码如下：<br></p><pre><ol><li><p><span><code><span>audio, sr = librosa.load(</span><span>'attachment/mir02-centroidaudio.wav'</span><span>)</span></code></span></p></li><li><p><span><code><span>D = librosa.stft(audio, n_fft=</span><span>2048</span><span>, hop_length=</span><span>512</span><span>)</span></code></span></p></li><li><p><span><code><span>magnitude, phase = librosa.magphase(D)</span></code></span></p></li><li><p><span><code><span>cent = librosa.feature.spectral_centroid(y=audio, sr=sr)</span></code></span></p></li><li><p><span><code></code></span></p></li><li><p><span><code><span>plt.figure(figsize=(</span><span>15</span><span>,</span><span>10</span><span>))</span></code></span></p></li><li><p><span><code><span># 画出音频数据在时域上的波形图</span></code></span></p></li><li><p><span><code><span>ax1 = plt.subplot(</span><span>2</span><span>,</span><span>1</span><span>,</span><span>1</span><span>)</span></code></span></p></li><li><p><span><code><span>librosa.display.waveplot(audio, sr, alpha=</span><span>0.8</span><span>)</span></code></span></p></li><li><p><span><code><span>plt.title(</span><span>'audio data'</span><span>)</span></code></span></p></li><li><p><span><code><span># 画出STFT后的功率谱（以dB为单位）以及频谱质心随时间的变化</span></code></span></p></li><li><p><span><code><span>ax2 = plt.subplot(</span><span>2</span><span>,</span><span>1</span><span>,</span><span>2</span><span>, sharex=ax1)</span></code></span></p></li><li><p><span><code><span>librosa.display.specshow(librosa.amplitude_to_db(magnitude, </span><span>ref</span><span>=np.max), sr=sr, y_axis=</span><span>'linear'</span><span>, x_axis=</span><span>'time'</span><span>)</span></code></span></p></li><li><p><span><code><span>cent_times = librosa.frames_to_time(np.arange(len(cent[</span><span>0</span><span>])), sr=sr, hop_length=</span><span>512</span><span>)</span></code></span></p></li><li><p><span><code><span>plt.plot(cent_times, cent[</span><span>0</span><span>], label=</span><span>'Spectral Centroid'</span><span>, lw=</span><span>4</span><span>, color=</span><span>'orange'</span><span>)</span></code></span></p></li><li><p><span><code><span>plt.legend()</span></code></span></p></li><li><p><span><code><span>plt.title(</span><span>'STFT spectrogram &amp; Spectral Centroid'</span><span>)</span></code></span></p></li></ol></pre><p><img src="https://mmbiz.qpic.cn/mmbiz_png/7CrMia15fFJXmNvSXgEbnw32vmks2Wov6ibQjXWlO6HAM9VuwZwRxBXiavlrg8bWedma0Nnq2qaMAv9ZsTcJ9LQjw/640"></p><hr><h3>『频谱差分幅度』</h3><p>频谱差分幅度(spectral flux)可以表示音频频谱中的功率变化的有多快，因此在公式上计算的是相邻两帧之间谱的变化量。但在具体计算这个“变化量”时，目前有几种经典的算法，可以主要参考以下两篇论文：</p><p><span>☞ Dixon, Simon. "Onset detection revisited." Proceedings of the 9th International Conference on Digital Audio Effects. pp.133–137. 2006. <a href="https://www.eecs.qmul.ac.uk/~simond/pub/2006/dafx.pdf" target="_blank" rel="noopener">https://www.eecs.qmul.ac.uk/~simond/pub/2006/dafx.pdf</a>
+☞ Böck, Sebastian, and Gerhard Widmer. "Maximum filter vibrato suppression for onset detection." Proceedings of the 16th International Conference on Digital Audio Effects. 2013. <a href="http://dafx13.nuim.ie/papers/09.dafx2013" target="_blank" rel="noopener">http://dafx13.nuim.ie/papers/09.dafx2013</a><span>submission</span>12.pdf</span></p><p>之所以能用频谱差分幅度作为检测音符弹奏时刻(onset)的方法，就是利用新的音符在弹奏时带来的频谱能量上的突变，这种突变也许在时域特征RMS能量上不那么明显，因此凸显出频谱差分幅度的优越性。然而它的弱点在于如何抵制颤音技巧带来的影响，这也是为什么上方第二个文献会提出的一种super flux的方法。</p><p>✎ 我们继续用上方音频画出它的频谱差分幅度随时间的变化：</p><pre><ol><li><p><span><code><span>spectral_flux = librosa.onset.onset_strength(y=audio, sr=sr, hop_length=</span><span>512</span><span>)</span></code></span></p></li><li><p><span><code><span>spectral_flux_times = librosa.frames_to_time(np.arange(len(spectral_flux)), sr=sr, hop_length=</span><span>512</span><span>)</span></code></span></p></li><li><p><span><code></code></span></p></li><li><p><span><code><span>onset_times = librosa.onset.onset_detect(onset_envelope=spectral_flux, sr=sr, hop_length=</span><span>512</span><span>, units=</span><span>'time'</span><span>)</span></code></span></p></li><li><p><span><code></code></span></p></li><li><p><span><code><span>plt.figure(figsize=(</span><span>12</span><span>,</span><span>10</span><span>))</span></code></span></p></li><li><p><span><code><span># 画出STFT功率谱（以dB为单位）</span></code></span></p></li><li><p><span><code><span>ax1 = plt.subplot(</span><span>2</span><span>,</span><span>1</span><span>,</span><span>1</span><span>)</span></code></span></p></li><li><p><span><code><span>librosa.display.specshow(librosa.amplitude_to_db(magnitude, </span><span>ref</span><span>=np.max), sr=sr, y_axis=</span><span>'linear'</span><span>, x_axis=</span><span>'time'</span><span>)</span></code></span></p></li><li><p><span><code><span>plt.xlim([</span><span>0</span><span>, </span><span>11</span><span>])</span></code></span></p></li><li><p><span><code><span>plt.title(</span><span>'STFT spectrogram '</span><span>)</span></code></span></p></li><li><p><span><code><span># 画出频谱差分幅度，以及基于其被检测出的onset</span></code></span></p></li><li><p><span><code><span>ax2 = plt.subplot(</span><span>2</span><span>,</span><span>1</span><span>,</span><span>2</span><span>, sharex=ax1)</span></code></span></p></li><li><p><span><code><span>plt.plot(spectral_flux_times, spectral_flux, lw=</span><span>2</span><span>, alpha=</span><span>0.75</span><span>, label=</span><span>'Spectral flux'</span><span>)</span></code></span></p></li><li><p><span><code><span>plt.vlines(onset_times, </span><span>0</span><span>, spectral_flux.max(), label=</span><span>'Onsets'</span><span>, lw=</span><span>3</span><span>, color=</span><span>'orange'</span><span>)</span></code></span></p></li><li><p><span><code><span>plt.xlim([</span><span>0</span><span>, </span><span>11</span><span>])</span></code></span></p></li><li><p><span><code><span>plt.legend()</span></code></span></p></li><li><p><span><code><span>plt.title(</span><span>'Spectral Flux &amp; Detected Onset'</span><span>)</span></code></span></p></li></ol></pre><p><img src="https://mmbiz.qpic.cn/mmbiz_png/7CrMia15fFJXmNvSXgEbnw32vmks2Wov6TWXFts9EZrFKWLwiaO80fZaDYHibRCnb1z5Xe2vRnUgJNkHicqaVntqhw/640"></p><p>✎ 上方在计算出spectral flux之后，可利用峰值检测(peak picking)的方法得出onset到底发生在那个时刻。<br></p><hr><h3>『梅尔倒谱系数MFCC』</h3><p>梅尔倒谱系数（Mel Frequency Cepstral Coefficients，简称MFCC）在80年代被Davis和Mermelstein提出之后，就在语音识别/话者识别的任务中挑大梁挑了好多年。相比于用 <code><span>F(频点数量)x T(帧数)</span></code>表示一段音频，尤其是 <code><span>F</span></code>可能高达成千上万，使用MFCC就能有效降维到 <code><span>MFCCsx T</span></code>。这里的“有效”就在于MFCC能用几个系数表示每个帧内最有用的信息，而系数得出的过程又和人耳对声音频率以及响度的认知息息相关，可以说是一个非常美丽的算法了。尽量略过数学计算，可以将计算过程表示为以下6步骤：</p><p>第1步：参照STFT的第1步，我们需要将音频分成连续的一帧帧；</p><p>第2步：在每一帧里用DFT（或者其加速版-FFT）得出功率谱；</p><p>第3步：在每一帧里的功率谱都加上Mel尺度的三角形滤波器组（就像下图filterbank一样），在每个滤波器覆盖的范围下计算出其涵盖的能量值；</p><p><img src="https://mmbiz.qpic.cn/mmbiz_png/7CrMia15fFJXmNvSXgEbnw32vmks2Wov6wU4ANdAfITIlbayX1wxIc2NDe0nF3jFIhnP8sPjAia4vPzlgBKxQlJg/640"></p><p>那么问题来了，为什么要加Mel尺度而非线性的？因为人耳本身的感知能力有限，在低频区域也许能分清50Hz和60Hz的区别，但同样差10个Hz,分清1050与1060Hz就没那么容易了，再往上走，4000Hz变成5000Hz，也许你觉得就高了几十个Hz而已。总而言之，人耳在感受客观上线性递增的频率时，其实是主观理解成 <code><span>m_freq=2595x log10(1+f/700)</span></code>这样的。因此如上方小图(a)中，高的频段里就没必要还用那么“窄”的滤波器去提取信息了，反正窄的宽的你也听不出来，不如用宽点的滤波器来节省一些计算。<br></p><p>第4步：对每一帧里的每个滤波器下得出的能量，取！对！数！为什么？因为人耳不仅对频率变得越来越高没那么敏感，音量变得越来越大也感受没那么大，人家客观能量也许提高了足足八倍，你才在主观上能大致感受到“诶这个音量好像提高了一倍哦？”</p><p>第5步：最后，对每一帧下的Mel频谱对数能量谱做离散余弦变换（DCT）得到表示该谱包络形状的系数们，只保留前几个主要的系数即是我们需要的MFCC了！</p><p>✎ 在代码部分依然可以直接用librosa提取，还是用之前的音频，在其每一帧下提取20个MFCC的话：</p><pre><ol><li><p><span><code><span>mfccs = librosa.feature.mfcc(y=audio, sr=sr, n_mfcc=</span><span>20</span><span>)</span></code></span></p></li><li><p><span><code><span>plt.figure(figsize=(</span><span>10</span><span>, </span><span>4</span><span>))</span></code></span></p></li><li><p><span><code><span>librosa.display.specshow(mfccs, x_axis=</span><span>'time'</span><span>)</span></code></span></p></li><li><p><span><code><span>plt.colorbar()</span></code></span></p></li><li><p><span><code><span>plt.title(</span><span>'MFCC'</span><span>)</span></code></span></p></li></ol></pre><p><img src="https://mmbiz.qpic.cn/mmbiz_png/7CrMia15fFJXmNvSXgEbnw32vmks2Wov6wT7AmtibaM77JSRYDyCricWTnqvJ7MIGXPOr0RBpjIDQXDMDjEogibeIg/640"></p><p>✎ 肉眼可见0-5.5秒内的钢琴和5.5秒之后的羽管键琴在MFCC上的区别，比如上图最下方第二排对应的数值中，钢琴就比羽管键琴更“红”。抓住MFCC中的区别，既然能实现话者识别，那么也能做出乐器识别。<br></p><p><span>☞ 更多MFCC计算细节可参照CMU语音课的幻灯片<a href="http://www.speech.cs.cmu.edu/15-492/slides/03_mfcc.pdf" target="_blank" rel="noopener">http://www.speech.cs.cmu.edu/15-492/slides/03_mfcc.pdf</a></span></p><hr><p>以上提出的频域特征一般不随音乐的音高发生改变，如果你想识别出一段音频中的旋律是怎样的，请期待下节「MIR-02_4」乐音特征(harmonic feature)!</p><p><span><b>上文回顾：</b></span></p><p><span><b>- <a href="http://mp.weixin.qq.com/s?__biz=MzU5MzY3NzI0OA==&amp;mid=2247483704&amp;idx=1&amp;sn=e6705ea9535890e16f87a9b1c7956226&amp;chksm=fe0d9f97c97a16815ac0df35d02ef2d66eb14644589f05ab8aec8f407c2c9d31ced863f6240f&amp;scene=21#wechat_redirect" target="_blank">「MIR-02_1」音频特征小全之概览</a></b></span></p><p><span><b>- <a href="http://mp.weixin.qq.com/s?__biz=MzU5MzY3NzI0OA==&amp;mid=2247483733&amp;idx=1&amp;sn=e880a75645ad92e49fe9b80f5b5d5b67&amp;chksm=fe0d9ffac97a16ecc093ee5461812d9010134755a5642244200054cad693e99749fae18cc25d&amp;scene=21#wechat_redirect" target="_blank">「MIR-02_2」音频特征小全之时域特征</a></b></span></p>
+    </div>
+  </article>
+</body>
+</html>

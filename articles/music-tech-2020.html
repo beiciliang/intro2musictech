@@ -1,0 +1,813 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>「INFO」2020年度那些亮眼的音乐科技成就 - 无痛入门音乐科技</title>
+    <style>
+      :root {
+        --bg: #f5f5f7;
+        --card-bg: #ffffff;
+        --text: #1d1d1f;
+        --text-secondary: #6e6e73;
+        --accent: #5856d6;
+        --border: #d2d2d7;
+        --code-bg: #f0f0f3;
+      }
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --bg: #0d0d12;
+          --card-bg: #1c1c24;
+          --text: #f0f0f5;
+          --text-secondary: #8e8e93;
+          --accent: #7b79ff;
+          --border: #2c2c34;
+          --code-bg: #15151d;
+        }
+      }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        font-family:
+          -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI",
+          Roboto, "Noto Sans SC", sans-serif;
+        background: var(--bg);
+        color: var(--text);
+        line-height: 1.8;
+      }
+      .header {
+        background: linear-gradient(
+          135deg,
+          #0f0c29 0%,
+          #302b63 50%,
+          #24243e 100%
+        );
+        padding: 2rem 1.5rem;
+        text-align: center;
+      }
+      .header a {
+        color: rgba(255, 255, 255, 0.7);
+        text-decoration: none;
+        font-size: 0.9rem;
+      }
+      .header a:hover {
+        color: #fff;
+      }
+      article {
+        max-width: 720px;
+        margin: 0 auto;
+        padding: 2rem 1.5rem 4rem;
+      }
+      article h1 {
+        font-size: 1.8rem;
+        font-weight: 700;
+        margin-bottom: 0.5rem;
+        line-height: 1.3;
+      }
+      .meta {
+        color: var(--text-secondary);
+        font-size: 0.85rem;
+        margin-bottom: 2rem;
+        padding-bottom: 1rem;
+        border-bottom: 1px solid var(--border);
+      }
+      .content {
+        font-size: 1rem;
+      }
+      .content p,
+      .content section {
+        margin-bottom: 1rem;
+      }
+      .content img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 8px;
+        margin: 1rem 0;
+      }
+      .content h2,
+      .content h3 {
+        text-align: center;
+        margin: 1.5rem 0 0.8rem;
+        font-weight: 600;
+      }
+      .content blockquote {
+        border-left: 3px solid var(--accent);
+        padding-left: 1rem;
+        color: var(--text-secondary);
+        margin: 1rem 0;
+      }
+      .content a {
+        color: var(--accent);
+      }
+      .content hr {
+        border: none;
+        border-top: 1px solid var(--border);
+        margin: 1.5rem 0;
+      }
+      .content ul,
+      .content ol {
+        padding-left: 1.5rem;
+        margin-bottom: 1rem;
+      }
+      .content li {
+        margin-bottom: 0.3rem;
+      }
+      .content table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 1rem 0;
+      }
+      .content th,
+      .content td {
+        border: 1px solid var(--border);
+        padding: 0.5rem;
+        text-align: left;
+      }
+      .content pre,
+      .content code {
+        font-family:
+          "SF Mono", SFMono-Regular, Menlo, Consolas, "Liberation Mono",
+          monospace;
+        font-size: 0.85em;
+      }
+      .content code {
+        background: var(--code-bg);
+        border: 1px solid var(--border);
+        border-radius: 4px;
+        padding: 0.15rem 0.4rem;
+      }
+      .content pre {
+        background: var(--code-bg);
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        padding: 1rem 1.2rem;
+        overflow-x: auto;
+        margin: 1rem 0;
+        line-height: 1.5;
+      }
+      .content pre code {
+        background: none;
+        border: none;
+        padding: 0;
+        font-size: inherit;
+        display: block;
+      }
+      .content pre ol {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+      .content pre li {
+        margin: 0;
+        padding: 0;
+      }
+      .content pre p {
+        margin: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="header">
+      <a href="../index.html">&larr; 返回 无痛入门音乐科技</a>
+    </div>
+    <article>
+      <h1>「INFO」2020年度那些亮眼的音乐科技成就</h1>
+      <div class="meta">2021年3月6日 09:11 · 无痛入门音乐科技</div>
+      <div class="content">
+        <blockquote>
+          <p>
+            工作节奏太快了，已是2021年阳春三月才抽出些时间，简单盘点一下2020年音乐科技方面令博主印象深刻的学术研究和工业落地。个人眼界有限，如有勘误或遗漏，还请包涵！
+          </p>
+        </blockquote>
+        <section>
+          <span
+            >过去的一年是博主成为“互联网打工人”、见证各种音乐信息检索算法从学术的理想状态中剥离出来、并真实落地到业务场景里的一年，所以主要关注音乐科技的实际应用、多模态数据共同做深度学习、以及Representation
+            Learning这几个方面。因此本文将在以下几点做简要总结：</span
+          >
+        </section>
+        <ul>
+          <li>
+            <section>
+              <span>传统任务在业界：节奏识别/歌曲分段/自动扒谱/翻唱检测</span>
+            </section>
+          </li>
+          <li>
+            <section>
+              <span>多模态带来新花样：从文本与图像中获得启发</span>
+            </section>
+          </li>
+          <li>
+            <section><span>Representation Learning</span></section>
+          </li>
+          <li>
+            <section><span>更多造福大众的教程/数据集/开源工具</span></section>
+          </li>
+        </ul>
+        <section>
+          <span
+            >P.S. 内容较多且有链接，建议在电脑网页端浏览。往期回顾可查看</span
+          ><a
+            target="_blank"
+            href="http://mp.weixin.qq.com/s?__biz=MzU5MzY3NzI0OA==&amp;mid=2247483768&amp;idx=1&amp;sn=5be59ee8a281e9920399820f09a339ec&amp;chksm=fe0d9fd7c97a16c1aa4e687160944991218d1875d523b272c54143c59e360c4fc10e43700879&amp;scene=21#wechat_redirect"
+            textvalue="2018年的音乐科技年度总结"
+            data-itemshowtype="0"
+            tab="innerlink"
+            data-linktype="2"
+            hasload="1"
+            ><span>2018年度总结</span></a
+          ><span>&nbsp;&amp; </span
+          ><span
+            ><a
+              target="_blank"
+              href="http://mp.weixin.qq.com/s?__biz=MzU5MzY3NzI0OA==&amp;mid=2247483802&amp;idx=1&amp;sn=9790d92e685baa74f28f3053c4ff15ef&amp;chksm=fe0d9f35c97a1623fc305ce8c79b19e7451f5500d95b08c4fd5c27e47c8a256094c3e2022066&amp;scene=21#wechat_redirect"
+              textvalue="2019年度总结"
+              data-itemshowtype="0"
+              tab="innerlink"
+              data-linktype="2"
+              hasload="1"
+              >2019年度总结</a
+            >。<a
+              target="_blank"
+              href="http://mp.weixin.qq.com/s?__biz=MzU5MzY3NzI0OA==&amp;mid=2247483802&amp;idx=1&amp;sn=9790d92e685baa74f28f3053c4ff15ef&amp;chksm=fe0d9f35c97a1623fc305ce8c79b19e7451f5500d95b08c4fd5c27e47c8a256094c3e2022066&amp;scene=21#wechat_redirect"
+              textvalue="2019年度总结"
+              data-itemshowtype="0"
+              tab="innerlink"
+              data-linktype="2"
+              hasload="1"
+            ></a
+          ></span>
+        </section>
+        <section>
+          <span
+            >P.P.S.
+            本文出现的所有产品都是为了举例说明，都是个人观点，没有打广告。</span
+          >
+        </section>
+        <hr />
+        <h3>『传统任务在业界』</h3>
+        <p>
+          <span
+            ><strong
+              ><strong>♬ 节奏识别</strong>&nbsp;<strong>♬&nbsp;</strong></strong
+            ></span
+          >
+        </p>
+        <p>
+          <span
+            >☞ 首先还是要respect一下Sebastian
+            Böck，这些年深耕关于节奏节拍的一切，在20年ISMIR会议上发表论文Deconstruct,
+            Analyse, Reconstruct: How to Improve Tempo, Beat, and Downbeat
+            Estimation。把state-of-the-art的模型都给扒出来看，在统一的数据集上挨个评估，当然也实至名归获得Best
+            Evaluation Award。</span
+          >
+        </p>
+        <p>
+          <span
+            >➥
+            <a
+              href="https://program.ismir2020.net/poster_4-14.html"
+              target="_blank"
+              rel="noopener"
+              >https://program.ismir2020.net/poster_4-14.html</a
+            ></span
+          >
+        </p>
+        <p>
+          <span
+            >☞
+            那么在业界，这些节拍信息能辅助曲库区分快歌慢歌，但更直观的一个应用是Q音探歌的“卡点DJ电台”、QQ音乐的“4D震动”等效果的展现，根据beat或downbeat的时间点、或者不同鼓出现的时刻，来调动手机中闪光或马达的开闭（此处shoutout
+            to 曹翔大前辈）。</span
+          >
+        </p>
+        <p>
+          <span
+            >☞ 说到这里就要提一下automatic drum
+            transcription的研究了，以往的成果主要还是在非常有限的鼓种类中进行识别，对于更复杂的情况，Yu
+            Wang等人训练Prototypical Network实现Few-shot Drum Transcription in
+            Polyphonic
+            Music。这种few-shot的思路，可应用到Adobe产品中，对音频实现“Ctrl+F”的功能，即给定一个音频小片段，将某个大段音频内出现该小片段的时间点通通找到。</span
+          >
+        </p>
+        <p>
+          <span
+            >➥&nbsp;<a
+              href="https://program.ismir2020.net/poster_1-14.html"
+              target="_blank"
+              rel="noopener"
+              >https://program.ismir2020.net/poster_1-14.html</a
+            ></span
+          >
+        </p>
+        <p>
+          <strong
+            ><strong>♬ 歌曲分段</strong>&nbsp;<strong>♬&nbsp;</strong></strong
+          >
+        </p>
+        <p>
+          <span
+            ><span>☞&nbsp;</span>人见人爱的Oriol
+            Nieto博士毕业三年后，在Pandora工作之余也再次回溯了他的毕业论文，并联合其他人发表了一篇非常棒的综述：如何基于音频做歌曲分段。</span
+          >
+        </p>
+        <section>
+          <span
+            >Nieto, O., Mysore, G.J., Wang, C.-. i ., Smith, J.B.L., Schlüter,
+            J., Grill, T. and McFee, B., 2020. Audio-Based Music Structure
+            Analysis: Current Trends, Open Challenges, and Applications.
+            Transactions of the International Society for Music Information
+            Retrieval, 3(1), pp.246–263.&nbsp;</span
+          >
+        </section>
+        <section>
+          <span
+            >➥
+            <a
+              href="http://doi.org/10.5334/tismir.54"
+              target="_blank"
+              rel="noopener"
+              >http://doi.org/10.5334/tismir.54</a
+            ></span
+          >
+        </section>
+        <p>
+          <span
+            ><span>☞&nbsp;</span
+            >分段结果对于业界来讲，可以将“副歌”对应的片段挑出来，比如一些歌曲的副歌起始时刻在QQ音乐播放进度条中就用一个“小白点”来告知用户，再比如为了方便用户分享年终盘点的15秒视频到朋友圈，视频里的背景音乐就选取了歌曲的某个片段。</span
+          >
+        </p>
+        <p>
+          <strong
+            ><strong>♬ 自动扒谱</strong>&nbsp;<strong>♬&nbsp;</strong></strong
+          >
+        </p>
+        <p>
+          <span
+            >☞
+            这里的主要突破还是在“钢琴音频自动转谱”任务上，字节跳动的孔秋强等人不仅将钢琴按键的时间精确到1毫秒这个量级，还包含了对钢琴按键力度、钢琴踏板等等维度的检测，整体上更加精确（博主本人也感谢下各位对我以前踏板论文的引用哈）。更令人敬佩的是，相关论文、数据集、源代码都是开源，博主本身也在互联网公司，所以非常清楚这件事情有多不容易，salute！</span
+          >
+        </p>
+        <section>
+          <span
+            ><span>➥&nbsp;</span>Qiuqiang Kong, Bochen Li, Jitong Chen, and
+            Yuxuan Wang. "GiantMIDI-Piano: A large-scale MIDI dataset for
+            classical piano music." arXiv preprint arXiv:2010.07061 (2020).
+            <a
+              href="https://arxiv.org/pdf/2010.07061"
+              target="_blank"
+              rel="noopener"
+              >https://arxiv.org/pdf/2010.07061</a
+            ></span
+          >
+        </section>
+        <section>
+          <span
+            ><span>➥&nbsp;</span>Qiuqiang Kong, Bochen Li, Xuchen Song, Yuan
+            Wan, and Yuxuan Wang. "High-resolution Piano Transcription with
+            Pedals by Regressing Onsets and Offsets Times." arXiv preprint
+            arXiv:2010.01815 (2020).
+            <a
+              href="https://arxiv.org/pdf/2010.01815"
+              target="_blank"
+              rel="noopener"
+              >https://arxiv.org/pdf/2010.01815</a
+            ></span
+          >
+        </section>
+        <section>
+          <span
+            >➥
+            <a
+              href="https://github.com/bytedance/GiantMIDI-Piano"
+              target="_blank"
+              rel="noopener"
+              >https://github.com/bytedance/GiantMIDI-Piano</a
+            ></span
+          >
+        </section>
+        <p>
+          <span
+            >☞
+            也许大多数研究都没被落地到某个赚钱的业务中，但这完全不代表“这个研究没有用”，人们会被自己的学识局限在一个井里，评价其他项目难免坐井观天。说个题外话吧，1970年赞比亚修女Mary
+            Jucunda给NASA的科学家Dr. Ernst
+            Stuhlinger写过一封信，问他目前地球上还有这么多小孩子吃不上饭，他怎么能舍得为远在火星的项目花费数十亿美元，他的回信可以见链接。</span
+          >
+        </p>
+        <p>
+          <span
+            ><span>➥&nbsp;</span
+            ><a
+              href="https://lettersofnote.com/2012/08/06/why-explore-space/"
+              target="_blank"
+              rel="noopener"
+              >https://lettersofnote.com/2012/08/06/why-explore-space/</a
+            ></span
+          >
+        </p>
+        <p>
+          <strong
+            ><strong>♬ 翻唱检测</strong>&nbsp;<strong>♬&nbsp;</strong></strong
+          >
+        </p>
+        <p>
+          <span
+            ><span>☞&nbsp;</span>同样是字节跳动的朋友，在MIREX2020的Cover Song
+            Identification任务中取得最佳成绩。相关算法ByteCover不仅在特征学习上去“抵挡”不同版本的歌曲在节奏、调式、音色等方面的转变，而且同时去优化classification
+            loss and triplet loss。</span
+          >
+        </p>
+        <section>
+          <span
+            ><span>➥&nbsp;</span>Xingjian Du, Zhesong Yu, Bilei Zhu, Xiaoou
+            Chen, and Zejun Ma. "ByteCover: Cover Song Identification via
+            Multi-Loss Training." arXiv preprint arXiv:2010.14022
+            (2020).&nbsp;<a
+              href="https://arxiv.org/pdf/2010.14022.pdf"
+              target="_blank"
+              rel="noopener"
+              >https://arxiv.org/pdf/2010.14022.pdf</a
+            ></span
+          >
+        </section>
+        <p>
+          <span
+            ><span>☞&nbsp;</span
+            >翻唱识别也集成到了QQ音乐的听歌识曲功能中，并在音乐知识图谱的建设中发挥作用。</span
+          >
+        </p>
+        <hr />
+        <h3>『多模态带来新花样』</h3>
+        <p>
+          <span
+            ><span>☞&nbsp;</span>在2020年的ISMIR上，第一次举办了Workshop on NLP
+            for Music and
+            Audio，建议大家直接去看论文原稿和录像回放。其中，关于歌词文本的运用给了我和现在的实习生杨泽堉同学很多启发，可以结合文本和音频，来大力提升上文提到的歌曲分段的精确度。再者，已有很多超厉害的开源NLP模型比如BERT和GPT等，也能拿来运用到蒸蒸日上的播客业务中。</span
+          >
+        </p>
+        <section>
+          <span
+            >➥ 论文：<a
+              href="https://www.aclweb.org/anthology/volumes/2020.nlp4musa-1/"
+              target="_blank"
+              rel="noopener"
+              >https://www.aclweb.org/anthology/volumes/2020.nlp4musa-1/</a
+            ></span
+          >
+        </section>
+        <section>
+          <span
+            >➥ 录像：<a
+              href="https://www.youtube.com/channel/UCtWGAGz6I_1aRetS8U4rYcA/featured"
+              target="_blank"
+              rel="noopener"
+              >https://www.youtube.com/channel/UCtWGAGz6I_1aRetS8U4rYcA/featured</a
+            ></span
+          ><span><br /></span>
+        </section>
+        <p>
+          <span
+            >☞
+            对于图像或视频信息与音频的结合运用方面，有两位朋友在2020年都获得了博士学位，推荐阅读他们的毕业论文。</span
+          >
+        </p>
+        <section>
+          <span
+            >➥&nbsp;Olga Slizovskaia. Audio-visual deep learning methods for
+            musical instrument classification and separation. Universitat Pompeu
+            Fabra, 2020.&nbsp;</span
+          >
+        </section>
+        <section>
+          <span
+            ><span>➥&nbsp;</span>Bochen Li. Multi-Modal Analysis for Music
+            Performances. University of Rochester, 2020.</span
+          >
+        </section>
+        <hr />
+        <h3>『Representation Learning』</h3>
+        <p>
+          <span
+            >既然有那么多不同模态的信息，能不能都包进来变成一个难以解释但确实有用的特征矩阵呢？答案是可以。也正是这种“万物皆可Embedding”的思想，让推荐算法一直在迭代，做到更好的个性化推荐。</span
+          >
+        </p>
+        <p>
+          <span
+            >针对于音乐音频信息，Jongpil Lee等人比较了用深度分类方法或metric
+            learning方法得出的不同representation的有效性。</span
+          >
+        </p>
+        <p>
+          <span
+            >➥
+            <a
+              href="https://program.ismir2020.net/poster_3-15.html"
+              target="_blank"
+              rel="noopener"
+              >https://program.ismir2020.net/poster_3-15.html</a
+            ></span
+          >
+        </p>
+        <p>
+          <span
+            >受到音乐流媒体公司的支持，也开始有更多研究利用用户侧数据得出的Embedding，来助攻音乐信息检索的任务。比如以下三篇：</span
+          >
+        </p>
+        <section>
+          <span
+            >☞&nbsp;Karim M. Ibrahim, Elena V. Epure, Geoffroy Peeters, and Gael
+            Richard. "Should we consider the users in contextual music
+            auto-tagging models?." In ISMIR, 2020.</span
+          >
+        </section>
+        <section>
+          <span
+            >➥&nbsp;<a
+              href="https://program.ismir2020.net/poster_2-17.html"
+              target="_blank"
+              rel="noopener"
+              >https://program.ismir2020.net/poster_2-17.html</a
+            ></span
+          >
+        </section>
+        <section>
+          <span
+            >☞&nbsp;Ayush Patwari, Nicholas Kong, Jun Wang, Ullas Gargi, Michele
+            Covell, and Aren Jansen. "Semantically Meaningful Attributes from
+            Co-listen Embeddings for Playlist Exploration and Expansion." In
+            ISMIR, 2020.</span
+          >
+        </section>
+        <section>
+          <span
+            >➥&nbsp;<a
+              href="https://program.ismir2020.net/poster_4-08.html"
+              target="_blank"
+              rel="noopener"
+              >https://program.ismir2020.net/poster_4-08.html</a
+            ></span
+          >
+        </section>
+        <section>
+          <span
+            >☞&nbsp;Filip Korzeniowski, Oriol Nieto, Matthew McCallum, Minz Won,
+            Sergio Oramas, and Erik Schmidt. "Mood Classification Using
+            Listening Data." In ISMIR, 2020.</span
+          >
+        </section>
+        <section>
+          <span
+            >➥&nbsp;<a
+              href="https://program.ismir2020.net/poster_4-10.html"
+              target="_blank"
+              rel="noopener"
+              >https://program.ismir2020.net/poster_4-10.html</a
+            ></span
+          >
+        </section>
+        <p>
+          <span
+            >我和实习生陈轲同学参与的公司项目，为了解决QQ音乐推荐新歌面临的内容冷启动问题，也利用用户侧的数据，通过metric
+            learning学习音频Embedding。虽然无法开源，但涉及的算法思想中稿了今年的ICASSP，欢迎浏览arxiv来与我们交流。</span
+          >
+        </p>
+        <section>
+          <span
+            >☞ Ke Chen, Beici Liang, Xiaoshuan Ma, and Minwei Gu. "Learning
+            Audio Embeddings with User Listening Data for Content-based Music
+            Recommendation." &nbsp;In ICASSP, 2021.</span
+          >
+        </section>
+        <section>
+          <span
+            >➥&nbsp;<a
+              href="https://arxiv.org/abs/2010.15389"
+              target="_blank"
+              rel="noopener"
+              >https://arxiv.org/abs/2010.15389</a
+            ></span
+          >
+        </section>
+        <hr />
+        <h3>『更多造福大众的资源』</h3>
+        <p>
+          <span>首先安利以下两份tutorial资料，可以说是手把手教学的程度了。</span
+          ><br />
+        </p>
+        <section>
+          <span
+            >☞ "Open-Source Tools &amp; Data for Music Source Separation: A
+            Pragmatic Guide for the MIR Practitioner" By Ethan Manilow, Prem
+            Seetharaman, and Justin Salamon</span
+          >
+        </section>
+        <section>
+          <span
+            >➥&nbsp;<a
+              href="https://github.com/source-separation/tutorial"
+              target="_blank"
+              rel="noopener"
+              >https://github.com/source-separation/tutorial</a
+            ></span
+          >
+        </section>
+        <section>
+          <span
+            >☞&nbsp;"Metric Learning in MIR" By Brian McFee, Jongpil Lee and
+            Juhan Nam</span
+          >
+        </section>
+        <section>
+          <span
+            >➥&nbsp;<a
+              href="https://github.com/bmcfee/ismir2020-metric-learning"
+              target="_blank"
+              rel="noopener"
+              >https://github.com/bmcfee/ismir2020-metric-learning</a
+            ></span
+          >
+        </section>
+        <p>
+          <span
+            >工具类的资源也在2020年完成了不少迭代，比如Essentia集成了Musicnn等TensorFlow模型，使用户更方便的获取这些深度学习模型的embeddings；再比如Librosa发布了v0.8.0；但令我印象更深刻的还是Spotify开源其处理大批量音频任务的框架Klio。</span
+          ><br />
+        </p>
+        <section>
+          <span
+            >➥&nbsp;<a
+              href="https://github.com/spotify/klio"
+              target="_blank"
+              rel="noopener"
+              >https://github.com/spotify/klio</a
+            ></span
+          >
+        </section>
+        <h3></h3>
+        <p><span>数据集相关的新资源有以下：</span></p>
+        <p>
+          <span
+            >☞&nbsp;Eduardo Fonseca, Xavier Favory, Jordi Pons, Frederic Font,
+            Xavier Serra. "FSD50K: an Open Dataset of Human-Labeled Sound
+            Events", arXiv:2010.00475, 2020.</span
+          ><br />
+        </p>
+        <section>
+          <span
+            >➥&nbsp;<a
+              href="https://zenodo.org/record/4060432#.YEMk4JMza_U"
+              target="_blank"
+              rel="noopener"
+              >https://zenodo.org/record/4060432#.YEMk4JMza_U</a
+            ></span
+          >
+        </section>
+        <section>
+          <span>☞&nbsp;The Freesound Loop Dataset and Annotation Tool</span>
+        </section>
+        <section>
+          <span
+            >➥&nbsp;<a
+              href="https://github.com/aframires/freesound-loop-annotator"
+              target="_blank"
+              rel="noopener"
+              >https://github.com/aframires/freesound-loop-annotator</a
+            ></span
+          >
+        </section>
+        <section>
+          <span>☞ Spotify重新开放Million Playlist Dataset</span>
+        </section>
+        <section>
+          <span
+            >➥&nbsp;<a
+              href="https://research.atspotify.com/the-million-playlist-dataset-remastered/"
+              target="_blank"
+              rel="noopener"
+              >https://research.atspotify.com/the-million-playlist-dataset-remastered/</a
+            ></span
+          >
+        </section>
+        <p>
+          <span
+            >另外还有些虽然不算是“资源”但依然能引发我们思考的调查报告，也借此机会分享给各位读者。</span
+          >
+        </p>
+        <p>
+          <span
+            >☞&nbsp;Meijun Liu, Eva Zangerle, Xiao Hu, Alessandro Melchiorre,
+            Markus Schedl. "Pandemics, Music, and Collective Sentiment: Evidence
+            from the Outbreak of COVID-19." In ISMIR, 2020.</span
+          >
+        </p>
+        <p>
+          <span
+            >➥&nbsp;<a
+              href="https://program.ismir2020.net/poster_1-19.html"
+              target="_blank"
+              rel="noopener"
+              >https://program.ismir2020.net/poster_1-19.html</a
+            ></span
+          >
+        </p>
+        <p>
+          <span
+            >☞&nbsp;Avriel C Epps-Darling, Henriette Cramer, Romain Takeo
+            Bouyer. "Female Artist Representation in Music Streaming." In ISMIR,
+            2020.</span
+          >
+        </p>
+        <p>
+          <span
+            >➥&nbsp;<a
+              href="https://program.ismir2020.net/poster_2-11.html"
+              target="_blank"
+              rel="noopener"
+              >https://program.ismir2020.net/poster_2-11.html</a
+            ></span
+          >
+        </p>
+        <p>
+          <span
+            >☞&nbsp;‘Just The Way You Are’: Music Listening and
+            Personality.</span
+          >
+        </p>
+        <p>
+          <span
+            >➥&nbsp;<a
+              href="https://research.atspotify.com/just-the-way-you-are-music-listening-and-personality/"
+              target="_blank"
+              rel="noopener"
+              >https://research.atspotify.com/just-the-way-you-are-music-listening-and-personality/</a
+            ></span
+          >
+        </p>
+        <hr />
+        <h3>『关于2020的一点题外话』</h3>
+        <p>
+          <span
+            >因为疫情的原因，感觉大家2020年过得都有点憋屈，博主也快变成了没有感情的工作机器（从我发文章的频率就能感觉到吧），但能把已有的MIR算法落地、新研发的算法发论文申专利，还是比较有成就感的。而且最近几个月陆续收到了很多学弟学妹发来的offer喜讯，感谢我和这个公众号对他们留学申请时的帮助，我能有实感地知道这个科普没白做，开心。</span
+          >
+        </p>
+        <p>
+          <span
+            >过去的一年还新兴了播客
+            (Podcast)，职业习惯又让我看到许多可以将音乐或泛音频技术落地的点。话说我的partner也成功拿到博士学位，并且他的毕业论文"Computational
+            Methods for Assisting Radio Drama
+            Production"，以及现在的工作也是紧贴播客产业（对我就是想炫耀一下我们是Dual-PhD
+            Couple）。</span
+          >
+        </p>
+        <p>
+          <span
+            ><em
+              >这里可以插个广告：欢迎大家在各大音频平台订阅申申主播的《说得好听》！</em
+            ></span
+          ><span><br /></span>
+        </p>
+        <p>
+          <span
+            >不知道什么时候疫情能过去，许多公司比如Spotify都开始有Work From
+            Anywhere的远程工作制度，这里也借机帮各位海内外朋友看机会，如果有这种接受远程的音频相关工作岗位，请联系我
+            (</span
+          ><span>beici.liang@foxmail.com</span><span>)。</span>
+        </p>
+        <p>
+          <span
+            >同时后天就是国际妇女节了，MIR学界近五六年一直有Women in Music
+            Information Retrieval (WiMIR)
+            项目来帮扶在此行业的女性，鼓励大家关注！同时若有女性朋友在学业或职业上有疑问，也欢迎直接给我来信交流。</span
+          >
+        </p>
+        <p><span>再次感谢大家的订阅，拜个2021的晚年！</span></p>
+        <p>
+          <span><br /></span>
+        </p>
+        <section>
+          <strong><span>往期回顾：</span></strong>
+        </section>
+        <section>
+          <a
+            target="_blank"
+            href="http://mp.weixin.qq.com/s?__biz=MzU5MzY3NzI0OA==&amp;mid=2247483802&amp;idx=1&amp;sn=9790d92e685baa74f28f3053c4ff15ef&amp;chksm=fe0d9f35c97a1623fc305ce8c79b19e7451f5500d95b08c4fd5c27e47c8a256094c3e2022066&amp;scene=21#wechat_redirect"
+            data-itemshowtype="0"
+            tab="innerlink"
+            data-linktype="2"
+            ><span>「INFO」2019年度那些亮眼的音乐科技成就</span></a
+          ><br />
+        </section>
+        <section>
+          <a
+            target="_blank"
+            href="http://mp.weixin.qq.com/s?__biz=MzU5MzY3NzI0OA==&amp;mid=2247483768&amp;idx=1&amp;sn=5be59ee8a281e9920399820f09a339ec&amp;chksm=fe0d9fd7c97a16c1aa4e687160944991218d1875d523b272c54143c59e360c4fc10e43700879&amp;scene=21#wechat_redirect"
+            data-itemshowtype="0"
+            tab="innerlink"
+            data-linktype="2"
+            ><span>「INFO」2018年度那些亮眼的音乐科技成就</span></a
+          ><br />
+        </section>
+      </div>
+    </article>
+  </body>
+</html>

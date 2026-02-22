@@ -1,0 +1,298 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>「INFO」分享我的MIR研发技术栈 - 无痛入门音乐科技</title>
+    <style>
+      :root {
+        --bg: #f5f5f7;
+        --card-bg: #ffffff;
+        --text: #1d1d1f;
+        --text-secondary: #6e6e73;
+        --accent: #5856d6;
+        --border: #d2d2d7;
+        --code-bg: #f0f0f3;
+      }
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --bg: #0d0d12;
+          --card-bg: #1c1c24;
+          --text: #f0f0f5;
+          --text-secondary: #8e8e93;
+          --accent: #7b79ff;
+          --border: #2c2c34;
+          --code-bg: #15151d;
+        }
+      }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        font-family:
+          -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI",
+          Roboto, "Noto Sans SC", sans-serif;
+        background: var(--bg);
+        color: var(--text);
+        line-height: 1.8;
+      }
+      .header {
+        background: linear-gradient(
+          135deg,
+          #0f0c29 0%,
+          #302b63 50%,
+          #24243e 100%
+        );
+        padding: 2rem 1.5rem;
+        text-align: center;
+      }
+      .header a {
+        color: rgba(255, 255, 255, 0.7);
+        text-decoration: none;
+        font-size: 0.9rem;
+      }
+      .header a:hover {
+        color: #fff;
+      }
+      article {
+        max-width: 720px;
+        margin: 0 auto;
+        padding: 2rem 1.5rem 4rem;
+      }
+      article h1 {
+        font-size: 1.8rem;
+        font-weight: 700;
+        margin-bottom: 0.5rem;
+        line-height: 1.3;
+      }
+      .meta {
+        color: var(--text-secondary);
+        font-size: 0.85rem;
+        margin-bottom: 2rem;
+        padding-bottom: 1rem;
+        border-bottom: 1px solid var(--border);
+      }
+      .content {
+        font-size: 1rem;
+      }
+      .content p,
+      .content section {
+        margin-bottom: 1rem;
+      }
+      .content img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 8px;
+        margin: 1rem 0;
+      }
+      .content h2,
+      .content h3 {
+        text-align: center;
+        margin: 1.5rem 0 0.8rem;
+        font-weight: 600;
+      }
+      .content blockquote {
+        border-left: 3px solid var(--accent);
+        padding-left: 1rem;
+        color: var(--text-secondary);
+        margin: 1rem 0;
+      }
+      .content a {
+        color: var(--accent);
+      }
+      .content hr {
+        border: none;
+        border-top: 1px solid var(--border);
+        margin: 1.5rem 0;
+      }
+      .content ul,
+      .content ol {
+        padding-left: 1.5rem;
+        margin-bottom: 1rem;
+      }
+      .content li {
+        margin-bottom: 0.3rem;
+      }
+      .content table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 1rem 0;
+      }
+      .content th,
+      .content td {
+        border: 1px solid var(--border);
+        padding: 0.5rem;
+        text-align: left;
+      }
+      .content pre,
+      .content code {
+        font-family:
+          "SF Mono", SFMono-Regular, Menlo, Consolas, "Liberation Mono",
+          monospace;
+        font-size: 0.85em;
+      }
+      .content code {
+        background: var(--code-bg);
+        border: 1px solid var(--border);
+        border-radius: 4px;
+        padding: 0.15rem 0.4rem;
+      }
+      .content pre {
+        background: var(--code-bg);
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        padding: 1rem 1.2rem;
+        overflow-x: auto;
+        margin: 1rem 0;
+        line-height: 1.5;
+      }
+      .content pre code {
+        background: none;
+        border: none;
+        padding: 0;
+        font-size: inherit;
+        display: block;
+      }
+      .content pre ol {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+      .content pre li {
+        margin: 0;
+        padding: 0;
+      }
+      .content pre p {
+        margin: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="header">
+      <a href="../index.html">&larr; 返回 无痛入门音乐科技</a>
+    </div>
+    <article>
+      <h1>「INFO」分享我的MIR研发技术栈</h1>
+      <div class="meta">2023年3月26日 04:48 · 无痛入门音乐科技</div>
+      <div class="content">
+        <blockquote>
+          <p>
+            在被OpenAI彻底攻克所有技术前，记录分享下我做音乐信息检索项目涉及的技术栈，希望对大家有所帮助！
+          </p>
+        </blockquote>
+        <section>
+          <span>本文主要附带以下视频中提到的一些链接和教程：</span><br />
+        </section>
+        <section>
+          <mp-common-videosnap
+            data-parentwidth="677"
+            data-maxwidth="677"
+            data-index="0"
+            data-url="https://findermp.video.qq.com/251/20350/stodownload?encfilekey=oibeqyX228riaCwo9STVsGLM5YtWluFOonlGV4t19g28brkQkK9Do3D04SFzicXOiaIjeZOGMPMXqagt5iadYfapWiaIjJaHPhh0icZ3EJMBnjUcNg7tRZILk0ecBDriaF2oT5qXsicYicNMmxyWQ&amp;token=6xykWLEnztInVhe2jPAaH5mzyRg6micgMwvPIVMVicjmLYd8g5guznTBxyPQdiaZnzurmJJkXl41via6s0YF8yxbB4Q66m7gGa9nhf0rUjN7NfcG5yygjqibgSqNDEC1sPtamltKm5ogE9TSNNKfJEicUH6MKs7lEnbkcazT0UckQXDobtOP9crMic8q4iaKns7BRCIvJmgssjl0eHJARTghzbx5rD9WBnFYUq1gKy3zxMGWicyE&amp;bizid=1023&amp;dotrans=0&amp;hy=HK&amp;idx=1&amp;m=63bb831b6a33fab4854e4b2f7aa3d779&amp;wxampicformat=503&amp;picformat=200"
+            data-headimgurl="https://wx.qlogo.cn/finderhead/Q3auHgzwzM5ibSfabvGhFuCS0Bic9c9DnDV40YkMPguMWmdSLxZFoJ3w/0"
+            data-username="v2_060000231003b20faec8cae08a18cad1ce02ea30b07746d38993b15a438d0c95891c9bf6259e@finder"
+            data-nickname="大贝茨"
+            data-desc="#无痛入门音乐科技 #MIR"
+            data-flag="0"
+            data-nonceid="12860043239641973792"
+            data-type="video"
+            data-authiconurl=""
+            data-feedsharecoverurl=""
+            data-feedfullcoverurl="https://findermp.video.qq.com/251/20350/stodownload?encfilekey=oibeqyX228riaCwo9STVsGLM5YtWluFOonlGV4t19g28brkQkK9Do3D04SFzicXOiaIjeZOGMPMXqagt5iadYfapWiaIjJaHPhh0icZ3EJMBnjUcNg7tRZILk0ecBDriaF2oT5qXsicYicNMmxyWQ&amp;token=6xykWLEnztInVhe2jPAaH5mzyRg6micgMwvPIVMVicjmLYd8g5guznTBxyPQdiaZnzurmJJkXl41via6s0YF8yxbB4Q66m7gGa9nhf0rUjN7NfcG5yygjqibgSqNDEC1sPtamltKm5ogE9TSNNKfJEicUH6MKs7lEnbkcazT0UckQXDobtOP9crMic8q4iaKns7BRCIvJmgssjl0eHJARTghzbx5rD9WBnFYUq1gKy3zxMGWicyE&amp;bizid=1023&amp;dotrans=0&amp;hy=HK&amp;idx=1&amp;m=63bb831b6a33fab4854e4b2f7aa3d779&amp;wxampicformat=503&amp;picformat=200"
+            data-feedthumburl="https://findermp.video.qq.com/251/20350/stodownload?encfilekey=oibeqyX228riaCwo9STVsGLM5YtWluFOonfwfjgOcZXny2xqEoj1CVgJpEB3LQxicNb6sXZlD5GfIMKyrVkYiaMt9EO5c6AxqZI65mW4GuaibS3w46hFJApZLArcianVHic9ibu0oy5iayjxjjUs&amp;token=cztXnd9GyrFbm3Mhw2JEHLz8VPRM6Z4LvFfhltt2QwsvSdHd3kZSBjRReriaYrobibVJpl5Xjlnt4lbvHWjzP8wKhAZUWaEmlMr10ia1uibNnvLr21bdibyZZibJSXRCFNuhCeiaog1XZrDicTQdWS1HqHX5GjdrUeFibhVRK9MNUuLq9R1iaPqJpMqsbvP3t7B2bXztkVZxMkusA7mqqFICGJnffxxu4VeXLARrxAlia22ibI5VV58&amp;bizid=1023&amp;dotrans=0&amp;hy=HK&amp;idx=1&amp;m=0e64715a7417e08ee8fdb401e1b7e666&amp;wxampicformat=503&amp;picformat=200"
+            data-feedcoverurl="https://findermp.video.qq.com/251/20304/stodownload?encfilekey=oibeqyX228riaCwo9STVsGLM5YtWluFOontl6HibXiagLxfZOEwriaQDTElic0ucYHB4bTeIEyLics1zXvrRDzyzmpKGPxaiboV6LqRePkibmH2nCvYHBMKvVglMfFkWDHp75qYSlFVroXUQxibZ0&amp;token=Cvvj5Ix3eeylYM13THwvFR6aMWlxGrjx5tHiaBJiapnt5lyqGLgribQia6XXDSXoH5uJs8qYatSxAXuQI7l32FcQQMgYLRnGMicvyafbAG7Xyia03iac0F5rllIBhGvjvSMo6AbTRwUqDL6yvbhXM2lLnoll1Ju9GDhlhtrVh8rJRqlKjH5xIOPTFthN7JnZpSiaBs306goRX2PbqNcjiabZKp7WS2afHGlmP13I5Sflwqef8KAI&amp;bizid=1023&amp;dotrans=0&amp;hy=HK&amp;idx=1&amp;m=fdf9f9efad19c780cca4de446689eeba&amp;wxampicformat=503&amp;picformat=200"
+            data-width="1728"
+            data-height="1080"
+            data-isnews="0"
+            data-likenum="35"
+            data-id="export/UzFfAgtgekIEAQAAAAAAqkURoV2jSAAAAAstQy6ubaLX4KHWvLEZgBPEi6NYbQR4LKOAzNPgMIskfC2JQzDfhYuE3xdNWSkE"
+          ></mp-common-videosnap>
+        </section>
+        <section><span></span></section>
+        <p>
+          <span
+            >关于用Python做API，下面链接里19个小时的YouTube视频教程对我帮助很大，里面涵盖设计API用的</span
+          ><span>routes, serialization/deserializat</span
+          ><span
+            >ion, schema validation等知识，也涉及SQL，用pytest做测试，和用GitHub
+            Actions做CI/CD的知识。</span
+          >
+        </p>
+        <p>
+          <span
+            ><span>☞ 视频:&nbsp;</span
+            ><span
+              ><a
+                href="https://youtu.be/0sOvCWFmrtA"
+                target="_blank"
+                rel="noopener"
+                >https://youtu.be/0sOvCWFmrtA</a
+              ></span
+            ></span
+          >
+        </p>
+        <p>
+          <span
+            >学习Flask,
+            Django等基于Python的后端框架，及React前端框架，除了官方教程，我主要参考学习Miguel
+            Grinberg的博客。</span
+          >
+        </p>
+        <p>
+          <span
+            ><span>☞ 博客:&nbsp;</span
+            ><span
+              ><a
+                href="https://blog.miguelgrinberg.com"
+                target="_blank"
+                rel="noopener"
+                >https://blog.miguelgrinberg.com</a
+              ></span
+            ></span
+          ><span></span><span></span>
+        </p>
+        <p>
+          <span
+            >我还在跟进的AWS Cloud Project
+            Bootcamp，进度记录在下面我的GitHub链接中。这个需要有前后端基础，主要提升作为云开发工程师或云架构师的技能。可用GitPod进行演示，基本等同于GitHub
+            Codespace的作用（网页版Visual Studio Code）。</span
+          >
+        </p>
+        <p>
+          <span
+            >☞&nbsp;<span
+              ><a
+                href="https://github.com/beiciliang/aws-bootcamp-cruddur-2023"
+                target="_blank"
+                rel="noopener"
+                >https://github.com/beiciliang/aws-bootcamp-cruddur-2023</a
+              ></span
+            ></span
+          >
+        </p>
+        <p>
+          <span
+            >你要是也想记录或分享自己的技术栈，不妨试试Jupyter
+            Book，比如下面链接里关于音乐分类的教程就是用它做的！</span
+          >
+        </p>
+        <p>
+          <span
+            >☞
+            <span
+              ><a
+                href="https://music-classification.github.io/tutorial"
+                target="_blank"
+                rel="noopener"
+                >https://music-classification.github.io/tutorial</a
+              ></span
+            ></span
+          >
+        </p>
+        <p><mp-style-type data-value="3"></mp-style-type></p>
+      </div>
+    </article>
+  </body>
+</html>

@@ -1,0 +1,452 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>「INFO」在C4DM读博是怎样一番体验？ - 无痛入门音乐科技</title>
+    <style>
+      :root {
+        --bg: #f5f5f7;
+        --card-bg: #ffffff;
+        --text: #1d1d1f;
+        --text-secondary: #6e6e73;
+        --accent: #5856d6;
+        --border: #d2d2d7;
+        --code-bg: #f0f0f3;
+      }
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --bg: #0d0d12;
+          --card-bg: #1c1c24;
+          --text: #f0f0f5;
+          --text-secondary: #8e8e93;
+          --accent: #7b79ff;
+          --border: #2c2c34;
+          --code-bg: #15151d;
+        }
+      }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        font-family:
+          -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI",
+          Roboto, "Noto Sans SC", sans-serif;
+        background: var(--bg);
+        color: var(--text);
+        line-height: 1.8;
+      }
+      .header {
+        background: linear-gradient(
+          135deg,
+          #0f0c29 0%,
+          #302b63 50%,
+          #24243e 100%
+        );
+        padding: 2rem 1.5rem;
+        text-align: center;
+      }
+      .header a {
+        color: rgba(255, 255, 255, 0.7);
+        text-decoration: none;
+        font-size: 0.9rem;
+      }
+      .header a:hover {
+        color: #fff;
+      }
+      article {
+        max-width: 720px;
+        margin: 0 auto;
+        padding: 2rem 1.5rem 4rem;
+      }
+      article h1 {
+        font-size: 1.8rem;
+        font-weight: 700;
+        margin-bottom: 0.5rem;
+        line-height: 1.3;
+      }
+      .meta {
+        color: var(--text-secondary);
+        font-size: 0.85rem;
+        margin-bottom: 2rem;
+        padding-bottom: 1rem;
+        border-bottom: 1px solid var(--border);
+      }
+      .content {
+        font-size: 1rem;
+      }
+      .content p,
+      .content section {
+        margin-bottom: 1rem;
+      }
+      .content img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 8px;
+        margin: 1rem 0;
+      }
+      .content h2,
+      .content h3 {
+        text-align: center;
+        margin: 1.5rem 0 0.8rem;
+        font-weight: 600;
+      }
+      .content blockquote {
+        border-left: 3px solid var(--accent);
+        padding-left: 1rem;
+        color: var(--text-secondary);
+        margin: 1rem 0;
+      }
+      .content a {
+        color: var(--accent);
+      }
+      .content hr {
+        border: none;
+        border-top: 1px solid var(--border);
+        margin: 1.5rem 0;
+      }
+      .content ul,
+      .content ol {
+        padding-left: 1.5rem;
+        margin-bottom: 1rem;
+      }
+      .content li {
+        margin-bottom: 0.3rem;
+      }
+      .content table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 1rem 0;
+      }
+      .content th,
+      .content td {
+        border: 1px solid var(--border);
+        padding: 0.5rem;
+        text-align: left;
+      }
+      .content pre,
+      .content code {
+        font-family:
+          "SF Mono", SFMono-Regular, Menlo, Consolas, "Liberation Mono",
+          monospace;
+        font-size: 0.85em;
+      }
+      .content code {
+        background: var(--code-bg);
+        border: 1px solid var(--border);
+        border-radius: 4px;
+        padding: 0.15rem 0.4rem;
+      }
+      .content pre {
+        background: var(--code-bg);
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        padding: 1rem 1.2rem;
+        overflow-x: auto;
+        margin: 1rem 0;
+        line-height: 1.5;
+      }
+      .content pre code {
+        background: none;
+        border: none;
+        padding: 0;
+        font-size: inherit;
+        display: block;
+      }
+      .content pre ol {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+      .content pre li {
+        margin: 0;
+        padding: 0;
+      }
+      .content pre p {
+        margin: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="header">
+      <a href="../index.html">&larr; 返回 无痛入门音乐科技</a>
+    </div>
+    <article>
+      <h1>「INFO」在C4DM读博是怎样一番体验？</h1>
+      <div class="meta">无痛入门音乐科技</div>
+      <div class="content">
+        <blockquote><p>博主从2014年9月至今的五年读博小经历</p></blockquote>
+        <p>
+          还在关注这个公众号的各位朋友，博主大声地给大家问个好：嗨！！！我在7月初终于提交了博士毕业论文，接着跟全家开心地游玩了一圈儿之后，终于又回到这里更新了！
+        </p>
+        <p>
+          话说这些年来，博主收到最多的私信问题就是关于C4DM的硕士或博士项目申请，所以在继续更新技术文章之前，想用这篇横跨五年的流水账简单过个渡，大致讲一讲：
+        </p>
+        <ul>
+          <li>
+            <p>
+              <span><span>大学期间的准备和申请</span><span></span></span>
+            </p>
+          </li>
+          <li>
+            <p>
+              <span><span>第一年的课程培训和企业实习</span><span></span></span>
+            </p>
+          </li>
+          <li>
+            <p>
+              <span><span>接下来三年的科研学术</span><span></span></span>
+            </p>
+          </li>
+          <li>
+            <p>
+              <span
+                ><span>最后一年的收尾安排</span><strong><span></span></strong
+              ></span>
+            </p>
+          </li>
+        </ul>
+        <hr />
+        <h3>『准备与申请』</h3>
+        <p>
+          和准备留学的国内大学生一样，大三的时候就把英语相关的考试都搞定，大四一开学就能开始投递申请材料了。申请博士项目最好先和外方导师邮件沟通一下，搞清楚导师目前主要研究的方向，有无招新博士的名额等等。
+        </p>
+        <p>C4DM目前招收博士有主要是两大渠道：</p>
+        <ol>
+          <li>
+            <p>
+              <span
+                >通过EECS即电子信息工程与计算机学院的常规化博士申请（四年学制）</span
+              >
+            </p>
+          </li>
+          <li>
+            <p>
+              <span
+                >通过C4DM教职工负责的Media &amp; Arts Technology (MAT)
+                或者Artificial Intelligence and Music (AIM)
+                任意一个博士培养项目申请（五年学制）</span
+              >
+            </p>
+          </li>
+        </ol>
+        <p>具体申请过程建议仔细阅读：</p>
+        <p>
+          <span
+            >➥
+            <a
+              href="http://eecs.qmul.ac.uk/phd/how-to-apply/"
+              target="_blank"
+              rel="noopener"
+              >http://eecs.qmul.ac.uk/phd/how-to-apply/</a
+            ></span
+          >
+        </p>
+        <p>
+          材料递交后会进行第一轮筛选，通过的申请者会被邀请面试，面试人很大可能就是将来的大导师和二导师，最后成功的申请人会收到offer，里面会写明是否免学费是否有奖学金等等。
+        </p>
+        <p>
+          因为大部分英国奖学金在授予优先级上先照顾英国本土学生，再之后是欧盟学生，最最后是其他国际学生，所以博主认识的大部分中国学生都是通过CSC即“国家建设高水平大学公派研究生项目”的奖学金来读博的。
+        </p>
+        <p>
+          <span
+            >➥
+            <a
+              href="https://www.csc.edu.cn/chuguo"
+              target="_blank"
+              rel="noopener"
+              >https://www.csc.edu.cn/chuguo</a
+            ></span
+          >
+        </p>
+        <p>
+          针对于”这个难不难申请“之类的问题，因为每个人的情况都不一样，所以这个真没法回答。
+        </p>
+        <p>
+          ☞ 以博主在大四期间申请MAT博士项目和CSC奖学金的时间节点为例，总结来说：
+        </p>
+        <ul>
+          <li>
+            <p><span>2013年8月，考完托福</span></p>
+          </li>
+          <li>
+            <p><span>2013年9月，准备好所有文书材料</span></p>
+          </li>
+          <li>
+            <p><span>2013年10月，联系外方导师</span></p>
+          </li>
+          <li>
+            <p><span>2013年11月，提交申请材料</span></p>
+          </li>
+          <li>
+            <p>
+              <span
+                >2013年12月13日，面试(当时导师给了个口头offer，并建议申请CSC奖学金)</span
+              >
+            </p>
+          </li>
+          <li>
+            <p>
+              <span
+                >2014年3月6日，收到QMUL学校正式开具的有条件录取offer(申请者在出具本科毕业证、学位证、成绩单之后才能被正式录取)</span
+              >
+            </p>
+          </li>
+          <li>
+            <p>
+              <span
+                >2014年3-4月，天津大学开始收取CSC奖学金申报材料，统一向国家留学基金委申报</span
+              >
+            </p>
+          </li>
+          <li>
+            <p><span>2014年5月，获得CSC奖学金</span></p>
+          </li>
+          <li>
+            <p>
+              <span
+                >2014年7月，本科毕业，将毕业材料再发回给QMUL，这样才能被正式录取，并拿到CAS用于英国学生签证的申请</span
+              >
+            </p>
+          </li>
+          <li>
+            <p>
+              <span
+                >2014年9月15日，人到伦敦，成为一名“由QMUL免除学费，CSC提供生活费，MAT项目提供科研和差旅经费”的博士研究生。</span
+              >
+            </p>
+          </li>
+        </ul>
+        <hr />
+        <h3>『第一年的课程』</h3>
+        <p>
+          博主当年申请时，只有MAT这一个博士项目，19年开始才有了专攻音乐科技的AIM项目。相比于EECS常规博士来了就要开始投入科研，MAT和AIM会有一年类似硕士培养的过渡阶段，非常适合我这样没有什么科研经历、还是从其他专业跨进来的本科愣头青。
+        </p>
+        <p>
+          一年的课程里分三个学期，前两个学期里每学期三门课，第三学期就是考试，其中从4月到9月小半年时间里，还要和校外企业/组织合作一个项目，类似实习。最后通过六门课的成绩、项目报告、项目校内外两次展演，决定学生是否有能力继续读博。
+        </p>
+        <p>
+          当时14/15学年的六门课程里有四门必修（交互数字媒体技术，录音与声音制作，纪录片制作、研究方法导论）和两门选修，之后的两年里还要再选三门课。音乐相关的课程有数字信号处理、音乐与语音信号建模、音乐音效设计、音乐认知等等，当然也可以选很多计算机和数据科学的课程，只要时间不冲突就好。
+        </p>
+        <p>
+          我修过的课程基本都是以作业为主、最后考试成绩为辅，所以第一年的时候感觉自己每天都在写作业…反倒是最后企业实习阶段稍微轻松一点:)
+        </p>
+        <p>☞ 关于MAT博士项目详情：</p>
+        <p>
+          <span
+            >➥
+            <a href="http://www.mat.qmul.ac.uk/" target="_blank" rel="noopener"
+              >http://www.mat.qmul.ac.uk/</a
+            ></span
+          >
+        </p>
+        <p>☞ 关于AIM博士项目详情：</p>
+        <p>
+          <span
+            >➥
+            <a href="https://www.aim.qmul.ac.uk/" target="_blank" rel="noopener"
+              >https://www.aim.qmul.ac.uk/</a
+            ></span
+          >
+        </p>
+        <hr />
+        <h3>『三年的纯科研』</h3>
+        <p>
+          从15年9月到18年9月，“整整三年只研究一件事儿”的经历真的是太难忘了。除了每周和大导师开大组会、和小导师开一对一小会，就是写代码、跑实验、总结数据、发论文、参加会议这样周而复始，好在伦敦是个很难让人无聊的城市，除了吃中餐性价比太低，真的没什么毛病……
+        </p>
+        <p>
+          在C4DM读博，主要围绕几个关键的时间节点，这儿叫“stage"。科研的头三个月就要开题，过stage
+          0。接下来的半年要做好充分的文献回顾，过stage
+          1。再之后一年左右的时间里要完成大部分的实验，过stage
+          2。如果三年下来还不能正式开始写毕业论文，就要再过一个stage 3。
+        </p>
+        <p>
+          每次stage的审核除了要交报告，还要面对大导师、二导师、独立审查人做阶段汇报。没通过审核，那这个阶段就得再来一遍了……虽然英国这边大多对博士的论文发表情况没有硬性要求，但论文多一些能保证stage的通过。
+        </p>
+        <p>
+          ☞ 查看相关往期文章 -
+          <a
+            href="http://mp.weixin.qq.com/s?__biz=MzU5MzY3NzI0OA==&amp;mid=2247483761&amp;idx=1&amp;sn=52b81b9fca161df1afad2a8babad251a&amp;chksm=fe0d9fdec97a16c8d41ca5c17d557ed2cee995782d486f91d662ad4abc5cf8315718a264921f&amp;scene=21#wechat_redirect"
+            target="_blank"
+            data-itemshowtype="0"
+            data-linktype="2"
+            >音乐科技相关会议期刊列表</a
+          >
+        </p>
+        <hr />
+        <h3>『最后一年的收尾』</h3>
+        <p>
+          博士第五年开始的头一件事就是transfer to write-up
+          stage，这时基本对毕业论文里要写什么心里有八成把握。除了特殊情况，学校要求博士生在一年内必须交论文。
+        </p>
+        <p>
+          每天都按计划写作的人，效率高的话两个月就能写好。像我这样还在改改实验发发论文飞飞会议，中途还回家过个年的，就写了半年多才完事儿，之后再和大导师二导师来回改改改，终于在2019年最最中间的7月2号把200页的毕业论文交了上去。
+        </p>
+        <p>
+          <img
+            src="https://mmbiz.qpic.cn/mmbiz_jpg/7CrMia15fFJX9ia6b5q7ibhlCYD7NrIJxzhMpHAt94ibnvV0CL6S9EYsySedfwXd9cyNU5ASNd5t9XiaoOGPVXGS2Gw/640"
+          />
+        </p>
+        <p><span>当时交完论文立马修图各处发状态</span><span></span></p>
+        <p>最后，为了拿到博士证书，还有一段考验耐心的流程：<br /></p>
+        <ul>
+          <li>
+            <p>
+              <span
+                >提交毕业论文前3个月，大导师需要确定答辩委员会人选，一般为两人，分别来自校内校外，且不能与博士生或者导师有任何利益纠葛。</span
+              >
+            </p>
+          </li>
+          <li>
+            <p>
+              <span
+                >提交毕业论文后，答辩委员会老师要精读两个月左右，期间会与大导师确认博士生的答辩日期（博主现在就在这个阶段）。</span
+              >
+            </p>
+          </li>
+          <li>
+            <p>
+              <span
+                >答辩当天，两位老师向博士生逐页发问，整个过程大致3-5个小时。</span
+              >
+            </p>
+          </li>
+          <li>
+            <p>
+              <span
+                >根据毕业论文质量和答辩的表现，判定博士生不需要改动、需要小改、需要大改、重写毕业论文。</span
+              >
+            </p>
+          </li>
+          <li>
+            <p>
+              <span
+                >大多需要小改的博士生，要在三个月内根据审核意见改完毕业论文。</span
+              >
+            </p>
+          </li>
+          <li>
+            <p>
+              <span
+                >将改好的毕业论文再次由答辩委员会老师以及校方学术委员会进行审核，没有问题后会颁发一个类似于学位证的award
+                email</span
+              >
+            </p>
+          </li>
+          <li>
+            <p><span>最最后才能拿到纸质的博士学位证！</span></p>
+          </li>
+        </ul>
+        <hr />
+        <p>
+          经历了这一切，拿到博士头衔，其实才刚刚成为一名有独立学术能力的科研人员。继续坚定地留在学术界教书育人搞研究的人，博主由衷佩服。
+        </p>
+        <p>
+          在新一年度的申请季里，祝愿每一位申请人都能如愿以偿申到最理想的学校呀！
+        </p>
+      </div>
+    </article>
+  </body>
+</html>

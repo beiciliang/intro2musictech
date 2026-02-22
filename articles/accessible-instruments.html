@@ -1,0 +1,282 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>「NIME-01」那些为身障人士设计的乐器 - 无痛入门音乐科技</title>
+    <style>
+      :root {
+        --bg: #f5f5f7;
+        --card-bg: #ffffff;
+        --text: #1d1d1f;
+        --text-secondary: #6e6e73;
+        --accent: #5856d6;
+        --border: #d2d2d7;
+        --code-bg: #f0f0f3;
+      }
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --bg: #0d0d12;
+          --card-bg: #1c1c24;
+          --text: #f0f0f5;
+          --text-secondary: #8e8e93;
+          --accent: #7b79ff;
+          --border: #2c2c34;
+          --code-bg: #15151d;
+        }
+      }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        font-family:
+          -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI",
+          Roboto, "Noto Sans SC", sans-serif;
+        background: var(--bg);
+        color: var(--text);
+        line-height: 1.8;
+      }
+      .header {
+        background: linear-gradient(
+          135deg,
+          #0f0c29 0%,
+          #302b63 50%,
+          #24243e 100%
+        );
+        padding: 2rem 1.5rem;
+        text-align: center;
+      }
+      .header a {
+        color: rgba(255, 255, 255, 0.7);
+        text-decoration: none;
+        font-size: 0.9rem;
+      }
+      .header a:hover {
+        color: #fff;
+      }
+      article {
+        max-width: 720px;
+        margin: 0 auto;
+        padding: 2rem 1.5rem 4rem;
+      }
+      article h1 {
+        font-size: 1.8rem;
+        font-weight: 700;
+        margin-bottom: 0.5rem;
+        line-height: 1.3;
+      }
+      .meta {
+        color: var(--text-secondary);
+        font-size: 0.85rem;
+        margin-bottom: 2rem;
+        padding-bottom: 1rem;
+        border-bottom: 1px solid var(--border);
+      }
+      .content {
+        font-size: 1rem;
+      }
+      .content p,
+      .content section {
+        margin-bottom: 1rem;
+      }
+      .content img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 8px;
+        margin: 1rem 0;
+      }
+      .content h2,
+      .content h3 {
+        text-align: center;
+        margin: 1.5rem 0 0.8rem;
+        font-weight: 600;
+      }
+      .content blockquote {
+        border-left: 3px solid var(--accent);
+        padding-left: 1rem;
+        color: var(--text-secondary);
+        margin: 1rem 0;
+      }
+      .content a {
+        color: var(--accent);
+      }
+      .content hr {
+        border: none;
+        border-top: 1px solid var(--border);
+        margin: 1.5rem 0;
+      }
+      .content ul,
+      .content ol {
+        padding-left: 1.5rem;
+        margin-bottom: 1rem;
+      }
+      .content li {
+        margin-bottom: 0.3rem;
+      }
+      .content table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 1rem 0;
+      }
+      .content th,
+      .content td {
+        border: 1px solid var(--border);
+        padding: 0.5rem;
+        text-align: left;
+      }
+      .content pre,
+      .content code {
+        font-family:
+          "SF Mono", SFMono-Regular, Menlo, Consolas, "Liberation Mono",
+          monospace;
+        font-size: 0.85em;
+      }
+      .content code {
+        background: var(--code-bg);
+        border: 1px solid var(--border);
+        border-radius: 4px;
+        padding: 0.15rem 0.4rem;
+      }
+      .content pre {
+        background: var(--code-bg);
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        padding: 1rem 1.2rem;
+        overflow-x: auto;
+        margin: 1rem 0;
+        line-height: 1.5;
+      }
+      .content pre code {
+        background: none;
+        border: none;
+        padding: 0;
+        font-size: inherit;
+        display: block;
+      }
+      .content pre ol {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+      .content pre li {
+        margin: 0;
+        padding: 0;
+      }
+      .content pre p {
+        margin: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="header">
+      <a href="../index.html">&larr; 返回 无痛入门音乐科技</a>
+    </div>
+    <article>
+      <h1>「NIME-01」那些为身障人士设计的乐器</h1>
+      <div class="meta">无痛入门音乐科技</div>
+      <div class="content">
+        <blockquote>
+          <p>
+            每次在电视里看到身障人士强扭着原本就不太方便的身体去演奏乐器，然后被媒体宣传成催人泪下的励志故事，我总会想，为何就不能为他们打造一款特制的乐器呢？
+          </p>
+        </blockquote>
+        <p>
+          <strong
+            >♬ 本文为NIME (New Interfaces for Musical Expression)
+            <strong>即音乐表达新接口系列</strong>的第一篇文章♬</strong
+          >
+        </p>
+        <p>
+          乐器在起源之初，作为众多日常器具的一种，本质上是为了丰富人们的生活而被发明创造的。但也正如大多数器具一样，主要为身体健全的“大多数人”所打造。再加上诸多乐器本身复杂的物理特性，不禁让人觉得“弹好一样乐器”好像就能和“聪明勤奋”划个约等号了。
+        </p>
+        <p>
+          也正因为如此，玩乐器对于多数身障人士来说更成为了一项无福消受的娱乐项目。虽然有许多机器人产品，可以通过编程让它成为自己的替身去演奏乐器。不过，相比于编程一小时听到一段生硬的音乐回放，相信大众还是喜欢自己的乐器自己弹。
+        </p>
+        <p>
+          <img
+            src="https://mmbiz.qpic.cn/mmbiz_jpg/7CrMia15fFJUFhvMicXOias9LrsEMfefe4CcHibTRSuibqCVJDNCtUZYyuyzrbXBme1OVrTDMIYYFic2U860TVyqVulg/640"
+          /><span>➥ 丰田汽车集团的机器人乐队</span>
+        </p>
+        <p>
+          那么问题来了，有些疾病导致身障人士也许连“拿住乐器”这一项动作都难以实现，如何让他们弹下去？早在1984年，『Soundbeam』团队就受到特雷门琴的启发而开发出第一款原型，并于1989年开始商业量产至今，让任何身体状况的人都能体验乐器的乐趣。它本身基于多个超声波传感器，<span
+            >每个传感器对应一种乐器音色的发生，再通过测量人与传感器之间的距离调整音高的变化。</span
+          >
+        </p>
+        <p>
+          ☟ 下面这段视频是患有成骨不全症的美国音乐家Gaelynn
+          Lea演示Soundbeam的使用。
+        </p>
+        <p>
+          <span
+            >➥ 官网链接<a
+              href="https://www.soundbeam.co.uk/"
+              target="_blank"
+              rel="noopener"
+              >https://www.soundbeam.co.uk/</a
+            ></span
+          >
+        </p>
+        <p>
+          现如今图像识别作为人工智能领域最火的任务之一，也可以在新型乐器的软件端贡献最新的研究成果。比如『Eye
+          Conductor』（眼睛指挥）就可以通过追踪眼睛的聚焦位置来判定演奏哪一个音符，再通过检测表情的变化来变换音色。
+        </p>
+        <p>
+          <img
+            src="https://mmbiz.qpic.cn/mmbiz_gif/7CrMia15fFJUFhvMicXOias9LrsEMfefe4C1EHsLmvBkt414XT3MfzXrdalmLoyplhnSHSsRf8kKmLH3t3YDCnrdw/640"
+          />
+        </p>
+        <p>
+          <span
+            >➥ 项目链接<a
+              href="https://andreasrefsgaard.dk/project/eye-conductor/"
+              target="_blank"
+              rel="noopener"
+              >https://andreasrefsgaard.dk/project/eye-conductor/</a
+            ></span
+          >
+        </p>
+        <p>
+          在硬件方面，也就是对传统乐器实打实的改造上，英国单手乐器慈善组织（The
+          OHMI
+          Trust）每年都在通过举办比赛，鼓励乐器制造者为四肢残障人士打造乐器。我们C4DM科研组的Jacob
+          Harrison博士生小哥也通过与他们的合作，在2016年打造了一款『单手贝斯』，即可以通过双脚控制音序器来设定贝斯音高，用一只手拨弦，毕竟对于贝斯手来说，右手的拨弦技巧还是非常影响最后音色的效果的！感兴趣的可以观看下方小视频。
+        </p>
+        <p>
+          <span
+            >➥ 单手贝斯详解博文<a
+              href="https://blog.bela.io/2017/02/01/making-the-one-handed-bass-with-bela/"
+              target="_blank"
+              rel="noopener"
+              >https://blog.bela.io/2017/02/01/making-the-one-handed-bass-with-bela/</a
+            ></span
+          >
+        </p>
+        <p>
+          除了改造乐器，音乐本身也是缓解某些身障疾病的一种手段，例如通过音乐干预帕金森病患者的步态等等。博主对医疗领域知之甚微，就不做过多展开了，但我相信随着神经科学领域的发展，一定会有更多振奋人心的成果！但是私心上更希望大家能理解到，“设身处地为他人着想”的这份儿心，也是促进音乐科技发展的源动力呐！
+        </p>
+        <hr />
+        <p>『参考链接』</p>
+        <p><span>☞ 英国单手乐器慈善组织</span></p>
+        <p>
+          <span
+            >➥
+            <a href="https://www.ohmi.org.uk/" target="_blank" rel="noopener"
+              >https://www.ohmi.org.uk/</a
+            ></span
+          >
+        </p>
+        <p><span>☞ 更多实例可参考下方文章</span></p>
+        <p>
+          <span
+            >➥ Larsen, Jeppe Veirum, Daniel Overholt, and Thomas B. Moeslund.
+            "The prospects of musical instruments for people with physical
+            disabilities." Proceedings of the International Conference on New
+            Interfaces for Musical Expression. 2016.</span
+          >
+        </p>
+      </div>
+    </article>
+  </body>
+</html>

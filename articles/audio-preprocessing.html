@@ -1,0 +1,886 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>
+      「MIR-06」打破砂锅问到底，不同python库做音频预处理的区别在哪里？ -
+      无痛入门音乐科技
+    </title>
+    <style>
+      :root {
+        --bg: #f5f5f7;
+        --card-bg: #ffffff;
+        --text: #1d1d1f;
+        --text-secondary: #6e6e73;
+        --accent: #5856d6;
+        --border: #d2d2d7;
+        --code-bg: #f0f0f3;
+      }
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --bg: #0d0d12;
+          --card-bg: #1c1c24;
+          --text: #f0f0f5;
+          --text-secondary: #8e8e93;
+          --accent: #7b79ff;
+          --border: #2c2c34;
+          --code-bg: #15151d;
+        }
+      }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        font-family:
+          -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI",
+          Roboto, "Noto Sans SC", sans-serif;
+        background: var(--bg);
+        color: var(--text);
+        line-height: 1.8;
+      }
+      .header {
+        background: linear-gradient(
+          135deg,
+          #0f0c29 0%,
+          #302b63 50%,
+          #24243e 100%
+        );
+        padding: 2rem 1.5rem;
+        text-align: center;
+      }
+      .header a {
+        color: rgba(255, 255, 255, 0.7);
+        text-decoration: none;
+        font-size: 0.9rem;
+      }
+      .header a:hover {
+        color: #fff;
+      }
+      article {
+        max-width: 720px;
+        margin: 0 auto;
+        padding: 2rem 1.5rem 4rem;
+      }
+      article h1 {
+        font-size: 1.8rem;
+        font-weight: 700;
+        margin-bottom: 0.5rem;
+        line-height: 1.3;
+      }
+      .meta {
+        color: var(--text-secondary);
+        font-size: 0.85rem;
+        margin-bottom: 2rem;
+        padding-bottom: 1rem;
+        border-bottom: 1px solid var(--border);
+      }
+      .content {
+        font-size: 1rem;
+      }
+      .content p,
+      .content section {
+        margin-bottom: 1rem;
+      }
+      .content img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 8px;
+        margin: 1rem 0;
+      }
+      .content h2,
+      .content h3 {
+        text-align: center;
+        margin: 1.5rem 0 0.8rem;
+        font-weight: 600;
+      }
+      .content blockquote {
+        border-left: 3px solid var(--accent);
+        padding-left: 1rem;
+        color: var(--text-secondary);
+        margin: 1rem 0;
+      }
+      .content a {
+        color: var(--accent);
+      }
+      .content hr {
+        border: none;
+        border-top: 1px solid var(--border);
+        margin: 1.5rem 0;
+      }
+      .content ul,
+      .content ol {
+        padding-left: 1.5rem;
+        margin-bottom: 1rem;
+      }
+      .content li {
+        margin-bottom: 0.3rem;
+      }
+      .content table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 1rem 0;
+      }
+      .content th,
+      .content td {
+        border: 1px solid var(--border);
+        padding: 0.5rem;
+        text-align: left;
+      }
+      .content pre,
+      .content code {
+        font-family:
+          "SF Mono", SFMono-Regular, Menlo, Consolas, "Liberation Mono",
+          monospace;
+        font-size: 0.85em;
+      }
+      .content code {
+        background: var(--code-bg);
+        border: 1px solid var(--border);
+        border-radius: 4px;
+        padding: 0.15rem 0.4rem;
+      }
+      .content pre {
+        background: var(--code-bg);
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        padding: 1rem 1.2rem;
+        overflow-x: auto;
+        margin: 1rem 0;
+        line-height: 1.5;
+      }
+      .content pre code {
+        background: none;
+        border: none;
+        padding: 0;
+        font-size: inherit;
+        display: block;
+      }
+      .content pre ol {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+      .content pre li {
+        margin: 0;
+        padding: 0;
+      }
+      .content pre p {
+        margin: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="header">
+      <a href="../index.html">&larr; 返回 无痛入门音乐科技</a>
+    </div>
+    <article>
+      <h1>「MIR-06」打破砂锅问到底，不同python库做音频预处理的区别在哪里？</h1>
+      <div class="meta">2021年9月4日 16:37 · 无痛入门音乐科技</div>
+      <div class="content">
+        <blockquote>
+          <p>
+            音频预处理通常是将原始波形处理为时频谱，即各种spectrograms，这一步可使用librosa或essentia，涉及到深度学习模型也可直接用torchaudio或tensorflow。但即使输入同个音频，采用同样的参数，得出的<span>时频谱</span>还是有细微差别。<br />
+          </p>
+        </blockquote>
+        <section>
+          <span
+            ><strong>♬ 本文为MIR音乐信息检索系列的第12篇文章 ♬</strong></span
+          >
+        </section>
+        <section>
+          <span
+            >因为代码块较多，手机上看有些麻烦，建议网页端浏览（之后我会整理详细代码，并同步到github）。</span
+          >
+        </section>
+        <section>
+          <span
+            >本文将大致讲解，使用librosa、essentia、torchaudio、tensorflow时：</span
+          >
+        </section>
+        <ul>
+          <li>
+            <section><span>通用参数的解释与设置</span></section>
+          </li>
+          <li>
+            <section><span>得出的spectrogram的区别</span></section>
+          </li>
+          <li>
+            <section>
+              <span><span>得出的mel filter bank的区别</span></span>
+            </section>
+          </li>
+          <li>
+            <section>
+              <span><span>得出的mel spectrogram的区别</span></span>
+            </section>
+          </li>
+        </ul>
+        <hr />
+        <h3>『通用参数设置』</h3>
+        <section>
+          <span
+            >安装在Linux机器下，各个python库均使用截止到2021年8月的最新稳定版本，分别为：<br
+          /></span>
+        </section>
+        <ul>
+          <li>
+            <section>
+              <span>librosa: version 0.8.1<br /></span>
+            </section>
+          </li>
+          <li>
+            <section><span>essentia: version 2.1b6.dev374</span></section>
+          </li>
+          <li>
+            <section>
+              <span>torchaudio: version 0.9.0, with torch 1.9.0</span>
+            </section>
+          </li>
+          <li>
+            <section><span>tensorflow: version 2.6.0</span></section>
+          </li>
+        </ul>
+        <p>
+          <span
+            >每个库中对音频预处理的默认参数不同，所以我们需要统一一下。鉴于tensorflow中可改的选项最不灵活，所以参数设置都向它对齐
+            (比如，tensorflow从linear到mel尺度进行转换时，依赖Hidden Markov
+            Model Toolkit
+            (HTK)，所以需统一NORM设置为None，且MEL_SCALE设置为'htk')。</span
+          >
+        </p>
+        <p>
+          <span
+            >下表列出我们统一设定的参数值，以及几个库中的参数名和默认值
+            (若有):</span
+          >
+        </p>
+        <table>
+          <tbody>
+            <tr>
+              <th width="125.33333333333333">
+                <span>参数</span><span>值统一设定为</span>
+              </th>
+              <th width="99.33333333333333">
+                <span>librosa默认值</span><br />
+              </th>
+              <th width="137.33333333333334">
+                <span>torchaudio默认值</span><br />
+              </th>
+              <th width="127.33333333333334">
+                <span>tensorflow默认值</span><br />
+              </th>
+            </tr>
+            <tr>
+              <td width="125.33333333333333" valign="top">
+                <span>SAMPLE_RATE=44100</span>
+              </td>
+              <td width="99.33333333333333" valign="top">
+                <span>sr=22050</span>
+              </td>
+              <td width="137.33333333333334" valign="top">
+                <span>sample_rate=16000</span>
+              </td>
+              <td width="127.33333333333334" valign="top">
+                <span>sample_rate</span>
+              </td>
+            </tr>
+            <tr>
+              <td width="125.33333333333333" valign="top">
+                <span>N_FFT=2048</span>
+              </td>
+              <td width="99.33333333333333" valign="top">
+                <span>n_fft=2048</span>
+              </td>
+              <td width="137.33333333333334" valign="top">
+                <span>n_fft=400</span>
+              </td>
+              <td width="127.33333333333334" valign="top">
+                <p><span>fft_length=</span><span>frame_length</span></p>
+              </td>
+            </tr>
+            <tr>
+              <td width="125.33333333333333" valign="top">
+                <span>HOP_LENGTH=512</span>
+              </td>
+              <td width="99.33333333333333" valign="top">
+                <span>hop_length=512</span>
+              </td>
+              <td width="137.33333333333334" valign="top">
+                <p>
+                  <span>hop_length</span><span>=</span
+                  ><span>win_length//2</span>
+                </p>
+              </td>
+              <td width="127.33333333333334" valign="top">
+                <span>frame_step</span>
+              </td>
+            </tr>
+            <tr>
+              <td width="125.33333333333333" valign="top">
+                <span>WIN_LENGTH=N_FFT&nbsp;</span>
+              </td>
+              <td width="99.33333333333333" valign="top">
+                <span>win_length=n_fft</span>
+              </td>
+              <td width="137.33333333333334" valign="top">
+                <span>win_length=n_fft</span>
+              </td>
+              <td width="127.33333333333334" valign="top">
+                <span>frame_length</span>
+              </td>
+            </tr>
+            <tr>
+              <td width="125.33333333333333" valign="top">
+                <span>WINDOW='hann'</span>
+              </td>
+              <td width="99.33333333333333" valign="top">
+                <span>window='hann'</span>
+              </td>
+              <td width="137.33333333333334" valign="top">
+                <p><span>window_fn</span><span>=</span></p>
+                <p><span>torch.hann_window</span></p>
+                <p>
+                  <span><span></span></span>
+                </p>
+              </td>
+              <td width="127.33333333333334" valign="top">
+                <p><span>window_fn=</span></p>
+                <p><span>tf.signal.hann_window</span></p>
+              </td>
+            </tr>
+            <tr>
+              <td width="125.33333333333333" valign="top">
+                <span>CENTER=False</span>
+              </td>
+              <td width="99.33333333333333" valign="top">
+                <span>center=True</span>
+              </td>
+              <td width="137.33333333333334" valign="top">
+                <span>center=True</span>
+              </td>
+              <td width="127.33333333333334" valign="top">
+                <span>分帧无法center<br /></span>
+              </td>
+            </tr>
+            <tr>
+              <td width="125.33333333333333" valign="top">
+                <span>PAD_END=False</span>
+              </td>
+              <td width="99.33333333333333" valign="top">
+                <span>pad_mode='reflect'</span>
+              </td>
+              <td width="137.33333333333334" valign="top">
+                <span>pad_mode='reflect'</span>
+              </td>
+              <td width="127.33333333333334" valign="top">
+                <span>pad_end=False<br /></span>
+              </td>
+            </tr>
+            <tr>
+              <td width="125.33333333333333" valign="top">
+                <span>F_MIN=0</span>
+              </td>
+              <td width="99.33333333333333" valign="top">
+                <span>fmin=0.0</span>
+              </td>
+              <td width="137.33333333333334" valign="top">
+                <span>f_min=0</span>
+              </td>
+              <td width="127.33333333333334" valign="top">
+                <span>lower_edge_hertz</span>
+              </td>
+            </tr>
+            <tr>
+              <td width="125.33333333333333" valign="top">
+                <p><span>F_MAX=</span><span>SAMPLE_RATE/2</span></p>
+              </td>
+              <td width="99.33333333333333" valign="top">
+                <span>fmax=sr/2</span>
+              </td>
+              <td width="137.33333333333334" valign="top">
+                <span>f_max=None</span>
+              </td>
+              <td width="127.33333333333334" valign="top">
+                <span>upper_edge_hertz</span>
+              </td>
+            </tr>
+            <tr>
+              <td width="125.33333333333333" valign="top">
+                <span>N_FREQS=N_FFT//2+1</span>
+              </td>
+              <td width="99.33333333333333" valign="top">
+                <span><span>-</span></span>
+              </td>
+              <td width="137.33333333333334" valign="top">
+                <span>n_freqs</span>
+              </td>
+              <td width="127.33333333333334" valign="top">
+                <span>num_spectrogram_bins</span>
+              </td>
+            </tr>
+            <tr>
+              <td
+                valign="top"
+                colspan="1"
+                rowspan="1"
+                width="124.33333333333331"
+              >
+                <span>N_MELS= 128</span>
+              </td>
+              <td
+                valign="top"
+                colspan="1"
+                rowspan="1"
+                width="99.33333333333333"
+              >
+                <span>n_mels=128</span>
+              </td>
+              <td
+                valign="top"
+                colspan="1"
+                rowspan="1"
+                width="137.33333333333334"
+              >
+                <span>n_mels=128</span>
+              </td>
+              <td
+                valign="top"
+                colspan="1"
+                rowspan="1"
+                width="127.33333333333334"
+              >
+                <pre><span>num_mel_bins</span></pre>
+              </td>
+            </tr>
+            <tr>
+              <td
+                valign="top"
+                colspan="1"
+                rowspan="1"
+                width="124.33333333333331"
+              >
+                <span>NORM=None</span>
+              </td>
+              <td
+                valign="top"
+                colspan="1"
+                rowspan="1"
+                width="99.33333333333333"
+              >
+                <span>norm='slaney'</span>
+              </td>
+              <td
+                valign="top"
+                colspan="1"
+                rowspan="1"
+                width="137.33333333333334"
+              >
+                <span>norm=None</span>
+              </td>
+              <td
+                valign="top"
+                colspan="1"
+                rowspan="1"
+                width="127.33333333333334"
+              >
+                <span>依赖HTK<br /></span>
+              </td>
+            </tr>
+            <tr>
+              <td
+                valign="top"
+                colspan="1"
+                rowspan="1"
+                width="124.33333333333331"
+              >
+                <span>MEL_SCALE='htk'</span>
+              </td>
+              <td
+                valign="top"
+                colspan="1"
+                rowspan="1"
+                width="99.33333333333333"
+              >
+                <span>htk=False</span>
+              </td>
+              <td
+                valign="top"
+                colspan="1"
+                rowspan="1"
+                width="137.33333333333334"
+              >
+                <span>mel_scale='htk'</span>
+              </td>
+              <td
+                valign="top"
+                colspan="1"
+                rowspan="1"
+                width="127.33333333333334"
+              >
+                <span>依赖HTK</span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <p>
+          <span
+            >本文中用到的事例音频可从librosa下载，并只用其40秒到45秒之间重采样的片段数据。</span
+          >
+        </p>
+        <section>
+          <pre
+            data-lang="swift"
+          ><code><span><span>import</span> numpy as np</span></code><code><span><span>import</span> pandas as pd</span></code><code><span><span>import</span> librosa</span></code><code><span>from essentia.standard <span>import</span> *</span></code><code><span><span>import</span> torch, torchaudio</span></code><code><span><span>import</span>&nbsp;tensorflow&nbsp;as&nbsp;tf</span></code><code><span><br></span></code><code><span>filename = librosa.util.example_audio_file()</span></code><code><span>audio, <span>_</span> = librosa.load(filename, </span></code><code><span>                        sr=<span>SAMPLE_RATE</span>, mono=<span>MONO</span>, </span></code><code><span>                        offset=<span>OFFSET</span>, duration=<span>LOAD_DURATION</span>)</span></code></pre>
+        </section>
+        <hr />
+        <h3>『Spectrogram』</h3>
+        <p>
+          <span
+            >分别用四种不同的库，计算示例5秒音频片段的magnitue spectrogram和log
+            power spectrogram。<br
+          /></span>
+        </p>
+        <p>
+          <span
+            ><span></span><span>☞</span> 使用librosa得到的维度是1025 x 427：<br
+          /></span>
+        </p>
+        <section>
+          <pre
+            data-lang="properties"
+          ><code><span><span># magnitude spectrogram</span></span></code><code><span><span>spec_librosa</span> = <span>np.abs(librosa.stft(y=audio, </span></span></code><code><span>                                   <span>n_fft</span>=<span>N_FFT, </span></span></code><code><span>                                   <span>hop_length</span>=<span>HOP_LENGTH, </span></span></code><code><span>                                   <span>win_length</span>=<span>WIN_LENGTH,</span></span></code><code><span>                                   <span>window</span>=<span>WINDOW,</span></span></code><code><span><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;center</span>=<span>CENTER))</span></span></code><code><span><span># log power spectrogram</span></span></code><code><span><span>lpspec_librosa</span> = <span>librosa.power_to_db(spec_librosa ** 2)</span></span></code></pre>
+        </section>
+        <p>
+          <span
+            ><span>☞</span><span>&nbsp;</span>使用essentia<span
+              >得到的维度是427 x 1025</span
+            ><span>：</span></span
+          >
+        </p>
+        <section>
+          <pre
+            data-lang="makefile"
+          ><code><span><span># magnitude spectrogram</span></span></code><code><span>spec_essentia = []</span></code><code><span>es_win_func = Windowing(normalized=False, size=WIN_LENGTH, type='hann')</span></code><code><span>es_spec_func = FFT(size=N_FFT)</span></code><code><span>for frame in FrameGenerator(audio, frameSize=N_FFT, hopSize=HOP_LENGTH, </span></code><code><span>                            startFromZero=True, validFrameThresholdRatio=1.0, lastFrameToEndOfFile=False):</span></code><code><span>    spec_complex = es_spec_func(es_win_func(frame))</span></code><code><span>    spec_essentia.append(np.abs(spec_complex))  </span></code><code><span>spec_essentia&nbsp;=&nbsp;essentia.array(spec_essentia)</span></code><code><span><span># log power spectrogram</span></span></code><code><span>lpspec_essentia = librosa.power_to_db(spec_essentia ** 2)</span></code></pre>
+        </section>
+        <p>
+          <span></span
+          ><span
+            ><span>☞</span><span>&nbsp;</span>使用torchaudio<span
+              >得到的维度是1025 x 427</span
+            ><span>：</span></span
+          >
+        </p>
+        <section>
+          <pre
+            data-lang="properties"
+          ><code><span><span># magnitude spectrogram</span></span></code><code><span><span>spec_torch</span> = <span>torchaudio.transforms.Spectrogram(</span></span></code><code><span>    <span>n_fft</span>=<span>N_FFT,</span></span></code><code><span>    <span>win_length</span>=<span>WIN_LENGTH,</span></span></code><code><span>    <span>hop_length</span>=<span>HOP_LENGTH,</span></span></code><code><span>    <span>window_fn</span>=<span>torch.hann_window,</span></span></code><code><span>    <span>power</span>=<span>None,</span></span></code><code><span>    <span>center</span>=<span>CENTER,</span></span></code><code><span>    <span>return_complex</span>=<span>True</span></span></code><code><span><span>)(torch.Tensor(audio))</span></span></code><code><span><span>spec_torch</span> = <span>spec_torch.numpy()</span></span></code><code><span><span>spec_torch&nbsp;</span>=<span>&nbsp;np.abs(spec_torch)</span></span></code><code><span><span># log power spectrogram</span></span></code><code><span><span>lpspec_torch</span> = <span>librosa.power_to_db(spec_torch ** 2)</span></span></code></pre>
+        </section>
+        <p>
+          <span
+            ><span>☞</span><span>&nbsp;</span>使用tensorflow<span
+              >得到的维度是427 x 1025</span
+            ><span>：</span></span
+          ><br /><span></span>
+        </p>
+        <section>
+          <pre
+            data-lang="properties"
+          ><code><span><span># magnitude spectrogram</span></span></code><code><span><span>spec_tf</span> = <span>tf.abs(tf.signal.stft(</span></span></code><code><span>    <span>signals</span>=<span>tf.convert_to_tensor(audio, dtype=tf.float32),</span></span></code><code><span>    <span>frame_length</span>=<span>N_FFT,</span></span></code><code><span>    <span>frame_step</span>=<span>HOP_LENGTH,</span></span></code><code><span>    <span>fft_length</span>=<span>N_FFT,</span></span></code><code><span>    <span>window_fn</span>=<span>tf.signal.hann_window,</span></span></code><code><span>    <span>pad_end</span>=<span>PAD_END))</span></span></code><code><span><span>spec_tf&nbsp;</span>=<span>&nbsp;spec_tf.numpy()</span></span></code><code><span><span># log power spectrogram</span></span></code><code><span><span>lpspec_tf</span> = <span>librosa.power_to_db(spec_tf ** 2)</span></span></code></pre>
+        </section>
+        <p>
+          <span
+            >将以上代码得到的log power
+            spectrogram都画出来，也不会看到非常明显的不同。但是在数值上确实都是有区别的，区别的大小我们可以用Mean
+            Square Error (MSE)
+            衡量，值越大则区别越大。下方表格的区别从小到大排列，统一设定参数的情况下，librosa和torchaudio得出的<span
+              >log power spectrogram</span
+            >在数值上最为接近。</span
+          ><span></span>
+        </p>
+        <p><span></span></p>
+        <table>
+          <thead>
+            <tr>
+              <th><br /></th>
+              <th><span>kernel</span></th>
+              <th><span>compare_kernel</span></th>
+              <th><span>mse</span></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th><span>0</span></th>
+              <td><span>librosa</span></td>
+              <td><span>torchaudio</span></td>
+              <td><span>1.153476e-09</span></td>
+            </tr>
+            <tr>
+              <th><span>1</span></th>
+              <td><span>librosa</span></td>
+              <td><span>tensorflow</span></td>
+              <td><span>9.368608e-07</span></td>
+            </tr>
+            <tr>
+              <th><span>2</span></th>
+              <td><span>tensorflow</span></td>
+              <td><span>torchaudio</span></td>
+              <td><span>9.407697e-07</span></td>
+            </tr>
+            <tr>
+              <th><span>3</span></th>
+              <td><span>essentia</span></td>
+              <td><span>torchaudio</span></td>
+              <td><span>2.041789e-04</span></td>
+            </tr>
+            <tr>
+              <th><span>4</span></th>
+              <td><span>essentia</span></td>
+              <td><span>librosa</span></td>
+              <td><span>2.042010e-04</span></td>
+            </tr>
+            <tr>
+              <th><span>5</span></th>
+              <td><span>essentia</span></td>
+              <td><span>tensorflow</span></td>
+              <td><span>2.050108e-04</span></td>
+            </tr>
+          </tbody>
+        </table>
+        <hr />
+        <h3>『Mel Filter Bank』</h3>
+        <p>
+          <span
+            >鉴于上文中essentia与其他区别相对较大，之后我们主要检查其余三个python库之间的区别。为了得到melspectrogram，可将上文得到的"linear频带的spectrogram"与"可转换到mel尺度的矩阵"做矩阵乘法。所以这里我们先来看一下不同python库得到的linear
+            to mel matrix。</span
+          >
+        </p>
+        <p>
+          <span
+            ><span>☞</span><span> </span
+            ><span>使用librosa得到的维度是128 x 1025：</span></span
+          ><br />
+        </p>
+        <section>
+          <pre
+            data-lang="properties"
+          ><code><span><span>l2m_librosa</span> = <span>librosa.filters.mel(sr=SAMPLE_RATE, </span></span></code><code><span>                                  <span>n_fft</span>=<span>N_FFT, </span></span></code><code><span>                                  <span>n_mels</span>=<span>N_MELS, </span></span></code><code><span>                                  <span>fmin</span>=<span>F_MIN,</span></span></code><code><span>                                  <span>fmax</span>=<span>F_MAX, </span></span></code><code><span>                                  <span>htk</span>=<span>MEL_SCALE=='htk', </span></span></code><code><span>                                  <span>norm</span>=<span>NORM)</span></span></code></pre>
+        </section>
+        <p>
+          <span>☞</span><span> </span
+          ><span>使用torchaudio得到的维度是1025 x 128：</span>
+        </p>
+        <p>
+          <span><span></span></span>
+        </p>
+        <section>
+          <pre
+            data-lang="properties"
+          ><code><span><span>l2m_torch</span> = <span>torchaudio.functional.create_fb_matrix(</span></span></code><code><span>    <span>n_freqs</span>=<span>N_FREQS, </span></span></code><code><span>    <span>f_min</span>=<span>F_MIN, </span></span></code><code><span>    <span>f_max</span>=<span>F_MAX, </span></span></code><code><span>    <span>n_mels</span>=<span>N_MELS, </span></span></code><code><span>    <span>sample_rate</span>=<span>SAMPLE_RATE, </span></span></code><code><span>    <span>norm</span>=<span>NORM, </span></span></code><code><span>    <span>mel_scale</span>=<span>MEL_SCALE)</span></span></code></pre>
+        </section>
+        <p>
+          <span>☞</span><span> </span
+          ><span>使用tensorflow得到的维度是1025 x 128：</span><br />
+        </p>
+        <p>
+          <span><span></span></span>
+        </p>
+        <section>
+          <pre
+            data-lang="properties"
+          ><code><span><span>l2m_tf</span> = <span>tf.signal.linear_to_mel_weight_matrix(</span></span></code><code><span>    <span>num_mel_bins</span>=<span>N_MELS,</span></span></code><code><span>    <span>num_spectrogram_bins</span>=<span>N_FREQS,</span></span></code><code><span>    <span>sample_rate</span>=<span>SAMPLE_RATE,</span></span></code><code><span>    <span>lower_edge_hertz</span>=<span>F_MIN,</span></span></code><code><span>    <span>upper_edge_hertz</span>=<span>F_MAX)</span></span></code></pre>
+        </section>
+        <p>
+          <span
+            ><span
+              >以上三者之间的区别如下表所示，max_abs_diff表示，两两相减时得到的最大绝对差值。</span
+            ></span
+          >
+        </p>
+        <table>
+          <thead>
+            <tr>
+              <th><br /></th>
+              <th><span>kernel</span></th>
+              <th><span>compare_kernel</span></th>
+              <th><span>max_abs_diff</span></th>
+              <th><span>mse</span></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th><span>0</span></th>
+              <td><span>librosa</span></td>
+              <td><span>torchaudio</span></td>
+              <td><span>0.000011</span></td>
+              <td><span>2.611765e-13</span></td>
+            </tr>
+            <tr>
+              <th><span>1</span></th>
+              <td><span>librosa</span></td>
+              <td><span>tensorflow</span></td>
+              <td><span>0.003384</span></td>
+              <td><span>9.346046e-08</span></td>
+            </tr>
+            <tr>
+              <th><span>2</span></th>
+              <td><span>tensorflow</span></td>
+              <td><span>torchaudio</span></td>
+              <td><span>0.003392</span></td>
+              <td><span>9.356785e-08</span></td>
+            </tr>
+          </tbody>
+        </table>
+        <p>
+          <span>依然是<span>librosa和torchaudio之间差别最小。</span></span
+          ><br />
+        </p>
+        <hr />
+        <h3>『Mel Spectrogram』</h3>
+        <p>
+          <span
+            >最后得magnitude melspectrogram, power melspectrogram, log power
+            melspectrogram三者，可按以下代码运算。</span
+          >
+        </p>
+        <section>
+          <pre
+            data-lang="ini"
+          ><code><span><span># librosa</span></span></code><code><span><span>melspec_librosa</span> = np.dot(l2m_librosa, spec_librosa)</span></code><code><span><span>pmelspec_librosa</span> = np.dot(l2m_librosa, spec_librosa ** <span>2</span>)</span></code><code><span><span>lpmelspec_librosa</span> = librosa.power_to_db(pmelspec_librosa)</span></code><code><span><span># torchaudio</span></span></code><code><span><span>melspec_torch</span> = torch.matmul(torch.Tensor(spec_torch.T), l2m_torch).numpy().T</span></code><code><span><span>pmelspec_torch</span> = torch.matmul(torch.Tensor(spec_torch.T ** <span>2</span>), l2m_torch).numpy().T</span></code><code><span><span>lpmelspec_torch</span> = librosa.power_to_db(pmelspec_torch)</span></code><code><span><span># tensorflow</span></span></code><code><span><span>melspec_tf</span> = tf.tensordot(spec_tf, l2m_tf, <span>1</span>).numpy().T</span></code><code><span><span>pmelspec_tf</span> = tf.tensordot(spec_tf ** <span>2</span>, l2m_tf, <span>1</span>).numpy().T</span></code><code><span><span>lpmelspec_tf</span> = librosa.power_to_db(pmelspec_tf)</span></code></pre>
+        </section>
+        <p>
+          <span></span
+          ><span
+            >melspec_librosa和pmelspec_librosa，也可以直接通过librosa.feature.melspectrogram()输入audio或spec_librosa得到，需要注意其中相应power参数值的设定。</span
+          >
+        </p>
+        <p>
+          <span>同理，torchaudio中也有直接得melspectrogram的功能：</span><br />
+        </p>
+        <section>
+          <pre
+            data-lang="properties"
+          ><code><span><span>pmelspec_torch_by_audio</span> = <span>torchaudio.transforms.MelSpectrogram(</span></span></code><code><span>    <span>sample_rate</span>=<span>SAMPLE_RATE,</span></span></code><code><span>    <span>n_fft</span>=<span>N_FFT,</span></span></code><code><span>    <span>win_length</span>=<span>WIN_LENGTH,</span></span></code><code><span>    <span>hop_length</span>=<span>HOP_LENGTH,</span></span></code><code><span>    <span>f_min</span>=<span>F_MIN,</span></span></code><code><span>    <span>f_max</span>=<span>F_MAX,    </span></span></code><code><span>    <span>n_mels</span>=<span>N_MELS,</span></span></code><code><span>    <span>window_fn</span>=<span>torch.hann_window,</span></span></code><code><span>    <span>power</span>=<span>2.0,</span></span></code><code><span>    <span>normalized</span>=<span>False,</span></span></code><code><span>    <span>center</span>=<span>CENTER,</span></span></code><code><span>    <span>norm</span>=<span>NORM,</span></span></code><code><span>    <span>mel_scale</span>=<span>MEL_SCALE</span></span></code><code><span><span>)(torch.Tensor(audio))</span></span></code><code><span><span>pmelspec_torch_by_audio&nbsp;</span>=<span>&nbsp;pmelspec_torch_by_audio.numpy()</span></span></code><code><span><span>lpmelspec_torch_by_audio</span> = <span>librosa.power_to_db(pmelspec_torch_by_audio)</span></span></code></pre>
+        </section>
+        <p>
+          <span></span
+          ><span
+            >可是，目前我得到的pmelspec_torch_by_audio和前文中的pmelspec_torch，在数值上非常接近，但并非完全一致。<br
+          /></span>
+        </p>
+        <p>
+          <span>对以上log power melspectrogram之间的区别用MSE衡量可得：</span>
+        </p>
+        <table>
+          <thead>
+            <tr>
+              <th><br /></th>
+              <th><span>kernel</span></th>
+              <th><span>compare_kernel</span></th>
+              <th><span>mse</span></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th><span>0</span></th>
+              <td><span>librosa</span></td>
+              <td><span>torchaudio_l2m</span></td>
+              <td><span>7.132773e-10</span></td>
+            </tr>
+            <tr>
+              <th><span>1</span></th>
+              <td><span>librosa</span></td>
+              <td><span>torchaudio_direct</span></td>
+              <td><span>7.133121e-10</span></td>
+            </tr>
+            <tr>
+              <th><span>2</span></th>
+              <td><span>librosa</span></td>
+              <td><span>tensorflow</span></td>
+              <td><span>1.559776e-04</span></td>
+            </tr>
+            <tr>
+              <th><span>3</span></th>
+              <td><span>torchaudio_direct</span></td>
+              <td><span>torchaudio_l2m</span></td>
+              <td><span>1.416461e-13</span></td>
+            </tr>
+            <tr>
+              <th><span>4</span></th>
+              <td><span>tensorflow</span></td>
+              <td><span>torchaudio_l2m</span></td>
+              <td><span>1.560096e-04</span></td>
+            </tr>
+            <tr>
+              <th><span>5</span></th>
+              <td><span>tensorflow</span></td>
+              <td><span>torchaudio_direct</span></td>
+              <td><span>1.560096e-04</span></td>
+            </tr>
+          </tbody>
+        </table>
+        <p>
+          <span
+            >画出最小 (librosa vs. torchaudio_l2m) 和最大 (tensorflow vs.
+            torchaudio_direct) 对应在log power melspectrogram上的差值：</span
+          >
+        </p>
+        <p>
+          <img
+            data-original-style=""
+            data-index="2"
+            src="https://mmbiz.qpic.cn/mmbiz_png/7CrMia15fFJUVibuvlssc1WDQyMTOmfdEQuelKogaRwNsoicqcdlriaUdaR6AJiacgwDalm6gpNsmyyWGavL6L5jEIg/640"
+            _width="677px"
+            alt="Image"
+          />
+        </p>
+        <p><br /></p>
+        <hr />
+        <p>
+          <span
+            >目前来看，librosa (0.8.0版本) 和torchaudio (0.9.0版本)
+            在参数设置相互对齐的前提下，可以得到数值上相对接近的音频预处理结果。最后强调一些引起数值差别的主要参数：</span
+          >
+        </p>
+        <ul>
+          <li>
+            <p>
+              <span
+                >加窗时即使都使用'hann'，但不同库的窗函数仍在数值上有细微差别;<br
+              /></span>
+            </p>
+          </li>
+          <li>
+            <p>
+              <span
+                >分帧时是否居中 (center)，若采用居中则还需注意数据填充的模式
+                (pad_mode);</span
+              >
+            </p>
+          </li>
+          <li>
+            <p>
+              <span
+                >设置mel尺度时，根据HTK还是Slaney公式
+                (mel_scale)，另外要注意对mel权重的归一化方式 (norm)。</span
+              >
+            </p>
+          </li>
+        </ul>
+        <section>
+          <strong><span>相关文章回顾：</span></strong
+          ><a
+            target="_blank"
+            href="http://mp.weixin.qq.com/s?__biz=MzU5MzY3NzI0OA==&amp;mid=2247483684&amp;idx=1&amp;sn=d3f3746a6837f7d12044d1931cfd4ead&amp;chksm=fe0d9f8bc97a169dbfcb80443e8da87d8e35ae643bae76841060442d8f88a4f292cda594afa5&amp;scene=21#wechat_redirect"
+            data-itemshowtype="0"
+            tab="innerlink"
+            data-linktype="2"
+            >「MIR-01」要把音乐画出来，总共分几步？</a
+          ><br />
+        </section>
+      </div>
+    </article>
+  </body>
+</html>

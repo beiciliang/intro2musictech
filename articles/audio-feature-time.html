@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>「MIR-02_2」音频特征小全之时域特征 - 无痛入门音乐科技</title>
+  <style>
+    :root {
+      --bg: #f5f5f7;
+      --card-bg: #ffffff;
+      --text: #1d1d1f;
+      --text-secondary: #6e6e73;
+      --accent: #5856d6;
+      --border: #d2d2d7;
+      --code-bg: #f0f0f3;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #0d0d12;
+        --card-bg: #1c1c24;
+        --text: #f0f0f5;
+        --text-secondary: #8e8e93;
+        --accent: #7b79ff;
+        --border: #2c2c34;
+        --code-bg: #15151d;
+      }
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, "Noto Sans SC", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.8;
+    }
+    .header {
+      background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
+      padding: 2rem 1.5rem;
+      text-align: center;
+    }
+    .header a {
+      color: rgba(255,255,255,0.7);
+      text-decoration: none;
+      font-size: 0.9rem;
+    }
+    .header a:hover { color: #fff; }
+    article {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem 4rem;
+    }
+    article h1 {
+      font-size: 1.8rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      line-height: 1.3;
+    }
+    .meta {
+      color: var(--text-secondary);
+      font-size: 0.85rem;
+      margin-bottom: 2rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .content { font-size: 1rem; }
+    .content p,
+      .content section { margin-bottom: 1rem; }
+    .content img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 1rem 0;
+    }
+    .content h2, .content h3 {
+      text-align: center;
+      margin: 1.5rem 0 0.8rem;
+      font-weight: 600;
+    }
+    .content blockquote {
+      border-left: 3px solid var(--accent);
+      padding-left: 1rem;
+      color: var(--text-secondary);
+      margin: 1rem 0;
+    }
+    .content a { color: var(--accent); }
+    .content hr {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 1.5rem 0;
+    }
+    .content ul, .content ol {
+      padding-left: 1.5rem;
+      margin-bottom: 1rem;
+    }
+    .content li { margin-bottom: 0.3rem; }
+    .content table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1rem 0;
+    }
+    .content th, .content td {
+      border: 1px solid var(--border);
+      padding: 0.5rem;
+      text-align: left;
+    }
+    .content pre, .content code {
+      font-family: "SF Mono", SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+      font-size: 0.85em;
+    }
+    .content code {
+      background: var(--code-bg);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 0.15rem 0.4rem;
+    }
+    .content pre {
+      background: var(--code-bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1rem 1.2rem;
+      overflow-x: auto;
+      margin: 1rem 0;
+      line-height: 1.5;
+    }
+    .content pre code {
+      background: none;
+      border: none;
+      padding: 0;
+      font-size: inherit;
+      display: block;
+    }
+    .content pre ol {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .content pre li {
+      margin: 0;
+      padding: 0;
+    }
+    .content pre p {
+      margin: 0;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <a href="../index.html">&larr; 返回 无痛入门音乐科技</a>
+  </div>
+  <article>
+    <h1>「MIR-02_2」音频特征小全之时域特征</h1>
+    <div class="meta">无痛入门音乐科技</div>
+    <div class="content">
+      <blockquote><p>时域特征(temporal feature)就好比描述音频波形的指标，可以说没有比它更直观的特征了。文章中的代码部分若在手机端无法正确显示，请移步网页端。</p></blockquote><p><span><strong>♬ 本文为MIR音乐信息检索系列的第2.2篇文章 ♬</strong></span></p><p><span><strong>♬ 该文与上篇2.1概览及后续2.X文章共同组成音频特征小全 ♬</strong></span></p><p><span>本文将主要讲解以下时域特征及其简单应用：</span></p><ul><li><p><span>如何从ADSR包络中观察不同乐器声音的生老停死？</span></p></li><li><p><span>如何用过零率找到动次打次中“打”的地方？</span></p></li><li><p><span>如何用自相关算法识别单音音高？</span></p></li></ul><hr><h3>『ADSR包络』</h3><p>前文2.1概览的最后，我们计算了一帧帧下均方根能量的值，从而得出音频中能量随时间变化的曲线。这个能量曲线就是我们要说的包络(envelope)，每个乐器发出一个单音得到的包络都有所不同，而这些“不同”可以反映在包络的ADSR四个区域里，分别为起音(attack)、衰减(decay)、延音(sustain)和释音(release)。</p><p><img src="https://mmbiz.qpic.cn/mmbiz_png/7CrMia15fFJW5ibULYpq3DukKPbQrgxPlLicKVol22ibNDXYeKVn2DUic2Km1QeDoHHEq1CMK1gfsqraYfleGnN7aqw/640"></p><p>✎ 一般击弦乐器和打击类乐器的起音都很短，起音之后也不会再有其他机械能的输入因此也不会有延音的阶段，而管弦乐器的延音部分就会很长。下图简单描画了一些乐器的包络。</p><p><img src="https://mmbiz.qpic.cn/mmbiz_png/7CrMia15fFJW5ibULYpq3DukKPbQrgxPlLN7OVa4e4mtpicG66yV0bf6IBgpfu0rHZ7Yyw8zgicibA1fnJsWoY7ME4A/640"></p><p>✎ 包络的差异是帮助我们理解“不同乐器有不同音色”的助手之一，但其他助手们主要集中在频域特征里。</p><hr><h3>『过零率ZCR』</h3><p>直接从字面意思上理解，过零率(zero-crossing rate)就是指波形在单位时间内的穿零次数。我们用下方的“动打动动打”音乐片段为例仔细了解下ZCR。</p><pre><ol><li><p><span><code><span>dongda, sr = librosa.load(</span><span>'attachment/mir02-dongda.wav'</span><span>)</span></code></span></p></li><li><p><span><code><span>ipd.</span><span>Audio</span><span>(dongda, rate=sr)</span></code></span></p></li></ol></pre><p></mpvoice></p><p>以采样率 <code><span>sr</span></code>加载的音频文件，可得到 <code><span>len(dongda)=49613</span></code>个样本，把它们的数值沿时间轴画出来就得到该音频的波形：<br></p><pre><ol><li><p><span><code><span>plt.figure(figsize=(</span><span>14</span><span>, </span><span>5</span><span>))</span></code></span></p></li><li><p><span><code><span>librosa.display.waveplot(dongda, sr=sr)</span></code></span></p></li></ol></pre><p><img src="https://mmbiz.qpic.cn/mmbiz_png/7CrMia15fFJW5ibULYpq3DukKPbQrgxPlLia9DxOUNVfP5RsvTR63FnyiaVUFb434HhYdhKErs5Mvtn10icYIRichiaQg/640"></p><p>假设我们手上有个放大器，现在仔细观察下第6500到7500个之间1000个样本的波形变化：<br></p><pre><ol><li><p><span><code><span>n0 = </span><span>6500</span></code></span></p></li><li><p><span><code><span>n1 = </span><span>7500</span></code></span></p></li><li><p><span><code><span>plt.figure(figsize=(</span><span>14</span><span>, </span><span>5</span><span>))</span></code></span></p></li><li><p><span><code><span>plt.plot(dongda[n0:n1])</span></code></span></p></li><li><p><span><code><span>plt.axhline(</span><span>0</span><span>,linestyle=</span><span>'dashed'</span><span>,color=</span><span>'grey'</span><span>)</span></code></span></p></li></ol></pre><p><img src="https://mmbiz.qpic.cn/mmbiz_png/7CrMia15fFJW5ibULYpq3DukKPbQrgxPlLSEXQHHElsYibNH49fJcrTHnQYAQ4EZCN1HP1k8ZISc9syCjuYqIibQYg/640"></p><p>可以直接从上图观察到该波形穿过界限0一共有5次，也可以用代码计算次数：<br></p><pre><ol><li><p><span><code><span>zero_crossings = librosa.zero_crossings(dongda[n0:n1], pad=</span><span>False</span><span>)</span></code></span></p></li></ol></pre><p>得到的 <code><span>zero_crossings</span></code>是一个由 <code><span>True</span></code>或 <code><span>False</span></code>组成的长度同样为1000的向量， <code><span>True</span></code>表示的是在该位置上的输入样本发生了“过零”，因此若计算过零总次数只需要进行一下求和操作：</p><pre><ol><li><p><span><code><span>sum(zero_crossings)</span></code></span></p></li></ol></pre><p>针对于整个音频数据，以2048个样本为一帧，计算该帧下过零率，再跳过512个样本继续计算下一帧内的过零率：</p><pre><ol><li><p><span><code><span>zcrs_init = librosa.feature.zero_crossing_rate(dongda)</span></code></span></p></li><li><p><span><code></code></span></p></li><li><p><span><code><span># 画出音频波形和每一帧下的过零率</span></code></span></p></li><li><p><span><code><span>plt.figure(figsize=(</span><span>14</span><span>, </span><span>5</span><span>))</span></code></span></p></li><li><p><span><code><span>zcrs_times = librosa.frames_to_time(np.arange(len(zcrs_init[</span><span>0</span><span>])), sr=sr, hop_length=</span><span>512</span><span>)</span></code></span></p></li><li><p><span><code><span>librosa.display.waveplot(dongda, sr=sr, alpha=</span><span>0.7</span><span>)</span></code></span></p></li><li><p><span><code><span>plt.plot(zcrs_times,zcrs_init[</span><span>0</span><span>], label=</span><span>'ZCR'</span><span>, lw=</span><span>3</span><span>, color=</span><span>'green'</span><span>)</span></code></span></p></li><li><p><span><code><span>plt.legend()</span></code></span></p></li></ol></pre><p><img src="https://mmbiz.qpic.cn/mmbiz_png/7CrMia15fFJW5ibULYpq3DukKPbQrgxPlLbQcFy3lkr3y8vahQBwVfXLB3uJ6iaExIq6bcwRvPJbYgqjtn6L9n7CQ/640"></p><p>✎ 我们会发现过零率高的区域恰巧对应了该“动打动动打”音频中“打”的部分，其实“动”是底鼓而“打”是小鼓的声音，底鼓声音的频率较低所以也听上去非常沉稳，而小鼓频率较高听上去“精神多了”，声音的频率高则其在单位时间内拥有更多波形周期，因此单位时间内过零数会更多，那么过零率就更高。<br></p><p>✎ 音频最开始的“无声”区域，其实是有许多非常小数值的样本在界限0的周围转悠，所以也得到了较高的过零率。我们可以先给整个音频样本的数值都加个小小的常数，消除这些小数值对过零率计算的影响：</p><pre><ol><li><p><span><code><span>zcrs = librosa.feature.zero_crossing_rate(dongda + </span><span>0.0001</span><span>)</span></code></span></p></li><li><p><span><code></code></span></p></li><li><p><span><code><span># 画出音频波形和每一帧的过零率（绿线）vs处理后得到的过零率（橙线）</span></code></span></p></li><li><p><span><code><span>plt.figure(figsize=(</span><span>14</span><span>, </span><span>5</span><span>))</span></code></span></p></li><li><p><span><code><span>zcrs_times = librosa.frames_to_time(np.arange(len(zcrs[</span><span>0</span><span>])), sr=sr, hop_length=</span><span>512</span><span>)</span></code></span></p></li><li><p><span><code><span>librosa.display.waveplot(dongda, sr=sr, alpha=</span><span>0.7</span><span>)</span></code></span></p></li><li><p><span><code><span>plt.plot(zcrs_times,zcrs[</span><span>0</span><span>], label=</span><span>'Processed ZCR'</span><span>, lw=</span><span>4</span><span>, color=</span><span>'orange'</span><span>)</span></code></span></p></li><li><p><span><code><span>plt.plot(zcrs_times,zcrs_init[</span><span>0</span><span>], label=</span><span>'Initial ZCR'</span><span>, lw=</span><span>2</span><span>, alpha=</span><span>0.5</span><span>, color=</span><span>'green'</span><span>)</span></code></span></p></li><li><p><span><code><span>plt.legend()</span></code></span></p></li></ol></pre><p><img src="https://mmbiz.qpic.cn/mmbiz_png/7CrMia15fFJW5ibULYpq3DukKPbQrgxPlL548aFlia9jLTlJOctsxFOHhHha1IEnXCyE1S15CBdkENcPmYKHoPpKA/640"></p><hr><h3>『自相关』</h3><p>自相关(autocorrelation)也叫序列相关，可以描述一个信号与其沿时间轴位移后的版本之间的相似度。</p><p><img src="https://mmbiz.qpic.cn/mmbiz_png/7CrMia15fFJW5ibULYpq3DukKPbQrgxPlL8ibA4Zw3GGQUA9GvYia6f3DdicLlovhoBBmoZxmtlpPBaFB3u9lLBKxicg/640"></p><p>公式中的 <code><span>k</span></code>是时移参数(lag)，很明显当 <code><span>k=0</span></code>时得到的 <code><span>r</span></code>值最大，也就是信号与信号本身相似度是最大的。<br></p><p>假设该信号是一个周期信号，则该信号与“移动了一个周期长度的该信号”之间的自相关也会返回一个峰值，因此可以估计出周期信号的频率。</p><p>可见自相关是一种找出重复模式的数学工具，在MIR领域中可用自相关算法估计乐曲的节奏型，也可以估计单旋律音乐中的基频，著名的YIN算法第一步就是自相关！</p><p><span>☞ YIN算法的论文出处：</span></p><p><span>De Cheveigné, Alain, and Hideki Kawahara. "YIN, a fundamental frequency estimator for speech and music." The Journal of the Acoustical Society of America 111.4 (2002): 1917-1930.</span></p><p>✎ 我们就用双簧管吹奏的1秒单音音频为输入，用自相关简单实现下如何估计音频里基频：</p><pre><ol><li><p><span><code><span>oboe_data, sr = librosa.load(</span><span>'attachment/mir02-oboe_C6_1046Hz.wav'</span><span>)</span></code></span></p></li><li><p><span><code><span>ipd.</span><span>Audio</span><span>(oboe_data, rate=sr)</span></code></span></p></li></ol></pre><p>假设已知音频中的音高在A0到C8之间即基频范围在：</p><pre><ol><li><p><span><code><span>f_low = </span><span>27.5</span></code></span></p></li><li><p><span><code><span>f_high = </span><span>4186.01</span></code></span></p></li></ol></pre><p>则对应的最小与最大k为：</p><pre><ol><li><p><span><code><span>k_high = sr/f_low</span></code></span></p></li><li><p><span><code><span>k_low = sr/f_high</span></code></span></p></li></ol></pre><p>在此条件下计算其自相关，且不考虑 <code><span>k_high</span></code>以上的时移，并将得到的自相关中小于 <code><span>k_low</span></code>的部分置零：</p><pre><ol><li><p><span><code><span>r = librosa.autocorrelate(oboe_data, max_size=</span><span>int</span><span>(k_high))</span></code></span></p></li><li><p><span><code><span>r[:</span><span>int</span><span>(k_low)] = </span><span>0</span></code></span></p></li><li><p><span><code></code></span></p></li><li><p><span><code><span># 画出自相关结果</span></code></span></p></li><li><p><span><code><span>plt.figure(figsize=(</span><span>14</span><span>, </span><span>5</span><span>))</span></code></span></p></li><li><p><span><code><span>plt.plot(r)</span></code></span></p></li></ol></pre><p><img src="https://mmbiz.qpic.cn/mmbiz_png/7CrMia15fFJW5ibULYpq3DukKPbQrgxPlLPMje3XSKAXPUKdKHDyoJ36E4VP0oVEjJ79wicNTQQF2KUV72QZ2qT5Q/640"></p><p>✎ 在以上结果中取纵轴数值最大处对应的横轴k的值，即为基频对应的时移参数：<br></p><pre><ol><li><p><span><code><span>k_fundamental = r.argmax()</span></code></span></p></li><li><p><span><code><span>print</span><span>(k_fundamental)</span></code></span></p></li></ol></pre><p>➥ 可显示结果为21</p><p>✎ 则基频为：</p><pre><ol><li><p><span><code><span>print</span><span>(</span><span>"{} Hz"</span><span>.format(sr/k_fundamental))</span></code></span></p></li></ol></pre><p>➥ 可显示结果为1050.0 Hz</p><p>✎ 事实上音频中双簧管吹奏的音高是C6（midi数值为84），其基频为：</p><pre><ol><li><p><span><code><span>print</span><span>(</span><span>"{} Hz"</span><span>.format(librosa.midi_to_hz(</span><span>84</span><span>)))</span></code></span></p></li></ol></pre><p>➥ 1046.5022612023945 Hz</p><p>可见与我们用自相关估计出的基频还是很接近的！</p><p>不过当音频是复调音乐，即同一时刻不止会有一个音被演奏，用自相关估计基频/音高就有些力不从心了 <code><span>_(:3」∠)_</span></code></p><hr><p><span>上文回顾：</span><a href="http://mp.weixin.qq.com/s?__biz=MzU5MzY3NzI0OA==&amp;mid=2247483704&amp;idx=1&amp;sn=e6705ea9535890e16f87a9b1c7956226&amp;chksm=fe0d9f97c97a16815ac0df35d02ef2d66eb14644589f05ab8aec8f407c2c9d31ced863f6240f&amp;scene=21#wechat_redirect" target="_blank"><span>「MIR-02_1」音频特征小全之概览</span></a></p>
+    </div>
+  </article>
+</body>
+</html>

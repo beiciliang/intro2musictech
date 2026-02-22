@@ -1,0 +1,318 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>「说得好听」EP7-音乐推荐算法的小秘密 - 无痛入门音乐科技</title>
+    <style>
+      :root {
+        --bg: #f5f5f7;
+        --card-bg: #ffffff;
+        --text: #1d1d1f;
+        --text-secondary: #6e6e73;
+        --accent: #5856d6;
+        --border: #d2d2d7;
+        --code-bg: #f0f0f3;
+      }
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --bg: #0d0d12;
+          --card-bg: #1c1c24;
+          --text: #f0f0f5;
+          --text-secondary: #8e8e93;
+          --accent: #7b79ff;
+          --border: #2c2c34;
+          --code-bg: #15151d;
+        }
+      }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        font-family:
+          -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI",
+          Roboto, "Noto Sans SC", sans-serif;
+        background: var(--bg);
+        color: var(--text);
+        line-height: 1.8;
+      }
+      .header {
+        background: linear-gradient(
+          135deg,
+          #0f0c29 0%,
+          #302b63 50%,
+          #24243e 100%
+        );
+        padding: 2rem 1.5rem;
+        text-align: center;
+      }
+      .header a {
+        color: rgba(255, 255, 255, 0.7);
+        text-decoration: none;
+        font-size: 0.9rem;
+      }
+      .header a:hover {
+        color: #fff;
+      }
+      article {
+        max-width: 720px;
+        margin: 0 auto;
+        padding: 2rem 1.5rem 4rem;
+      }
+      article h1 {
+        font-size: 1.8rem;
+        font-weight: 700;
+        margin-bottom: 0.5rem;
+        line-height: 1.3;
+      }
+      .meta {
+        color: var(--text-secondary);
+        font-size: 0.85rem;
+        margin-bottom: 2rem;
+        padding-bottom: 1rem;
+        border-bottom: 1px solid var(--border);
+      }
+      .content {
+        font-size: 1rem;
+      }
+      .content p,
+      .content section {
+        margin-bottom: 1rem;
+      }
+      .content img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 8px;
+        margin: 1rem 0;
+      }
+      .content h2,
+      .content h3 {
+        text-align: center;
+        margin: 1.5rem 0 0.8rem;
+        font-weight: 600;
+      }
+      .content blockquote {
+        border-left: 3px solid var(--accent);
+        padding-left: 1rem;
+        color: var(--text-secondary);
+        margin: 1rem 0;
+      }
+      .content a {
+        color: var(--accent);
+      }
+      .content hr {
+        border: none;
+        border-top: 1px solid var(--border);
+        margin: 1.5rem 0;
+      }
+      .content ul,
+      .content ol {
+        padding-left: 1.5rem;
+        margin-bottom: 1rem;
+      }
+      .content li {
+        margin-bottom: 0.3rem;
+      }
+      .content table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 1rem 0;
+      }
+      .content th,
+      .content td {
+        border: 1px solid var(--border);
+        padding: 0.5rem;
+        text-align: left;
+      }
+      .content pre,
+      .content code {
+        font-family:
+          "SF Mono", SFMono-Regular, Menlo, Consolas, "Liberation Mono",
+          monospace;
+        font-size: 0.85em;
+      }
+      .content code {
+        background: var(--code-bg);
+        border: 1px solid var(--border);
+        border-radius: 4px;
+        padding: 0.15rem 0.4rem;
+      }
+      .content pre {
+        background: var(--code-bg);
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        padding: 1rem 1.2rem;
+        overflow-x: auto;
+        margin: 1rem 0;
+        line-height: 1.5;
+      }
+      .content pre code {
+        background: none;
+        border: none;
+        padding: 0;
+        font-size: inherit;
+        display: block;
+      }
+      .content pre ol {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+      .content pre li {
+        margin: 0;
+        padding: 0;
+      }
+      .content pre p {
+        margin: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="header">
+      <a href="../index.html">&larr; 返回 无痛入门音乐科技</a>
+    </div>
+    <article>
+      <h1>「说得好听」EP7-音乐推荐算法的小秘密</h1>
+      <div class="meta">2020年5月16日 08:34 · 无痛入门音乐科技</div>
+      <div class="content">
+        <blockquote>
+          <p>
+            说得好听是一档关于音乐及泛音乐文化的谈话类播客节目。我们试图通过不同角度和背景去探讨当下音乐领域所发生的大事小情。
+          </p>
+        </blockquote>
+        <section>
+          <span>上周末母亲节的</span
+          ><span
+            >时候, 博主有幸作为"说得好听"的第七期嘉宾,
+            和申申主播愉快地聊了一个多小时音乐算法和音乐推荐的事情,
+            这里贴上"官方导览词":&nbsp;</span
+          ><br />
+        </section>
+        <section>
+          <span
+            >喜新厌旧大概是人类DNA中的木桶效应。无论你有多长情，总会有吃腻的菜，穿烦了的衣服，以及，听腻的歌。</span
+          >
+        </section>
+        <section>
+          <span
+            >据研究，和新陈代谢一样，从30岁开始，人开始慢慢难以接受新歌，并且对于音乐种类的探索也逐渐变得缓慢。</span
+          >
+        </section>
+        <section>
+          <span
+            >如何能解决我们对新音乐的需求，并且能在自己的舒适区尽可能地听到好歌，音乐推荐算法的出现似乎可以完美解决这个问题。</span
+          >
+        </section>
+        <section>
+          <span
+            >音乐推荐算法究竟是怎么成为“最懂你品味的那个人”的？想要申请音乐算法相关学位需要了解什么？音乐算法为什么还不能代替人工？如果你的算法推荐的不准该怎么“训练”它？</span
+          >
+        </section>
+        <section>
+          <span
+            >荣获知乎“无乐器演奏”全网第一，学术界的网红梁博士这一期就带大家走近科学。</span
+          >
+        </section>
+        <section>
+          <mp-common-qqmusic
+            mid="0023zQPx1b3O06"
+            albumurl="https://y.gtimg.cn/music/photo_new/T002R500x500M000002Hh4qm4NkuYA.jpg"
+            audiourl="http://isure.stream.qqmusic.qq.com/C2000023zQPx1b3O06.m4a?guid=2000001731&amp;vkey=9026F44C2B8AC5E796E15E4B73590B94D88ECDFC9E749BBF90187982D3DE2BD5A2969CD3F4E1484131E5792078D4256757B1B41BDE988781&amp;uin=&amp;fromtag=50"
+            music_name="说得好听EP7-音乐推荐算法的小秘密"
+            singer="说的好听&nbsp;-&nbsp;说得好听"
+            play_length="4320"
+            src="/cgi-bin/readtemplate?t=tmpl/qqmusic_tmpl&amp;singer=%E8%AF%B4%E7%9A%84%E5%A5%BD%E5%90%AC%20-%20%E8%AF%B4%E5%BE%97%E5%A5%BD%E5%90%AC&amp;music_name=%E8%AF%B4%E5%BE%97%E5%A5%BD%E5%90%ACEP7-%E9%9F%B3%E4%B9%90%E6%8E%A8%E8%8D%90%E7%AE%97%E6%B3%95%E7%9A%84%E5%B0%8F%E7%A7%98%E5%AF%86&amp;albumurl=https%3A%2F%2Fy.gtimg.cn%2Fmusic%2Fphoto_new%2FT002R68x68M000002Hh4qm4NkuYA.jpg&amp;musictype=1"
+            musictype="1"
+            otherid="0023zQPx1b3O06"
+            albumid="002Hh4qm4NkuYA"
+            jumpurlkey=""
+            data-pluginname="insertaudio"
+            posindex="0"
+            musicid="264878465"
+          ></mp-common-qqmusic>
+        </section>
+        <hr />
+        <h3>『关于说得好听』</h3>
+        <p><span>本期节目在各大音频平台上的链接:</span></p>
+        <p>
+          <span
+            ><span><span>☞</span>&nbsp;</span><span>喜马拉雅：</span></span
+          >
+        </p>
+        <p>
+          <span
+            ><span
+              ><a
+                href="https://www.ximalaya.com/yule/32100074/296811872"
+                target="_blank"
+                rel="noopener"
+                >https://www.ximalaya.com/yule/32100074/296811872</a
+              ></span
+            ></span
+          >
+        </p>
+        <p>
+          <span><span>☞&nbsp;</span> 网易云音乐：</span>
+        </p>
+        <p>
+          <span
+            ><a
+              href="https://music.163.com/#/program?id=2067161039"
+              target="_blank"
+              rel="noopener"
+              >https://music.163.com/#/program?id=2067161039</a
+            ></span
+          >
+        </p>
+        <p>
+          <span><span>☞&nbsp;</span> QQ音乐：</span>
+        </p>
+        <p>
+          <span
+            ><a
+              href="https://y.qq.com/n/yqq/song/0023zQPx1b3O06.html"
+              target="_blank"
+              rel="noopener"
+              >https://y.qq.com/n/yqq/song/0023zQPx1b3O06.html</a
+            ></span
+          >
+        </p>
+        <section>
+          <span><span>☞&nbsp;</span> 苹果播客：</span>
+        </section>
+        <section>
+          <span
+            ><a
+              href="https://podcasts.apple.com/cn/podcast/%E8%AF%B4%E5%BE%97%E5%A5%BD%E5%90%AC/id1493363108?l=en#episodeGuid=http%3A%2F%2Faudio.xmcdn.com%2Fgroup80%2FM02%2F10%2F94%2FwKgPDF6-mzPykp-JAhW-F0k2sIo303.m4a"
+              target="_blank"
+              rel="noopener"
+              >https://podcasts.apple.com/cn/podcast/%E8%AF%B4%E5%BE%97%E5%A5%BD%E5%90%AC/id1493363108?l=en#episodeGuid=http%3A%2F%2Faudio.xmcdn.com%2Fgroup80%2FM02%2F10%2F94%2FwKgPDF6-mzPykp-JAhW-F0k2sIo303.m4a</a
+            ></span
+          >
+        </section>
+        <p>
+          <span
+            >如果你对本期节目的话题感兴趣，或者对节目有任何的想法，欢迎通过留言、微博、邮箱与我们互动。</span
+          ><br />
+        </p>
+        <p>
+          <span><span>✎&nbsp;</span>微博：@说得好听SoundsGood</span><br />
+        </p>
+        <p>
+          <span><span>✎&nbsp;</span>邮箱：haoting_soundsgood@163.com</span>
+        </p>
+        <hr />
+        <p>
+          <span
+            >博主本人和申申主播私下里也是好好朋友,
+            所以清楚她对这个音乐及泛音乐文化的谈话类播客有多么用心,
+            每一期从策划话题到准备访谈问题到找嘉宾录制,&nbsp;都是满满的想法与精力!
+            RESPECT GIRL!</span
+          >
+        </p>
+      </div>
+    </article>
+  </body>
+</html>

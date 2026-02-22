@@ -1,0 +1,414 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>「INFO」从数据角度聊聊音乐版权版税 - 无痛入门音乐科技</title>
+    <style>
+      :root {
+        --bg: #f5f5f7;
+        --card-bg: #ffffff;
+        --text: #1d1d1f;
+        --text-secondary: #6e6e73;
+        --accent: #5856d6;
+        --border: #d2d2d7;
+        --code-bg: #f0f0f3;
+      }
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --bg: #0d0d12;
+          --card-bg: #1c1c24;
+          --text: #f0f0f5;
+          --text-secondary: #8e8e93;
+          --accent: #7b79ff;
+          --border: #2c2c34;
+          --code-bg: #15151d;
+        }
+      }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        font-family:
+          -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI",
+          Roboto, "Noto Sans SC", sans-serif;
+        background: var(--bg);
+        color: var(--text);
+        line-height: 1.8;
+      }
+      .header {
+        background: linear-gradient(
+          135deg,
+          #0f0c29 0%,
+          #302b63 50%,
+          #24243e 100%
+        );
+        padding: 2rem 1.5rem;
+        text-align: center;
+      }
+      .header a {
+        color: rgba(255, 255, 255, 0.7);
+        text-decoration: none;
+        font-size: 0.9rem;
+      }
+      .header a:hover {
+        color: #fff;
+      }
+      article {
+        max-width: 720px;
+        margin: 0 auto;
+        padding: 2rem 1.5rem 4rem;
+      }
+      article h1 {
+        font-size: 1.8rem;
+        font-weight: 700;
+        margin-bottom: 0.5rem;
+        line-height: 1.3;
+      }
+      .meta {
+        color: var(--text-secondary);
+        font-size: 0.85rem;
+        margin-bottom: 2rem;
+        padding-bottom: 1rem;
+        border-bottom: 1px solid var(--border);
+      }
+      .content {
+        font-size: 1rem;
+      }
+      .content p,
+      .content section {
+        margin-bottom: 1rem;
+      }
+      .content img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 8px;
+        margin: 1rem 0;
+      }
+      .content h2,
+      .content h3 {
+        text-align: center;
+        margin: 1.5rem 0 0.8rem;
+        font-weight: 600;
+      }
+      .content blockquote {
+        border-left: 3px solid var(--accent);
+        padding-left: 1rem;
+        color: var(--text-secondary);
+        margin: 1rem 0;
+      }
+      .content a {
+        color: var(--accent);
+      }
+      .content hr {
+        border: none;
+        border-top: 1px solid var(--border);
+        margin: 1.5rem 0;
+      }
+      .content ul,
+      .content ol {
+        padding-left: 1.5rem;
+        margin-bottom: 1rem;
+      }
+      .content li {
+        margin-bottom: 0.3rem;
+      }
+      .content table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 1rem 0;
+      }
+      .content th,
+      .content td {
+        border: 1px solid var(--border);
+        padding: 0.5rem;
+        text-align: left;
+      }
+      .content pre,
+      .content code {
+        font-family:
+          "SF Mono", SFMono-Regular, Menlo, Consolas, "Liberation Mono",
+          monospace;
+        font-size: 0.85em;
+      }
+      .content code {
+        background: var(--code-bg);
+        border: 1px solid var(--border);
+        border-radius: 4px;
+        padding: 0.15rem 0.4rem;
+      }
+      .content pre {
+        background: var(--code-bg);
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        padding: 1rem 1.2rem;
+        overflow-x: auto;
+        margin: 1rem 0;
+        line-height: 1.5;
+      }
+      .content pre code {
+        background: none;
+        border: none;
+        padding: 0;
+        font-size: inherit;
+        display: block;
+      }
+      .content pre ol {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+      .content pre li {
+        margin: 0;
+        padding: 0;
+      }
+      .content pre p {
+        margin: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="header">
+      <a href="../index.html">&larr; 返回 无痛入门音乐科技</a>
+    </div>
+    <article>
+      <h1>「INFO」从数据角度聊聊音乐版权版税</h1>
+      <div class="meta">2022年10月17日 16:24 · 无痛入门音乐科技</div>
+      <div class="content">
+        <blockquote>
+          <p>
+            一个音乐人清楚自己的音乐作品和录音制品有哪些版权
+            (copyright)，才能清楚之后会收入哪些版税
+            (royalty)。即使知道这些“基础知识”，存在于音乐产业各个链条中的数据问题，还是不可避免地导致版权和版税的折损。那么问题到底出在哪里？
+          </p>
+        </blockquote>
+        <p>
+          <span
+            >博主去年从“面向听众”的腾讯音乐离职后，搬到了挪威并加入了一家“面向创作者”的音乐初创。因为同事们都是音乐制作出版发行的背景，就跟着学了不少行业知识，同时也从技术角度观察到音乐数据中尤其是元数据
+            (metadata)
+            的问题。当涉及到不同国家地区之间不同音乐版权版税规则下的数据置换，数据问题就更加复杂和严重，导致版税无法给到相应的音乐人，比如2021年仅在北美地区就有4亿多美元的音乐版税被搁置。为了把数据问题说明白，这篇文章主要会科普以下内容：<br
+          /></span>
+        </p>
+        <ul>
+          <li>
+            <p><span>音乐作品和录音制品的区别</span></p>
+          </li>
+          <li>
+            <p><span>版权版税和相应机构的简介</span></p>
+          </li>
+          <li>
+            <p><span>音乐数据中的问题</span></p>
+          </li>
+        </ul>
+        <hr />
+        <h3>『音乐作品vs录音制品』</h3>
+        <p>
+          <span
+            >当我们提到一首歌，会涉及到两个概念：音乐作品 (musical work or song)
+            和录音制品 (sound recording or
+            master)，这两者会有相应的版权，再由不同机构分别收集版税，即版权使用费。音乐作品包括作曲家创作的旋律、作词家写的歌词等等，录音制品则是由歌手等人表演并录制作品、混音和母带制作后得到的最终录音，可能有不同版本的录音被发行&nbsp;(比如伴奏版、remaster版等等)。因此一个音乐作品可对应到多个录音制品。</span
+          >
+        </p>
+        <p>
+          <span
+            >音乐作品可以经由出版商 (publisher) 在其所在地区的著作权收集协会
+            (collection society) 注册，得到代表该作品的ISWC编号 (International
+            Standard Musical Work Code)。录音制品则是通过唱片公司 (record label)
+            或发行商 (distributor) 注册，得到代表该录音的ISRC编号 (International
+            Standard Recording Code)。一个ISWC可关联到多个ISRC。</span
+          >
+        </p>
+        <p>
+          <span
+            >至此我们可以理解内容平台开发类似YouTube的Content
+            ID系统的必要性：比如在用户上传的内容中，找到其所用音乐对应的录音ISRC和作品ISWC。用音频指纹可以识别到特定的录音，版税收入就能给到这个录音对应的歌手等人，以及这个录音关联到的音乐作品的创作人。如果用户没使用音乐录音而是上传了一首自己的翻唱，则需要用到更复杂的翻唱识别算法找到相似的录音和关联的作品，版税收入就只分配到创作人一方。当然如果音乐作品和录音制品的版权压根就没有授予其他人，<span
+              >Content ID一旦检测到，就应该下架这个用户上传的内容。</span
+            ></span
+          >
+        </p>
+        <p>
+          <span
+            >上面的例子简单涉及到版权和版税内容，实际情况要复杂的多，下面就以在互联网上听歌为例说一说。</span
+          >
+        </p>
+        <hr />
+        <h3>『版权版税和相应机构』</h3>
+        <p>
+          <span
+            >复杂首先体现在不同国家地区的音乐版权不同，其次是不同版权对应的版税由不同机构负责收集，最后是收集到的版税要分配给不同的人。这里借用MLC上的图，简单讲一下北美地区互联网上使用音乐时涉及的版权版税和相应机构
+            (博主注：下文里涉及的一些术语，因为不知道准确的中文翻译，就直接写英文了)。</span
+          >
+        </p>
+        <p>
+          <img
+            data-croporisrc="https://mmbiz.qpic.cn/mmbiz_jpg/7CrMia15fFJUY1y0Z3xKdTqdYt5mffJbaD94S0h7LG95ClbzZmRzl5wRibVbNCT89egSkAGTVkWRsmdPr0PxHFhg/0?wx_fmt=jpeg"
+            data-cropx1="44.325259515570934"
+            data-cropx2="1177.7854671280277"
+            data-cropy1="71.76470588235294"
+            data-cropy2="664.878892733564"
+            data-galleryid=""
+            data-original-style="width: 100%;height: auto;"
+            data-index="2"
+            src="https://mmbiz.qpic.cn/mmbiz_jpg/7CrMia15fFJUY1y0Z3xKdTqdYt5mffJbayjG6A8jvCy56ZxfrYucjicicCo8SCtoexMiccdXSKibia8I4Y5nPafgDvZQ/640"
+            _width="100%"
+            alt="Image"
+          />
+        </p>
+        <p>
+          <span
+            >☞ 图源：<a
+              href="https://www.themlc.com/digital-music-royalties-landscape"
+              target="_blank"
+              rel="noopener"
+              >https://www.themlc.com/digital-music-royalties-landscape</a
+            ></span
+          >
+        </p>
+        <section>
+          <span
+            >目前最主流的听歌方式就是在流媒体平台上搜歌听
+            (比如Spotify)，这种用户主动选择歌曲的收听方式即interactive
+            stream会涉及到：</span
+          >
+        </section>
+        <ol>
+          <li>
+            <section>
+              <span
+                >音乐作品的版权之public performance rights，相应的performance
+                royalty版税会通过北美的著作权收集协会
+                (比如ascap、BMI、SESAC等，取决于作品当时注册在哪一个)
+                来收集，再按作品注册时声明的出版商和创作人之间的比例来分配版税；</span
+              >
+            </section>
+          </li>
+          <li>
+            <section>
+              <span
+                >音乐作品的版权之reproduction and distribution
+                rights，相应的mechanical
+                royalty版税要不由MLC机构来收集，要不由音乐作品关联的录音制品所在发行商来收集
+                (如果事先有签订好合同)，然后分配给出版商和创作人；</span
+              >
+            </section>
+          </li>
+          <li>
+            <section>
+              <span
+                >录音制品的版权之reproduction and distribution
+                rights，相应的版税即歌曲销量收入由发行商收集后，分配给唱片公司和歌手等人。</span
+              >
+            </section>
+          </li>
+        </ol>
+        <p>
+          <span
+            >如果用户在数字平台上特意买了一首歌下载后不受限地听，即permanent
+            download，那只涉及上文ii和iii这两种版权版税。如果歌曲在电台类的数字平台上播放
+            (比如Pandora)，用户不能自主选择，歌曲中的音乐作品涉及i中的版权版税，而录音制品则涉及digital
+            performance
+            rights，相应的版税由soundexchange机构收集后，按事先规定好的比例分配给唱片公司和歌手等人。<br
+          /></span>
+        </p>
+        <p>
+          <span
+            >无论是哪种方式，录音制品相关的版税收入，因为数字平台和发行商之间能直接沟通，收入大多能准确地分配到唱片公司和歌手手里。但音乐作品相关的版税收入，由于要经由不同国家地区的著作权收集协会分别收集，此外还要通过出版商，作词作曲人的收入既不及时也不准确。再加上下一部分提到的数据问题，只能说创作人赚点钱好难！</span
+          >
+        </p>
+        <hr />
+        <h3>『音乐数据中的问题』</h3>
+        <p>
+          <span
+            >以上文i中涉及的情况为例 (音乐作品的<span
+              >public performance rights</span
+            >)，某个流媒体平台会将北美地区各个录音制品的收听记录发给北美地区的某个著作权收集协会，由该协会负责识别记录中的录音制品应该对应到注册在该协会下的哪个音乐作品，以此确定版税。最理想的情况是，记录中录音制品的ISRC都有关联的ISWC，就能直接定位到音乐作品，同时在该作品的注册记录下，每个创作人都有IPI或ISNI编号，那么版权收入就能准确地分发给创作人。可惜实际情况却是：</span
+          >
+        </p>
+        <ul>
+          <li>
+            <p>
+              <span
+                >录音制品没有关联到音乐作品，需要通过录音制品的歌曲标题、歌手等元数据匹配到音乐作品，完成ISRC和ISWC之间的关联；</span
+              >
+            </p>
+          </li>
+          <li>
+            <p>
+              <span
+                >即使定位到了音乐作品，但因为该作品的注册记录下有缺失数据，无法准确识别相应的创作人。比如缺少IPI或ISNI编号时，提到英国摇滚乐队的鼓手Roger
+                Taylor，也许是Queen的Roger (Meddows) Taylor，也有可能是Duran
+                Duran的Roger (Andrew) Taylor。</span
+              ><br />
+            </p>
+          </li>
+        </ul>
+        <p>
+          <span
+            ><span>著作权收集协会在</span
+            >关联ISRC和ISWC时，使用的技术目前还停留在基于文本的匹配，另外元数据本身还有大大小小的问题，所以第一步就卡住了。更不用提收集不同国家地区产生的版税时，仅由不同语言之间的文本翻译带来的识别问题
+            (比如弄混姓和名的前后顺序)。A$AP
+            Rocky他也许永远不知道，本意想赚更多$而起的名字，在各种系统的不同字符编码之间做匹配后，会少赚多少…<br
+          /></span>
+        </p>
+        <p>
+          <span
+            ><span>✎&nbsp;</span
+            >下面链接里的博客里有更多奇奇怪怪的音乐数据例子：</span
+          ><span
+            ><a
+              href="https://dustri.org/b/horrible-edge-cases-to-consider-when-dealing-with-music.html"
+              target="_blank"
+              rel="noopener"
+              >https://dustri.org/b/horrible-edge-cases-to-consider-when-dealing-with-music.html</a
+            ></span
+          >
+        </p>
+        <hr />
+        <p>
+          <span
+            >最后，如果你是一个全能音乐人，既作曲又唱歌，从音乐作品到录音制品都能办，那么记住以下几件事，保证你的音乐收益：</span
+          >
+        </p>
+        <ul>
+          <li>
+            <p>
+              <span
+                >确保音乐作品和录音制品两个层面里元数据的准确，除了歌曲名字等数据，你也要有ISNI等表示“你是你”的身份编号
+                (ISNI是近年较通用可以表示各种身份的编号，IPI主要表示作曲/作词/出版商等音乐作品相关的人，IPN主要表示歌手/乐手/制作人等录音制品相关的人)。</span
+              >
+            </p>
+          </li>
+          <li>
+            <p>
+              <span
+                >作为作曲/作词等音乐作品相关人，成为你所在地区<span
+                  >著作权收集协会的会员，当你创作了一首新的音乐作品，将其注册在该协会并得到作品的ISWC编号。一般是通过出版商完成注册，出版方也负责作品在其他地区协会的注册。</span
+                ></span
+              >
+            </p>
+          </li>
+          <li>
+            <p>
+              <span
+                ><span
+                  >作为歌手/制作人等录音制品相关人，通过唱片公司或发行商使录音能在各个平台收听。该录音的数据中，既要有代表其本身的ISRC编号，也要和对应的音乐作品ISWC相关联。</span
+                ></span
+              >
+            </p>
+          </li>
+        </ul>
+        <p>
+          <span
+            ><span
+              >在不同的国家地区，也许还要注册一些其他的协会才能全方位地回收各种版税。无论如何，音乐人要尤其注意源头数据的准确，否则错误的数据进入到接下来的音乐产业链条中，再改就既麻烦又缓慢，直接折损音乐人应得的版税收入。已有的匹配识别错误想要得到纠正，除了用更先进的自然语言处理算法甚至图模型，音频数据的加入也是一条解决路线。多模态的音乐信息检索技术，已经落地到不少流媒体平台做搜广推业务，希望之后也能成为真正帮助到音乐创作者的技术
+              :)</span
+            ></span
+          >
+        </p>
+        <p><mp-style-type data-value="3"></mp-style-type></p>
+      </div>
+    </article>
+  </body>
+</html>

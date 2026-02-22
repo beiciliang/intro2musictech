@@ -1,0 +1,704 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>「INFO」2019年度那些亮眼的音乐科技成就 - 无痛入门音乐科技</title>
+    <style>
+      :root {
+        --bg: #f5f5f7;
+        --card-bg: #ffffff;
+        --text: #1d1d1f;
+        --text-secondary: #6e6e73;
+        --accent: #5856d6;
+        --border: #d2d2d7;
+        --code-bg: #f0f0f3;
+      }
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --bg: #0d0d12;
+          --card-bg: #1c1c24;
+          --text: #f0f0f5;
+          --text-secondary: #8e8e93;
+          --accent: #7b79ff;
+          --border: #2c2c34;
+          --code-bg: #15151d;
+        }
+      }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        font-family:
+          -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI",
+          Roboto, "Noto Sans SC", sans-serif;
+        background: var(--bg);
+        color: var(--text);
+        line-height: 1.8;
+      }
+      .header {
+        background: linear-gradient(
+          135deg,
+          #0f0c29 0%,
+          #302b63 50%,
+          #24243e 100%
+        );
+        padding: 2rem 1.5rem;
+        text-align: center;
+      }
+      .header a {
+        color: rgba(255, 255, 255, 0.7);
+        text-decoration: none;
+        font-size: 0.9rem;
+      }
+      .header a:hover {
+        color: #fff;
+      }
+      article {
+        max-width: 720px;
+        margin: 0 auto;
+        padding: 2rem 1.5rem 4rem;
+      }
+      article h1 {
+        font-size: 1.8rem;
+        font-weight: 700;
+        margin-bottom: 0.5rem;
+        line-height: 1.3;
+      }
+      .meta {
+        color: var(--text-secondary);
+        font-size: 0.85rem;
+        margin-bottom: 2rem;
+        padding-bottom: 1rem;
+        border-bottom: 1px solid var(--border);
+      }
+      .content {
+        font-size: 1rem;
+      }
+      .content p,
+      .content section {
+        margin-bottom: 1rem;
+      }
+      .content img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 8px;
+        margin: 1rem 0;
+      }
+      .content h2,
+      .content h3 {
+        text-align: center;
+        margin: 1.5rem 0 0.8rem;
+        font-weight: 600;
+      }
+      .content blockquote {
+        border-left: 3px solid var(--accent);
+        padding-left: 1rem;
+        color: var(--text-secondary);
+        margin: 1rem 0;
+      }
+      .content a {
+        color: var(--accent);
+      }
+      .content hr {
+        border: none;
+        border-top: 1px solid var(--border);
+        margin: 1.5rem 0;
+      }
+      .content ul,
+      .content ol {
+        padding-left: 1.5rem;
+        margin-bottom: 1rem;
+      }
+      .content li {
+        margin-bottom: 0.3rem;
+      }
+      .content table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 1rem 0;
+      }
+      .content th,
+      .content td {
+        border: 1px solid var(--border);
+        padding: 0.5rem;
+        text-align: left;
+      }
+      .content pre,
+      .content code {
+        font-family:
+          "SF Mono", SFMono-Regular, Menlo, Consolas, "Liberation Mono",
+          monospace;
+        font-size: 0.85em;
+      }
+      .content code {
+        background: var(--code-bg);
+        border: 1px solid var(--border);
+        border-radius: 4px;
+        padding: 0.15rem 0.4rem;
+      }
+      .content pre {
+        background: var(--code-bg);
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        padding: 1rem 1.2rem;
+        overflow-x: auto;
+        margin: 1rem 0;
+        line-height: 1.5;
+      }
+      .content pre code {
+        background: none;
+        border: none;
+        padding: 0;
+        font-size: inherit;
+        display: block;
+      }
+      .content pre ol {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+      .content pre li {
+        margin: 0;
+        padding: 0;
+      }
+      .content pre p {
+        margin: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="header">
+      <a href="../index.html">&larr; 返回 无痛入门音乐科技</a>
+    </div>
+    <article>
+      <h1>「INFO」2019年度那些亮眼的音乐科技成就</h1>
+      <div class="meta">2020年1月12日 08:13 · 无痛入门音乐科技</div>
+      <div class="content">
+        <blockquote>
+          <p>
+            <span
+              >简单盘点一下，2019年音乐科技方面令博主印象深刻的学术研究！</span
+            ><span>个人眼界有限，如有勘误或遗漏，还请包涵！</span>
+          </p>
+        </blockquote>
+        <p>
+          <span
+            >过去的一年里，深度学习继续在传统的音乐信息检索任务上做优化，并且开源了许多“已经训练好”的大模型，同时出现了更多高质量的新数据集。</span
+          ><span>本文将在以下几个方面做简要总结：</span>
+        </p>
+        <ul>
+          <li>
+            <p><span>传统任务：音高判定/节拍追踪/和弦识别/翻唱检测</span></p>
+          </li>
+          <li>
+            <p><span>音乐其他方面的数据分析</span></p>
+          </li>
+          <li>
+            <p><span>声源分离：歌曲分离为人声及其伴奏</span></p>
+          </li>
+          <li>
+            <p><span>自动标注：声音事件和音乐标签</span></p>
+          </li>
+          <li>
+            <p><span>智能生成：自动伴奏 </span></p>
+          </li>
+          <li>
+            <p><span>造福大众的新数据集</span></p>
+          </li>
+        </ul>
+        <p>
+          <span
+            >P.S. 往期回顾 -
+            <a
+              target="_blank"
+              href="http://mp.weixin.qq.com/s?__biz=MzU5MzY3NzI0OA==&amp;mid=2247483768&amp;idx=1&amp;sn=5be59ee8a281e9920399820f09a339ec&amp;chksm=fe0d9fd7c97a16c1aa4e687160944991218d1875d523b272c54143c59e360c4fc10e43700879&amp;scene=21#wechat_redirect"
+              textvalue="2018年的音乐科技年度总结"
+              data-itemshowtype="0"
+              tab="innerlink"
+              data-linktype="2"
+              hasload="1"
+              >2018年的音乐科技年度总结</a
+            ></span
+          >
+        </p>
+        <hr />
+        <h3>『传统任务』</h3>
+        <p>
+          <strong
+            ><strong>♬&nbsp;</strong>音高判定&nbsp;<strong
+              >♬&nbsp;</strong
+            ></strong
+          >
+        </p>
+        <p>
+          ☞ 还记得18年总结里提到的由Jong Wook
+          Kim等人提出的单旋律音高识别CREPE么？一作小哥在19年ISMIR会议上发表了一篇钢琴复音识别的文章，优化了18年总结中提到的Onsets
+          and
+          Frames模型。另外，他也从纽约大学MARL科研组博士毕业了，论文题目是Automatic
+          Music Transcription in the Deep Learning Era。
+        </p>
+        <p>
+          <span
+            >➥
+            <a
+              href="http://archives.ismir.net/ismir2019/paper/000081.pdf"
+              target="_blank"
+              rel="noopener"
+              >http://archives.ismir.net/ismir2019/paper/000081.pdf</a
+            ></span
+          >
+        </p>
+        <p>
+          <span
+            >➥
+            <a
+              href="https://github.com/jongwook/dissertation"
+              target="_blank"
+              rel="noopener"
+              >https://github.com/jongwook/dissertation</a
+            ></span
+          >
+        </p>
+        <p>
+          ☞ Google
+          Research团队在单旋律音高识别上又进一步，开发了比全监督式模型CREPE表现更好的自监督式模型SPICE。
+        </p>
+        <p>
+          <span
+            >➥
+            <a
+              href="https://arxiv.org/pdf/1910.11664.pdf"
+              target="_blank"
+              rel="noopener"
+              >https://arxiv.org/pdf/1910.11664.pdf</a
+            ></span
+          >
+        </p>
+        <p>
+          ☞
+          不管是单音还是复音，总归是有音高的，但是如何对打击乐这种类型的乐器进行自动扒谱呢？师哥Keunwoo
+          Choi的这篇文章用非监督学习的方式给出一个答案。
+        </p>
+        <p>
+          <span
+            >➥
+            <a
+              href="https://github.com/keunwoochoi/DrummerNet"
+              target="_blank"
+              rel="noopener"
+              >https://github.com/keunwoochoi/DrummerNet</a
+            ></span
+          >
+        </p>
+        <p>
+          <strong
+            ><strong>♬&nbsp;</strong>节拍追踪&nbsp;<strong
+              >♬&nbsp;</strong
+            ></strong
+          >
+        </p>
+        <p>
+          维也纳OFAI的Sebastian
+          Böck可以说是研究这个问题的资深专家了，他最新的工作是用多任务学习的方式，同时提升tempo
+          estimation和beat tracking。
+        </p>
+        <p>
+          <span
+            >➥
+            <a
+              href="http://archives.ismir.net/ismir2019/paper/000058.pdf"
+              target="_blank"
+              rel="noopener"
+              >http://archives.ismir.net/ismir2019/paper/000058.pdf</a
+            ></span
+          >
+        </p>
+        <p>
+          <span
+            >➥ 训练好的模型开源在<a
+              href="https://github.com/CPJKU/madmom"
+              target="_blank"
+              rel="noopener"
+              >https://github.com/CPJKU/madmom</a
+            ></span
+          >
+        </p>
+        <p>
+          <strong
+            ><strong>♬&nbsp;</strong>和弦识别&nbsp;<strong
+              >♬&nbsp;</strong
+            ></strong
+          >
+        </p>
+        <p>
+          ☞ 为了深度学习出输入数据中的时序信息，注意力模型(attention-based
+          model)是最近比RNN和LSTM更流行的方法，台湾中央研究院的Tsung-Ping
+          Chen和Li Su将其应用在和弦识别上，并获得了19年ISMIR的最佳论文之一。
+        </p>
+        <p>
+          <span
+            >➥
+            <a
+              href="https://github.com/Tsung-Ping/Harmony-Transformer"
+              target="_blank"
+              rel="noopener"
+              >https://github.com/Tsung-Ping/Harmony-Transformer</a
+            ></span
+          >
+        </p>
+        <p>
+          ☞ 想详细了解近20年和弦识别的发展，不要错过这篇C4DM的同事们发表的综述。
+        </p>
+        <p>
+          <span
+            >➥
+            <a
+              href="http://archives.ismir.net/ismir2019/paper/000004.pdf"
+              target="_blank"
+              rel="noopener"
+              >http://archives.ismir.net/ismir2019/paper/000004.pdf</a
+            ></span
+          >
+        </p>
+        <p>
+          <strong
+            ><strong>♬&nbsp;</strong>翻唱检测&nbsp;<strong
+              >♬&nbsp;</strong
+            ></strong
+          >
+        </p>
+        <p>
+          除了直接训练端到端的模型去解决一个特定任务，也可以从任务A的模型中提取embedding，应用到任务B中。比如从“主旋律识别任务”的模型中提取embedding，能成功地被应用到翻唱检测的任务中，毕竟原歌曲和其翻唱版本之间的主旋律应该还挺相似的。法国的Guillaume
+          Doras和Geoffroy
+          Peeters就用这个方法实现了目前准确度最高的翻唱检测算法。
+        </p>
+        <p>
+          <span
+            >➥
+            <a
+              href="http://archives.ismir.net/ismir2019/paper/000010.pdf"
+              target="_blank"
+              rel="noopener"
+              >http://archives.ismir.net/ismir2019/paper/000010.pdf</a
+            ></span
+          >
+        </p>
+        <hr />
+        <h3>『音乐其他方面的数据分析』</h3>
+        <p>
+          以上传统任务的亮眼成就列举，难免让其他领域的人觉得这不过又是CS大行业的一个音乐分支，其实音乐信息检索这一行充满了统计学家和音乐家。
+        </p>
+        <p>
+          ☞
+          比如说近20年来用户或算法创建的歌单，通过统计学的方法能反映出哪些信息和变化趋势？巴塞罗那MTG组的Lorenzo
+          Porcaro和Emilia Gómez就发表了这么一篇文章。
+        </p>
+        <p>
+          <span
+            >➥
+            <a
+              href="https://github.com/MTG/playlists-stat-analysis"
+              target="_blank"
+              rel="noopener"
+              >https://github.com/MTG/playlists-stat-analysis</a
+            ></span
+          >
+        </p>
+        <p>
+          ☞
+          音乐除了基本的音高节奏等元素，更包含了器乐演奏家在表演时的各种“参数”。佐治亚理工的Alexander
+          Lerch等人发表了关于音乐表演分析综述文章。
+        </p>
+        <p>
+          <span
+            >➥
+            <a
+              href="http://archives.ismir.net/ismir2019/paper/000002.pdf"
+              target="_blank"
+              rel="noopener"
+              >http://archives.ismir.net/ismir2019/paper/000002.pdf</a
+            ></span
+          >
+        </p>
+        <p>
+          ☞
+          除了音乐本乐，承载它的交互方式在“让用户发现好音乐”的过程中功不可没，Peter
+          Knees、Markus Schedl和Masataka
+          Goto三位大前辈发表的这篇综述里回顾了过去20年的技术历程。
+        </p>
+        <p>
+          <span
+            >➥
+            <a
+              href="http://archives.ismir.net/ismir2019/paper/000003.pdf"
+              target="_blank"
+              rel="noopener"
+              >http://archives.ismir.net/ismir2019/paper/000003.pdf</a
+            ></span
+          >
+        </p>
+        <hr />
+        <h3>『声源分离』</h3>
+        <p>
+          19年的声源分离尤其是在“把输入音频里的人声与伴奏分离开”这项任务上，仿佛被开了光…这要部分归功于相关数据集和指导材料从18年开始被各种大公开，这里必须感谢法国INRIA的Antoine
+          Liutkus和Fabian-Robert Stöter两位老师的无私贡献。
+        </p>
+        <p>
+          <span
+            >➥
+            <a href="https://sigsep.github.io/" target="_blank" rel="noopener"
+              >https://sigsep.github.io/</a
+            ></span
+          >
+        </p>
+        <p>☞ Deezer公司开源的spleeter，目前在Github上已经9千多星，亲测好用。</p>
+        <p>
+          <span
+            >➥
+            <a
+              href="https://github.com/deezer/spleeter"
+              target="_blank"
+              rel="noopener"
+              >https://github.com/deezer/spleeter</a
+            ></span
+          >
+        </p>
+        <p>
+          ☞ Facebook
+          Research紧随其后开源demucs，相比于以音频的时频谱做输入的spleeter，这个直接从音频波形下手。
+        </p>
+        <p>
+          <span
+            >➥
+            <a
+              href="https://github.com/facebookresearch/demucs"
+              target="_blank"
+              rel="noopener"
+              >https://github.com/facebookresearch/demucs</a
+            ></span
+          >
+        </p>
+        <hr />
+        <h3>『自动标注』</h3>
+        <p>
+          ☞ 18年总结中提到的Jordi Pons，从MTG顺利博士毕业了，他的毕业论文是Deep
+          neural networks for music and audio tagging。
+        </p>
+        <p>
+          <span>➥ PPT：</span
+          ><span
+            ><a
+              href="http://www.jordipons.me/media/ThesisDefense_JordiPons.pdf"
+              target="_blank"
+              rel="noopener"
+              >http://www.jordipons.me/media/ThesisDefense_JordiPons.pdf</a
+            ></span
+          >
+        </p>
+        <p>
+          <span>➥ 论文：</span
+          ><span
+            ><a
+              href="http://jordipons.me/media/PhD"
+              target="_blank"
+              rel="noopener"
+              >http://jordipons.me/media/PhD</a
+            ><span>Thesis</span>JordiPons.pdf</span
+          >
+        </p>
+        <p>
+          ☞
+          针对于更广义的音频事件检测，我的朋友孔秋强在萨利大学博士毕业了，他不仅论文发得多多多，代码写得也特别清晰明了。在毕业论文最终上线之前，可以先在他的个人主页浏览所有相关工作。
+        </p>
+        <p>
+          <span
+            >➥
+            <a
+              href="https://qiuqiangkong.github.io/"
+              target="_blank"
+              rel="noopener"
+              >https://qiuqiangkong.github.io/</a
+            ></span
+          >
+        </p>
+        <hr />
+        <h3>『智能生成』</h3>
+        <p>
+          其实博主对自动作曲算法本身的关注比较少，所以只对demo做得比较漂亮的两个自动伴奏项目印象深刻。
+        </p>
+        <p>
+          ☞ The Bach Doodle，博主崇拜的Cheng-Zhi Anna
+          Huang等人做出的工作，用户输入一段主旋律（下图黑色音符部分），系统可以自动编排巴赫风格的和声伴奏（下图其他颜色的音符），这项工作也发表在19年ISMIR上。
+        </p>
+        <p>
+          <span
+            >➥
+            <a
+              href="http://archives.ismir.net/ismir2019/paper/000097.pdf"
+              target="_blank"
+              rel="noopener"
+              >http://archives.ismir.net/ismir2019/paper/000097.pdf</a
+            ></span
+          >
+        </p>
+        <p>
+          <img
+            data-original-style=""
+            data-index="2"
+            src="https://mmbiz.qpic.cn/mmbiz_png/7CrMia15fFJVejLk9ZCRbyTZ98iajzMXfvzcQNOeh7ElK91xDNoFl8rXicpnjFmlVDn7LEntElbVcASeRKSuH8chw/640"
+            _width="677px"
+            alt="Image"
+          />
+        </p>
+        <p>
+          ☞
+          DrumBot，这里自动伴奏的不再是旋律，而是鼓点。背后基于的GrooVAE算法已经发表在19年ICML上，嗯对，又是Magenta开发的。
+        </p>
+        <p>
+          <span
+            >➥
+            <a
+              href="https://arxiv.org/pdf/1905.06118.pdf"
+              target="_blank"
+              rel="noopener"
+              >https://arxiv.org/pdf/1905.06118.pdf</a
+            ></span
+          >
+        </p>
+        <p>
+          <img
+            data-original-style=""
+            data-index="3"
+            src="https://mmbiz.qpic.cn/mmbiz_png/7CrMia15fFJVejLk9ZCRbyTZ98iajzMXfvNFe8y94N3VWIdpLUsUhCdwV1XEOe9svHiaf6DhImZ60TX8wRm4my3qw/640"
+            _width="677px"
+            alt="Image"
+          />
+        </p>
+        <p>
+          ☞ 对自动作曲算法本身感兴趣的，可以参考19年ISMIR上楊奕軒老师的Tutorial:
+          Generating Music with GANs
+        </p>
+        <p>
+          <span
+            >➥
+            <a
+              href="https://salu133445.github.io/ismir2019tutorial/"
+              target="_blank"
+              rel="noopener"
+              >https://salu133445.github.io/ismir2019tutorial/</a
+            ></span
+          >
+        </p>
+        <hr />
+        <h3>『新数据集』</h3>
+        <p>☞ The MTG-Jamendo Dataset for Automatic Music Tagging</p>
+        <p>
+          <span
+            >➥
+            <a
+              href="https://mtg.github.io/mtg-jamendo-dataset/"
+              target="_blank"
+              rel="noopener"
+              >https://mtg.github.io/mtg-jamendo-dataset/</a
+            ></span
+          >
+        </p>
+        <p>
+          ☞ Da-TACOS: A Dataset for Cover Song Identification and Understanding
+        </p>
+        <p>
+          <span
+            >➥
+            <a
+              href="https://mtg.github.io/da-tacos/"
+              target="_blank"
+              rel="noopener"
+              >https://mtg.github.io/da-tacos/</a
+            ></span
+          >
+        </p>
+        <p>
+          ☞ The AcousticBrainz Genre Dataset: Multi-Source, Multi-Level,
+          Multi-Label, and Large-Scale
+        </p>
+        <p>
+          <span
+            >➥
+            <a
+              href="https://mtg.github.io/acousticbrainz-genre-dataset/"
+              target="_blank"
+              rel="noopener"
+              >https://mtg.github.io/acousticbrainz-genre-dataset/</a
+            ></span
+          >
+        </p>
+        <p>
+          ☞ The Harmonix Set: Beats, Downbeats, and Functional Segment
+          Annotations of Western Popular Music
+        </p>
+        <p>
+          <span
+            >➥
+            <a
+              href="https://github.com/urinieto/harmonixset"
+              target="_blank"
+              rel="noopener"
+              >https://github.com/urinieto/harmonixset</a
+            ></span
+          >
+        </p>
+        <p>
+          ☞ SUPRA: Digitizing the Stanford University Piano Roll Archive
+          数据集的建立过程发表在19年ISMIR上并荣获最佳论文，恭喜Zhengshan
+          Shi学姐！
+        </p>
+        <p>
+          <span
+            >➥
+            <a href="https://supra.stanford.edu/" target="_blank" rel="noopener"
+              >https://supra.stanford.edu/</a
+            ></span
+          >
+        </p>
+        <p>
+          ☞
+          古琴数据集，北邮学生吴雨松主导建立，相关技术已发表在19年全国声音与音乐技术会议上。
+        </p>
+        <p>
+          <span
+            >➥
+            <a
+              href="https://github.com/lukewys/Guqin-Dataset"
+              target="_blank"
+              rel="noopener"
+              >https://github.com/lukewys/Guqin-Dataset</a
+            ></span
+          >
+        </p>
+        <hr />
+        <h3>『关于2019的一点题外话』</h3>
+        <p>
+          19年是ISMIR国际会议的20周年，除了上面提到的论文，还有许许多多有趣的工作，下方链接里汇总了大部分海报。
+        </p>
+        <p>
+          <span
+            >➥
+            <a
+              href="https://github.com/keunwoochoi/ismir-2019-posters"
+              target="_blank"
+              rel="noopener"
+              >https://github.com/keunwoochoi/ismir-2019-posters</a
+            ></span
+          >
+        </p>
+        <p>
+          对博主来说，19年也是个丰收的喜悦年，起码叫我一声Dr.
+          Liang我也敢答应了！周围的朋友们也都陆续提交了博士毕业论文，虽然我们大部分没有继续留在学术界，但完全不会停止对音乐科技项目的密切关注和开源支持。最后祝大家2020年一切顺利，抱拳！
+        </p>
+      </div>
+    </article>
+  </body>
+</html>
